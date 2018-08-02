@@ -17,3 +17,11 @@
 //Register
 
 "RegisterTitle" = "Register";
+"NamePlaceholder" = "Name";
+"EmailPlaceholder" = "Email";
+"MobNoPlaceholder" = "Mobile Number";
+"PwdPlaceholder" = "Password";
+"ConfirmPwdPlaceholder" = "Repeat Password";
+"Male" = "Male";
+"Female" = "Female";
+"SIGNUP" = "SIGN UP";

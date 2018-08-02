@@ -13,3 +13,15 @@
 "LOGINVIAQOOT" = "تسجيل الدخول عبر Qoot";
 "DONTHAVEANACCOUNT" = "ليس لديك حساب!";
 "REGISTER" = "تسجيل؟";
+
+//Register
+
+"RegisterTitle" = "تسجيل";
+"NamePlaceholder" = "اسم";
+"EmailPlaceholder" = "البريد الإلكتروني";
+"MobNoPlaceholder" = "رقم الهاتف المحمول";
+"PwdPlaceholder" = "كلمه السر";
+"ConfirmPwdPlaceholder" = "اعد كلمة السر";
+"Male" = "الذكر";
+"Female" = "إناثا";
+"SIGNUP" = "سجل";

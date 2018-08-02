@@ -27,11 +27,6 @@ class CCUtility: NSObject {
     
     class func showDefaultAlertwith(_title : String, _message : String, parentController : UIViewController){
         let alert = UIAlertController(title: _title, message: _message, preferredStyle: UIAlertControllerStyle.alert)
-        if L102Language.currentAppleLanguage() == "ar"{
-            var messageMutableString = NSMutableAttributedString()
-            messageMutableString = NSMutableAttributedString(string: _message as String, attributes: ALERTMSGATTR)
-            alert.setValue(messageMutableString, forKey: "attributedMessage")
-        }
         alert.addAction(UIAlertAction(title: "OK".localiz(), style: .default, handler: { action in
             switch action.style{
             case .default:
@@ -51,11 +46,6 @@ class CCUtility: NSObject {
     
     class func showDefaultAlertwithCompletionHandler(_title : String, _message : String, parentController : UIViewController, completion:@escaping (_ okSuccess:Bool)->()){
         let alert = UIAlertController(title: _title, message: _message, preferredStyle: UIAlertControllerStyle.alert)
-        if L102Language.currentAppleLanguage() == "ar"{
-            var messageMutableString = NSMutableAttributedString()
-            messageMutableString = NSMutableAttributedString(string: _message as String, attributes: ALERTMSGATTR)
-            alert.setValue(messageMutableString, forKey: "attributedMessage")
-        }
         alert.addAction(UIAlertAction(title: "OK".localiz(), style: .default, handler: { action in
             completion(true)
             switch action.style{
@@ -75,11 +65,6 @@ class CCUtility: NSObject {
     
     class func showActionAlertwithCancel(_title : String, _message : String, parentController : UIViewController,action:UIAlertAction){
         let alert = UIAlertController(title: _title, message: _message, preferredStyle: UIAlertControllerStyle.alert)
-        if L102Language.currentAppleLanguage() == "ar"{
-            var messageMutableString = NSMutableAttributedString()
-            messageMutableString = NSMutableAttributedString(string: _message as String, attributes: ALERTMSGATTR)
-            alert.setValue(messageMutableString, forKey: "attributedMessage")
-        }
         alert.addAction(UIAlertAction(title: "CANCEL".localiz(), style: .cancel, handler: { action in
             //  alert.dismiss(animated: true, completion: )
         }))
@@ -90,11 +75,6 @@ class CCUtility: NSObject {
    class func showAlertWithOkOrCancel(_title : String, viewController:UIViewController, messageString:String, completion:@escaping (_ result:String) -> Void) {
     
         let alertController = UIAlertController(title: _title, message: messageString, preferredStyle: .alert)
-    if L102Language.currentAppleLanguage() == "ar"{
-        var messageMutableString = NSMutableAttributedString()
-        messageMutableString = NSMutableAttributedString(string: messageString as String, attributes: ALERTMSGATTR)
-        alertController.setValue(messageMutableString, forKey: "attributedMessage")
-    }
         let yesAction = UIAlertAction(title: "OK".localiz(), style: .default) { (action:UIAlertAction) in
             completion ("Ok")
         }
@@ -109,22 +89,12 @@ class CCUtility: NSObject {
     }
     class func showAlertWithoutOkOrCancel(_title : String, viewController:UIViewController, messageString:String, completion:@escaping () -> Void) {
         let alertController = UIAlertController(title: _title, message: messageString, preferredStyle: .alert)
-        if L102Language.currentAppleLanguage() == "ar"{
-            var messageMutableString = NSMutableAttributedString()
-            messageMutableString = NSMutableAttributedString(string: messageString as String, attributes: ALERTMSGATTR)
-            alertController.setValue(messageMutableString, forKey: "attributedMessage")
-        }
         viewController.present(alertController, animated: true) {
         }
     }
     
     class func showActionAlertwith(_title : String, _message : String, parentController : UIViewController,action:UIAlertAction){
         let alert = UIAlertController(title: _title, message: _message, preferredStyle: UIAlertControllerStyle.alert)
-        if L102Language.currentAppleLanguage() == "ar"{
-            var messageMutableString = NSMutableAttributedString()
-            messageMutableString = NSMutableAttributedString(string: _message as String, attributes: ALERTMSGATTR)
-            alert.setValue(messageMutableString, forKey: "attributedMessage")
-        }
         alert.addAction(action)
         
         parentController.present(alert, animated: true, completion: nil)
@@ -143,12 +113,7 @@ class CCUtility: NSObject {
     }
     
     class func showActionAlertForSessionTimeOut(parentController : UIViewController){
-        let alertController = UIAlertController(title: APPNAME, message: "SESSIONINVALID".localiz(), preferredStyle: .alert)
-        if L102Language.currentAppleLanguage() == "ar"{
-            var messageMutableString = NSMutableAttributedString()
-            messageMutableString = NSMutableAttributedString(string: "SESSIONINVALID".localiz() as String, attributes: ALERTMSGATTR)
-            alertController.setValue(messageMutableString, forKey: "attributedMessage")
-        }
+        let alertController = UIAlertController(title: Constant.AppName, message: "SESSIONINVALID".localiz(), preferredStyle: .alert)
         let yesAction = UIAlertAction(title: "OK".localiz(), style: .default) { (action:UIAlertAction) in
             CCUtility.processAfterLogOut()
         }
@@ -205,7 +170,7 @@ class CCUtility: NSObject {
     }
     
     class func processAfterLogIn(){
-        UserDefaults.standard.set(true, forKey: LOGINSUCCESS)
+        UserDefaults.standard.set(true, forKey: Constant.VariableNames.isLoogedIn)
         ApplicationController.isGuestLoggedIn = false
         let nc = NotificationCenter.default
         nc.post(name: .postNotification, object: nil)
@@ -213,7 +178,7 @@ class CCUtility: NSObject {
     }
     
     class func guestSwitchingAfterSignUp(){
-        UserDefaults.standard.set(true, forKey: LOGINSUCCESS)
+        UserDefaults.standard.set(true, forKey: Constant.VariableNames.isLoogedIn)
         ApplicationController.isGuestLoggedIn = false
         let nc = NotificationCenter.default
         nc.post(name: .menuResetNotification, object: nil)
@@ -221,7 +186,7 @@ class CCUtility: NSObject {
     }
     
     class func processAfterLogOut(){
-        UserDefaults.standard.set(false, forKey: LOGINSUCCESS)
+        UserDefaults.standard.set(false, forKey: Constant.VariableNames.isLoogedIn)
         ApplicationController.isGuestLoggedIn = false
 //        if let user = User.getUser(){
 //            User.deleteUser()

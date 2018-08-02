@@ -91,3 +91,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+extension Notification.Name {
+    static let postNotification = Notification.Name("LoginNotification")
+    static let menuResetNotification = Notification.Name("ResetMenuNotification")
+}
+

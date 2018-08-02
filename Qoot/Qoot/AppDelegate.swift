@@ -19,9 +19,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         setNavigationBarProperties()
+        localisationMethod()
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.enableAutoToolbar = false
         return true
+    }
+    
+    func localisationMethod(){
+        //Mark: Localisation handle
+        var selectedLanguage:Languages?
+        let language = UserDefaults.standard.value(forKey: "language")
+        if let _language = language as? String{
+            
+            selectedLanguage = (_language == "en") ? .en : .ar
+        }else{
+            selectedLanguage =  .en
+        }
+        LanguageManger.shared.setLanguage(language: selectedLanguage!)
     }
     
     func setNavigationBarProperties(){

@@ -35,6 +35,7 @@
 		D00FAD292112EE5D00C8C176 /* L102Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00FAD142112EE5D00C8C176 /* L102Language.swift */; };
 		D00FAD2A2112EE5D00C8C176 /* CCUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00FAD162112EE5D00C8C176 /* CCUtility.swift */; };
 		D0C865622113477800383A48 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C865612113477800383A48 /* BaseViewController.swift */; };
+		D0C865642113608400383A48 /* DashboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C865632113608400383A48 /* DashboardVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +76,8 @@
 		D00FAD162112EE5D00C8C176 /* CCUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCUtility.swift; sourceTree = "<group>"; };
 		D00FAD2B2112EF8800C8C176 /* Qoot-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Qoot-Bridging-Header.h"; sourceTree = "<group>"; };
 		D0C865612113477800383A48 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		D0C865632113608400383A48 /* DashboardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardVC.swift; sourceTree = "<group>"; };
+		D0C86565211360C400383A48 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -301,6 +304,7 @@
 		D0C8655F2113470C00383A48 /* UserManagement */ = {
 			isa = PBXGroup;
 			children = (
+				D0C865632113608400383A48 /* DashboardVC.swift */,
 			);
 			path = UserManagement;
 			sourceTree = "<group>";
@@ -452,6 +456,7 @@
 				D00FAD1E2112EE5D00C8C176 /* CLNetworkModel.swift in Sources */,
 				D00FAD262112EE5D00C8C176 /* UIViewExtensions.swift in Sources */,
 				D00FAD232112EE5D00C8C176 /* StringExtensions.swift in Sources */,
+				D0C865642113608400383A48 /* DashboardVC.swift in Sources */,
 				D00FAD1C2112EE5D00C8C176 /* CLBaseService.swift in Sources */,
 				D00FAD282112EE5D00C8C176 /* L012Localizer.swift in Sources */,
 				D00FAD272112EE5D00C8C176 /* LanguageManger.swift in Sources */,
@@ -491,6 +496,7 @@
 			children = (
 				D00FACF02112ED6100C8C176 /* Base */,
 				D00FACF32112EDA300C8C176 /* ar */,
+				D0C86565211360C400383A48 /* en */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

@@ -5,3 +5,11 @@
   Created by Bibin Mathew on 8/2/18.
   Copyright © 2018 Cl. All rights reserved.
 */
+
+//Dashboard
+
+"LOGINVIAFACEBOOK" = "تسجيل الدخول عبر الفيسبوك";
+"LOGINVIAGOOGLE" = "تسجيل الدخول عبر جوجل";
+"LOGINVIAQOOT" = "تسجيل الدخول عبر Qoot";
+"DONTHAVEANACCOUNT" = "ليس لديك حساب!";
+"REGISTER" = "تسجيل؟";

@@ -1,0 +1,6 @@
+framework module Pods_Qoot {
+  umbrella header "Pods-Qoot-umbrella.h"
+
+  export *
+  module * { export * }
+}

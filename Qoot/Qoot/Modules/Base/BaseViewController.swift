@@ -9,6 +9,9 @@
 import UIKit
 
 class BaseViewController: UIViewController {
+    
+    var leftButton:UIButton?
+    var rightButton:UIButton?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +27,34 @@ class BaseViewController: UIViewController {
     
     func initView() {
         
+    }
+    //MARK: Adding Navigation Bar Buttons
+    
+    func addingLeftBarButton(){
+        self.leftButton = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        self.leftButton?.addTarget(self, action: #selector(leftNavButtonAction), for: .touchUpInside)
+        self.leftButton?.setImage(UIImage.init(named: Constant.ImageNames.backArrow), for: UIControlState.normal)
+        var leftBarButton = UIBarButtonItem()
+        leftBarButton = UIBarButtonItem.init(customView: self.leftButton!)
+        self.navigationItem.leftBarButtonItem = leftBarButton
+    }
+    
+    @objc func leftNavButtonAction(){
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    func addRightNavBarIcon(){
+        self.rightButton = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        self.rightButton?.addTarget(self, action: #selector(rightNavButtonAction), for: .touchUpInside)
+        self.rightButton?.setImage(UIImage.init(named: "infoIcon"), for: UIControlState.normal)
+        var rightBarButton = UIBarButtonItem()
+        rightBarButton = UIBarButtonItem.init(customView: self.rightButton!)
+        self.navigationItem.rightBarButtonItem = rightBarButton
+    }
+    
+    @objc func rightNavButtonAction(){
+        self.navigationController?.popToRootViewController(animated: true)
+        self.tabBarController?.selectedIndex = 2
     }
     
     //MARK: Adding Shadow View

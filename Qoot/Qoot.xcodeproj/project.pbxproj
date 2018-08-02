@@ -36,6 +36,7 @@
 		D00FAD2A2112EE5D00C8C176 /* CCUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00FAD162112EE5D00C8C176 /* CCUtility.swift */; };
 		D0C865622113477800383A48 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C865612113477800383A48 /* BaseViewController.swift */; };
 		D0C865642113608400383A48 /* DashboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C865632113608400383A48 /* DashboardVC.swift */; };
+		D0C865672113739500383A48 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C865662113739500383A48 /* RegisterVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +79,7 @@
 		D0C865612113477800383A48 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		D0C865632113608400383A48 /* DashboardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardVC.swift; sourceTree = "<group>"; };
 		D0C86565211360C400383A48 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D0C865662113739500383A48 /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -305,6 +307,7 @@
 			isa = PBXGroup;
 			children = (
 				D0C865632113608400383A48 /* DashboardVC.swift */,
+				D0C865662113739500383A48 /* RegisterVC.swift */,
 			);
 			path = UserManagement;
 			sourceTree = "<group>";
@@ -462,6 +465,7 @@
 				D00FAD272112EE5D00C8C176 /* LanguageManger.swift in Sources */,
 				D00FAD172112EE5D00C8C176 /* CartManager.swift in Sources */,
 				D00FACD22112DF1200C8C176 /* AppDelegate.swift in Sources */,
+				D0C865672113739500383A48 /* RegisterVC.swift in Sources */,
 				D00FAD1B2112EE5D00C8C176 /* ApplicationController.swift in Sources */,
 				D00FAD292112EE5D00C8C176 /* L102Language.swift in Sources */,
 				D00FACDA2112DF1300C8C176 /* Qoot.xcdatamodeld in Sources */,

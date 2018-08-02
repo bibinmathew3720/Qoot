@@ -13,3 +13,7 @@
 "LOGINVIAQOOT" = "Login via Qoot";
 "DONTHAVEANACCOUNT" = "Don't have an account!";
 "REGISTER" = "Register?";
+
+//Register
+
+"RegisterTitle" = "Register";

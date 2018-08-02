@@ -130,11 +130,52 @@
                         <outlet property="loginViaGoogleButton" destination="wdx-yG-vj8" id="2UH-us-eV7"/>
                         <outlet property="loginViaQootButton" destination="fc7-lJ-lbd" id="WlK-cy-z5c"/>
                         <outlet property="registerLabel" destination="dYS-4b-BlU" id="ItW-oC-8oL"/>
+                        <segue destination="twp-8l-Niu" kind="show" identifier="dashBoardtoRegister" id="Bh1-yL-d9D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TuN-hu-W0u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="69.599999999999994" y="139.880059970015"/>
+        </scene>
+        <!--RegisterVC-->
+        <scene sceneID="46G-gF-7Mx">
+            <objects>
+                <viewController id="twp-8l-Niu" customClass="RegisterVC" customModule="Qoot" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RNi-OD-B3n">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GI3-S9-SG7">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C58-o2-Odu">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="602"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="C58-o2-Odu" secondAttribute="trailing" id="PME-PH-fNo"/>
+                                    <constraint firstAttribute="bottom" secondItem="C58-o2-Odu" secondAttribute="bottom" id="PrW-dv-6ln"/>
+                                    <constraint firstItem="C58-o2-Odu" firstAttribute="leading" secondItem="GI3-S9-SG7" secondAttribute="leading" id="fYz-5Y-Zgx"/>
+                                    <constraint firstItem="C58-o2-Odu" firstAttribute="centerY" secondItem="GI3-S9-SG7" secondAttribute="centerY" id="o0P-kB-z6p"/>
+                                    <constraint firstItem="C58-o2-Odu" firstAttribute="top" secondItem="GI3-S9-SG7" secondAttribute="top" id="ogq-iR-Kv5"/>
+                                    <constraint firstItem="C58-o2-Odu" firstAttribute="centerX" secondItem="GI3-S9-SG7" secondAttribute="centerX" id="un2-jq-SPo"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="m0v-qk-fFX" firstAttribute="trailing" secondItem="GI3-S9-SG7" secondAttribute="trailing" id="1aq-vr-Ynz"/>
+                            <constraint firstItem="GI3-S9-SG7" firstAttribute="top" secondItem="m0v-qk-fFX" secondAttribute="top" id="Edj-wG-cCZ"/>
+                            <constraint firstItem="GI3-S9-SG7" firstAttribute="leading" secondItem="m0v-qk-fFX" secondAttribute="leading" id="SiY-cg-iyl"/>
+                            <constraint firstItem="m0v-qk-fFX" firstAttribute="bottom" secondItem="GI3-S9-SG7" secondAttribute="bottom" id="pE1-AZ-Jxi"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="m0v-qk-fFX"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YgO-fj-lAJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="995" y="164"/>
         </scene>
     </scenes>
     <resources>

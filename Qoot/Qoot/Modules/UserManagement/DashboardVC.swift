@@ -45,6 +45,7 @@ class DashboardVC: BaseViewController {
     //Tap Gesture Action
     
     @objc func handleTapOnGuestLabel(_ recognizer: UITapGestureRecognizer) {
+        self.performSegue(withIdentifier: Constant.SegueIdentifiers.dashBoardToRegister, sender: nil)
     }
 
     override func didReceiveMemoryWarning() {

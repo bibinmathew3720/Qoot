@@ -44,20 +44,13 @@ struct Constant{
     
     struct ImageNames {
         static let placeholderImage = "placeholder"
-        static let placeholderArtistInfoImage = "songDefaultImage"
-        static let profilePlaceholderImage = "placeholder"
-        struct tabImages{
-            static let soundIcon = "soundIcon"
-            static let muteIcon = "muteIcon"
-            static let playIcon = "playIcon"
-            static let pauseIcon = "pauseIcon"
-        }
+        static let backArrow = "leftArrow"
     }
     
     struct SegueIdentifiers {
-        static let presenterToPresenterDetailSegue = "presenterToDetail"
-        static let landingToNewsList = "landingToNewsList"
-        static let landingToPresenterDetail = "landingToPrsenterDetails"
+        static let dashBoardToRegister = "dashBoardtoRegister"
+        
+        
     }
     struct AppKeys {
         static let googleClientID = "338103195232-0l3102r119pifji42ge14km2qhm14teh.apps.googleusercontent.com"
@@ -78,10 +71,4 @@ struct Constant{
     }
     static let AuthenticationToken = "53067a56941ff00369b726d450ef3bb9495c7224"
     
-    static let audioStreamingUrlString = "http://uk7.internet-radio.com:8040"
-    static let facebookLink = "https://www.facebook.com/radiomerge"
-    static let twitterLink = "https://twitter.com/radiomerge"
-    static let contactUsUrlString = "http://test.radiomerge.fm/contact-us?app=1"
-    
-    static let sharingUrlString = "http://alwisal.radio.net/"
 }

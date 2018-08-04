@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="N2L-UC-ct0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sw4-W4-L2W">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,44 +10,28 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="2uC-8k-YEz">
-            <objects>
-                <navigationController id="N2L-UC-ct0" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Tpx-qu-JtH">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="sw4-W4-L2W" kind="relationship" relationship="rootViewController" id="k6W-AB-LkD"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Iyk-f0-64s" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-669" y="126"/>
-        </scene>
         <!--DashboardVC-->
         <scene sceneID="2Vo-r7-nUC">
             <objects>
-                <viewController id="sw4-W4-L2W" customClass="DashboardVC" customModule="Qoot" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DashboardVC" id="sw4-W4-L2W" customClass="DashboardVC" customModule="Qoot" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Sxj-pT-T4A">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgImage" translatesAutoresizingMaskIntoConstraints="NO" id="bra-QR-DRu">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" red="0.80784313730000001" green="0.21176470589999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iyk-ky-ShJ">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="0.40167914496527779" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qootAppIcon" translatesAutoresizingMaskIntoConstraints="NO" id="FG2-5R-gZN">
-                                <rect key="frame" x="137" y="94" width="100" height="100"/>
-                                <color key="backgroundColor" red="0.12549019610000001" green="0.71764705880000002" blue="0.82352941180000006" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="Oby-hG-tAf"/>
-                                    <constraint firstAttribute="height" constant="100" id="ZrT-0m-1N1"/>
-                                </constraints>
+                                <rect key="frame" x="137" y="50" width="100" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="csg-vK-HFg">
-                                <rect key="frame" x="40" y="305.5" width="295" height="40"/>
+                                <rect key="frame" x="40" y="283.5" width="295" height="40"/>
                                 <color key="backgroundColor" red="0.23137254901960785" green="0.34901960784313724" blue="0.59607843137254901" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="bjP-Pe-J87"/>
@@ -63,7 +47,7 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wdx-yG-vj8">
-                                <rect key="frame" x="40" y="375.5" width="295" height="40"/>
+                                <rect key="frame" x="40" y="353.5" width="295" height="40"/>
                                 <color key="backgroundColor" red="0.99607843137254903" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="fvJ-np-vKp"/>
@@ -79,7 +63,7 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fc7-lJ-lbd">
-                                <rect key="frame" x="40" y="445.5" width="295" height="40"/>
+                                <rect key="frame" x="40" y="423.5" width="295" height="40"/>
                                 <color key="backgroundColor" red="0.63529411764705879" green="0.10196078431372549" blue="0.36078431372549019" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="zKb-LH-U24"/>
@@ -95,7 +79,7 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYS-4b-BlU">
-                                <rect key="frame" x="0.0" y="525.5" width="375" height="21.5"/>
+                                <rect key="frame" x="0.0" y="503.5" width="375" height="21.5"/>
                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="19"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -106,10 +90,12 @@
                             <constraint firstItem="fc7-lJ-lbd" firstAttribute="top" secondItem="wdx-yG-vj8" secondAttribute="bottom" constant="30" id="3Jy-9L-E87"/>
                             <constraint firstItem="Vv6-D0-fwg" firstAttribute="trailing" secondItem="bra-QR-DRu" secondAttribute="trailing" id="45Q-ne-ho3"/>
                             <constraint firstItem="Vv6-D0-fwg" firstAttribute="trailing" secondItem="dYS-4b-BlU" secondAttribute="trailing" id="4mi-Vw-oix"/>
+                            <constraint firstItem="Vv6-D0-fwg" firstAttribute="bottom" secondItem="iyk-ky-ShJ" secondAttribute="bottom" id="7pY-Ca-yTS"/>
                             <constraint firstItem="wdx-yG-vj8" firstAttribute="leading" secondItem="csg-vK-HFg" secondAttribute="leading" id="88s-sM-chr"/>
                             <constraint firstItem="bra-QR-DRu" firstAttribute="top" secondItem="Vv6-D0-fwg" secondAttribute="top" id="Dka-sT-WER"/>
                             <constraint firstItem="Vv6-D0-fwg" firstAttribute="trailing" secondItem="csg-vK-HFg" secondAttribute="trailing" constant="40" id="Eyp-E7-eA2"/>
                             <constraint firstItem="wdx-yG-vj8" firstAttribute="top" secondItem="csg-vK-HFg" secondAttribute="bottom" constant="30" id="KW6-mO-v7n"/>
+                            <constraint firstItem="Vv6-D0-fwg" firstAttribute="trailing" secondItem="iyk-ky-ShJ" secondAttribute="trailing" id="Ol9-SK-PXg"/>
                             <constraint firstItem="wdx-yG-vj8" firstAttribute="trailing" secondItem="csg-vK-HFg" secondAttribute="trailing" id="PGN-jE-4mX"/>
                             <constraint firstItem="dYS-4b-BlU" firstAttribute="top" secondItem="fc7-lJ-lbd" secondAttribute="bottom" constant="40" id="Qhy-y2-HKC"/>
                             <constraint firstItem="dYS-4b-BlU" firstAttribute="leading" secondItem="Vv6-D0-fwg" secondAttribute="leading" id="Qyk-cz-lIg"/>
@@ -119,6 +105,8 @@
                             <constraint firstItem="FG2-5R-gZN" firstAttribute="centerX" secondItem="Vv6-D0-fwg" secondAttribute="centerX" id="dNl-Or-1ny"/>
                             <constraint firstItem="fc7-lJ-lbd" firstAttribute="leading" secondItem="wdx-yG-vj8" secondAttribute="leading" id="k71-Sv-7FC"/>
                             <constraint firstItem="fc7-lJ-lbd" firstAttribute="trailing" secondItem="wdx-yG-vj8" secondAttribute="trailing" id="mNb-b8-0CW"/>
+                            <constraint firstItem="iyk-ky-ShJ" firstAttribute="leading" secondItem="Vv6-D0-fwg" secondAttribute="leading" id="nEd-j1-rNu"/>
+                            <constraint firstItem="iyk-ky-ShJ" firstAttribute="top" secondItem="Vv6-D0-fwg" secondAttribute="top" id="q1z-vq-Ev9"/>
                             <constraint firstItem="FG2-5R-gZN" firstAttribute="top" secondItem="Vv6-D0-fwg" secondAttribute="top" constant="30" id="qHf-FE-5AR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Vv6-D0-fwg"/>
@@ -145,7 +133,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GI3-S9-SG7">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C58-o2-Odu">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="442"/>
@@ -472,7 +460,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bgImage" width="16" height="16"/>
+        <image name="bgImage" width="360" height="640"/>
         <image name="buttonSelImage" width="16" height="16"/>
         <image name="buttonUnselImage" width="16" height="16"/>
         <image name="confirmPwdIcon" width="16" height="16"/>
@@ -480,6 +468,6 @@
         <image name="mobNoIcon" width="16" height="16"/>
         <image name="nameIcon" width="16" height="16"/>
         <image name="pwdIcon" width="16" height="16"/>
-        <image name="qootAppIcon" width="16" height="16"/>
+        <image name="qootAppIcon" width="100" height="50"/>
     </resources>
 </document>

@@ -9,11 +9,41 @@
 import UIKit
 
 class MenuVC: BaseViewController {
-
+    var isLoggedIn:Bool = false
+    @IBOutlet weak var profileView: UIView!
+    @IBOutlet weak var profileViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var logInButtonView: UIView!
+    @IBOutlet weak var loginButtonViewHeightConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var logInButton: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        initialisation()
+        localisation()
 
         // Do any additional setup after loading the view.
+    }
+    
+    func initialisation(){
+        if isLoggedIn{
+            logInButtonView.isHidden = true
+            loginButtonViewHeightConstraint.constant = 0
+            profileViewHeightConstraint.constant = 150
+            profileView.isHidden = false
+        }
+        else{
+            logInButtonView.isHidden = false
+            loginButtonViewHeightConstraint.constant = 60
+            profileViewHeightConstraint.constant = 0
+            profileView.isHidden = true
+        }
+    }
+    
+    func localisation(){
+        self.logInButton.setTitle("Login".localiz(), for: UIControlState.normal)
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,7 +51,16 @@ class MenuVC: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    @IBAction func segmentControlAction(_ sender: UISegmentedControl) {
+    }
+    
+    @IBAction func loginButtonAction(_ sender: UIButton) {
+        let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
+        let dashBoardVC = storyBoard.instantiateViewController(withIdentifier: "DashboardVC") as! DashboardVC
+        let dashBoardNavCntlr = UINavigationController.init(rootViewController: dashBoardVC)
+        self.present(dashBoardNavCntlr, animated: true, completion: nil)
+    }
+    
     /*
     // MARK: - Navigation
 

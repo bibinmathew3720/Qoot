@@ -12,6 +12,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MenuVC" customModule="Qoot" customModuleProvider="target">
             <connections>
+                <outlet property="logInButton" destination="ml6-mO-xXA" id="XbF-IT-ueo"/>
+                <outlet property="logInButtonView" destination="Ba2-AU-PwU" id="dEq-Uf-ABO"/>
+                <outlet property="loginButtonViewHeightConstraint" destination="aBf-5s-KK6" id="NqM-jA-d8H"/>
+                <outlet property="nameLabel" destination="VMb-Mz-Unx" id="5Z6-LD-vey"/>
+                <outlet property="profileView" destination="uYa-tA-Qcu" id="Vrr-kS-xKs"/>
+                <outlet property="profileViewHeightConstraint" destination="lpe-96-KjG" id="Kqe-0E-onj"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -54,10 +60,10 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dx0-uO-MCj">
-                            <rect key="frame" x="0.0" y="150" width="220" height="50"/>
+                            <rect key="frame" x="0.0" y="150" width="220" height="100"/>
                             <subviews>
                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="CXZ-Qr-twP">
-                                    <rect key="frame" x="10" y="11.5" width="200" height="28"/>
+                                    <rect key="frame" x="10" y="36.5" width="200" height="28"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="27" id="qnq-aX-SyA"/>
                                     </constraints>
@@ -66,18 +72,21 @@
                                         <segment title="عربى"/>
                                     </segments>
                                     <color key="tintColor" red="0.63529411764705879" green="0.10196078431372549" blue="0.36078431372549019" alpha="1" colorSpace="calibratedRGB"/>
+                                    <connections>
+                                        <action selector="segmentControlAction:" destination="-1" eventType="valueChanged" id="g6W-bj-eWO"/>
+                                    </connections>
                                 </segmentedControl>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="CXZ-Qr-twP" firstAttribute="centerY" secondItem="Dx0-uO-MCj" secondAttribute="centerY" id="OAl-1W-YGK"/>
                                 <constraint firstAttribute="trailing" secondItem="CXZ-Qr-twP" secondAttribute="trailing" constant="10" id="QKJ-ol-plT"/>
-                                <constraint firstAttribute="height" constant="50" id="WK4-Gm-bNc"/>
+                                <constraint firstAttribute="height" constant="100" id="WK4-Gm-bNc"/>
                                 <constraint firstItem="CXZ-Qr-twP" firstAttribute="leading" secondItem="Dx0-uO-MCj" secondAttribute="leading" constant="10" id="aFD-7O-7Py"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ba2-AU-PwU">
-                            <rect key="frame" x="0.0" y="200" width="220" height="60"/>
+                            <rect key="frame" x="0.0" y="250" width="220" height="60"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ml6-mO-xXA">
                                     <rect key="frame" x="20" y="10" width="180" height="40"/>
@@ -85,6 +94,9 @@
                                     <state key="normal" title="Login">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
+                                    <connections>
+                                        <action selector="loginButtonAction:" destination="-1" eventType="touchUpInside" id="toW-Rw-8Q4"/>
+                                    </connections>
                                 </button>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h1d-XW-Zyn">
                                     <rect key="frame" x="0.0" y="0.0" width="220" height="0.5"/>
@@ -117,7 +129,7 @@
                             </constraints>
                         </view>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OlT-Wp-dRY">
-                            <rect key="frame" x="0.0" y="260" width="220" height="387"/>
+                            <rect key="frame" x="0.0" y="310" width="220" height="337"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </tableView>
                     </subviews>

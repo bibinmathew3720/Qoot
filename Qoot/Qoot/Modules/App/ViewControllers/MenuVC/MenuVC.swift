@@ -17,13 +17,24 @@ class MenuVC: BaseViewController {
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var logInButton: UIButton!
+    @IBOutlet weak var menuTableView: UITableView!
+    
+    var titleArray = ["Offers".localiz(),"Support".localiz()]
+    var imageArray = [#imageLiteral(resourceName: "myWallet"),#imageLiteral(resourceName: "myWallet")]
+    var titleArrayAccount = ["MyOrders".localiz(),"MyWallet".localiz(),"Offers".localiz(),"Support".localiz(),"Settings".localiz()]
+    var imageArrayAccount =  [#imageLiteral(resourceName: "myWallet"),#imageLiteral(resourceName: "myWallet"),#imageLiteral(resourceName: "myWallet"),#imageLiteral(resourceName: "myWallet"),#imageLiteral(resourceName: "myWallet")]
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initialisation()
         uiUpdations()
         localisation()
         // Do any additional setup after loading the view.
+    }
+    
+    func initialisation(){
+         menuTableView.register(UINib.init(nibName: "ManuTVC", bundle: nil), forCellReuseIdentifier: "menuTVC")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,6 +55,7 @@ class MenuVC: BaseViewController {
             profileViewHeightConstraint.constant = 0
             profileView.isHidden = true
         }
+        self.menuTableView.reloadData()
     }
     
     func localisation(){
@@ -65,6 +77,7 @@ class MenuVC: BaseViewController {
         self.present(dashBoardNavCntlr, animated: true, completion: nil)
     }
     
+    
     /*
     // MARK: - Navigation
 
@@ -76,3 +89,48 @@ class MenuVC: BaseViewController {
     */
 
 }
+
+extension MenuVC : UITableViewDelegate,UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        var rowCount :Int = 0
+        if self.isLoggedIn {
+            rowCount = titleArrayAccount.count
+        }
+        else{
+            rowCount = titleArray.count
+        }
+        return rowCount
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "menuTVC", for: indexPath) as!ManuTVC
+        cell.tag = indexPath.row
+        if self.isLoggedIn{
+            cell.menuIcon.image = self.imageArrayAccount[indexPath.row]
+            cell.menuLabel.text = self.titleArrayAccount[indexPath.row]
+        }
+        else{
+            cell.menuIcon.image = self.imageArray[indexPath.row]
+            cell.menuLabel.text = self.titleArray[indexPath.row]
+        }
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let rowHieght = 60
+        return CGFloat(rowHieght)
+    }
+    
+}
+
+
+

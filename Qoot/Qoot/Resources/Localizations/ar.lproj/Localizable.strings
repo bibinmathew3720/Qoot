@@ -25,3 +25,12 @@
 "Male" = "الذكر";
 "Female" = "إناثا";
 "SIGNUP" = "سجل";
+
+//Menu
+
+"Login" = "تسجيل الدخول";
+"MyOrders" = "طلباتي";
+"MyWallet" = "محفظتى";
+"Offers" = "عروض";
+"Support" = "الدعم";
+"Settings" = "إعدادات";

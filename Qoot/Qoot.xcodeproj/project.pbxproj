@@ -50,6 +50,8 @@
 		D0C865622113477800383A48 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C865612113477800383A48 /* BaseViewController.swift */; };
 		D0C865642113608400383A48 /* DashboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C865632113608400383A48 /* DashboardVC.swift */; };
 		D0C865672113739500383A48 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C865662113739500383A48 /* RegisterVC.swift */; };
+		D0F9E11921161B1F004F7833 /* ManuTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F9E11721161B1F004F7833 /* ManuTVC.swift */; };
+		D0F9E11A21161B1F004F7833 /* ManuTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F9E11821161B1F004F7833 /* ManuTVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,6 +108,8 @@
 		D0C865632113608400383A48 /* DashboardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardVC.swift; sourceTree = "<group>"; };
 		D0C86565211360C400383A48 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D0C865662113739500383A48 /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
+		D0F9E11721161B1F004F7833 /* ManuTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManuTVC.swift; sourceTree = "<group>"; };
+		D0F9E11821161B1F004F7833 /* ManuTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ManuTVC.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -416,6 +420,7 @@
 		D01888CC21153B0800B01946 /* MenuVC */ = {
 			isa = PBXGroup;
 			children = (
+				D0F9E11621161B00004F7833 /* MenuTVC */,
 				D01888CD21153D6D00B01946 /* MenuVC.swift */,
 				D01888CE21153D6D00B01946 /* MenuVC.xib */,
 			);
@@ -437,6 +442,15 @@
 				D0C865612113477800383A48 /* BaseViewController.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		D0F9E11621161B00004F7833 /* MenuTVC */ = {
+			isa = PBXGroup;
+			children = (
+				D0F9E11721161B1F004F7833 /* ManuTVC.swift */,
+				D0F9E11821161B1F004F7833 /* ManuTVC.xib */,
+			);
+			path = MenuTVC;
 			sourceTree = "<group>";
 		};
 		DFCB18D661E85E8E4FC705BD /* Frameworks */ = {
@@ -514,6 +528,7 @@
 				D01888B6211539CA00B01946 /* HomeVC.xib in Resources */,
 				D01888BE21153A0E00B01946 /* ProductDetailVC.xib in Resources */,
 				D01888C921153A1800B01946 /* HomeCollectionCell.xib in Resources */,
+				D0F9E11A21161B1F004F7833 /* ManuTVC.xib in Resources */,
 				D00FACDC2112DF2200C8C176 /* Assets.xcassets in Resources */,
 				D01888C021153A0E00B01946 /* ViewMoreVC.xib in Resources */,
 				D00FACD72112DF1300C8C176 /* Main.storyboard in Resources */,
@@ -579,6 +594,7 @@
 				D01888B5211539CA00B01946 /* HomeVC.swift in Sources */,
 				D00FAD182112EE5D00C8C176 /* FetchApiUrls.swift in Sources */,
 				D01888BF21153A0E00B01946 /* ViewMoreVC.swift in Sources */,
+				D0F9E11921161B1F004F7833 /* ManuTVC.swift in Sources */,
 				D00FAD252112EE5D00C8C176 /* UIImageViewExtensions.swift in Sources */,
 				D0C865622113477800383A48 /* BaseViewController.swift in Sources */,
 				D00FAD192112EE5D00C8C176 /* ProductManager.swift in Sources */,

@@ -15,6 +15,7 @@
                 <outlet property="logInButton" destination="ml6-mO-xXA" id="XbF-IT-ueo"/>
                 <outlet property="logInButtonView" destination="Ba2-AU-PwU" id="dEq-Uf-ABO"/>
                 <outlet property="loginButtonViewHeightConstraint" destination="aBf-5s-KK6" id="NqM-jA-d8H"/>
+                <outlet property="menuTableView" destination="OlT-Wp-dRY" id="j5w-bn-Gt5"/>
                 <outlet property="nameLabel" destination="VMb-Mz-Unx" id="5Z6-LD-vey"/>
                 <outlet property="profileView" destination="uYa-tA-Qcu" id="Vrr-kS-xKs"/>
                 <outlet property="profileViewHeightConstraint" destination="lpe-96-KjG" id="Kqe-0E-onj"/>
@@ -128,9 +129,13 @@
                                 <constraint firstItem="h1d-XW-Zyn" firstAttribute="top" secondItem="Ba2-AU-PwU" secondAttribute="top" id="msr-w3-UZf"/>
                             </constraints>
                         </view>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OlT-Wp-dRY">
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OlT-Wp-dRY">
                             <rect key="frame" x="0.0" y="310" width="220" height="337"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="BaF-dD-Tpp"/>
+                                <outlet property="delegate" destination="-1" id="wzg-an-fXc"/>
+                            </connections>
                         </tableView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

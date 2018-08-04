@@ -13,7 +13,7 @@ let ARR4 = ["4","5","6","7"]
 
 import UIKit
 
-class HomeVC: UIViewController {
+class HomeVC: BaseViewController {
 
     @IBOutlet var searchButton: UIButton!
     @IBOutlet var tableViewContainerView: UIView!
@@ -31,9 +31,19 @@ class HomeVC: UIViewController {
     var selectedMeal: String = TYPE_FIELDS[1]
     var selectedCuisine: String = TYPE_FIELDS[2]
     var selectedKitchen: String = TYPE_FIELDS[3]
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    
+    override func initView() {
+        super.initView()
+        initialisation()
+        addingLeftBarButton()
+        self.leftButton?.setImage(UIImage(named: "hamburger"), for: UIControlState.normal)
+    }
+    
+    override func leftNavButtonAction() {
+        self.slideMenuController()?.openLeft()
+    }
+    
+    func initialisation(){
         pickerTextField.inputView = pickerView
         pickerTextField.inputAccessoryView = toolBar
         pickerView.translatesAutoresizingMaskIntoConstraints = false
@@ -41,7 +51,6 @@ class HomeVC: UIViewController {
         tableViewContainerView.layer.borderColor = UIColor.black.cgColor
         tableInitialisation()
         setUpCollectionView()
-        // Do any additional setup after loading the view.
     }
 
     func tableInitialisation(){

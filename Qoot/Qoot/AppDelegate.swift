@@ -20,9 +20,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         setNavigationBarProperties()
         localisationMethod()
+        initWindow()
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.enableAutoToolbar = false
         return true
+    }
+    
+    func initWindow(){
+        let homeVC = HomeVC.init(nibName: "HomeVC", bundle: nil)
+        let homeNavVC = UINavigationController.init(rootViewController: homeVC)
+        
+        let menuVC = MenuVC.init(nibName: "MenuVC", bundle: nil)
+        
+        let viewMoreVC = ViewMoreVC.init(nibName: "ViewMoreVC", bundle: nil)
+        
+         let slideMenuController = ExSlideMenuController(mainViewController: homeNavVC, leftMenuViewController:menuVC , rightMenuViewController: viewMoreVC)
+        self.window?.rootViewController = slideMenuController
     }
     
     func localisationMethod(){

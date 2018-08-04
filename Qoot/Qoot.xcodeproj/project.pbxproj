@@ -45,6 +45,8 @@
 		D01888C921153A1800B01946 /* HomeCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D01888C421153A1800B01946 /* HomeCollectionCell.xib */; };
 		D01888CA21153A1800B01946 /* HomeTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01888C621153A1800B01946 /* HomeTableCell.swift */; };
 		D01888CB21153A1800B01946 /* HomeTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D01888C721153A1800B01946 /* HomeTableCell.xib */; };
+		D01888CF21153D6D00B01946 /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01888CD21153D6D00B01946 /* MenuVC.swift */; };
+		D01888D021153D6D00B01946 /* MenuVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D01888CE21153D6D00B01946 /* MenuVC.xib */; };
 		D0C865622113477800383A48 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C865612113477800383A48 /* BaseViewController.swift */; };
 		D0C865642113608400383A48 /* DashboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C865632113608400383A48 /* DashboardVC.swift */; };
 		D0C865672113739500383A48 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C865662113739500383A48 /* RegisterVC.swift */; };
@@ -98,6 +100,8 @@
 		D01888C421153A1800B01946 /* HomeCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeCollectionCell.xib; sourceTree = "<group>"; };
 		D01888C621153A1800B01946 /* HomeTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableCell.swift; sourceTree = "<group>"; };
 		D01888C721153A1800B01946 /* HomeTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeTableCell.xib; sourceTree = "<group>"; };
+		D01888CD21153D6D00B01946 /* MenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
+		D01888CE21153D6D00B01946 /* MenuVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuVC.xib; sourceTree = "<group>"; };
 		D0C865612113477800383A48 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		D0C865632113608400383A48 /* DashboardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardVC.swift; sourceTree = "<group>"; };
 		D0C86565211360C400383A48 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -347,6 +351,7 @@
 		D01888B1211539CA00B01946 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D01888CC21153B0800B01946 /* MenuVC */,
 				D01888B721153A0E00B01946 /* ProductDetail */,
 				D01888BA21153A0E00B01946 /* ViewMore */,
 				D01888B2211539CA00B01946 /* Home */,
@@ -406,6 +411,15 @@
 				D01888C721153A1800B01946 /* HomeTableCell.xib */,
 			);
 			path = TableCell;
+			sourceTree = "<group>";
+		};
+		D01888CC21153B0800B01946 /* MenuVC */ = {
+			isa = PBXGroup;
+			children = (
+				D01888CD21153D6D00B01946 /* MenuVC.swift */,
+				D01888CE21153D6D00B01946 /* MenuVC.xib */,
+			);
+			path = MenuVC;
 			sourceTree = "<group>";
 		};
 		D0C8655F2113470C00383A48 /* UserManagement */ = {
@@ -503,6 +517,7 @@
 				D00FACDC2112DF2200C8C176 /* Assets.xcassets in Resources */,
 				D01888C021153A0E00B01946 /* ViewMoreVC.xib in Resources */,
 				D00FACD72112DF1300C8C176 /* Main.storyboard in Resources */,
+				D01888D021153D6D00B01946 /* MenuVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -579,6 +594,7 @@
 				D00FAD1C2112EE5D00C8C176 /* CLBaseService.swift in Sources */,
 				D00FAD282112EE5D00C8C176 /* L012Localizer.swift in Sources */,
 				D00FAD272112EE5D00C8C176 /* LanguageManger.swift in Sources */,
+				D01888CF21153D6D00B01946 /* MenuVC.swift in Sources */,
 				D01888AE2115388800B01946 /* ExSlideMenuController.swift in Sources */,
 				D00FAD172112EE5D00C8C176 /* CartManager.swift in Sources */,
 				D00FACD22112DF1200C8C176 /* AppDelegate.swift in Sources */,

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProductDetailVC: UIViewController {
+class ProductDetailVC: BaseViewController {
 
     @IBOutlet var countLabel: UILabel!
     @IBOutlet var priceLabel: UILabel!
@@ -22,10 +22,10 @@ class ProductDetailVC: UIViewController {
     @IBOutlet var preparationTimeTitle: UILabel!
     @IBOutlet var servesAvailableTitle: UILabel!
     var count: Int = 1
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    
+    override func initView() {
+        super.initView()
+        addingLeftBarButton()
     }
 
     override func didReceiveMemoryWarning() {

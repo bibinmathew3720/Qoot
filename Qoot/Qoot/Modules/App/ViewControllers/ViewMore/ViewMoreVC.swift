@@ -8,16 +8,21 @@
 
 import UIKit
 
-class ViewMoreVC: UIViewController {
+class ViewMoreVC: BaseViewController {
 
     @IBOutlet var collectionView: UICollectionView!
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        navigationController?.isNavigationBarHidden = true
+    
+    override func initView() {
+        super.initView()
+        initialisation()
+        addingLeftBarButton()
+    }
+    
+    func initialisation(){
         tableInitialisation()
         setUpCollectionView()
-        // Do any additional setup after loading the view.
     }
+    
     func tableInitialisation(){
         collectionView.register(UINib(nibName: "HomeCollectionCell", bundle: nil), forCellWithReuseIdentifier:"homeCollectionCell" )
     }

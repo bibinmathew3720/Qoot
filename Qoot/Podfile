@@ -7,6 +7,7 @@ target 'Qoot' do
   pod 'IQKeyboardManagerSwift'
   pod 'MBProgressHUD'
   pod 'SDWebImage'
+  pod 'SlideMenuControllerSwift'
   # Pods for Qoot
 
 end

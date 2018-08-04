@@ -34,6 +34,7 @@
 		D00FAD282112EE5D00C8C176 /* L012Localizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00FAD132112EE5D00C8C176 /* L012Localizer.swift */; };
 		D00FAD292112EE5D00C8C176 /* L102Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00FAD142112EE5D00C8C176 /* L102Language.swift */; };
 		D00FAD2A2112EE5D00C8C176 /* CCUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00FAD162112EE5D00C8C176 /* CCUtility.swift */; };
+		D01888AE2115388800B01946 /* ExSlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01888AD2115388800B01946 /* ExSlideMenuController.swift */; };
 		D0C865622113477800383A48 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C865612113477800383A48 /* BaseViewController.swift */; };
 		D0C865642113608400383A48 /* DashboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C865632113608400383A48 /* DashboardVC.swift */; };
 		D0C865672113739500383A48 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C865662113739500383A48 /* RegisterVC.swift */; };
@@ -76,6 +77,7 @@
 		D00FAD142112EE5D00C8C176 /* L102Language.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = L102Language.swift; sourceTree = "<group>"; };
 		D00FAD162112EE5D00C8C176 /* CCUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCUtility.swift; sourceTree = "<group>"; };
 		D00FAD2B2112EF8800C8C176 /* Qoot-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Qoot-Bridging-Header.h"; sourceTree = "<group>"; };
+		D01888AD2115388800B01946 /* ExSlideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExSlideMenuController.swift; sourceTree = "<group>"; };
 		D0C865612113477800383A48 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		D0C865632113608400383A48 /* DashboardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardVC.swift; sourceTree = "<group>"; };
 		D0C86565211360C400383A48 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 		D00FACF42112EE5D00C8C176 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				D01888AD2115388800B01946 /* ExSlideMenuController.swift */,
 				D00FACF52112EE5D00C8C176 /* ApiManagers */,
 				D00FACFA2112EE5D00C8C176 /* ApplicationController */,
 				D00FACFC2112EE5D00C8C176 /* BaseNetworkManager */,
@@ -427,12 +430,14 @@
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SlideMenuControllerSwift/SlideMenuControllerSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SlideMenuControllerSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -463,6 +468,7 @@
 				D00FAD1C2112EE5D00C8C176 /* CLBaseService.swift in Sources */,
 				D00FAD282112EE5D00C8C176 /* L012Localizer.swift in Sources */,
 				D00FAD272112EE5D00C8C176 /* LanguageManger.swift in Sources */,
+				D01888AE2115388800B01946 /* ExSlideMenuController.swift in Sources */,
 				D00FAD172112EE5D00C8C176 /* CartManager.swift in Sources */,
 				D00FACD22112DF1200C8C176 /* AppDelegate.swift in Sources */,
 				D0C865672113739500383A48 /* RegisterVC.swift in Sources */,

@@ -5,7 +5,7 @@
 //  Created by Vishnu KM on 03/08/18.
 //  Copyright © 2018 Vishnu KM. All rights reserved.
 //
-let TYPE_FIELDS = ["Select City","Select Meal Type","Select Cuisine","Select Kitchen Name"]
+let TYPE_FIELDS = ["SelectCity".localiz(),"MealType".localiz(),"Cuisine".localiz(),"KitchenName".localiz()]
 let ARR1 = ["1","2","3","4"]
 let ARR2 = ["2","3","4","5"]
 let ARR3 = ["3","4","5","6"]
@@ -14,7 +14,7 @@ let ARR4 = ["4","5","6","7"]
 import UIKit
 
 class HomeVC: BaseViewController {
-
+    
     @IBOutlet var searchButton: UIButton!
     @IBOutlet var tableViewContainerView: UIView!
     @IBOutlet var offersLabel: UILabel!
@@ -32,9 +32,12 @@ class HomeVC: BaseViewController {
     var selectedCuisine: String = TYPE_FIELDS[2]
     var selectedKitchen: String = TYPE_FIELDS[3]
     
+    var imagesArray = [#imageLiteral(resourceName: "city"),#imageLiteral(resourceName: "mealtype"),#imageLiteral(resourceName: "cuisine"),#imageLiteral(resourceName: "mealtype")]
+    
     override func initView() {
         super.initView()
         initialisation()
+        localisation()
         addingLeftBarButton()
         self.leftButton?.setImage(UIImage(named: "hamburger"), for: UIControlState.normal)
     }
@@ -51,6 +54,12 @@ class HomeVC: BaseViewController {
         tableViewContainerView.layer.borderColor = UIColor.black.cgColor
         tableInitialisation()
         setUpCollectionView()
+    }
+    
+    func localisation(){
+        self.searchButton.setTitle("SEARCH".localiz(), for: UIControlState.normal)
+        self.offersLabel.text = "OFFERS".localiz()
+        self.readyNowLabel.text = "READY NOW".localiz()
     }
 
     func tableInitialisation(){
@@ -123,6 +132,7 @@ extension HomeVC : UITableViewDelegate,UITableViewDataSource {
         default:
             print("default")
         }
+        cell.typeIcon.image = self.imagesArray[indexPath.row]
         return cell
         
     }

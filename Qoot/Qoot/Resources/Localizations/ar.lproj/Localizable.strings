@@ -34,3 +34,13 @@
 "Offers" = "عروض";
 "Support" = "الدعم";
 "Settings" = "إعدادات";
+
+//Home
+
+"SelectCity" = "اختر مدينتك";
+"MealType" = "نوع الوجبة";
+"Cuisine" = "أطباق";
+"KitchenName" = "اسم المطبخ";
+"SEARCH" = "بحث";
+"OFFERS" = "عروض";
+"READYNOW" = "جاهز الآن";

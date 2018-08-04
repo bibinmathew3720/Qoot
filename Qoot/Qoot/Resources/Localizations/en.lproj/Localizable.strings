@@ -34,3 +34,13 @@
 "Offers" = "Offers";
 "Support" = "Support";
 "Settings" = "Settings";
+
+//Home
+
+"SelectCity" = "SELECT YOUR CITY";
+"MealType" = "Meal type";
+"Cuisine" = "Cuisine";
+"KitchenName" = "Kitchen Name";
+"SEARCH" = "SEARCH";
+"OFFERS" = "OFFERS";
+"READYNOW" = "READY NOW";

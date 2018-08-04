@@ -47,7 +47,19 @@ class DashboardVC: BaseViewController {
     @objc func handleTapOnGuestLabel(_ recognizer: UITapGestureRecognizer) {
         self.performSegue(withIdentifier: Constant.SegueIdentifiers.dashBoardToRegister, sender: nil)
     }
-
+    
+    //Button Actions
+    
+    @IBAction func facebookButtonAction(_ sender: UIButton) {
+    }
+    
+    @IBAction func googlePlusButtonAction(_ sender: UIButton) {
+    }
+    
+    @IBAction func logInButtonAction(_ sender: UIButton) {
+         UserDefaults.standard.set(true, forKey: Constant.VariableNames.isLoogedIn)
+        self.dismiss(animated: true, completion: nil)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -45,6 +45,9 @@
                                         <integer key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="facebookButtonAction:" destination="sw4-W4-L2W" eventType="touchUpInside" id="0dJ-Hb-fxG"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wdx-yG-vj8">
                                 <rect key="frame" x="40" y="353.5" width="295" height="40"/>
@@ -61,6 +64,9 @@
                                         <integer key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="googlePlusButtonAction:" destination="sw4-W4-L2W" eventType="touchUpInside" id="PsO-7t-Pni"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fc7-lJ-lbd">
                                 <rect key="frame" x="40" y="423.5" width="295" height="40"/>
@@ -77,6 +83,9 @@
                                         <integer key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="logInButtonAction:" destination="sw4-W4-L2W" eventType="touchUpInside" id="GEi-OC-0IA"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYS-4b-BlU">
                                 <rect key="frame" x="0.0" y="503.5" width="375" height="21.5"/>
@@ -142,14 +151,10 @@
                                                 <rect key="frame" x="15" y="20" width="344" height="40"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nameIcon" translatesAutoresizingMaskIntoConstraints="NO" id="rg0-by-d2N">
-                                                        <rect key="frame" x="5" y="5" width="30" height="30"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="30" id="AEd-O1-SiP"/>
-                                                            <constraint firstAttribute="height" constant="30" id="Wi1-WN-euu"/>
-                                                        </constraints>
+                                                        <rect key="frame" x="5" y="10" width="20" height="20"/>
                                                     </imageView>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o1N-lW-h51">
-                                                        <rect key="frame" x="40" y="2" width="299" height="35"/>
+                                                        <rect key="frame" x="30" y="2" width="309" height="35"/>
                                                         <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                                                         <connections>
@@ -182,14 +187,10 @@
                                                 <rect key="frame" x="15" y="80" width="344" height="40"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emailIcon" translatesAutoresizingMaskIntoConstraints="NO" id="T32-QS-jlw">
-                                                        <rect key="frame" x="5" y="5" width="30" height="30"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="30" id="cj7-Xf-Qz2"/>
-                                                            <constraint firstAttribute="width" constant="30" id="gwm-Xt-EjW"/>
-                                                        </constraints>
+                                                        <rect key="frame" x="5" y="10" width="20" height="20"/>
                                                     </imageView>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NFQ-en-nbc">
-                                                        <rect key="frame" x="40" y="2" width="299" height="35"/>
+                                                        <rect key="frame" x="30" y="2" width="309" height="35"/>
                                                         <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
                                                         <connections>
@@ -221,14 +222,10 @@
                                                 <rect key="frame" x="15" y="140" width="344" height="40"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mobNoIcon" translatesAutoresizingMaskIntoConstraints="NO" id="dAj-cO-CUU">
-                                                        <rect key="frame" x="5" y="5" width="30" height="30"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="30" id="27I-kR-I8G"/>
-                                                            <constraint firstAttribute="width" constant="30" id="Myr-6m-MIu"/>
-                                                        </constraints>
+                                                        <rect key="frame" x="5" y="10" width="20" height="20"/>
                                                     </imageView>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ecB-Km-WmB">
-                                                        <rect key="frame" x="40" y="2" width="299" height="35"/>
+                                                        <rect key="frame" x="30" y="2" width="309" height="35"/>
                                                         <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="phonePad"/>
                                                         <connections>
@@ -260,14 +257,10 @@
                                                 <rect key="frame" x="15" y="200" width="344" height="40"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pwdIcon" translatesAutoresizingMaskIntoConstraints="NO" id="3Td-7d-tZS">
-                                                        <rect key="frame" x="5" y="5" width="30" height="30"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="30" id="3ST-IO-2pD"/>
-                                                            <constraint firstAttribute="width" constant="30" id="sVz-dv-sbd"/>
-                                                        </constraints>
+                                                        <rect key="frame" x="5" y="10" width="20" height="20"/>
                                                     </imageView>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BKj-t8-M6h">
-                                                        <rect key="frame" x="40" y="2" width="299" height="35"/>
+                                                        <rect key="frame" x="30" y="2" width="309" height="35"/>
                                                         <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES"/>
                                                         <connections>
@@ -298,15 +291,11 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fCL-cz-GbY">
                                                 <rect key="frame" x="15" y="260" width="344" height="40"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="confirmPwdIcon" translatesAutoresizingMaskIntoConstraints="NO" id="22E-fd-983">
-                                                        <rect key="frame" x="5" y="5" width="30" height="30"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="30" id="h72-G4-tcs"/>
-                                                            <constraint firstAttribute="height" constant="30" id="wNS-a0-k2L"/>
-                                                        </constraints>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pwdIcon" translatesAutoresizingMaskIntoConstraints="NO" id="22E-fd-983">
+                                                        <rect key="frame" x="5" y="10" width="20" height="20"/>
                                                     </imageView>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b5A-5s-YgW">
-                                                        <rect key="frame" x="40" y="2" width="299" height="35"/>
+                                                        <rect key="frame" x="30" y="2" width="309" height="35"/>
                                                         <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES"/>
                                                         <connections>
@@ -335,7 +324,7 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QQW-fW-J7f">
-                                                <rect key="frame" x="15" y="320" width="16" height="22"/>
+                                                <rect key="frame" x="15" y="320" width="15" height="22"/>
                                                 <state key="normal" image="buttonUnselImage"/>
                                                 <state key="selected" image="buttonSelImage"/>
                                                 <connections>
@@ -343,13 +332,13 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RqL-zE-ZwL">
-                                                <rect key="frame" x="36" y="323" width="32" height="16"/>
+                                                <rect key="frame" x="35" y="323" width="32" height="16"/>
                                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0EK-sJ-8ZW">
-                                                <rect key="frame" x="73" y="320" width="16" height="22"/>
+                                                <rect key="frame" x="72" y="320" width="15" height="22"/>
                                                 <state key="normal" image="buttonUnselImage"/>
                                                 <state key="selected" image="buttonSelImage"/>
                                                 <connections>
@@ -357,7 +346,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OR2-U3-JhC">
-                                                <rect key="frame" x="94" y="323" width="32" height="16"/>
+                                                <rect key="frame" x="92" y="323" width="32" height="16"/>
                                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -461,13 +450,12 @@
     </scenes>
     <resources>
         <image name="bgImage" width="360" height="640"/>
-        <image name="buttonSelImage" width="16" height="16"/>
-        <image name="buttonUnselImage" width="16" height="16"/>
-        <image name="confirmPwdIcon" width="16" height="16"/>
-        <image name="emailIcon" width="16" height="16"/>
-        <image name="mobNoIcon" width="16" height="16"/>
-        <image name="nameIcon" width="16" height="16"/>
-        <image name="pwdIcon" width="16" height="16"/>
+        <image name="buttonSelImage" width="15" height="15"/>
+        <image name="buttonUnselImage" width="15" height="15"/>
+        <image name="emailIcon" width="20" height="20"/>
+        <image name="mobNoIcon" width="20" height="20"/>
+        <image name="nameIcon" width="20" height="20"/>
+        <image name="pwdIcon" width="20" height="20"/>
         <image name="qootAppIcon" width="100" height="50"/>
     </resources>
 </document>

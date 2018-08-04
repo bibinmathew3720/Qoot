@@ -21,13 +21,17 @@ class MenuVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initialisation()
+        uiUpdations()
         localisation()
-
         // Do any additional setup after loading the view.
     }
     
-    func initialisation(){
+    override func viewWillAppear(_ animated: Bool) {
+        self.isLoggedIn =  UserDefaults.standard.bool(forKey: Constant.VariableNames.isLoogedIn)
+        uiUpdations()
+    }
+    
+    func uiUpdations(){
         if isLoggedIn{
             logInButtonView.isHidden = true
             loginButtonViewHeightConstraint.constant = 0

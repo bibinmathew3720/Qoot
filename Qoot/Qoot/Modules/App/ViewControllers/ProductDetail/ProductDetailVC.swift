@@ -18,6 +18,7 @@ class ProductDetailVC: BaseViewController {
     @IBOutlet var quantityLabel: UILabel!
     @IBOutlet var timeLabel: UILabel!
     @IBOutlet var servesCountLabel: UILabel!
+    
     @IBOutlet var quantityTitle: UILabel!
     @IBOutlet var preparationTimeTitle: UILabel!
     @IBOutlet var servesAvailableTitle: UILabel!
@@ -25,7 +26,15 @@ class ProductDetailVC: BaseViewController {
     
     override func initView() {
         super.initView()
+        localisation()
         addingLeftBarButton()
+    }
+    
+    func localisation(){
+        self.servesAvailableTitle.text = "ServicesAvailable".localiz()
+        self.preparationTimeTitle.text = "PreparationTime".localiz()
+        self.quantityTitle.text = "Quantity".localiz()
+        self.addCartLabel.text = "AddToCart".localiz()
     }
 
     override func didReceiveMemoryWarning() {

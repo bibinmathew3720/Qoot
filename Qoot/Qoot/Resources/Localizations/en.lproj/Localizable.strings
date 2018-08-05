@@ -44,3 +44,10 @@
 "SEARCH" = "SEARCH";
 "OFFERS" = "OFFERS";
 "READYNOW" = "READY NOW";
+
+//Product Detail Page
+
+"ServicesAvailable" = "Services Available";
+"PreparationTime" = "Preparation Time";
+"Quantity" = "Quantity";
+"AddToCart" = "ADD TO CART";

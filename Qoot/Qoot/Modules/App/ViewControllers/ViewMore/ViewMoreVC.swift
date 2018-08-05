@@ -8,14 +8,30 @@
 
 import UIKit
 
+enum ViewMoreType{
+    case Offers
+    case ReadyNow
+}
+
 class ViewMoreVC: BaseViewController {
 
+    var pageType:ViewMoreType?
     @IBOutlet var collectionView: UICollectionView!
     
     override func initView() {
         super.initView()
         initialisation()
+        localisation()
         addingLeftBarButton()
+    }
+    
+    func localisation(){
+        if pageType == ViewMoreType.Offers{
+            self.title = "Offers".localiz()
+        }
+        else if pageType == ViewMoreType.ReadyNow {
+            self.title = "ReadyNow".localiz()
+        }
     }
     
     func initialisation(){

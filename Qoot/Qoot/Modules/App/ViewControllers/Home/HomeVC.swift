@@ -168,8 +168,14 @@ extension HomeVC:UICollectionViewDataSource,UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.row == 6{
-            let viewController:ViewMoreVC = ViewMoreVC(nibName: "ViewMoreVC", bundle: nil)
-            self.navigationController?.pushViewController(viewController, animated: true)
+            let viewMoreVC:ViewMoreVC = ViewMoreVC(nibName: "ViewMoreVC", bundle: nil)
+            if collectionView == offersCollectionView{
+               viewMoreVC.pageType = ViewMoreType.Offers
+            }
+            else{
+                viewMoreVC.pageType = ViewMoreType.ReadyNow
+            }
+            self.navigationController?.pushViewController(viewMoreVC, animated: true)
         }
         else{
             let viewController:ProductDetailVC = ProductDetailVC(nibName: "ProductDetailVC", bundle: nil)

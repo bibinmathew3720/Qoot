@@ -18,6 +18,7 @@ class HomeCollectionCell: UICollectionViewCell {
         super.awakeFromNib()
         itemIcon.layer.borderColor = UIColor.black.cgColor
         itemIcon.layer.borderWidth = 1.0
+        viewMoreLabel.text = "ViewMore".localiz()
     }
 
 }

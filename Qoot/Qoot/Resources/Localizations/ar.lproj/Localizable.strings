@@ -47,3 +47,10 @@
 "ViewMore" = "عرض المزيد +";
 "Offers" = "عروض";
 "ReadyNow" = "جاهز الآن";
+
+//Product Detail Page
+
+"ServicesAvailable" = "الخدمات المتاحة";
+"PreparationTime" = "وقت التحضير";
+"Quantity" = "كمية";
+"AddToCart" = "أضف إلى السلة";

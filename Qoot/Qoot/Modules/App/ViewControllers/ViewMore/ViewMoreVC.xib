@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewMoreVC" customModule="DemoPgm" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewMoreVC" customModule="Qoot" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="xh5-OP-2Nx" id="5Fo-so-drC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -21,12 +21,16 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L8X-xH-jd2">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgImage" translatesAutoresizingMaskIntoConstraints="NO" id="L8X-xH-jd2">
                     <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                 </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bRO-Hw-NQQ">
+                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                    <color key="backgroundColor" white="1" alpha="0.40167914500000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="xh5-OP-2Nx">
-                    <rect key="frame" x="0.0" y="35" width="375" height="617"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <rect key="frame" x="0.0" y="90" width="375" height="567"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="meW-p0-mhZ">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -42,15 +46,22 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="L8X-xH-jd2" secondAttribute="trailing" id="AJ2-Lc-RwR"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="bRO-Hw-NQQ" secondAttribute="trailing" id="AbF-cX-u08"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="L8X-xH-jd2" secondAttribute="bottom" id="O8P-Jf-5aT"/>
-                <constraint firstItem="xh5-OP-2Nx" firstAttribute="bottom" secondItem="L8X-xH-jd2" secondAttribute="bottom" constant="-15" id="PSC-7l-Ycn"/>
                 <constraint firstItem="L8X-xH-jd2" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="QKp-YR-ohr"/>
+                <constraint firstItem="xh5-OP-2Nx" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" constant="-10" id="Vsg-Ym-fXZ"/>
                 <constraint firstItem="xh5-OP-2Nx" firstAttribute="trailing" secondItem="L8X-xH-jd2" secondAttribute="trailing" id="kAr-BH-97r"/>
                 <constraint firstItem="xh5-OP-2Nx" firstAttribute="leading" secondItem="L8X-xH-jd2" secondAttribute="leading" id="ktJ-Sw-gdN"/>
-                <constraint firstItem="xh5-OP-2Nx" firstAttribute="top" secondItem="L8X-xH-jd2" secondAttribute="top" constant="15" id="oco-Ti-pWR"/>
+                <constraint firstItem="bRO-Hw-NQQ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="nXl-p3-Kbc"/>
+                <constraint firstItem="xh5-OP-2Nx" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="70" id="qX5-qk-e3a"/>
                 <constraint firstItem="L8X-xH-jd2" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="srh-zz-fUA"/>
+                <constraint firstItem="bRO-Hw-NQQ" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="v5M-7z-SpO"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="top" secondItem="bRO-Hw-NQQ" secondAttribute="top" id="vJZ-7u-LPC"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>
     </objects>
+    <resources>
+        <image name="bgImage" width="360" height="640"/>
+    </resources>
 </document>

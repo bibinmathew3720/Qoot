@@ -32,6 +32,7 @@ class SearchDetailVC: BaseViewController {
     func initialisation(){
         self.title = "Qoot".localiz()
         addingLeftBarButton()
+        menuTableView.register(UINib.init(nibName: "MenuTVC", bundle: nil), forCellReuseIdentifier: "menuTVC")
     }
     
     func localisation(){
@@ -60,4 +61,33 @@ class SearchDetailVC: BaseViewController {
     }
     */
 
+}
+
+extension SearchDetailVC : UITableViewDelegate,UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        var rowCount :Int = 1
+        return rowCount
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "menuTVC", for: indexPath) as!MenuTVC
+        cell.tag = indexPath.row
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       
+        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let rowHieght = 100
+        return CGFloat(rowHieght)
+    }
+    
 }

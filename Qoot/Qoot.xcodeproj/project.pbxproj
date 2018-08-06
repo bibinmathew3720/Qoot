@@ -57,6 +57,8 @@
 		D05D50632118025300645956 /* SearchResultsTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05D50612118025300645956 /* SearchResultsTVC.xib */; };
 		D05D506C2118635800645956 /* SearchDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05D506A2118635800645956 /* SearchDetailVC.swift */; };
 		D05D506D2118635800645956 /* SearchDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05D506B2118635800645956 /* SearchDetailVC.xib */; };
+		D05D50712118734E00645956 /* MenuTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05D506F2118734E00645956 /* MenuTVC.swift */; };
+		D05D50722118734E00645956 /* MenuTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05D50702118734E00645956 /* MenuTVC.xib */; };
 		D0C865622113477800383A48 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C865612113477800383A48 /* BaseViewController.swift */; };
 		D0C865642113608400383A48 /* DashboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C865632113608400383A48 /* DashboardVC.swift */; };
 		D0C865672113739500383A48 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C865662113739500383A48 /* RegisterVC.swift */; };
@@ -124,6 +126,8 @@
 		D05D50612118025300645956 /* SearchResultsTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultsTVC.xib; sourceTree = "<group>"; };
 		D05D506A2118635800645956 /* SearchDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchDetailVC.swift; sourceTree = "<group>"; };
 		D05D506B2118635800645956 /* SearchDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchDetailVC.xib; sourceTree = "<group>"; };
+		D05D506F2118734E00645956 /* MenuTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTVC.swift; sourceTree = "<group>"; };
+		D05D50702118734E00645956 /* MenuTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuTVC.xib; sourceTree = "<group>"; };
 		D0C865612113477800383A48 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		D0C865632113608400383A48 /* DashboardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardVC.swift; sourceTree = "<group>"; };
 		D0C86565211360C400383A48 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -491,10 +495,20 @@
 		D05D50692118635800645956 /* SearchDetailVC */ = {
 			isa = PBXGroup;
 			children = (
+				D05D506E2118732D00645956 /* MenuTVC */,
 				D05D506A2118635800645956 /* SearchDetailVC.swift */,
 				D05D506B2118635800645956 /* SearchDetailVC.xib */,
 			);
 			path = SearchDetailVC;
+			sourceTree = "<group>";
+		};
+		D05D506E2118732D00645956 /* MenuTVC */ = {
+			isa = PBXGroup;
+			children = (
+				D05D506F2118734E00645956 /* MenuTVC.swift */,
+				D05D50702118734E00645956 /* MenuTVC.xib */,
+			);
+			path = MenuTVC;
 			sourceTree = "<group>";
 		};
 		D0C8655F2113470C00383A48 /* UserManagement */ = {
@@ -596,6 +610,7 @@
 				D00FACED2112ED4100C8C176 /* Localizable.strings in Resources */,
 				D01888CB21153A1800B01946 /* HomeTableCell.xib in Resources */,
 				BC93070A2118319A00D129B7 /* CartTableCell.xib in Resources */,
+				D05D50722118734E00645956 /* MenuTVC.xib in Resources */,
 				D01888B6211539CA00B01946 /* HomeVC.xib in Resources */,
 				D05D506D2118635800645956 /* SearchDetailVC.xib in Resources */,
 				D01888BE21153A0E00B01946 /* ProductDetailVC.xib in Resources */,
@@ -695,6 +710,7 @@
 				D01888AE2115388800B01946 /* ExSlideMenuController.swift in Sources */,
 				D00FAD172112EE5D00C8C176 /* CartManager.swift in Sources */,
 				D00FACD22112DF1200C8C176 /* AppDelegate.swift in Sources */,
+				D05D50712118734E00645956 /* MenuTVC.swift in Sources */,
 				D0C865672113739500383A48 /* RegisterVC.swift in Sources */,
 				D05D506C2118635800645956 /* SearchDetailVC.swift in Sources */,
 				D00FAD1B2112EE5D00C8C176 /* ApplicationController.swift in Sources */,

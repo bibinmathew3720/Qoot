@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		6BBE3BB0AA2865610FEB4727 /* Pods_Qoot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0241056357D52B915276A9CD /* Pods_Qoot.framework */; };
+		BC5BDB562118671800B0A4A6 /* PastOrderTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5BDB542118671800B0A4A6 /* PastOrderTableCell.swift */; };
+		BC5BDB572118671800B0A4A6 /* PastOrderTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5BDB552118671800B0A4A6 /* PastOrderTableCell.xib */; };
+		BC5BDB5A21186F8E00B0A4A6 /* OrderListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5BDB5821186F8E00B0A4A6 /* OrderListVC.swift */; };
+		BC5BDB5B21186F8E00B0A4A6 /* OrderListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5BDB5921186F8E00B0A4A6 /* OrderListVC.xib */; };
 		BC93070321181F7600D129B7 /* CartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC93070121181F7600D129B7 /* CartVC.swift */; };
 		BC93070421181F7600D129B7 /* CartVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC93070221181F7600D129B7 /* CartVC.xib */; };
 		BC9307092118319A00D129B7 /* CartTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9307072118319A00D129B7 /* CartTableCell.swift */; };
@@ -66,6 +70,10 @@
 		0241056357D52B915276A9CD /* Pods_Qoot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Qoot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D207D2219F2B6C42392CCB5 /* Pods-Qoot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qoot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Qoot/Pods-Qoot.debug.xcconfig"; sourceTree = "<group>"; };
 		8442CA29F0944557CAEC8358 /* Pods-Qoot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qoot.release.xcconfig"; path = "Pods/Target Support Files/Pods-Qoot/Pods-Qoot.release.xcconfig"; sourceTree = "<group>"; };
+		BC5BDB542118671800B0A4A6 /* PastOrderTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastOrderTableCell.swift; sourceTree = "<group>"; };
+		BC5BDB552118671800B0A4A6 /* PastOrderTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PastOrderTableCell.xib; sourceTree = "<group>"; };
+		BC5BDB5821186F8E00B0A4A6 /* OrderListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListVC.swift; sourceTree = "<group>"; };
+		BC5BDB5921186F8E00B0A4A6 /* OrderListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderListVC.xib; sourceTree = "<group>"; };
 		BC93070121181F7600D129B7 /* CartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartVC.swift; sourceTree = "<group>"; };
 		BC93070221181F7600D129B7 /* CartVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartVC.xib; sourceTree = "<group>"; };
 		BC9307072118319A00D129B7 /* CartTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableCell.swift; sourceTree = "<group>"; };
@@ -147,6 +155,33 @@
 				8442CA29F0944557CAEC8358 /* Pods-Qoot.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		BC5BDB472118637D00B0A4A6 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				BC5BDB4B211863B400B0A4A6 /* Controller */,
+				BC5BDB4A211863A700B0A4A6 /* ItemCell */,
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		BC5BDB4A211863A700B0A4A6 /* ItemCell */ = {
+			isa = PBXGroup;
+			children = (
+				BC5BDB542118671800B0A4A6 /* PastOrderTableCell.swift */,
+				BC5BDB552118671800B0A4A6 /* PastOrderTableCell.xib */,
+			);
+			path = ItemCell;
+			sourceTree = "<group>";
+		};
+		BC5BDB4B211863B400B0A4A6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BC5BDB5821186F8E00B0A4A6 /* OrderListVC.swift */,
+				BC5BDB5921186F8E00B0A4A6 /* OrderListVC.xib */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		BC93070021181F4400D129B7 /* Cart */ = {
@@ -390,6 +425,7 @@
 		D01888B1211539CA00B01946 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				BC5BDB472118637D00B0A4A6 /* New Group */,
 				BC93070021181F4400D129B7 /* Cart */,
 				D05D505A2118003500645956 /* SearchResultsVC */,
 				D01888CC21153B0800B01946 /* MenuVC */,
@@ -581,8 +617,10 @@
 				D00FACDF2112DF2200C8C176 /* LaunchScreen.storyboard in Resources */,
 				D00FACED2112ED4100C8C176 /* Localizable.strings in Resources */,
 				D01888CB21153A1800B01946 /* HomeTableCell.xib in Resources */,
+				BC5BDB572118671800B0A4A6 /* PastOrderTableCell.xib in Resources */,
 				BC93070A2118319A00D129B7 /* CartTableCell.xib in Resources */,
 				D01888B6211539CA00B01946 /* HomeVC.xib in Resources */,
+				BC5BDB5B21186F8E00B0A4A6 /* OrderListVC.xib in Resources */,
 				D01888BE21153A0E00B01946 /* ProductDetailVC.xib in Resources */,
 				D01888C921153A1800B01946 /* HomeCollectionCell.xib in Resources */,
 				D0F9E11A21161B1F004F7833 /* ManuTVC.xib in Resources */,
@@ -652,6 +690,7 @@
 			files = (
 				D00FAD242112EE5D00C8C176 /* UIColorExtension.swift in Sources */,
 				D00FAD202112EE5D00C8C176 /* Reachability.m in Sources */,
+				BC5BDB5A21186F8E00B0A4A6 /* OrderListVC.swift in Sources */,
 				D00FAD222112EE5D00C8C176 /* CoreDataHandler.swift in Sources */,
 				D01888B5211539CA00B01946 /* HomeVC.swift in Sources */,
 				D00FAD182112EE5D00C8C176 /* FetchApiUrls.swift in Sources */,
@@ -671,6 +710,7 @@
 				BC9307092118319A00D129B7 /* CartTableCell.swift in Sources */,
 				D01888BD21153A0E00B01946 /* ProductDetailVC.swift in Sources */,
 				D05D505D2118005400645956 /* SearchResultsVC.swift in Sources */,
+				BC5BDB562118671800B0A4A6 /* PastOrderTableCell.swift in Sources */,
 				D00FAD232112EE5D00C8C176 /* StringExtensions.swift in Sources */,
 				D0C865642113608400383A48 /* DashboardVC.swift in Sources */,
 				D00FAD1C2112EE5D00C8C176 /* CLBaseService.swift in Sources */,
@@ -850,7 +890,10 @@
 				DEVELOPMENT_TEAM = WVYK59KXPF;
 				INFOPLIST_FILE = Qoot/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qoot.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -870,7 +913,10 @@
 				DEVELOPMENT_TEAM = WVYK59KXPF;
 				INFOPLIST_FILE = Qoot/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qoot.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

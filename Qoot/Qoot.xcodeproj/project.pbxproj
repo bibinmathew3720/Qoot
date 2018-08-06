@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		6BBE3BB0AA2865610FEB4727 /* Pods_Qoot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0241056357D52B915276A9CD /* Pods_Qoot.framework */; };
+		BC93070321181F7600D129B7 /* CartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC93070121181F7600D129B7 /* CartVC.swift */; };
+		BC93070421181F7600D129B7 /* CartVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC93070221181F7600D129B7 /* CartVC.xib */; };
+		BC9307092118319A00D129B7 /* CartTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9307072118319A00D129B7 /* CartTableCell.swift */; };
+		BC93070A2118319A00D129B7 /* CartTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC9307082118319A00D129B7 /* CartTableCell.xib */; };
 		D00FACD22112DF1200C8C176 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00FACD12112DF1200C8C176 /* AppDelegate.swift */; };
 		D00FACD72112DF1300C8C176 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D00FACD52112DF1300C8C176 /* Main.storyboard */; };
 		D00FACDA2112DF1300C8C176 /* Qoot.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D00FACD82112DF1300C8C176 /* Qoot.xcdatamodeld */; };
@@ -62,6 +66,10 @@
 		0241056357D52B915276A9CD /* Pods_Qoot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Qoot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D207D2219F2B6C42392CCB5 /* Pods-Qoot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qoot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Qoot/Pods-Qoot.debug.xcconfig"; sourceTree = "<group>"; };
 		8442CA29F0944557CAEC8358 /* Pods-Qoot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qoot.release.xcconfig"; path = "Pods/Target Support Files/Pods-Qoot/Pods-Qoot.release.xcconfig"; sourceTree = "<group>"; };
+		BC93070121181F7600D129B7 /* CartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartVC.swift; sourceTree = "<group>"; };
+		BC93070221181F7600D129B7 /* CartVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartVC.xib; sourceTree = "<group>"; };
+		BC9307072118319A00D129B7 /* CartTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableCell.swift; sourceTree = "<group>"; };
+		BC9307082118319A00D129B7 /* CartTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartTableCell.xib; sourceTree = "<group>"; };
 		D00FACCE2112DF1200C8C176 /* Qoot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Qoot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D00FACD12112DF1200C8C176 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D00FACD62112DF1300C8C176 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -139,6 +147,25 @@
 				8442CA29F0944557CAEC8358 /* Pods-Qoot.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		BC93070021181F4400D129B7 /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				BC9307062118318500D129B7 /* CartCell */,
+				BC93070121181F7600D129B7 /* CartVC.swift */,
+				BC93070221181F7600D129B7 /* CartVC.xib */,
+			);
+			path = Cart;
+			sourceTree = "<group>";
+		};
+		BC9307062118318500D129B7 /* CartCell */ = {
+			isa = PBXGroup;
+			children = (
+				BC9307072118319A00D129B7 /* CartTableCell.swift */,
+				BC9307082118319A00D129B7 /* CartTableCell.xib */,
+			);
+			path = CartCell;
 			sourceTree = "<group>";
 		};
 		D00FACC52112DF1200C8C176 = {
@@ -363,6 +390,7 @@
 		D01888B1211539CA00B01946 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				BC93070021181F4400D129B7 /* Cart */,
 				D05D505A2118003500645956 /* SearchResultsVC */,
 				D01888CC21153B0800B01946 /* MenuVC */,
 				D01888B721153A0E00B01946 /* ProductDetail */,
@@ -553,6 +581,7 @@
 				D00FACDF2112DF2200C8C176 /* LaunchScreen.storyboard in Resources */,
 				D00FACED2112ED4100C8C176 /* Localizable.strings in Resources */,
 				D01888CB21153A1800B01946 /* HomeTableCell.xib in Resources */,
+				BC93070A2118319A00D129B7 /* CartTableCell.xib in Resources */,
 				D01888B6211539CA00B01946 /* HomeVC.xib in Resources */,
 				D01888BE21153A0E00B01946 /* ProductDetailVC.xib in Resources */,
 				D01888C921153A1800B01946 /* HomeCollectionCell.xib in Resources */,
@@ -560,6 +589,7 @@
 				D00FACDC2112DF2200C8C176 /* Assets.xcassets in Resources */,
 				D01888C021153A0E00B01946 /* ViewMoreVC.xib in Resources */,
 				D05D505E2118005400645956 /* SearchResultsVC.xib in Resources */,
+				BC93070421181F7600D129B7 /* CartVC.xib in Resources */,
 				D00FACD72112DF1300C8C176 /* Main.storyboard in Resources */,
 				D01888D021153D6D00B01946 /* MenuVC.xib in Resources */,
 				D05D50632118025300645956 /* SearchResultsTVC.xib in Resources */,
@@ -594,6 +624,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Qoot/Pods-Qoot-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GrowingTextView/GrowingTextView.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
@@ -601,6 +632,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GrowingTextView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
@@ -632,9 +664,11 @@
 				D00FAD1F2112EE5D00C8C176 /* CLNetworkUtility.swift in Sources */,
 				D01888C821153A1800B01946 /* HomeCollectionCell.swift in Sources */,
 				D00FAD1A2112EE5D00C8C176 /* UserManager.swift in Sources */,
+				BC93070321181F7600D129B7 /* CartVC.swift in Sources */,
 				D00FAD2A2112EE5D00C8C176 /* CCUtility.swift in Sources */,
 				D00FAD1E2112EE5D00C8C176 /* CLNetworkModel.swift in Sources */,
 				D00FAD262112EE5D00C8C176 /* UIViewExtensions.swift in Sources */,
+				BC9307092118319A00D129B7 /* CartTableCell.swift in Sources */,
 				D01888BD21153A0E00B01946 /* ProductDetailVC.swift in Sources */,
 				D05D505D2118005400645956 /* SearchResultsVC.swift in Sources */,
 				D00FAD232112EE5D00C8C176 /* StringExtensions.swift in Sources */,
@@ -816,10 +850,7 @@
 				DEVELOPMENT_TEAM = WVYK59KXPF;
 				INFOPLIST_FILE = Qoot/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.qoot.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -839,10 +870,7 @@
 				DEVELOPMENT_TEAM = WVYK59KXPF;
 				INFOPLIST_FILE = Qoot/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.qoot.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

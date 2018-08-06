@@ -28,6 +28,7 @@ class ProductDetailVC: BaseViewController {
         super.initView()
         localisation()
         addingLeftBarButton()
+        addRightNavBarIcon()
     }
     
     func localisation(){

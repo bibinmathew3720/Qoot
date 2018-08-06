@@ -8,6 +8,7 @@ target 'Qoot' do
   pod 'MBProgressHUD'
   pod 'SDWebImage'
   pod 'SlideMenuControllerSwift'
+  pod 'GrowingTextView', '~> 0.5'
   # Pods for Qoot
 
 end

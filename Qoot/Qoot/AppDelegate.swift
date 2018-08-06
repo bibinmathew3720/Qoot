@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         initWindow()
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.enableAutoToolbar = false
+        
         return true
     }
     
@@ -31,11 +32,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let homeNavVC = UINavigationController.init(rootViewController: homeVC)
         
         let menuVC = MenuVC.init(nibName: "MenuVC", bundle: nil)
-        
+
         let viewMoreVC = ViewMoreVC.init(nibName: "ViewMoreVC", bundle: nil)
-        
+
+
          let slideMenuController = ExSlideMenuController(mainViewController: homeNavVC, leftMenuViewController:menuVC , rightMenuViewController: viewMoreVC)
         self.window?.rootViewController = slideMenuController
+    
     }
     
     func localisationMethod(){

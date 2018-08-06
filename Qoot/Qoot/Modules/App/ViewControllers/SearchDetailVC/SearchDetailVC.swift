@@ -10,6 +10,18 @@ import UIKit
 
 class SearchDetailVC: BaseViewController {
     @IBOutlet weak var menuTableView: UITableView!
+    @IBOutlet weak var customerRatingTitleLabel: UILabel!
+    @IBOutlet weak var deliveryTitleLabel: UILabel!
+    @IBOutlet weak var deliveryFeeTitleLabel: UILabel!
+    @IBOutlet weak var segmentControl: UISegmentedControl!
+    
+    
+    @IBOutlet weak var productImageView: UIImageView!
+    @IBOutlet weak var productNameLabel: UILabel!
+    @IBOutlet weak var ratingLabel: UILabel!
+    @IBOutlet weak var deliveryFeeLabel: UILabel!
+    
+    
     
     override func initView() {
         super.initView()
@@ -18,10 +30,17 @@ class SearchDetailVC: BaseViewController {
     }
     
     func initialisation(){
+        self.title = "Qoot".localiz()
         addingLeftBarButton()
     }
     
     func localisation(){
+        self.customerRatingTitleLabel.text = "CustomerRating".localiz()
+        self.deliveryTitleLabel.text = "Delivery".localiz()
+        self.deliveryFeeTitleLabel.text = "DeliveryFee".localiz()
+        self.segmentControl.setTitle("Menu".localiz(), forSegmentAt: 0)
+        self.segmentControl.setTitle("Reviews".localiz(), forSegmentAt: 1)
+        self.segmentControl.setTitle("Info".localiz(), forSegmentAt: 2)
         
     }
 

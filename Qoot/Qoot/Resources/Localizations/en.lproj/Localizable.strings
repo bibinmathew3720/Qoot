@@ -62,3 +62,11 @@
 //Search Results
 
 "CustomerRating" = "Customer Rating";
+
+//Search Details Page
+
+"Delivery" = "Delivery";
+"DeliveryFee" = "Delivery Fee";
+"Menu" = "Menu";
+"Reviews" = "Reviews";
+"Info" = "Info";

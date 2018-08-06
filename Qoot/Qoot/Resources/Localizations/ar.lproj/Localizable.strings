@@ -62,3 +62,11 @@
 //Search Results
 
 "CustomerRating" = "تقييم العملاء";
+
+//Search Details Page
+
+"Delivery" = "توصيل";
+"DeliveryFee" = "رسوم التوصيل";
+"Menu" = "قائمة طعام";
+"Reviews" = "التعليقات";
+"Info" = "معلومات";

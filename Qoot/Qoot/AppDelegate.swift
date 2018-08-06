@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         initWindow()
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.enableAutoToolbar = false
+        
         return true
     }
     

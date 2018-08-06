@@ -51,26 +51,36 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wUM-OM-yWI">
-                            <rect key="frame" x="135" y="32" width="108" height="20"/>
+                            <rect key="frame" x="135" y="32" width="75" height="20"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wqS-B9-LHZ">
-                                    <rect key="frame" x="0.0" y="-0.5" width="20" height="20"/>
+                                <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wqS-B9-LHZ">
+                                    <rect key="frame" x="0.0" y="2" width="15" height="15"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="20" id="CAL-fG-E9u"/>
-                                        <constraint firstAttribute="width" constant="20" id="rvP-cM-coY"/>
+                                        <constraint firstAttribute="height" constant="15" id="CAL-fG-E9u"/>
+                                        <constraint firstAttribute="width" constant="15" id="rvP-cM-coY"/>
                                     </constraints>
+                                    <state key="normal" image="starUnselected"/>
+                                    <state key="selected" image="starSelected"/>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XNb-aO-XaG">
-                                    <rect key="frame" x="22" y="0.0" width="20" height="20"/>
+                                <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XNb-aO-XaG">
+                                    <rect key="frame" x="15" y="2.5" width="15" height="15"/>
+                                    <state key="normal" image="starUnselected"/>
+                                    <state key="selected" image="starSelected"/>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qwy-1X-g1T">
-                                    <rect key="frame" x="44" y="-0.5" width="20" height="20"/>
+                                <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qwy-1X-g1T">
+                                    <rect key="frame" x="30" y="2" width="15" height="15"/>
+                                    <state key="normal" image="starUnselected"/>
+                                    <state key="selected" image="starSelected"/>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s8Y-kh-efv">
-                                    <rect key="frame" x="66" y="-0.5" width="20" height="20"/>
+                                <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s8Y-kh-efv">
+                                    <rect key="frame" x="45" y="2" width="15" height="15"/>
+                                    <state key="normal" image="starUnselected"/>
+                                    <state key="selected" image="starSelected"/>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cf3-kI-XyR">
-                                    <rect key="frame" x="88" y="-0.5" width="20" height="20"/>
+                                <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cf3-kI-XyR">
+                                    <rect key="frame" x="60" y="2" width="15" height="15"/>
+                                    <state key="normal" image="starUnselected"/>
+                                    <state key="selected" image="starSelected"/>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -80,20 +90,20 @@
                                 <constraint firstItem="XNb-aO-XaG" firstAttribute="width" secondItem="wqS-B9-LHZ" secondAttribute="width" id="3Ve-A0-zyw"/>
                                 <constraint firstItem="XNb-aO-XaG" firstAttribute="centerY" secondItem="wUM-OM-yWI" secondAttribute="centerY" id="3Wa-10-ieV"/>
                                 <constraint firstItem="s8Y-kh-efv" firstAttribute="centerY" secondItem="wUM-OM-yWI" secondAttribute="centerY" id="4EF-De-Co4"/>
-                                <constraint firstItem="XNb-aO-XaG" firstAttribute="leading" secondItem="wqS-B9-LHZ" secondAttribute="trailing" constant="2" id="6o6-2q-c3P"/>
+                                <constraint firstItem="XNb-aO-XaG" firstAttribute="leading" secondItem="wqS-B9-LHZ" secondAttribute="trailing" id="6o6-2q-c3P"/>
                                 <constraint firstItem="qwy-1X-g1T" firstAttribute="height" secondItem="XNb-aO-XaG" secondAttribute="height" id="7AV-Pp-irx"/>
-                                <constraint firstItem="qwy-1X-g1T" firstAttribute="leading" secondItem="XNb-aO-XaG" secondAttribute="trailing" constant="2" id="8hp-7g-rUB"/>
+                                <constraint firstItem="qwy-1X-g1T" firstAttribute="leading" secondItem="XNb-aO-XaG" secondAttribute="trailing" id="8hp-7g-rUB"/>
                                 <constraint firstItem="cf3-kI-XyR" firstAttribute="width" secondItem="s8Y-kh-efv" secondAttribute="width" id="EPw-GP-MTm"/>
                                 <constraint firstItem="cf3-kI-XyR" firstAttribute="centerY" secondItem="wUM-OM-yWI" secondAttribute="centerY" id="USV-sc-82r"/>
                                 <constraint firstItem="cf3-kI-XyR" firstAttribute="height" secondItem="s8Y-kh-efv" secondAttribute="height" id="WGz-1f-tYF"/>
-                                <constraint firstItem="s8Y-kh-efv" firstAttribute="leading" secondItem="qwy-1X-g1T" secondAttribute="trailing" constant="2" id="dQQ-Cv-ZzU"/>
+                                <constraint firstItem="s8Y-kh-efv" firstAttribute="leading" secondItem="qwy-1X-g1T" secondAttribute="trailing" id="dQQ-Cv-ZzU"/>
                                 <constraint firstItem="XNb-aO-XaG" firstAttribute="height" secondItem="wqS-B9-LHZ" secondAttribute="height" id="eJ6-qJ-wdu"/>
                                 <constraint firstItem="wqS-B9-LHZ" firstAttribute="leading" secondItem="wUM-OM-yWI" secondAttribute="leading" id="fVS-um-QLu"/>
                                 <constraint firstAttribute="trailing" secondItem="cf3-kI-XyR" secondAttribute="trailing" id="fXp-bQ-IBN"/>
                                 <constraint firstItem="s8Y-kh-efv" firstAttribute="height" secondItem="qwy-1X-g1T" secondAttribute="height" id="i1c-cW-b6K"/>
                                 <constraint firstItem="qwy-1X-g1T" firstAttribute="width" secondItem="XNb-aO-XaG" secondAttribute="width" id="l9d-RO-7la"/>
                                 <constraint firstItem="qwy-1X-g1T" firstAttribute="centerY" secondItem="wUM-OM-yWI" secondAttribute="centerY" id="oVn-U9-Rb5"/>
-                                <constraint firstItem="cf3-kI-XyR" firstAttribute="leading" secondItem="s8Y-kh-efv" secondAttribute="trailing" constant="2" id="r4d-DG-bO5"/>
+                                <constraint firstItem="cf3-kI-XyR" firstAttribute="leading" secondItem="s8Y-kh-efv" secondAttribute="trailing" id="r4d-DG-bO5"/>
                                 <constraint firstAttribute="height" constant="20" id="ws4-lw-NB2"/>
                             </constraints>
                         </view>
@@ -210,4 +220,8 @@
             <point key="canvasLocation" x="32.5" y="105.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="starSelected" width="10" height="10"/>
+        <image name="starUnselected" width="10" height="10"/>
+    </resources>
 </document>

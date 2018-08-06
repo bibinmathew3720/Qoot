@@ -39,26 +39,36 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HMv-dP-xop">
-                        <rect key="frame" x="80" y="32" width="108" height="20"/>
+                        <rect key="frame" x="80" y="32" width="75" height="20"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xay-nI-ctJ">
-                                <rect key="frame" x="0.0" y="-0.5" width="20" height="20"/>
+                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xay-nI-ctJ">
+                                <rect key="frame" x="0.0" y="2" width="15" height="15"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="20" id="Kwx-Cd-h94"/>
-                                    <constraint firstAttribute="height" constant="20" id="fb9-d1-P8r"/>
+                                    <constraint firstAttribute="width" constant="15" id="Kwx-Cd-h94"/>
+                                    <constraint firstAttribute="height" constant="15" id="fb9-d1-P8r"/>
                                 </constraints>
+                                <state key="normal" image="starUnselected"/>
+                                <state key="selected" image="starSelected"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AVy-Y3-Ja6">
-                                <rect key="frame" x="22" y="0.0" width="20" height="20"/>
+                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AVy-Y3-Ja6">
+                                <rect key="frame" x="15" y="2.5" width="15" height="15"/>
+                                <state key="normal" image="starUnselected"/>
+                                <state key="selected" image="starSelected"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c3Z-NF-ng1">
-                                <rect key="frame" x="44" y="-0.5" width="20" height="20"/>
+                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c3Z-NF-ng1">
+                                <rect key="frame" x="30" y="2" width="15" height="15"/>
+                                <state key="normal" image="starUnselected"/>
+                                <state key="selected" image="starSelected"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zrp-Hn-Out">
-                                <rect key="frame" x="66" y="-0.5" width="20" height="20"/>
+                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zrp-Hn-Out">
+                                <rect key="frame" x="45" y="2" width="15" height="15"/>
+                                <state key="normal" image="starUnselected"/>
+                                <state key="selected" image="starSelected"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B3u-2V-nlE">
-                                <rect key="frame" x="88" y="-0.5" width="20" height="20"/>
+                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B3u-2V-nlE">
+                                <rect key="frame" x="60" y="2" width="15" height="15"/>
+                                <state key="normal" image="starUnselected"/>
+                                <state key="selected" image="starSelected"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -70,19 +80,19 @@
                             <constraint firstItem="c3Z-NF-ng1" firstAttribute="centerY" secondItem="HMv-dP-xop" secondAttribute="centerY" id="AFp-vJ-xQ9"/>
                             <constraint firstItem="B3u-2V-nlE" firstAttribute="height" secondItem="zrp-Hn-Out" secondAttribute="height" id="BjX-Dm-yNH"/>
                             <constraint firstItem="xay-nI-ctJ" firstAttribute="leading" secondItem="HMv-dP-xop" secondAttribute="leading" id="Hg3-8T-PTU"/>
-                            <constraint firstItem="AVy-Y3-Ja6" firstAttribute="leading" secondItem="xay-nI-ctJ" secondAttribute="trailing" constant="2" id="RPY-Xc-f3F"/>
+                            <constraint firstItem="AVy-Y3-Ja6" firstAttribute="leading" secondItem="xay-nI-ctJ" secondAttribute="trailing" id="RPY-Xc-f3F"/>
                             <constraint firstItem="c3Z-NF-ng1" firstAttribute="width" secondItem="AVy-Y3-Ja6" secondAttribute="width" id="T9L-P6-AZd"/>
                             <constraint firstItem="B3u-2V-nlE" firstAttribute="width" secondItem="zrp-Hn-Out" secondAttribute="width" id="Wjd-qQ-D7e"/>
-                            <constraint firstItem="B3u-2V-nlE" firstAttribute="leading" secondItem="zrp-Hn-Out" secondAttribute="trailing" constant="2" id="aDg-dL-6xw"/>
+                            <constraint firstItem="B3u-2V-nlE" firstAttribute="leading" secondItem="zrp-Hn-Out" secondAttribute="trailing" id="aDg-dL-6xw"/>
                             <constraint firstItem="AVy-Y3-Ja6" firstAttribute="height" secondItem="xay-nI-ctJ" secondAttribute="height" id="d39-nO-gGf"/>
                             <constraint firstAttribute="trailing" secondItem="B3u-2V-nlE" secondAttribute="trailing" id="e3L-AM-lLm"/>
                             <constraint firstItem="xay-nI-ctJ" firstAttribute="centerY" secondItem="HMv-dP-xop" secondAttribute="centerY" id="eQk-Hm-Kaw"/>
                             <constraint firstItem="zrp-Hn-Out" firstAttribute="height" secondItem="c3Z-NF-ng1" secondAttribute="height" id="mDP-gg-xHX"/>
                             <constraint firstItem="AVy-Y3-Ja6" firstAttribute="width" secondItem="xay-nI-ctJ" secondAttribute="width" id="pTG-SH-wwQ"/>
-                            <constraint firstItem="zrp-Hn-Out" firstAttribute="leading" secondItem="c3Z-NF-ng1" secondAttribute="trailing" constant="2" id="rhW-pl-Iv2"/>
+                            <constraint firstItem="zrp-Hn-Out" firstAttribute="leading" secondItem="c3Z-NF-ng1" secondAttribute="trailing" id="rhW-pl-Iv2"/>
                             <constraint firstItem="c3Z-NF-ng1" firstAttribute="height" secondItem="AVy-Y3-Ja6" secondAttribute="height" id="vYx-h6-nz4"/>
                             <constraint firstItem="B3u-2V-nlE" firstAttribute="centerY" secondItem="HMv-dP-xop" secondAttribute="centerY" id="w8D-Cd-Ybj"/>
-                            <constraint firstItem="c3Z-NF-ng1" firstAttribute="leading" secondItem="AVy-Y3-Ja6" secondAttribute="trailing" constant="2" id="ySr-Su-eKf"/>
+                            <constraint firstItem="c3Z-NF-ng1" firstAttribute="leading" secondItem="AVy-Y3-Ja6" secondAttribute="trailing" id="ySr-Su-eKf"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hrn-3n-8fE">
@@ -145,4 +155,8 @@
             <point key="canvasLocation" x="141.5" y="141"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="starSelected" width="10" height="10"/>
+        <image name="starUnselected" width="10" height="10"/>
+    </resources>
 </document>

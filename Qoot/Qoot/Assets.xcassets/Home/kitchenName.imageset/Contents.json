@@ -2,14 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "Kitchen Name Icon30*030.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "Kitchen Name Icon60*60.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "Kitchen Name Icon90*90.png",
       "scale" : "3x"
     }
   ],

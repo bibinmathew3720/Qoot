@@ -33,7 +33,7 @@ class HomeVC: BaseViewController {
     var selectedCuisine: String = TYPE_FIELDS[2]
     var selectedKitchen: String = TYPE_FIELDS[3]
     
-    var imagesArray = [#imageLiteral(resourceName: "city"),#imageLiteral(resourceName: "mealtype"),#imageLiteral(resourceName: "cuisine"),#imageLiteral(resourceName: "mealtype")]
+    var imagesArray = [#imageLiteral(resourceName: "city"),#imageLiteral(resourceName: "mealtype"),#imageLiteral(resourceName: "cuisine"),#imageLiteral(resourceName: "kitchenName")]
     
     override func initView() {
         super.initView()

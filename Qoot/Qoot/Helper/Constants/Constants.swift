@@ -11,7 +11,7 @@ import UIKit
 
 
 struct Constant{
-    static let AppName = "Qoot"
+    static let AppName = "Qoot".localiz()
     struct Font{
         static let Regular = "Times New Roman"
     }

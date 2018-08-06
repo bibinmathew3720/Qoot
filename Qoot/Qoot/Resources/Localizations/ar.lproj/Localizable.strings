@@ -6,6 +6,10 @@
   Copyright © 2018 Cl. All rights reserved.
 */
 
+//Common
+
+"Qoot" = "Qoot";
+
 //Dashboard
 
 "LOGINVIAFACEBOOK" = "تسجيل الدخول عبر الفيسبوك";
@@ -54,3 +58,7 @@
 "PreparationTime" = "وقت التحضير";
 "Quantity" = "كمية";
 "AddToCart" = "أضف إلى السلة";
+
+//Search Results
+
+"CustomerRating" = "تقييم العملاء";

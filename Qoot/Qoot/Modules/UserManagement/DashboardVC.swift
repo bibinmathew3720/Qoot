@@ -21,7 +21,7 @@ class DashboardVC: BaseViewController {
     }
     
     func initialisation(){
-        self.title = "Qoot"
+        self.title = "Qoot".localiz()
     }
     
     func localisation(){

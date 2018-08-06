@@ -13,6 +13,7 @@ let ARR4 = ["4","5","6","7"]
 
 import UIKit
 
+
 class HomeVC: BaseViewController {
     
     @IBOutlet var searchButton: UIButton!
@@ -80,6 +81,8 @@ class HomeVC: BaseViewController {
     }
    
     @IBAction func searchButtonAction(_ sender: Any) {
+        let searchResultsVC = SearchResultsVC.init(nibName: "SearchResultsVC", bundle: nil)
+        self.navigationController?.pushViewController(searchResultsVC, animated: true)
     }
     
     @IBAction func toolBarDoneAction(_ sender: Any) {

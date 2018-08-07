@@ -75,6 +75,7 @@ class BaseViewController: UIViewController {
         homeButton.setImage(UIImage.init(named: Constant.ImageNames.homeIcon), for: UIControlState.normal)
         var homeBarButton = UIBarButtonItem()
         homeBarButton = UIBarButtonItem.init(customView: homeButton)
+        self.navigationItem.rightBarButtonItems  = [homeBarButton]
         return homeBarButton
     }
     
@@ -83,7 +84,9 @@ class BaseViewController: UIViewController {
     }
     
     @objc func cartButtonAction(){
-        
+        let cartVC = CartVC.init(nibName: "CartVC", bundle: nil)
+        let cartNavCntlr = UINavigationController.init(rootViewController: cartVC)
+        self.present(cartNavCntlr, animated: true, completion: nil)
     }
     
     

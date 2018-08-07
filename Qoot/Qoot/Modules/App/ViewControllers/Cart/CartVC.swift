@@ -9,22 +9,26 @@
 import UIKit
 import GrowingTextView
 
-class CartVC: UIViewController,CartTableCellDelegate,UIGestureRecognizerDelegate{
+class CartVC: BaseViewController,CartTableCellDelegate,UIGestureRecognizerDelegate{
  
     @IBOutlet var commentsTextView: GrowingTextView!
     @IBOutlet var cartTable: UITableView!
     var count: Int = 1
     var selectedIndex: Int = -1
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    
+    override func initView() {
+        super.initView()
+        initialisation()
+        addingLeftBarButton()
+        addingHomeBarButton()
+    }
+    
+    func initialisation(){
         tableInitialisation()
-         commentsTextView.textColor = UIColor.lightGray
+        commentsTextView.textColor = UIColor.lightGray
         commentsTextView.maxHeight = 100
         commentsTextView.layer.borderWidth = 1.0
         commentsTextView.layer.borderColor = UIColor.black.cgColor
-        
-        
-        // Do any additional setup after loading the view.
     }
 
     func tableInitialisation(){
@@ -48,6 +52,14 @@ class CartVC: UIViewController,CartTableCellDelegate,UIGestureRecognizerDelegate
         selectedIndex = tag
         cartTable.reloadData()
         
+    }
+    
+    override func leftNavButtonAction() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    override func homeButtonAction() {
+        self.dismiss(animated: true, completion: nil)
     }
 
     @IBAction func tapAction(_ sender: Any) {

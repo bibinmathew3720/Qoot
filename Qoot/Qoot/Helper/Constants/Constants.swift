@@ -45,6 +45,8 @@ struct Constant{
     struct ImageNames {
         static let placeholderImage = "placeholder"
         static let backArrow = "leftArrow"
+        static let cartIcon = "cartIcon"
+        static let homeIcon = "homeIcon"
     }
     
     struct SegueIdentifiers {

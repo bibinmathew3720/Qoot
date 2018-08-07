@@ -20,7 +20,8 @@ class SearchResultsVC: BaseViewController {
     func initialisation(){
        self.title = "Qoot".localiz()
        addingLeftBarButton()
-      addRightNavBarIcon()
+      addCartIconOnly()
+      addHomeIconAndCartIcon()
         searchResultsTV.register(UINib.init(nibName: "SearchResultsTVC", bundle: nil), forCellReuseIdentifier: "searchResults")
     }
     func localisation(){

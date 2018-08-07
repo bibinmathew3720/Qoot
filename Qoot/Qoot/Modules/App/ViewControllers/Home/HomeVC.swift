@@ -40,7 +40,7 @@ class HomeVC: BaseViewController {
         initialisation()
         localisation()
         addingLeftBarButton()
-        addRightNavBarIcon()
+        addCartIconOnly()
         self.leftButton?.setImage(UIImage(named: "hamburger"), for: UIControlState.normal)
     }
     

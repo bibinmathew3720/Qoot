@@ -20,9 +20,9 @@ class MenuVC: BaseViewController {
     @IBOutlet weak var menuTableView: UITableView!
     
     var titleArray = ["Offers".localiz(),"Support".localiz()]
-    var imageArray = [#imageLiteral(resourceName: "myWallet"),#imageLiteral(resourceName: "myWallet")]
+    var imageArray = [#imageLiteral(resourceName: "offers"),#imageLiteral(resourceName: "support")]
     var titleArrayAccount = ["MyOrders".localiz(),"MyWallet".localiz(),"Offers".localiz(),"Support".localiz(),"Settings".localiz()]
-    var imageArrayAccount =  [#imageLiteral(resourceName: "myWallet"),#imageLiteral(resourceName: "myWallet"),#imageLiteral(resourceName: "myWallet"),#imageLiteral(resourceName: "myWallet"),#imageLiteral(resourceName: "myWallet")]
+    var imageArrayAccount =  [#imageLiteral(resourceName: "myOrders"),#imageLiteral(resourceName: "myWallet"),#imageLiteral(resourceName: "offers"),#imageLiteral(resourceName: "support"),#imageLiteral(resourceName: "settings")]
     
     
     override func viewDidLoad() {

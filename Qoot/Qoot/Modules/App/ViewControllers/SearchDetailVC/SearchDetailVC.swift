@@ -32,6 +32,7 @@ class SearchDetailVC: BaseViewController {
     func initialisation(){
         self.title = "Qoot".localiz()
         addingLeftBarButton()
+        addRightNavBarIcon()
         menuTableView.register(UINib.init(nibName: "MenuTVC", bundle: nil), forCellReuseIdentifier: "menuTVC")
     }
     

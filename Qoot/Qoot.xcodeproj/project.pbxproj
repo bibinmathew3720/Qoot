@@ -12,6 +12,10 @@
 		BC93070421181F7600D129B7 /* CartVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC93070221181F7600D129B7 /* CartVC.xib */; };
 		BC9307092118319A00D129B7 /* CartTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9307072118319A00D129B7 /* CartTableCell.swift */; };
 		BC93070A2118319A00D129B7 /* CartTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC9307082118319A00D129B7 /* CartTableCell.xib */; };
+		BC9C16A0211948D500ED49A4 /* OrderListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9C169B211948D500ED49A4 /* OrderListVC.swift */; };
+		BC9C16A1211948D500ED49A4 /* OrderListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC9C169C211948D500ED49A4 /* OrderListVC.xib */; };
+		BC9C16A2211948D500ED49A4 /* PastOrderTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9C169E211948D500ED49A4 /* PastOrderTableCell.swift */; };
+		BC9C16A3211948D500ED49A4 /* PastOrderTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC9C169F211948D500ED49A4 /* PastOrderTableCell.xib */; };
 		D00FACD22112DF1200C8C176 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00FACD12112DF1200C8C176 /* AppDelegate.swift */; };
 		D00FACD72112DF1300C8C176 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D00FACD52112DF1300C8C176 /* Main.storyboard */; };
 		D00FACDA2112DF1300C8C176 /* Qoot.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D00FACD82112DF1300C8C176 /* Qoot.xcdatamodeld */; };
@@ -74,6 +78,10 @@
 		BC93070221181F7600D129B7 /* CartVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartVC.xib; sourceTree = "<group>"; };
 		BC9307072118319A00D129B7 /* CartTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableCell.swift; sourceTree = "<group>"; };
 		BC9307082118319A00D129B7 /* CartTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartTableCell.xib; sourceTree = "<group>"; };
+		BC9C169B211948D500ED49A4 /* OrderListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderListVC.swift; sourceTree = "<group>"; };
+		BC9C169C211948D500ED49A4 /* OrderListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderListVC.xib; sourceTree = "<group>"; };
+		BC9C169E211948D500ED49A4 /* PastOrderTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastOrderTableCell.swift; sourceTree = "<group>"; };
+		BC9C169F211948D500ED49A4 /* PastOrderTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PastOrderTableCell.xib; sourceTree = "<group>"; };
 		D00FACCE2112DF1200C8C176 /* Qoot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Qoot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D00FACD12112DF1200C8C176 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D00FACD62112DF1300C8C176 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -174,6 +182,33 @@
 				BC9307082118319A00D129B7 /* CartTableCell.xib */,
 			);
 			path = CartCell;
+			sourceTree = "<group>";
+		};
+		BC9C1699211948D500ED49A4 /* OrderList */ = {
+			isa = PBXGroup;
+			children = (
+				BC9C169A211948D500ED49A4 /* Controller */,
+				BC9C169D211948D500ED49A4 /* ItemCell */,
+			);
+			path = OrderList;
+			sourceTree = "<group>";
+		};
+		BC9C169A211948D500ED49A4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BC9C169B211948D500ED49A4 /* OrderListVC.swift */,
+				BC9C169C211948D500ED49A4 /* OrderListVC.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		BC9C169D211948D500ED49A4 /* ItemCell */ = {
+			isa = PBXGroup;
+			children = (
+				BC9C169E211948D500ED49A4 /* PastOrderTableCell.swift */,
+				BC9C169F211948D500ED49A4 /* PastOrderTableCell.xib */,
+			);
+			path = ItemCell;
 			sourceTree = "<group>";
 		};
 		D00FACC52112DF1200C8C176 = {
@@ -398,6 +433,7 @@
 		D01888B1211539CA00B01946 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				BC9C1699211948D500ED49A4 /* OrderList */,
 				D05D50692118635800645956 /* SearchDetailVC */,
 				BC93070021181F4400D129B7 /* Cart */,
 				D05D505A2118003500645956 /* SearchResultsVC */,
@@ -614,9 +650,11 @@
 				D01888B6211539CA00B01946 /* HomeVC.xib in Resources */,
 				D05D506D2118635800645956 /* SearchDetailVC.xib in Resources */,
 				D01888BE21153A0E00B01946 /* ProductDetailVC.xib in Resources */,
+				BC9C16A3211948D500ED49A4 /* PastOrderTableCell.xib in Resources */,
 				D01888C921153A1800B01946 /* HomeCollectionCell.xib in Resources */,
 				D0F9E11A21161B1F004F7833 /* ManuTVC.xib in Resources */,
 				D00FACDC2112DF2200C8C176 /* Assets.xcassets in Resources */,
+				BC9C16A1211948D500ED49A4 /* OrderListVC.xib in Resources */,
 				D01888C021153A0E00B01946 /* ViewMoreVC.xib in Resources */,
 				D05D505E2118005400645956 /* SearchResultsVC.xib in Resources */,
 				BC93070421181F7600D129B7 /* CartVC.xib in Resources */,
@@ -695,12 +733,14 @@
 				D01888C821153A1800B01946 /* HomeCollectionCell.swift in Sources */,
 				D00FAD1A2112EE5D00C8C176 /* UserManager.swift in Sources */,
 				BC93070321181F7600D129B7 /* CartVC.swift in Sources */,
+				BC9C16A2211948D500ED49A4 /* PastOrderTableCell.swift in Sources */,
 				D00FAD2A2112EE5D00C8C176 /* CCUtility.swift in Sources */,
 				D00FAD1E2112EE5D00C8C176 /* CLNetworkModel.swift in Sources */,
 				D00FAD262112EE5D00C8C176 /* UIViewExtensions.swift in Sources */,
 				BC9307092118319A00D129B7 /* CartTableCell.swift in Sources */,
 				D01888BD21153A0E00B01946 /* ProductDetailVC.swift in Sources */,
 				D05D505D2118005400645956 /* SearchResultsVC.swift in Sources */,
+				BC9C16A0211948D500ED49A4 /* OrderListVC.swift in Sources */,
 				D00FAD232112EE5D00C8C176 /* StringExtensions.swift in Sources */,
 				D0C865642113608400383A48 /* DashboardVC.swift in Sources */,
 				D00FAD1C2112EE5D00C8C176 /* CLBaseService.swift in Sources */,

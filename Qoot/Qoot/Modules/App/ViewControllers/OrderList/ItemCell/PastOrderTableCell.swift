@@ -10,6 +10,7 @@ import UIKit
 
 class PastOrderTableCell: UITableViewCell {
 
+    @IBOutlet var tableViewHeightConstraint: NSLayoutConstraint!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

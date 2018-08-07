@@ -26,9 +26,10 @@
                         <constraint firstAttribute="height" constant="40" id="ezY-hG-yyU"/>
                     </constraints>
                     <segments>
-                        <segment title="First"/>
-                        <segment title="Second"/>
+                        <segment title=""/>
+                        <segment title=""/>
                     </segments>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </segmentedControl>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="E5s-wy-F4u">
                     <rect key="frame" x="10" y="90" width="355" height="567"/>

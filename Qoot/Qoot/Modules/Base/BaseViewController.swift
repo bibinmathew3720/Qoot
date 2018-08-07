@@ -11,7 +11,7 @@ import UIKit
 class BaseViewController: UIViewController {
     
     var leftButton:UIButton?
-    var rightButton:UIButton?
+    var cartLabel:UILabel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,19 +43,50 @@ class BaseViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    func addRightNavBarIcon(){
-        self.rightButton = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-        self.rightButton?.addTarget(self, action: #selector(rightNavButtonAction), for: .touchUpInside)
-        self.rightButton?.setImage(UIImage.init(named: "cartIcon"), for: UIControlState.normal)
-        var rightBarButton = UIBarButtonItem()
-        rightBarButton = UIBarButtonItem.init(customView: self.rightButton!)
-        self.navigationItem.rightBarButtonItem = rightBarButton
+    func addCartIconOnly()->UIBarButtonItem{
+        let cartButtonView = UIButton(frame: CGRect.init(x: 0, y: 0, width: 25, height: 25))
+        cartButtonView.setImage(UIImage.init(named: Constant.ImageNames.cartIcon), for: .normal)
+        cartButtonView.addTarget(self, action:  #selector(cartButtonAction), for: .touchUpInside)
+        cartButtonView.contentMode = .scaleAspectFit
+        
+        cartLabel = UILabel(frame: CGRect.init(x: 15, y: -5, width: 20, height: 20))
+        cartLabel?.backgroundColor = UIColor(red:1.00, green:0.87, blue:0.09, alpha:1.0)
+        cartLabel?.textAlignment = .center
+        cartLabel?.font = UIFont.init(name: Constant.Font.Regular, size: 12)
+        cartLabel?.layer.cornerRadius = 10
+        cartLabel?.clipsToBounds = true
+        cartLabel?.text = "1"
+        cartButtonView.addSubview(cartLabel!)
+        //updateCartLabel()
+        let rightBarButton = UIBarButtonItem(customView: cartButtonView)
+        self.navigationItem.rightBarButtonItems  = [rightBarButton]
+        return rightBarButton
     }
     
-    @objc func rightNavButtonAction(){
-        self.navigationController?.popToRootViewController(animated: true)
-        self.tabBarController?.selectedIndex = 2
+    func addHomeIconAndCartIcon(){
+        let button1 = addCartIconOnly()
+        let button2 = addingHomeBarButton()
+        self.navigationItem.rightBarButtonItems  = [button1,button2]
     }
+    
+    func addingHomeBarButton()->UIBarButtonItem{
+        let homeButton = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        homeButton.addTarget(self, action: #selector(homeButtonAction), for: .touchUpInside)
+        homeButton.setImage(UIImage.init(named: Constant.ImageNames.homeIcon), for: UIControlState.normal)
+        var homeBarButton = UIBarButtonItem()
+        homeBarButton = UIBarButtonItem.init(customView: homeButton)
+        return homeBarButton
+    }
+    
+    @objc func homeButtonAction(){
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    @objc func cartButtonAction(){
+        
+    }
+    
+    
     
     //MARK: Adding Shadow View
     

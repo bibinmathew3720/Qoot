@@ -28,7 +28,7 @@ class ProductDetailVC: BaseViewController {
         super.initView()
         localisation()
         addingLeftBarButton()
-        addRightNavBarIcon()
+        addCartIconOnly()
     }
     
     func localisation(){

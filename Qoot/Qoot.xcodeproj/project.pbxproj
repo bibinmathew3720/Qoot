@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6BBE3BB0AA2865610FEB4727 /* Pods_Qoot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0241056357D52B915276A9CD /* Pods_Qoot.framework */; };
+		BC388DE621196775002CC86A /* ItemDetailTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC388DE421196775002CC86A /* ItemDetailTableCell.swift */; };
+		BC388DE721196775002CC86A /* ItemDetailTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC388DE521196775002CC86A /* ItemDetailTableCell.xib */; };
 		BC93070321181F7600D129B7 /* CartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC93070121181F7600D129B7 /* CartVC.swift */; };
 		BC93070421181F7600D129B7 /* CartVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC93070221181F7600D129B7 /* CartVC.xib */; };
 		BC9307092118319A00D129B7 /* CartTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9307072118319A00D129B7 /* CartTableCell.swift */; };
@@ -74,6 +76,8 @@
 		0241056357D52B915276A9CD /* Pods_Qoot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Qoot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D207D2219F2B6C42392CCB5 /* Pods-Qoot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qoot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Qoot/Pods-Qoot.debug.xcconfig"; sourceTree = "<group>"; };
 		8442CA29F0944557CAEC8358 /* Pods-Qoot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qoot.release.xcconfig"; path = "Pods/Target Support Files/Pods-Qoot/Pods-Qoot.release.xcconfig"; sourceTree = "<group>"; };
+		BC388DE421196775002CC86A /* ItemDetailTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailTableCell.swift; sourceTree = "<group>"; };
+		BC388DE521196775002CC86A /* ItemDetailTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemDetailTableCell.xib; sourceTree = "<group>"; };
 		BC93070121181F7600D129B7 /* CartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartVC.swift; sourceTree = "<group>"; };
 		BC93070221181F7600D129B7 /* CartVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartVC.xib; sourceTree = "<group>"; };
 		BC9307072118319A00D129B7 /* CartTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableCell.swift; sourceTree = "<group>"; };
@@ -165,6 +169,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		BC388DE321196757002CC86A /* ItemDetailCell */ = {
+			isa = PBXGroup;
+			children = (
+				BC388DE421196775002CC86A /* ItemDetailTableCell.swift */,
+				BC388DE521196775002CC86A /* ItemDetailTableCell.xib */,
+			);
+			path = ItemDetailCell;
+			sourceTree = "<group>";
+		};
 		BC93070021181F4400D129B7 /* Cart */ = {
 			isa = PBXGroup;
 			children = (
@@ -187,6 +200,7 @@
 		BC9C1699211948D500ED49A4 /* OrderList */ = {
 			isa = PBXGroup;
 			children = (
+				BC388DE321196757002CC86A /* ItemDetailCell */,
 				BC9C169A211948D500ED49A4 /* Controller */,
 				BC9C169D211948D500ED49A4 /* ItemCell */,
 			);
@@ -660,6 +674,7 @@
 				BC93070421181F7600D129B7 /* CartVC.xib in Resources */,
 				D00FACD72112DF1300C8C176 /* Main.storyboard in Resources */,
 				D01888D021153D6D00B01946 /* MenuVC.xib in Resources */,
+				BC388DE721196775002CC86A /* ItemDetailTableCell.xib in Resources */,
 				D05D50632118025300645956 /* SearchResultsTVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -730,6 +745,7 @@
 				D00FAD192112EE5D00C8C176 /* ProductManager.swift in Sources */,
 				D05D50622118025300645956 /* SearchResultsTVC.swift in Sources */,
 				D00FAD1F2112EE5D00C8C176 /* CLNetworkUtility.swift in Sources */,
+				BC388DE621196775002CC86A /* ItemDetailTableCell.swift in Sources */,
 				D01888C821153A1800B01946 /* HomeCollectionCell.swift in Sources */,
 				D00FAD1A2112EE5D00C8C176 /* UserManager.swift in Sources */,
 				BC93070321181F7600D129B7 /* CartVC.swift in Sources */,

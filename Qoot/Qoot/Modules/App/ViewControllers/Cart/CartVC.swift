@@ -39,6 +39,11 @@ class CartVC: BaseViewController,CartTableCellDelegate,UIGestureRecognizerDelega
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func closeButtonAction(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     func plusButtonActionDelegate(with tag: Int) {
         count = count + 1
         selectedIndex = tag

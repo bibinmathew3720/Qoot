@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -22,15 +22,16 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jBi-KN-5x4">
                         <rect key="frame" x="0.0" y="55" width="120" height="40"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dOq-be-ayA">
-                                <rect key="frame" x="1" y="1" width="38.5" height="38"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dOq-be-ayA">
+                                <rect key="frame" x="1" y="1" width="39" height="38"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="negativeIcon"/>
                                 <connections>
                                     <action selector="minusButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="7I7-yE-Wgi"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FrK-dO-bwx">
-                                <rect key="frame" x="40.5" y="1" width="38.5" height="38"/>
+                                <rect key="frame" x="41" y="1" width="38.5" height="38"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VKe-EC-Eru">
                                         <rect key="frame" x="0.0" y="0.0" width="38.5" height="38"/>
@@ -47,10 +48,10 @@
                                     <constraint firstAttribute="bottom" secondItem="VKe-EC-Eru" secondAttribute="bottom" id="z4t-X3-o2U"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EO8-OE-kow">
-                                <rect key="frame" x="80" y="1" width="39" height="38"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EO8-OE-kow">
+                                <rect key="frame" x="80.5" y="1" width="38.5" height="38"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal">
+                                <state key="normal" image="plusIconGreen">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -88,20 +89,21 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U7R-0M-w42">
-                        <rect key="frame" x="424" y="64" width="30" height="30"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U7R-0M-w42">
+                        <rect key="frame" x="424" y="60" width="30" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="kqn-V1-RFc"/>
                             <constraint firstAttribute="width" constant="30" id="p8Z-05-h7T"/>
                         </constraints>
+                        <state key="normal" image="cartCloseIcon"/>
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="U7R-0M-w42" firstAttribute="top" secondItem="bpP-qS-Ree" secondAttribute="top" constant="10" id="AXG-Xx-faH"/>
                     <constraint firstItem="7QU-bz-KTL" firstAttribute="leading" secondItem="bpP-qS-Ree" secondAttribute="leading" id="BEy-dE-74X"/>
                     <constraint firstAttribute="trailing" secondItem="U7R-0M-w42" secondAttribute="trailing" constant="1" id="LwH-Uy-aEP"/>
                     <constraint firstItem="7QU-bz-KTL" firstAttribute="bottom" secondItem="EO8-OE-kow" secondAttribute="bottom" id="ML9-sq-ABZ"/>
                     <constraint firstItem="U7R-0M-w42" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bpP-qS-Ree" secondAttribute="trailing" constant="5" id="Oft-1h-YIP"/>
+                    <constraint firstItem="U7R-0M-w42" firstAttribute="centerY" secondItem="jBi-KN-5x4" secondAttribute="centerY" id="U1E-jO-dnz"/>
                     <constraint firstItem="bpP-qS-Ree" firstAttribute="leading" secondItem="jBi-KN-5x4" secondAttribute="trailing" constant="10" id="oqu-VW-Tto"/>
                     <constraint firstItem="dOq-be-ayA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="1" id="p4Y-e4-db6"/>
                     <constraint firstItem="7QU-bz-KTL" firstAttribute="top" secondItem="bpP-qS-Ree" secondAttribute="bottom" constant="5" id="rbR-de-cPY"/>
@@ -115,4 +117,9 @@
             <point key="canvasLocation" x="33.5" y="-1.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="cartCloseIcon" width="15" height="15"/>
+        <image name="negativeIcon" width="10" height="10"/>
+        <image name="plusIconGreen" width="10" height="10"/>
+    </resources>
 </document>

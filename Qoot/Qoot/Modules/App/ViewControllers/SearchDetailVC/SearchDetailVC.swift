@@ -92,4 +92,19 @@ extension SearchDetailVC : UITableViewDelegate,UITableViewDataSource {
         return CGFloat(rowHieght)
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = Bundle.main.loadNibNamed("MenuHeaderView", owner: self, options: nil)?.first as! MenuHeaderView
+        //headerView.setterMethod(orderDetails: historyDetailsModel[section])
+        //headerView.delegate = self
+//        if selectedIndex == section{
+//            headerView.viewButton.setTitle("close".localiz(), for: .normal)
+//        }
+        headerView.tag = section
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
+    }
+    
 }

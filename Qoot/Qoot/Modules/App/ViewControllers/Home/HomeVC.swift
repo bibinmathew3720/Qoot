@@ -182,8 +182,7 @@ extension HomeVC:UICollectionViewDataSource,UICollectionViewDelegate{
             self.navigationController?.pushViewController(viewMoreVC, animated: true)
         }
         else{
-//            let viewController:ProductDetailVC = ProductDetailVC(nibName: "ProductDetailVC", bundle: nil)
-             let viewController:OrderListVC = OrderListVC(nibName: "OrderListVC", bundle: nil)
+            let viewController:ProductDetailVC = ProductDetailVC(nibName: "ProductDetailVC", bundle: nil)
             self.navigationController?.pushViewController(viewController, animated: true)
         }
     }

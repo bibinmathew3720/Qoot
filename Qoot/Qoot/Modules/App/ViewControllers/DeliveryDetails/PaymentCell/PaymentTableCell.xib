@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="paymentCell" rowHeight="88" id="KGk-i7-Jjw" customClass="PaymentTableCell" customModule="Qoot" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="435" height="88"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="435" height="87.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YAp-5v-hls">
+                        <rect key="frame" x="15" y="25.5" width="35" height="35"/>
+                        <color key="backgroundColor" red="0.58039215690000001" green="0.75686274509999996" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="35" id="MjI-dQ-WyS"/>
+                            <constraint firstAttribute="height" constant="35" id="rBc-DO-Yv5"/>
+                        </constraints>
+                        <connections>
+                            <action selector="paymentButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ONo-Ij-6LR"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oqR-wG-jU6">
+                        <rect key="frame" x="60" y="43.5" width="0.0" height="0.0"/>
+                        <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="26F-cw-fKg">
+                        <rect key="frame" x="385" y="25.5" width="35" height="35"/>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="oqR-wG-jU6" firstAttribute="leading" secondItem="YAp-5v-hls" secondAttribute="trailing" constant="10" id="5OV-ld-FU9"/>
+                    <constraint firstItem="26F-cw-fKg" firstAttribute="centerY" secondItem="YAp-5v-hls" secondAttribute="centerY" id="AAD-Fn-FWA"/>
+                    <constraint firstItem="26F-cw-fKg" firstAttribute="width" secondItem="YAp-5v-hls" secondAttribute="width" id="Bhz-au-0Yp"/>
+                    <constraint firstItem="YAp-5v-hls" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Ewl-OO-LHz"/>
+                    <constraint firstItem="26F-cw-fKg" firstAttribute="height" secondItem="YAp-5v-hls" secondAttribute="height" id="Nre-aV-H7N"/>
+                    <constraint firstItem="oqR-wG-jU6" firstAttribute="centerY" secondItem="YAp-5v-hls" secondAttribute="centerY" id="a12-k7-DJh"/>
+                    <constraint firstAttribute="trailing" secondItem="26F-cw-fKg" secondAttribute="trailing" constant="15" id="tFC-a2-vMj"/>
+                    <constraint firstItem="YAp-5v-hls" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="v6I-0s-pim"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="paymentSelectionButton" destination="YAp-5v-hls" id="qOU-mf-FwZ"/>
+                <outlet property="paymentTypeLabel" destination="oqR-wG-jU6" id="jK9-hC-1f6"/>
+            </connections>
+            <point key="canvasLocation" x="36.5" y="74"/>
+        </tableViewCell>
+    </objects>
+</document>

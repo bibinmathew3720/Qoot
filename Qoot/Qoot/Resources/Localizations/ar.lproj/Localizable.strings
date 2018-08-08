@@ -70,3 +70,10 @@
 "Menu" = "قائمة طعام";
 "Reviews" = "التعليقات";
 "Info" = "معلومات";
+
+//Delivery
+
+"COD" = "Cash on Delivery";
+"Paypal" = "Paypal";
+"Visa" = "Visa Debit Card";
+"Wallet" = "Pay via Wallet";

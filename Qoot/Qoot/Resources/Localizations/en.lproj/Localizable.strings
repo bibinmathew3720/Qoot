@@ -70,3 +70,10 @@
 "Menu" = "Menu";
 "Reviews" = "Reviews";
 "Info" = "Info";
+
+//Delivery
+
+"COD" = "Cash on Delivery";
+"Paypal" = "Paypal";
+"Visa" = "Visa Debit Card";
+"Wallet" = "Pay via Wallet";

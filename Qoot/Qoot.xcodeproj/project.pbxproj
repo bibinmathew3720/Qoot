@@ -10,6 +10,12 @@
 		6BBE3BB0AA2865610FEB4727 /* Pods_Qoot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0241056357D52B915276A9CD /* Pods_Qoot.framework */; };
 		BC388DE621196775002CC86A /* ItemDetailTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC388DE421196775002CC86A /* ItemDetailTableCell.swift */; };
 		BC388DE721196775002CC86A /* ItemDetailTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC388DE521196775002CC86A /* ItemDetailTableCell.xib */; };
+		BC388DEC21198BA1002CC86A /* DeliveryDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC388DEA21198BA1002CC86A /* DeliveryDetailsVC.swift */; };
+		BC388DED21198BA1002CC86A /* DeliveryDetailsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC388DEB21198BA1002CC86A /* DeliveryDetailsVC.xib */; };
+		BC388DF12119928C002CC86A /* AddressTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC388DEF2119928C002CC86A /* AddressTableCell.swift */; };
+		BC388DF22119928C002CC86A /* AddressTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC388DF02119928C002CC86A /* AddressTableCell.xib */; };
+		BC388DF62119A2A6002CC86A /* PaymentTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC388DF42119A2A6002CC86A /* PaymentTableCell.swift */; };
+		BC388DF72119A2A6002CC86A /* PaymentTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC388DF52119A2A6002CC86A /* PaymentTableCell.xib */; };
 		BC93070321181F7600D129B7 /* CartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC93070121181F7600D129B7 /* CartVC.swift */; };
 		BC93070421181F7600D129B7 /* CartVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC93070221181F7600D129B7 /* CartVC.xib */; };
 		BC9307092118319A00D129B7 /* CartTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9307072118319A00D129B7 /* CartTableCell.swift */; };
@@ -78,6 +84,12 @@
 		8442CA29F0944557CAEC8358 /* Pods-Qoot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qoot.release.xcconfig"; path = "Pods/Target Support Files/Pods-Qoot/Pods-Qoot.release.xcconfig"; sourceTree = "<group>"; };
 		BC388DE421196775002CC86A /* ItemDetailTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailTableCell.swift; sourceTree = "<group>"; };
 		BC388DE521196775002CC86A /* ItemDetailTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemDetailTableCell.xib; sourceTree = "<group>"; };
+		BC388DEA21198BA1002CC86A /* DeliveryDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryDetailsVC.swift; sourceTree = "<group>"; };
+		BC388DEB21198BA1002CC86A /* DeliveryDetailsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeliveryDetailsVC.xib; sourceTree = "<group>"; };
+		BC388DEF2119928C002CC86A /* AddressTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressTableCell.swift; sourceTree = "<group>"; };
+		BC388DF02119928C002CC86A /* AddressTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressTableCell.xib; sourceTree = "<group>"; };
+		BC388DF42119A2A6002CC86A /* PaymentTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentTableCell.swift; sourceTree = "<group>"; };
+		BC388DF52119A2A6002CC86A /* PaymentTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentTableCell.xib; sourceTree = "<group>"; };
 		BC93070121181F7600D129B7 /* CartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartVC.swift; sourceTree = "<group>"; };
 		BC93070221181F7600D129B7 /* CartVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartVC.xib; sourceTree = "<group>"; };
 		BC9307072118319A00D129B7 /* CartTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableCell.swift; sourceTree = "<group>"; };
@@ -176,6 +188,35 @@
 				BC388DE521196775002CC86A /* ItemDetailTableCell.xib */,
 			);
 			path = ItemDetailCell;
+			sourceTree = "<group>";
+		};
+		BC388DE921198B85002CC86A /* DeliveryDetails */ = {
+			isa = PBXGroup;
+			children = (
+				BC388DF32119A28C002CC86A /* PaymentCell */,
+				BC388DEE21199261002CC86A /* Cell */,
+				BC388DEA21198BA1002CC86A /* DeliveryDetailsVC.swift */,
+				BC388DEB21198BA1002CC86A /* DeliveryDetailsVC.xib */,
+			);
+			path = DeliveryDetails;
+			sourceTree = "<group>";
+		};
+		BC388DEE21199261002CC86A /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				BC388DEF2119928C002CC86A /* AddressTableCell.swift */,
+				BC388DF02119928C002CC86A /* AddressTableCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		BC388DF32119A28C002CC86A /* PaymentCell */ = {
+			isa = PBXGroup;
+			children = (
+				BC388DF42119A2A6002CC86A /* PaymentTableCell.swift */,
+				BC388DF52119A2A6002CC86A /* PaymentTableCell.xib */,
+			);
+			path = PaymentCell;
 			sourceTree = "<group>";
 		};
 		BC93070021181F4400D129B7 /* Cart */ = {
@@ -447,6 +488,7 @@
 		D01888B1211539CA00B01946 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				BC388DE921198B85002CC86A /* DeliveryDetails */,
 				BC9C1699211948D500ED49A4 /* OrderList */,
 				D05D50692118635800645956 /* SearchDetailVC */,
 				BC93070021181F4400D129B7 /* Cart */,
@@ -661,6 +703,7 @@
 				D01888CB21153A1800B01946 /* HomeTableCell.xib in Resources */,
 				BC93070A2118319A00D129B7 /* CartTableCell.xib in Resources */,
 				D05D50722118734E00645956 /* MenuTVC.xib in Resources */,
+				BC388DED21198BA1002CC86A /* DeliveryDetailsVC.xib in Resources */,
 				D01888B6211539CA00B01946 /* HomeVC.xib in Resources */,
 				D05D506D2118635800645956 /* SearchDetailVC.xib in Resources */,
 				D01888BE21153A0E00B01946 /* ProductDetailVC.xib in Resources */,
@@ -672,10 +715,12 @@
 				D01888C021153A0E00B01946 /* ViewMoreVC.xib in Resources */,
 				D05D505E2118005400645956 /* SearchResultsVC.xib in Resources */,
 				BC93070421181F7600D129B7 /* CartVC.xib in Resources */,
+				BC388DF72119A2A6002CC86A /* PaymentTableCell.xib in Resources */,
 				D00FACD72112DF1300C8C176 /* Main.storyboard in Resources */,
 				D01888D021153D6D00B01946 /* MenuVC.xib in Resources */,
 				BC388DE721196775002CC86A /* ItemDetailTableCell.xib in Resources */,
 				D05D50632118025300645956 /* SearchResultsTVC.xib in Resources */,
+				BC388DF22119928C002CC86A /* AddressTableCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -745,6 +790,7 @@
 				D00FAD192112EE5D00C8C176 /* ProductManager.swift in Sources */,
 				D05D50622118025300645956 /* SearchResultsTVC.swift in Sources */,
 				D00FAD1F2112EE5D00C8C176 /* CLNetworkUtility.swift in Sources */,
+				BC388DF62119A2A6002CC86A /* PaymentTableCell.swift in Sources */,
 				BC388DE621196775002CC86A /* ItemDetailTableCell.swift in Sources */,
 				D01888C821153A1800B01946 /* HomeCollectionCell.swift in Sources */,
 				D00FAD1A2112EE5D00C8C176 /* UserManager.swift in Sources */,
@@ -761,6 +807,7 @@
 				D0C865642113608400383A48 /* DashboardVC.swift in Sources */,
 				D00FAD1C2112EE5D00C8C176 /* CLBaseService.swift in Sources */,
 				D00FAD282112EE5D00C8C176 /* L012Localizer.swift in Sources */,
+				BC388DEC21198BA1002CC86A /* DeliveryDetailsVC.swift in Sources */,
 				D00FAD272112EE5D00C8C176 /* LanguageManger.swift in Sources */,
 				D01888CF21153D6D00B01946 /* MenuVC.swift in Sources */,
 				D01888AE2115388800B01946 /* ExSlideMenuController.swift in Sources */,
@@ -771,6 +818,7 @@
 				D05D506C2118635800645956 /* SearchDetailVC.swift in Sources */,
 				D00FAD1B2112EE5D00C8C176 /* ApplicationController.swift in Sources */,
 				D00FAD292112EE5D00C8C176 /* L102Language.swift in Sources */,
+				BC388DF12119928C002CC86A /* AddressTableCell.swift in Sources */,
 				D01888CA21153A1800B01946 /* HomeTableCell.swift in Sources */,
 				D00FACDA2112DF1300C8C176 /* Qoot.xcdatamodeld in Sources */,
 				D00FAD1D2112EE5D00C8C176 /* CLNetworkManager.swift in Sources */,

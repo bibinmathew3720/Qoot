@@ -18,6 +18,8 @@
 		BC9C16A1211948D500ED49A4 /* OrderListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC9C169C211948D500ED49A4 /* OrderListVC.xib */; };
 		BC9C16A2211948D500ED49A4 /* PastOrderTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9C169E211948D500ED49A4 /* PastOrderTableCell.swift */; };
 		BC9C16A3211948D500ED49A4 /* PastOrderTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC9C169F211948D500ED49A4 /* PastOrderTableCell.xib */; };
+		D00A25CE211A82A6008B4D00 /* MenuHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A25CD211A82A6008B4D00 /* MenuHeaderView.swift */; };
+		D00A25D0211A82BC008B4D00 /* MenuHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D00A25CF211A82BC008B4D00 /* MenuHeaderView.xib */; };
 		D00FACD22112DF1200C8C176 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00FACD12112DF1200C8C176 /* AppDelegate.swift */; };
 		D00FACD72112DF1300C8C176 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D00FACD52112DF1300C8C176 /* Main.storyboard */; };
 		D00FACDA2112DF1300C8C176 /* Qoot.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D00FACD82112DF1300C8C176 /* Qoot.xcdatamodeld */; };
@@ -86,6 +88,8 @@
 		BC9C169C211948D500ED49A4 /* OrderListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderListVC.xib; sourceTree = "<group>"; };
 		BC9C169E211948D500ED49A4 /* PastOrderTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastOrderTableCell.swift; sourceTree = "<group>"; };
 		BC9C169F211948D500ED49A4 /* PastOrderTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PastOrderTableCell.xib; sourceTree = "<group>"; };
+		D00A25CD211A82A6008B4D00 /* MenuHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuHeaderView.swift; sourceTree = "<group>"; };
+		D00A25CF211A82BC008B4D00 /* MenuHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuHeaderView.xib; sourceTree = "<group>"; };
 		D00FACCE2112DF1200C8C176 /* Qoot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Qoot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D00FACD12112DF1200C8C176 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D00FACD62112DF1300C8C176 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -223,6 +227,15 @@
 				BC9C169F211948D500ED49A4 /* PastOrderTableCell.xib */,
 			);
 			path = ItemCell;
+			sourceTree = "<group>";
+		};
+		D00A25CC211A8280008B4D00 /* MenuHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				D00A25CD211A82A6008B4D00 /* MenuHeaderView.swift */,
+				D00A25CF211A82BC008B4D00 /* MenuHeaderView.xib */,
+			);
+			path = MenuHeaderView;
 			sourceTree = "<group>";
 		};
 		D00FACC52112DF1200C8C176 = {
@@ -545,6 +558,7 @@
 		D05D50692118635800645956 /* SearchDetailVC */ = {
 			isa = PBXGroup;
 			children = (
+				D00A25CC211A8280008B4D00 /* MenuHeaderView */,
 				D05D506E2118732D00645956 /* MenuTVC */,
 				D05D506A2118635800645956 /* SearchDetailVC.swift */,
 				D05D506B2118635800645956 /* SearchDetailVC.xib */,
@@ -673,6 +687,7 @@
 				D05D505E2118005400645956 /* SearchResultsVC.xib in Resources */,
 				BC93070421181F7600D129B7 /* CartVC.xib in Resources */,
 				D00FACD72112DF1300C8C176 /* Main.storyboard in Resources */,
+				D00A25D0211A82BC008B4D00 /* MenuHeaderView.xib in Resources */,
 				D01888D021153D6D00B01946 /* MenuVC.xib in Resources */,
 				BC388DE721196775002CC86A /* ItemDetailTableCell.xib in Resources */,
 				D05D50632118025300645956 /* SearchResultsTVC.xib in Resources */,
@@ -733,6 +748,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D00A25CE211A82A6008B4D00 /* MenuHeaderView.swift in Sources */,
 				D00FAD242112EE5D00C8C176 /* UIColorExtension.swift in Sources */,
 				D00FAD202112EE5D00C8C176 /* Reachability.m in Sources */,
 				D00FAD222112EE5D00C8C176 /* CoreDataHandler.swift in Sources */,

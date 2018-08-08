@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FD2-jI-vlo">
-                        <rect key="frame" x="10" y="14.5" width="60" height="60"/>
+                        <rect key="frame" x="5" y="14.5" width="60" height="60"/>
                         <color key="backgroundColor" red="0.58039215690000001" green="0.75686274509999996" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="60" id="Enl-g6-w45"/>
@@ -33,13 +33,13 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Classic Brownies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7wf-eG-6J3">
-                        <rect key="frame" x="75" y="14" width="125.5" height="20"/>
+                        <rect key="frame" x="70" y="14" width="125.5" height="20"/>
                         <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="18"/>
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6*6 cm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JqD-tJ-pwI">
-                        <rect key="frame" x="75" y="36" width="42" height="16"/>
+                        <rect key="frame" x="70" y="36" width="42" height="16"/>
                         <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="14"/>
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -75,7 +75,7 @@
                     <constraint firstItem="aYu-x0-sHH" firstAttribute="top" secondItem="qAd-vs-n0C" secondAttribute="bottom" constant="5" id="XfG-Dh-XlS"/>
                     <constraint firstAttribute="bottom" secondItem="sDo-gI-F36" secondAttribute="bottom" id="bw8-sn-Jaf"/>
                     <constraint firstItem="JqD-tJ-pwI" firstAttribute="top" secondItem="7wf-eG-6J3" secondAttribute="bottom" constant="2" id="dy4-w3-txQ"/>
-                    <constraint firstItem="FD2-jI-vlo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="fJd-St-tHo"/>
+                    <constraint firstItem="FD2-jI-vlo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="fJd-St-tHo"/>
                     <constraint firstItem="7wf-eG-6J3" firstAttribute="top" secondItem="FD2-jI-vlo" secondAttribute="top" id="hDl-U5-Acs"/>
                     <constraint firstAttribute="trailing" secondItem="qAd-vs-n0C" secondAttribute="trailing" constant="5" id="nma-Q9-dQu"/>
                     <constraint firstItem="7wf-eG-6J3" firstAttribute="leading" secondItem="FD2-jI-vlo" secondAttribute="trailing" constant="5" id="x4N-rz-k0e"/>

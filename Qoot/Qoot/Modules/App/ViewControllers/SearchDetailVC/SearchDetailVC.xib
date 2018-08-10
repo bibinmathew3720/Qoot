@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchDetailVC" customModule="Qoot" customModuleProvider="target">
             <connections>
+                <outlet property="customView" destination="lw6-8R-J6k" id="RKX-wo-rvq"/>
                 <outlet property="customerRatingTitleLabel" destination="ZFh-cy-tzZ" id="x8Q-0p-r9h"/>
                 <outlet property="deliveryFeeLabel" destination="3NT-Ix-Kmq" id="zAc-Yx-FKh"/>
                 <outlet property="deliveryFeeTitleLabel" destination="NJv-Ou-YV8" id="ylL-ZT-cIS"/>
@@ -194,6 +195,9 @@
                         <segment title="Info"/>
                     </segments>
                     <color key="tintColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <connections>
+                        <action selector="segmentControlAction:" destination="-1" eventType="valueChanged" id="EJo-co-oAU"/>
+                    </connections>
                 </segmentedControl>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dRT-OM-4a0">
                     <rect key="frame" x="10" y="278" width="355" height="379"/>
@@ -203,6 +207,10 @@
                         <outlet property="delegate" destination="-1" id="X6I-XN-tzG"/>
                     </connections>
                 </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lw6-8R-J6k">
+                    <rect key="frame" x="10" y="278" width="355" height="379"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -212,7 +220,11 @@
                 <constraint firstItem="q4a-7M-I61" firstAttribute="trailing" secondItem="Znz-9I-U7K" secondAttribute="trailing" id="Fil-s3-wvm"/>
                 <constraint firstItem="dRT-OM-4a0" firstAttribute="trailing" secondItem="q4a-7M-I61" secondAttribute="trailing" id="M8d-3H-xWY"/>
                 <constraint firstItem="Znz-9I-U7K" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="70" id="aO5-Cm-1C8"/>
+                <constraint firstItem="lw6-8R-J6k" firstAttribute="top" secondItem="dRT-OM-4a0" secondAttribute="top" id="dQN-Xn-6rY"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="dRT-OM-4a0" secondAttribute="bottom" constant="10" id="fCQ-WW-ktQ"/>
+                <constraint firstItem="lw6-8R-J6k" firstAttribute="leading" secondItem="dRT-OM-4a0" secondAttribute="leading" id="h8q-3k-h5p"/>
+                <constraint firstItem="lw6-8R-J6k" firstAttribute="trailing" secondItem="dRT-OM-4a0" secondAttribute="trailing" id="jtt-T9-N6y"/>
+                <constraint firstItem="lw6-8R-J6k" firstAttribute="bottom" secondItem="dRT-OM-4a0" secondAttribute="bottom" id="neZ-ap-nBE"/>
                 <constraint firstItem="q4a-7M-I61" firstAttribute="top" secondItem="Znz-9I-U7K" secondAttribute="bottom" constant="10" id="tIk-Px-mWA"/>
                 <constraint firstItem="Znz-9I-U7K" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="v8h-MN-zz2"/>
                 <constraint firstItem="dRT-OM-4a0" firstAttribute="top" secondItem="q4a-7M-I61" secondAttribute="bottom" constant="10" id="zId-Hq-Nug"/>

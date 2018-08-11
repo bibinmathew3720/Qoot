@@ -10,8 +10,13 @@ import UIKit
 import GrowingTextView
 
 class CartVC: BaseViewController,CartTableCellDelegate,UIGestureRecognizerDelegate{
- 
+    @IBOutlet weak var yourCartLabel: UILabel!
+    @IBOutlet weak var deliveryFeeLabel: UILabel!
+    @IBOutlet weak var subTotalLabel: UILabel!
     @IBOutlet var commentsTextView: GrowingTextView!
+    @IBOutlet weak var proceedToCheckOutButton: UIButton!
+    
+    
     @IBOutlet var cartTable: UITableView!
     var count: Int = 1
     var selectedIndex: Int = -1
@@ -19,16 +24,25 @@ class CartVC: BaseViewController,CartTableCellDelegate,UIGestureRecognizerDelega
     override func initView() {
         super.initView()
         initialisation()
+        localization()
         addingLeftBarButton()
         addingHomeBarButton()
     }
     
     func initialisation(){
+        self.title = "Qoot".localiz()
         tableInitialisation()
         commentsTextView.textColor = UIColor.lightGray
         commentsTextView.maxHeight = 100
         commentsTextView.layer.borderWidth = 1.0
         commentsTextView.layer.borderColor = UIColor.black.cgColor
+    }
+    
+    func localization(){
+        yourCartLabel.text = "Your Cart".localiz()
+        deliveryFeeLabel.text = "Delivery Fee".localiz()
+        subTotalLabel.text = "Sub Total".localiz()
+        proceedToCheckOutButton.setTitle("PROCEEDTOCHECKOUT".localiz(), for: UIControlState.normal)
     }
 
     func tableInitialisation(){
@@ -105,7 +119,7 @@ extension CartVC: UITextViewDelegate {
     }
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
-            textView.text = "Comments if any"
+            textView.text = "Comments if any".localiz()
             textView.textColor = UIColor.lightGray
         }
     }

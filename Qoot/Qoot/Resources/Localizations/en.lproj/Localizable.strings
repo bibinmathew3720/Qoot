@@ -78,3 +78,12 @@
 "Paypal" = "Paypal";
 "Visa" = "Visa Debit Card";
 "Wallet" = "Pay via Wallet";
+
+//Cart List
+
+"Your Cart" = "Your Cart";
+"Delivery Fee" = "Delivery Fee";
+"Sub Total" = "Sub Total";
+"Comments if any" = "Comments if any";
+"PROCEEDTOCHECKOUT" = "PROCEED TO CHECKOUT";
+

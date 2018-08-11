@@ -14,7 +14,11 @@
             <connections>
                 <outlet property="cartTable" destination="g0G-Hc-OuW" id="nJu-lx-ykL"/>
                 <outlet property="commentsTextView" destination="yga-Uj-Log" id="J1B-Hk-iiR"/>
+                <outlet property="deliveryFeeLabel" destination="fIS-XD-iLl" id="LjJ-Cb-hsi"/>
+                <outlet property="proceedToCheckOutButton" destination="T0k-HA-Ow5" id="E5w-gH-Kwq"/>
+                <outlet property="subTotalLabel" destination="uTt-54-NHc" id="eh5-jS-jDY"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="yourCartLabel" destination="E4a-oA-KBX" id="csw-81-EPB"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

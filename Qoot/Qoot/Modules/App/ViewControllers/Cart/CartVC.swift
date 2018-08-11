@@ -81,8 +81,14 @@ class CartVC: BaseViewController,CartTableCellDelegate,UIGestureRecognizerDelega
         self.dismiss(animated: true, completion: nil)
     }
 
+    @IBAction func proceedToCheckoutAction(_ sender: UIButton) {
+        let delivertDetailVC = DeliveryDetailsVC.init(nibName: "DeliveryDetailsVC", bundle: nil)
+        self.navigationController?.pushViewController(delivertDetailVC, animated: true)
+    }
+    
     @IBAction func tapAction(_ sender: Any) {
         view.endEditing(true)
+       
     }
 }
 extension CartVC : UITableViewDelegate,UITableViewDataSource {

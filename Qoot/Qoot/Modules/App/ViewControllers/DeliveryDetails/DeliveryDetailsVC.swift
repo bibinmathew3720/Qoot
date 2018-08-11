@@ -8,7 +8,7 @@
 let PAY_FIELDS = ["COD".localiz(),"Paypal".localiz(),"Visa".localiz(),"Wallet".localiz()]
 import UIKit
 
-class DeliveryDetailsVC: UIViewController,PaymentTableCellDelegate {
+class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate {
     @IBOutlet var dateTextField: UITextField!
     @IBOutlet var toolbar: UIToolbar!
     @IBOutlet var promoCodeTextField: UITextField!
@@ -21,13 +21,18 @@ class DeliveryDetailsVC: UIViewController,PaymentTableCellDelegate {
     @IBOutlet var mapViewHeight: NSLayoutConstraint!
     var selectedDate:String = ""
     var selectedIndex: Int = -1
-    override func viewDidLoad() {
-        super.viewDidLoad()
+   
+    override func initView() {
+        initialisation()
+        addingLeftBarButton()
+    }
+    
+    func initialisation(){
+         self.title = "Qoot".localiz()
         addressTable.register(UINib(nibName: "AddressTableCell", bundle: nil), forCellReuseIdentifier: "Cell")
         paymentTable.register(UINib(nibName: "PaymentTableCell", bundle: nil), forCellReuseIdentifier: "paymentCell")
         dateTextField.inputAccessoryView = toolbar
         dateTextField.inputView = datePicker
-       
     }
    
     @IBAction func datePickerAction(_ sender: UIDatePicker) {

@@ -132,6 +132,9 @@
                                     <state key="normal" title="PROCEED TO CHECKOUT">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
+                                    <connections>
+                                        <action selector="proceedToCheckoutAction:" destination="-1" eventType="touchUpInside" id="JrV-n4-e4c"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

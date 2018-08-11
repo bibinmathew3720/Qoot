@@ -32,12 +32,8 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="B6i-Di-V8N">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="downArrowBlack" translatesAutoresizingMaskIntoConstraints="NO" id="B6i-Di-V8N">
                         <rect key="frame" x="302" y="29.5" width="10" height="10"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="10" id="s2Q-sW-7gy"/>
-                            <constraint firstAttribute="width" constant="10" id="vNk-Zc-KkZ"/>
-                        </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OfN-Mf-04S">
                         <rect key="frame" x="5" y="70" width="322" height="1"/>
@@ -69,4 +65,7 @@
             <point key="canvasLocation" x="19" y="38.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="downArrowBlack" width="10" height="10"/>
+    </resources>
 </document>

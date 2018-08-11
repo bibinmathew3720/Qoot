@@ -21,8 +21,8 @@ class MenuVC: BaseViewController {
     
     var titleArray = ["Offers".localiz(),"Support".localiz()]
     var imageArray = [#imageLiteral(resourceName: "offers"),#imageLiteral(resourceName: "support")]
-    var titleArrayAccount = ["MyOrders".localiz(),"MyWallet".localiz(),"Offers".localiz(),"Support".localiz(),"Settings".localiz()]
-    var imageArrayAccount =  [#imageLiteral(resourceName: "myOrders"),#imageLiteral(resourceName: "myWallet"),#imageLiteral(resourceName: "offers"),#imageLiteral(resourceName: "support"),#imageLiteral(resourceName: "settings")]
+    var titleArrayAccount = ["MyOrders".localiz(),"MyWallet".localiz(),"Offers".localiz(),"Support".localiz(),"Settings".localiz(),"Logout".localiz()]
+    var imageArrayAccount =  [#imageLiteral(resourceName: "myOrders"),#imageLiteral(resourceName: "myWallet"),#imageLiteral(resourceName: "offers"),#imageLiteral(resourceName: "support"),#imageLiteral(resourceName: "settings"),#imageLiteral(resourceName: "logout")]
     
     
     override func viewDidLoad() {

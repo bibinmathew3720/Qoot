@@ -55,7 +55,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9FR-WW-uVT">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="servicesAvailable" translatesAutoresizingMaskIntoConstraints="NO" id="9FR-WW-uVT">
                     <rect key="frame" x="10" y="308.5" width="25" height="25"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="25" id="6n9-ti-nxj"/>
@@ -171,12 +171,8 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="77w-T7-xwY">
                     <rect key="frame" x="188" y="398.5" width="167" height="44"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lEm-fN-cMy">
-                            <rect key="frame" x="10" y="9.5" width="25" height="25"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="25" id="1Ar-yT-qJp"/>
-                                <constraint firstAttribute="width" constant="25" id="CeJ-kj-YAO"/>
-                            </constraints>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plusIconWhite" translatesAutoresizingMaskIntoConstraints="NO" id="lEm-fN-cMy">
+                            <rect key="frame" x="10" y="14.5" width="15" height="15"/>
                         </imageView>
                     </subviews>
                     <color key="backgroundColor" red="0.63529411759999999" green="0.1019607843" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -193,7 +189,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ADD TO CART" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Hg-Xy-jnp">
-                    <rect key="frame" x="236" y="412.5" width="103.5" height="17"/>
+                    <rect key="frame" x="226" y="412.5" width="103.5" height="17"/>
                     <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="15"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
@@ -244,7 +240,9 @@
         <image name="bgImage" width="360" height="640"/>
         <image name="negativeIcon" width="10" height="10"/>
         <image name="plusIconGreen" width="10" height="10"/>
+        <image name="plusIconWhite" width="15" height="15"/>
         <image name="preparationTime" width="20" height="20"/>
         <image name="quantity" width="20" height="20"/>
+        <image name="servicesAvailable" width="20" height="20"/>
     </resources>
 </document>

@@ -16,6 +16,8 @@
 		BC388DF22119928C002CC86A /* AddressTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC388DF02119928C002CC86A /* AddressTableCell.xib */; };
 		BC388DF62119A2A6002CC86A /* PaymentTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC388DF42119A2A6002CC86A /* PaymentTableCell.swift */; };
 		BC388DF72119A2A6002CC86A /* PaymentTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC388DF52119A2A6002CC86A /* PaymentTableCell.xib */; };
+		BC835EF7212039FB00A08247 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC835EF5212039FB00A08247 /* LoginViewController.swift */; };
+		BC835EF8212039FB00A08247 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC835EF6212039FB00A08247 /* LoginViewController.xib */; };
 		BC93070321181F7600D129B7 /* CartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC93070121181F7600D129B7 /* CartVC.swift */; };
 		BC93070421181F7600D129B7 /* CartVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC93070221181F7600D129B7 /* CartVC.xib */; };
 		BC9307092118319A00D129B7 /* CartTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9307072118319A00D129B7 /* CartTableCell.swift */; };
@@ -98,6 +100,8 @@
 		BC388DF02119928C002CC86A /* AddressTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressTableCell.xib; sourceTree = "<group>"; };
 		BC388DF42119A2A6002CC86A /* PaymentTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentTableCell.swift; sourceTree = "<group>"; };
 		BC388DF52119A2A6002CC86A /* PaymentTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentTableCell.xib; sourceTree = "<group>"; };
+		BC835EF5212039FB00A08247 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		BC835EF6212039FB00A08247 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		BC93070121181F7600D129B7 /* CartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartVC.swift; sourceTree = "<group>"; };
 		BC93070221181F7600D129B7 /* CartVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartVC.xib; sourceTree = "<group>"; };
 		BC9307072118319A00D129B7 /* CartTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableCell.swift; sourceTree = "<group>"; };
@@ -233,6 +237,15 @@
 				BC388DF52119A2A6002CC86A /* PaymentTableCell.xib */,
 			);
 			path = PaymentCell;
+			sourceTree = "<group>";
+		};
+		BC835EF4212039E600A08247 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				BC835EF5212039FB00A08247 /* LoginViewController.swift */,
+				BC835EF6212039FB00A08247 /* LoginViewController.xib */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		BC93070021181F4400D129B7 /* Cart */ = {
@@ -540,6 +553,7 @@
 		D01888B1211539CA00B01946 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				BC835EF4212039E600A08247 /* Login */,
 				BC388DE921198B85002CC86A /* DeliveryDetails */,
 				BC9C1699211948D500ED49A4 /* OrderList */,
 				D05D50692118635800645956 /* SearchDetailVC */,
@@ -766,6 +780,7 @@
 				D01888BE21153A0E00B01946 /* ProductDetailVC.xib in Resources */,
 				BC9C16A3211948D500ED49A4 /* PastOrderTableCell.xib in Resources */,
 				D01888C921153A1800B01946 /* HomeCollectionCell.xib in Resources */,
+				BC835EF8212039FB00A08247 /* LoginViewController.xib in Resources */,
 				D0F9E11A21161B1F004F7833 /* ManuTVC.xib in Resources */,
 				D00FACDC2112DF2200C8C176 /* Assets.xcassets in Resources */,
 				BC9C16A1211948D500ED49A4 /* OrderListVC.xib in Resources */,
@@ -876,6 +891,7 @@
 				D01888CF21153D6D00B01946 /* MenuVC.swift in Sources */,
 				D01888AE2115388800B01946 /* ExSlideMenuController.swift in Sources */,
 				D00FAD172112EE5D00C8C176 /* CartManager.swift in Sources */,
+				BC835EF7212039FB00A08247 /* LoginViewController.swift in Sources */,
 				D00FACD22112DF1200C8C176 /* AppDelegate.swift in Sources */,
 				D05D50712118734E00645956 /* MenuTVC.swift in Sources */,
 				D0C865672113739500383A48 /* RegisterVC.swift in Sources */,

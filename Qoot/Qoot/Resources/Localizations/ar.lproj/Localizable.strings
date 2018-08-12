@@ -18,6 +18,10 @@
 "DONTHAVEANACCOUNT" = "ليس لديك حساب!";
 "REGISTER" = "تسجيل؟";
 
+//Login
+
+"LOGIN" = "LOGIN";
+
 //Register
 
 "RegisterTitle" = "تسجيل";

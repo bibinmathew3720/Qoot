@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController,UITextFieldDelegate {
+class LoginViewController: BaseViewController,UITextFieldDelegate {
     @IBOutlet var mobileTextField: UITextField!
     @IBOutlet var loginButton: UIButton!
     @IBOutlet var toolBarBoneButton: UIBarButtonItem!
@@ -16,9 +16,23 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet var toolBarCancelButton: UIBarButtonItem!
     @IBOutlet var toolBar: UIToolbar!
     @IBOutlet var passwordTextField: UITextField!
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    
+    override func initView() {
+       super.initView()
+       initialisation()
+        localisation()
+    }
+    
+    func initialisation(){
+        self.title = "Qoot".localiz()
         mobileTextField.inputAccessoryView = toolBar
+        addingLeftBarButton()
+    }
+    
+    func localisation(){
+        mobileTextField.placeholder = "MobNoPlaceholder".localiz()
+        passwordTextField.placeholder = "PwdPlaceholder".localiz()
+        loginButton.setTitle("LOGIN".localiz(), for: UIControlState.normal)
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,6 +43,8 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         view.endEditing(true)
     }
     @IBAction func loginButtonAction(_ sender: Any) {
+        UserDefaults.standard.set(true, forKey: Constant.VariableNames.isLoogedIn)
+        self.dismiss(animated: true, completion: nil)
         
     }
     @IBAction func toolBarDoneButtonAction(_ sender: Any) {
@@ -36,7 +52,9 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     }
     
     @IBAction func toolBarCancelButtonAction(_ sender: Any) {
+        view.endEditing(true)
     }
+    
     //MARK: UITextField Delegate
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

@@ -57,8 +57,8 @@ class DashboardVC: BaseViewController {
     }
     
     @IBAction func logInButtonAction(_ sender: UIButton) {
-         UserDefaults.standard.set(true, forKey: Constant.VariableNames.isLoogedIn)
-        self.dismiss(animated: true, completion: nil)
+        let loginVC = LoginViewController.init(nibName: "LoginViewController", bundle: nil)
+        self.navigationController?.pushViewController(loginVC, animated: true)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

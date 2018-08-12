@@ -10,6 +10,10 @@
 
 "Qoot" = "Qoot";
 
+//Login
+
+"LOGIN" = "LOGIN";
+
 //Dashboard
 
 "LOGINVIAFACEBOOK" = "Login via facebook";

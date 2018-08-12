@@ -9,21 +9,27 @@ let PAY_FIELDS = ["COD".localiz(),"Paypal".localiz(),"Visa".localiz(),"Wallet".l
 import UIKit
 
 class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate {
+    @IBOutlet weak var deliveryDetailsLabel: UILabel!
+     @IBOutlet var addAddressButton: UIButton!
     @IBOutlet var dateTextField: UITextField!
+     @IBOutlet var promoCodeTextField: UITextField!
+    @IBOutlet weak var paymentDetailsLabel: UILabel!
+    @IBOutlet weak var confirmButton: UIButton!
+    @IBOutlet weak var totalLabel: UILabel!
+    
     @IBOutlet var toolbar: UIToolbar!
-    @IBOutlet var promoCodeTextField: UITextField!
     @IBOutlet var paymentTable: UITableView!
     @IBOutlet var datePicker: UIDatePicker!
     @IBOutlet var addressTable: UITableView!
     @IBOutlet var closeButtonHeight: NSLayoutConstraint!
     @IBOutlet var addAddressButtonHeightConstraint: NSLayoutConstraint!
-    @IBOutlet var addAddressButton: UIButton!
     @IBOutlet var mapViewHeight: NSLayoutConstraint!
     var selectedDate:String = ""
     var selectedIndex: Int = -1
    
     override func initView() {
         initialisation()
+        localization()
         addingLeftBarButton()
     }
     
@@ -33,6 +39,16 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate {
         paymentTable.register(UINib(nibName: "PaymentTableCell", bundle: nil), forCellReuseIdentifier: "paymentCell")
         dateTextField.inputAccessoryView = toolbar
         dateTextField.inputView = datePicker
+    }
+    
+    func localization(){
+        self.deliveryDetailsLabel.text = "Delivery Details".localiz()
+        addAddressButton.setTitle("ADDNEWADDRESS".localiz(), for: UIControlState.normal)
+        dateTextField.placeholder = "CHOOSEDATEANDTIME".localiz()
+        promoCodeTextField.placeholder = "ENTERPROMOCODE".localiz()
+        paymentDetailsLabel.text = "PAYMENTDETAILS".localiz()
+        totalLabel.text = "Total".localiz()
+        confirmButton.setTitle("Confirm".localiz(), for: UIControlState.normal)
     }
    
     @IBAction func datePickerAction(_ sender: UIDatePicker) {

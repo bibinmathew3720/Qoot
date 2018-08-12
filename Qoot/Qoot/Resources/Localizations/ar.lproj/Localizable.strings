@@ -77,13 +77,6 @@
 "Reviews" = "التعليقات";
 "Info" = "معلومات";
 
-//Delivery
-
-"COD" = "Cash on Delivery";
-"Paypal" = "Paypal";
-"Visa" = "Visa Debit Card";
-"Wallet" = "Pay via Wallet";
-
 //Cart List
 
 "Your Cart" = "Your Cart";
@@ -91,3 +84,17 @@
 "Sub Total" = "Sub Total";
 "Comments if any" = "Comments if any";
 "PROCEEDTOCHECKOUT" = "PROCEED TO CHECKOUT";
+
+//Delivery Details VC
+
+"Delivery Details" = "Delivery Details";
+"ADDNEWADDRESS" = "+ADD NEW ADDRESS";
+"CHOOSEDATEANDTIME" = "Choose Date and Time";
+"ENTERPROMOCODE" = "Enter Promo Code";
+"PAYMENTDETAILS" = "Payment Details";
+"COD" = "Cash on Delivery";
+"Paypal" = "Paypal";
+"Visa" = "Visa Debit Card";
+"Wallet" = "Pay via Wallet";
+"Total" = "Total";
+"Confirm" = "Confirm";

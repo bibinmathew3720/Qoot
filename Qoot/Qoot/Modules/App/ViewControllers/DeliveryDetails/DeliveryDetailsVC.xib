@@ -16,12 +16,16 @@
                 <outlet property="addAddressButtonHeightConstraint" destination="n4M-sj-wzT" id="dae-cE-dCL"/>
                 <outlet property="addressTable" destination="h5L-pI-rGf" id="azH-aa-SGi"/>
                 <outlet property="closeButtonHeight" destination="VD3-nh-5Az" id="mbz-Ix-mQc"/>
+                <outlet property="confirmButton" destination="EpB-8Q-sfV" id="fKe-al-Q7A"/>
                 <outlet property="datePicker" destination="GWx-DK-hTJ" id="dfI-B2-Rex"/>
                 <outlet property="dateTextField" destination="0og-fQ-Phg" id="Y9e-08-2D3"/>
+                <outlet property="deliveryDetailsLabel" destination="Vni-xi-qHm" id="mCn-Ed-uMn"/>
                 <outlet property="mapViewHeight" destination="IiN-lQ-oQX" id="Azd-D0-XP3"/>
+                <outlet property="paymentDetailsLabel" destination="ngs-7M-mR2" id="deI-co-iWD"/>
                 <outlet property="paymentTable" destination="OsI-mg-Yqy" id="VbG-Es-KeC"/>
                 <outlet property="promoCodeTextField" destination="Vbt-Rs-1tX" id="PCI-Zm-SMX"/>
                 <outlet property="toolbar" destination="nTS-uf-8xx" id="ou4-cd-bpg"/>
+                <outlet property="totalLabel" destination="DcV-mD-0Rq" id="RJN-n1-YXT"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

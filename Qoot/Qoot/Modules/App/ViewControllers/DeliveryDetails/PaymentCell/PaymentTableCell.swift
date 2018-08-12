@@ -14,6 +14,7 @@ class PaymentTableCell: UITableViewCell {
     
     @IBOutlet var paymentSelectionButton: UIButton!
     @IBOutlet var paymentTypeLabel: UILabel!
+    @IBOutlet weak var paymentTypeImageView: UIImageView!
     var delegate:PaymentTableCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,10 +22,10 @@ class PaymentTableCell: UITableViewCell {
     }
     func setModel(index:Int,selectedIndex:Int) -> () {
         if index == selectedIndex{
-            paymentSelectionButton.backgroundColor = UIColor.red
+            paymentSelectionButton.isSelected = true
             paymentTypeLabel.textColor = UIColor.black
         }else{
-            paymentSelectionButton.backgroundColor = UIColor.green
+             paymentSelectionButton.isSelected = false
             paymentTypeLabel.textColor = UIColor.lightGray
         }
         

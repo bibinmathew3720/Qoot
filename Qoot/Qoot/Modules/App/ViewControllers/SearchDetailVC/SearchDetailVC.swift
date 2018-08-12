@@ -16,11 +16,14 @@ class SearchDetailVC: BaseViewController {
     @IBOutlet weak var segmentControl: UISegmentedControl!
     
     
+    @IBOutlet var customView: UIView!
     @IBOutlet weak var productImageView: UIImageView!
     @IBOutlet weak var productNameLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var deliveryFeeLabel: UILabel!
-    
+    var buttonBar =  UIView()
+    var infoView = InfoHeaderView()
+    var reviewsView = ReviewsHeaderView()
     
     
     override func initView() {
@@ -35,6 +38,29 @@ class SearchDetailVC: BaseViewController {
         addCartIconOnly()
         addHomeIconAndCartIcon()
         menuTableView.register(UINib.init(nibName: "MenuTVC", bundle: nil), forCellReuseIdentifier: "menuTVC")
+       
+        infoView = Bundle.main.loadNibNamed("InfoHeaderView", owner: self, options: nil)?.first as! InfoHeaderView
+        infoView.frame = CGRect(x: 0, y: 0 , width: customView.bounds.width, height: customView.bounds.height)
+        
+        reviewsView = Bundle.main.loadNibNamed("ReviewsHeaderView", owner: self, options: nil)?.first as! ReviewsHeaderView
+        reviewsView.frame = CGRect(x: 0, y: 0 , width: customView.bounds.width, height: customView.bounds.height)
+        customView.addSubview(reviewsView)
+        customView.addSubview(infoView)
+        
+        customView.isHidden = true
+        buttonBar.translatesAutoresizingMaskIntoConstraints = false
+        buttonBar.backgroundColor = UIColor(red:0.64, green:0.10, blue:0.36, alpha:1.0)
+        view.addSubview(buttonBar)
+        buttonBar.topAnchor.constraint(equalTo: segmentControl.bottomAnchor).isActive = true
+        buttonBar.heightAnchor.constraint(equalToConstant: 5).isActive = true
+        buttonBar.leftAnchor.constraint(equalTo: segmentControl.leftAnchor).isActive = true
+        buttonBar.widthAnchor.constraint(equalTo: segmentControl.widthAnchor, multiplier: 1 / CGFloat(segmentControl.numberOfSegments)).isActive = true
+        segmentControl.selectedSegmentIndex = 0
+        segmentControl.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.black,NSAttributedStringKey.font: UIFont(name: "TimesNewRomanPS-BoldMT", size: 17)!], for: .selected)
+        segmentControl.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.black,NSAttributedStringKey.font: UIFont(name: "TimesNewRomanPS-BoldMT", size: 17)!], for: .normal)
+        segmentControl.setTitle("Menu", forSegmentAt: 0)
+        segmentControl.setTitle("Reviews", forSegmentAt: 1)
+        segmentControl.setTitle("Info", forSegmentAt: 2)
     }
     
     func localisation(){
@@ -52,17 +78,23 @@ class SearchDetailVC: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func segmentControlAction(_ sender: Any) {
+        UIView.animate(withDuration: 0.3) {
+            self.buttonBar.frame.origin.x = ((self.segmentControl.frame.width / CGFloat(self.segmentControl.numberOfSegments)) * CGFloat(self.segmentControl.selectedSegmentIndex))
+        }
+        switch self.segmentControl.selectedSegmentIndex {
+        case 0:
+            customView.isHidden = true
+        case 1:
+            customView.isHidden = false
+            infoView.isHidden = true
+        case 2:
+            customView.isHidden = false
+            infoView.isHidden = false
+        default:
+            print("default")
+        }
     }
-    */
-
 }
 
 extension SearchDetailVC : UITableViewDelegate,UITableViewDataSource {

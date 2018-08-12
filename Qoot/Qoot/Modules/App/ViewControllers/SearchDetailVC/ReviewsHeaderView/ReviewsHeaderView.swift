@@ -18,7 +18,7 @@ class ReviewsHeaderView: UIView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+         
         deliveryView.layer.borderWidth = 3.0
         deliveryView.layer.borderColor = UIColor(red:0.58, green:0.76, blue:0.12, alpha:1.0).cgColor
         moneyView.layer.borderWidth = 3.0
@@ -27,6 +27,7 @@ class ReviewsHeaderView: UIView {
         packagingView.layer.borderColor = UIColor(red:0.58, green:0.76, blue:0.12, alpha:1.0).cgColor
         qualityView.layer.borderWidth = 3.0
         qualityView.layer.borderColor = UIColor(red:0.58, green:0.76, blue:0.12, alpha:1.0).cgColor
+        reviewsTable.register(UINib.init(nibName: "ReviewsTableCell", bundle: nil), forCellReuseIdentifier: "reviewsCell")
     }
   
         func numberOfSections(in tableView: UITableView) -> Int {
@@ -37,7 +38,7 @@ class ReviewsHeaderView: UIView {
         }
         
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ReviewsTableCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "reviewsCell", for: indexPath) as! ReviewsTableCell
             return cell
         }
     

@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchDetailVC" customModule="Qoot" customModuleProvider="target">
             <connections>
-                <outlet property="customView" destination="lw6-8R-J6k" id="RKX-wo-rvq"/>
+                <outlet property="customView" destination="lw6-8R-J6k" id="ZYd-Ti-0Uk"/>
                 <outlet property="customerRatingTitleLabel" destination="ZFh-cy-tzZ" id="x8Q-0p-r9h"/>
                 <outlet property="deliveryFeeLabel" destination="3NT-Ix-Kmq" id="zAc-Yx-FKh"/>
                 <outlet property="deliveryFeeTitleLabel" destination="NJv-Ou-YV8" id="ylL-ZT-cIS"/>
@@ -188,19 +188,20 @@
                     </constraints>
                 </view>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="q4a-7M-I61">
-                    <rect key="frame" x="10" y="240" width="355" height="29"/>
+                    <rect key="frame" x="0.0" y="240" width="375" height="29"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <segments>
                         <segment title="Menu"/>
                         <segment title="Reviews"/>
                         <segment title="Info"/>
                     </segments>
-                    <color key="tintColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <connections>
-                        <action selector="segmentControlAction:" destination="-1" eventType="valueChanged" id="EJo-co-oAU"/>
+                        <action selector="segmentControlAction:" destination="-1" eventType="valueChanged" id="V1V-XF-CMM"/>
                     </connections>
                 </segmentedControl>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dRT-OM-4a0">
-                    <rect key="frame" x="10" y="278" width="355" height="379"/>
+                    <rect key="frame" x="0.0" y="278" width="375" height="379"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="DSM-bq-6L9"/>
@@ -208,18 +209,18 @@
                     </connections>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lw6-8R-J6k">
-                    <rect key="frame" x="10" y="278" width="355" height="379"/>
+                    <rect key="frame" x="0.0" y="278" width="375" height="379"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="q4a-7M-I61" firstAttribute="leading" secondItem="Znz-9I-U7K" secondAttribute="leading" id="18j-uw-qtn"/>
+                <constraint firstItem="q4a-7M-I61" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="8xt-aZ-j5l"/>
                 <constraint firstItem="dRT-OM-4a0" firstAttribute="leading" secondItem="q4a-7M-I61" secondAttribute="leading" id="Bsy-06-I2t"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Znz-9I-U7K" secondAttribute="trailing" constant="10" id="Fh6-hu-IhO"/>
-                <constraint firstItem="q4a-7M-I61" firstAttribute="trailing" secondItem="Znz-9I-U7K" secondAttribute="trailing" id="Fil-s3-wvm"/>
                 <constraint firstItem="dRT-OM-4a0" firstAttribute="trailing" secondItem="q4a-7M-I61" secondAttribute="trailing" id="M8d-3H-xWY"/>
                 <constraint firstItem="Znz-9I-U7K" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="70" id="aO5-Cm-1C8"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="q4a-7M-I61" secondAttribute="trailing" id="bbI-EY-AwN"/>
                 <constraint firstItem="lw6-8R-J6k" firstAttribute="top" secondItem="dRT-OM-4a0" secondAttribute="top" id="dQN-Xn-6rY"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="dRT-OM-4a0" secondAttribute="bottom" constant="10" id="fCQ-WW-ktQ"/>
                 <constraint firstItem="lw6-8R-J6k" firstAttribute="leading" secondItem="dRT-OM-4a0" secondAttribute="leading" id="h8q-3k-h5p"/>

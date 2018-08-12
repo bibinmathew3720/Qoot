@@ -76,6 +76,11 @@
 "Menu" = "قائمة طعام";
 "Reviews" = "التعليقات";
 "Info" = "معلومات";
+"Location" = "Location"; //Info View
+"Delivery Service" = "Delivery Service";
+"Event Service" = "Event Service";
+"Qoot Rating" = "Qoot Rating";
+"Customer Rating" = "Customer Rating";
 
 //Cart List
 

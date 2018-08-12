@@ -58,9 +58,6 @@ class SearchDetailVC: BaseViewController {
         segmentControl.selectedSegmentIndex = 0
         segmentControl.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.black,NSAttributedStringKey.font: UIFont(name: "TimesNewRomanPS-BoldMT", size: 17)!], for: .selected)
         segmentControl.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.black,NSAttributedStringKey.font: UIFont(name: "TimesNewRomanPS-BoldMT", size: 17)!], for: .normal)
-        segmentControl.setTitle("Menu", forSegmentAt: 0)
-        segmentControl.setTitle("Reviews", forSegmentAt: 1)
-        segmentControl.setTitle("Info", forSegmentAt: 2)
     }
     
     func localisation(){

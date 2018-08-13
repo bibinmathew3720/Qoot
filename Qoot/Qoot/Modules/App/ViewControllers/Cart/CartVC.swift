@@ -20,7 +20,7 @@ class CartVC: BaseViewController,CartTableCellDelegate,UIGestureRecognizerDelega
     @IBOutlet var cartTable: UITableView!
     var count: Int = 1
     var selectedIndex: Int = -1
-    
+    var commentsTextViewPlaceholder:String?
     override func initView() {
         super.initView()
         initialisation()
@@ -31,6 +31,8 @@ class CartVC: BaseViewController,CartTableCellDelegate,UIGestureRecognizerDelega
     
     func initialisation(){
         self.title = "Qoot".localiz()
+        commentsTextViewPlaceholder = "Comments if any".localiz()
+        commentsTextView.text = commentsTextViewPlaceholder
         tableInitialisation()
         commentsTextView.textColor = UIColor.lightGray
         commentsTextView.maxHeight = 100
@@ -125,7 +127,7 @@ extension CartVC: UITextViewDelegate {
     }
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
-            textView.text = "Comments if any".localiz()
+            textView.text = commentsTextViewPlaceholder
             textView.textColor = UIColor.lightGray
         }
     }

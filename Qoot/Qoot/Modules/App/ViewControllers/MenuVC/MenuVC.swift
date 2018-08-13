@@ -70,6 +70,27 @@ class MenuVC: BaseViewController {
     }
     
     @IBAction func segmentControlAction(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            if LanguageManger.shared.currentLanguage != .en {
+                let selectedLanguage:Languages = .en
+                UserDefaults.standard.set("en" , forKey: "language")
+                LanguageManger.shared.setLanguage(language: selectedLanguage)
+                reinitialiseRoot()
+            }
+        }
+        else{
+            if LanguageManger.shared.currentLanguage != .ar {
+                let selectedLanguage:Languages = .ar
+                UserDefaults.standard.set("ar" , forKey: "language")
+                LanguageManger.shared.setLanguage(language: selectedLanguage)
+                reinitialiseRoot()
+            }
+        }
+    }
+    
+    func reinitialiseRoot(){
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.initWindow()
     }
     
     @IBAction func loginButtonAction(_ sender: UIButton) {

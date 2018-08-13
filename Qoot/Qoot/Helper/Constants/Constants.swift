@@ -13,7 +13,8 @@ import UIKit
 struct Constant{
     static let AppName = "Qoot".localiz()
     struct Font{
-        static let Regular = "Times New Roman"
+        static let Regular = "Roboto-Regular"
+        static let Bold = "Roboto-Bold"
     }
     struct Notifications{
         static let RootSettingNotification = "com.alwisal.initNotification"

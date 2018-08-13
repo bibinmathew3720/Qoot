@@ -50,6 +50,7 @@ class HomeVC: BaseViewController {
     }
     
     func initialisation(){
+        self.title = "Qoot".localiz()
         pickerTextField.inputView = pickerView
         pickerTextField.inputAccessoryView = toolBar
         pickerView.translatesAutoresizingMaskIntoConstraints = false

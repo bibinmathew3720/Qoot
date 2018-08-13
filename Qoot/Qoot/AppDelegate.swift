@@ -59,7 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = Constant.Colors.CommonMeroonColor
         let attrs = [
             NSAttributedStringKey.foregroundColor: UIColor.white,
-            NSAttributedStringKey.font: UIFont(name: Constant.Font.Regular, size: 20)!
+            NSAttributedStringKey.font: UIFont(name: Constant.Font.Bold, size: 20)!
         ]
         UINavigationBar.appearance().titleTextAttributes = attrs
     }

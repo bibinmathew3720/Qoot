@@ -8,61 +8,61 @@
 
 //Common
 
-"Qoot" = "Qoot";
-
-//Dashboard
-
-"LOGINVIAFACEBOOK" = "تسجيل الدخول عبر الفيسبوك";
-"LOGINVIAGOOGLE" = "تسجيل الدخول عبر جوجل";
-"LOGINVIAQOOT" = "تسجيل الدخول عبر Qoot";
-"DONTHAVEANACCOUNT" = "ليس لديك حساب!";
-"REGISTER" = "تسجيل؟";
+"Qoot" = "قوت";
 
 //Login
 
-"LOGIN" = "LOGIN";
+"LOGIN" = "تسجيل الدخول";
+
+//Dashboard
+
+"LOGINVIAFACEBOOK" = "facebook تسجيل الدخول عبر ";
+"LOGINVIAGOOGLE" = "Google تسجيل الدخول عبر";
+"LOGINVIAQOOT" = "Qoot تسجيل الدخول عبر ";
+"DONTHAVEANACCOUNT" = "ليس لديك حساب!";
+"REGISTER" = "تسجيل؟";
 
 //Register
 
 "RegisterTitle" = "تسجيل";
 "NamePlaceholder" = "اسم";
 "EmailPlaceholder" = "البريد الإلكتروني";
-"MobNoPlaceholder" = "رقم الهاتف المحمول";
-"PwdPlaceholder" = "كلمه السر";
-"ConfirmPwdPlaceholder" = "اعد كلمة السر";
-"Male" = "الذكر";
-"Female" = "إناثا";
+"MobNoPlaceholder" = "رقم الهاتف الجوال";
+"PwdPlaceholder" = "كلمة المرور";
+"ConfirmPwdPlaceholder" = "تأكيد كلمة المرور";
+"Male" = "ذكر";
+"Female" = "أنثى";
 "SIGNUP" = "سجل";
 
 //Menu
 
 "Login" = "تسجيل الدخول";
 "MyOrders" = "طلباتي";
-"MyWallet" = "محفظتى";
-"Offers" = "عروض";
+"MyWallet" = "محفظتي";
+"Offers" = "العروض";
 "Support" = "الدعم";
 "Settings" = "إعدادات";
 "Logout" = "الخروج";
-"SwitchToKitchen" = "Switch to Kitchen";
+"SwitchToKitchen" = "قم بالتبديل إلى المطبخ";
 
 //Home
 
-"SelectCity" = "اختر مدينتك";
-"MealType" = "نوع الوجبة";
-"Cuisine" = "أطباق";
-"KitchenName" = "اسم المطبخ";
+"SelectCity" = "حدد مدينة";
+"MealType" = "اختر نوع الوجبة";
+"Cuisine" = "حدد المطبخ";
+"KitchenName" = "اختر اسم المطبخ";
 "SEARCH" = "بحث";
-"OFFERS" = "عروض";
+"OFFERS" = "العروض";
 "READYNOW" = "جاهز الآن";
 "ViewMore" = "عرض المزيد +";
-"Offers" = "عروض";
+"Offers" = "العروض";
 "ReadyNow" = "جاهز الآن";
 
 //Product Detail Page
 
-"ServicesAvailable" = "الخدمات المتاحة";
-"PreparationTime" = "وقت التحضير";
-"Quantity" = "كمية";
+"ServicesAvailable" = "الخدمات المتاحة"; // Not get
+"PreparationTime" = "وقت التحضير:";
+"Quantity" = ":كمية";
 "AddToCart" = "أضف إلى السلة";
 
 //Search Results
@@ -73,33 +73,33 @@
 
 "Delivery" = "توصيل";
 "DeliveryFee" = "رسوم التوصيل";
-"Menu" = "قائمة طعام";
-"Reviews" = "التعليقات";
+"Menu" = "قائمة الطعام";
+"Reviews" = "تعليقات العملاء";
 "Info" = "معلومات";
-"Location" = "Location"; //Info View
-"Delivery Service" = "Delivery Service";
-"Event Service" = "Event Service";
-"Qoot Rating" = "Qoot Rating";
-"Customer Rating" = "Customer Rating";
+"Location" = "الموقع"; //Info View
+"Delivery Service" = "خدمة التوصيل";
+"Event Service" = "خدمة الحفلات";
+"Qoot Rating" = "تقييم قوت";
+"Customer Rating" = "تقييم العملاء";
 
 //Cart List
 
-"Your Cart" = "Your Cart";
-"Delivery Fee" = "Delivery Fee";
-"Sub Total" = "Sub Total";
-"Comments if any" = "Comments if any";
-"PROCEEDTOCHECKOUT" = "PROCEED TO CHECKOUT";
+"Your Cart" = "سلتك التسوق";
+"Delivery Fee" = "رسوم التوصيل";
+"Sub Total" = "المجموع الكلي";
+"Comments if any" = "ملاحظات إن وجدت";
+"PROCEEDTOCHECKOUT" = "PROCEED TO CHECKOUT"; // Not get
 
 //Delivery Details VC
 
-"Delivery Details" = "Delivery Details";
-"ADDNEWADDRESS" = "+ADD NEW ADDRESS";
-"CHOOSEDATEANDTIME" = "Choose Date and Time";
-"ENTERPROMOCODE" = "Enter Promo Code";
-"PAYMENTDETAILS" = "Payment Details";
-"COD" = "Cash on Delivery";
-"Paypal" = "Paypal";
-"Visa" = "Visa Debit Card";
-"Wallet" = "Pay via Wallet";
-"Total" = "Total";
-"Confirm" = "Confirm";
+"Delivery Details" = "تفاصيل التوصيل";
+"ADDNEWADDRESS" = "+أضف عنوانًا جديدًا";
+"CHOOSEDATEANDTIME" = "اختر التاريخ والوقت";
+"ENTERPROMOCODE" = "إدخال الرمز الترويجي";
+"PAYMENTDETAILS" = "تفاصيل الدفع";
+"COD" = "الدفع عند الاستلام";
+"Paypal" = "باي بال";
+"Visa" = "فيزا أو ماستركارد";
+"Wallet" = "ادفع عبر المحفظة";
+"Total" = "مجموع";
+"Confirm" = "تأكيد الطلب";

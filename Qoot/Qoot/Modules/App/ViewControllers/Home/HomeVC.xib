@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,6 +9,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeVC" customModule="Qoot" customModuleProvider="target">
             <connections>
@@ -55,7 +60,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="45" id="4mu-M0-A58"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                             <state key="normal" title="SEARCH">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </state>
@@ -155,81 +160,4 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="7GJ-rP-gjR" firstAttribute="centerX" secondItem="eMk-sH-gOL" secondAttribute="centerX" id="2zU-CJ-nyt"/>
-                                <constraint firstItem="cWL-nt-FrG" firstAttribute="leading" secondItem="eMk-sH-gOL" secondAttribute="leading" constant="10" id="451-hf-nAh"/>
-                                <constraint firstItem="YEH-CJ-DEe" firstAttribute="leading" secondItem="aMK-de-fdZ" secondAttribute="leading" id="5WB-6J-kIL"/>
-                                <constraint firstItem="mzU-jA-4EW" firstAttribute="top" secondItem="FeD-UO-cCh" secondAttribute="bottom" constant="10" id="5sA-hh-AlK"/>
-                                <constraint firstAttribute="bottom" secondItem="24R-5v-QNV" secondAttribute="bottom" id="6oC-lS-aDE"/>
-                                <constraint firstAttribute="trailing" secondItem="cWL-nt-FrG" secondAttribute="trailing" constant="10" id="6xp-Kg-2OG"/>
-                                <constraint firstItem="24R-5v-QNV" firstAttribute="leading" secondItem="eMk-sH-gOL" secondAttribute="leading" id="8qP-BT-aNU"/>
-                                <constraint firstAttribute="bottom" secondItem="ATD-uc-VxZ" secondAttribute="bottom" id="EVy-Y7-fIw"/>
-                                <constraint firstItem="FeD-UO-cCh" firstAttribute="leading" secondItem="aMK-de-fdZ" secondAttribute="leading" id="HdY-pP-dzP"/>
-                                <constraint firstItem="YEH-CJ-DEe" firstAttribute="top" secondItem="aMK-de-fdZ" secondAttribute="bottom" constant="10" id="QgF-z5-qxY"/>
-                                <constraint firstAttribute="trailing" secondItem="ATD-uc-VxZ" secondAttribute="trailing" id="Rpc-M0-Cmb"/>
-                                <constraint firstAttribute="bottom" secondItem="mzU-jA-4EW" secondAttribute="bottom" constant="30" id="SzL-W1-FXA"/>
-                                <constraint firstItem="YEH-CJ-DEe" firstAttribute="trailing" secondItem="cWL-nt-FrG" secondAttribute="trailing" id="Tez-co-A8y"/>
-                                <constraint firstItem="mzU-jA-4EW" firstAttribute="leading" secondItem="FeD-UO-cCh" secondAttribute="leading" id="ZDj-Lp-dy3"/>
-                                <constraint firstAttribute="trailing" secondItem="24R-5v-QNV" secondAttribute="trailing" id="aon-kQ-LzG"/>
-                                <constraint firstItem="ATD-uc-VxZ" firstAttribute="top" secondItem="eMk-sH-gOL" secondAttribute="top" id="es6-dF-coD"/>
-                                <constraint firstItem="ATD-uc-VxZ" firstAttribute="leading" secondItem="eMk-sH-gOL" secondAttribute="leading" id="gUd-Vx-g0T"/>
-                                <constraint firstItem="aMK-de-fdZ" firstAttribute="leading" secondItem="cWL-nt-FrG" secondAttribute="leading" id="hPK-1p-vMh"/>
-                                <constraint firstItem="mzU-jA-4EW" firstAttribute="trailing" secondItem="YEH-CJ-DEe" secondAttribute="trailing" id="hqj-bT-xhW"/>
-                                <constraint firstItem="aMK-de-fdZ" firstAttribute="top" secondItem="cWL-nt-FrG" secondAttribute="bottom" constant="15" id="icC-QA-V6t"/>
-                                <constraint firstItem="7GJ-rP-gjR" firstAttribute="top" secondItem="eMk-sH-gOL" secondAttribute="top" constant="30" id="n20-gJ-zbG"/>
-                                <constraint firstItem="cWL-nt-FrG" firstAttribute="top" secondItem="7GJ-rP-gjR" secondAttribute="bottom" constant="30" id="qyl-aa-7xn"/>
-                                <constraint firstItem="FeD-UO-cCh" firstAttribute="top" secondItem="YEH-CJ-DEe" secondAttribute="bottom" constant="21" id="x7E-uD-K0t"/>
-                                <constraint firstItem="24R-5v-QNV" firstAttribute="top" secondItem="eMk-sH-gOL" secondAttribute="top" id="xQQ-11-UVz"/>
-                            </constraints>
-                        </view>
-                    </subviews>
-                    <constraints>
-                        <constraint firstItem="eMk-sH-gOL" firstAttribute="leading" secondItem="72D-BP-a43" secondAttribute="leading" id="CXh-Rp-S6c"/>
-                        <constraint firstAttribute="trailing" secondItem="eMk-sH-gOL" secondAttribute="trailing" id="bNH-OI-H3H"/>
-                        <constraint firstItem="eMk-sH-gOL" firstAttribute="centerX" secondItem="72D-BP-a43" secondAttribute="centerX" id="gSD-cX-UGK"/>
-                        <constraint firstAttribute="bottom" secondItem="eMk-sH-gOL" secondAttribute="bottom" id="hjh-Vy-meB"/>
-                        <constraint firstItem="eMk-sH-gOL" firstAttribute="top" secondItem="72D-BP-a43" secondAttribute="top" id="lSY-Y0-R2Z"/>
-                    </constraints>
-                </scrollView>
-            </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <constraints>
-                <constraint firstItem="72D-BP-a43" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="K6z-4s-j3K"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="72D-BP-a43" secondAttribute="bottom" id="iFc-pt-lUK"/>
-                <constraint firstItem="72D-BP-a43" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="q3E-dZ-5TP"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="72D-BP-a43" secondAttribute="trailing" id="xD4-Fg-KRu"/>
-            </constraints>
-            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-        </view>
-        <pickerView contentMode="scaleToFill" id="YaJ-87-Ksl">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="162"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-            <connections>
-                <outlet property="dataSource" destination="-1" id="kq2-9z-UNu"/>
-                <outlet property="delegate" destination="-1" id="10j-mt-SZq"/>
-            </connections>
-            <point key="canvasLocation" x="623" y="417"/>
-        </pickerView>
-        <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="hFG-P5-MOw">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-            <viewLayoutGuide key="safeArea" id="CD9-dT-q6t"/>
-            <items>
-                <barButtonItem title="Cancel" id="wUe-lU-Drd">
-                    <connections>
-                        <action selector="toolBarCancelAction:" destination="-1" id="zlz-Mv-kkF"/>
-                    </connections>
-                </barButtonItem>
-                <barButtonItem style="plain" systemItem="flexibleSpace" id="OPO-fv-hRj"/>
-                <barButtonItem title="Done" width="75.5" id="2UI-V9-CbO">
-                    <connections>
-                        <action selector="toolBarDoneAction:" destination="-1" id="MYr-W0-0YW"/>
-                    </connections>
-                </barButtonItem>
-            </items>
-            <point key="canvasLocation" x="455" y="183"/>
-        </toolbar>
-    </objects>
-    <resources>
-        <image name="bgImage" width="360" height="640"/>
-        <image name="qootAppIcon" width="100" height="50"/>
-    </resources>
-</document>
+                                <constraint firstItem="cWL-nt-FrG" firstAttribute="leading" se

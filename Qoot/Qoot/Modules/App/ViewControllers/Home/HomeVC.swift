@@ -63,7 +63,7 @@ class HomeVC: BaseViewController {
     func localisation(){
         self.searchButton.setTitle("SEARCH".localiz(), for: UIControlState.normal)
         self.offersLabel.text = "OFFERS".localiz()
-        self.readyNowLabel.text = "READY NOW".localiz()
+        self.readyNowLabel.text = "READYNOW".localiz()
     }
 
     func tableInitialisation(){

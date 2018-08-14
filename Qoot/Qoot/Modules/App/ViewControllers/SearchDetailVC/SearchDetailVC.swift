@@ -56,8 +56,8 @@ class SearchDetailVC: BaseViewController {
         buttonBar.leftAnchor.constraint(equalTo: segmentControl.leftAnchor).isActive = true
         buttonBar.widthAnchor.constraint(equalTo: segmentControl.widthAnchor, multiplier: 1 / CGFloat(segmentControl.numberOfSegments)).isActive = true
         segmentControl.selectedSegmentIndex = 0
-        segmentControl.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.black,NSAttributedStringKey.font: UIFont(name: "TimesNewRomanPS-BoldMT", size: 17)!], for: .selected)
-        segmentControl.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.black,NSAttributedStringKey.font: UIFont(name: "TimesNewRomanPS-BoldMT", size: 17)!], for: .normal)
+        segmentControl.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.black,NSAttributedStringKey.font: UIFont(name: Constant.Font.Bold, size: 17)!], for: .selected)
+        segmentControl.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.black,NSAttributedStringKey.font: UIFont(name: Constant.Font.Bold, size: 17)!], for: .normal)
     }
     
     func localisation(){

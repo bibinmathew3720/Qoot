@@ -31,8 +31,8 @@ class OrderListVC: UIViewController,PastOrderTableCellDelegate {
         buttonBar.leftAnchor.constraint(equalTo: orderSegmentControl.leftAnchor).isActive = true
         buttonBar.widthAnchor.constraint(equalTo: orderSegmentControl.widthAnchor, multiplier: 1 / CGFloat(orderSegmentControl.numberOfSegments)).isActive = true
         orderSegmentControl.selectedSegmentIndex = 0
-        orderSegmentControl.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.black,NSAttributedStringKey.font: UIFont(name: "TimesNewRomanPS-BoldMT", size: 17)!], for: .selected)
-        orderSegmentControl.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.black,NSAttributedStringKey.font: UIFont(name: "TimesNewRomanPS-BoldMT", size: 17)!], for: .normal)
+        orderSegmentControl.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.black,NSAttributedStringKey.font: UIFont(name: Constant.Font.Bold, size: 17)!], for: .selected)
+        orderSegmentControl.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.black,NSAttributedStringKey.font: UIFont(name: Constant.Font.Bold, size: 17)!], for: .normal)
         orderSegmentControl.setTitle("Ongoing Orders", forSegmentAt: 0)
         orderSegmentControl.setTitle("Past Orders", forSegmentAt: 1)
     }

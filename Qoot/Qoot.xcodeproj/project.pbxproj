@@ -77,6 +77,8 @@
 		D01AF59921243E8E00DCEDEC /* WalkThroughVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D01AF59721243E8E00DCEDEC /* WalkThroughVC.xib */; };
 		D01AF59D21243F1600DCEDEC /* LanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01AF59B21243F1600DCEDEC /* LanguageVC.swift */; };
 		D01AF59E21243F1600DCEDEC /* LanguageVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D01AF59C21243F1600DCEDEC /* LanguageVC.xib */; };
+		D01AF5A221244FEA00DCEDEC /* WalkThroughCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01AF5A021244FEA00DCEDEC /* WalkThroughCVC.swift */; };
+		D01AF5A321244FEA00DCEDEC /* WalkThroughCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D01AF5A121244FEA00DCEDEC /* WalkThroughCVC.xib */; };
 		D05D505D2118005400645956 /* SearchResultsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05D505B2118005400645956 /* SearchResultsVC.swift */; };
 		D05D505E2118005400645956 /* SearchResultsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05D505C2118005400645956 /* SearchResultsVC.xib */; };
 		D05D50622118025300645956 /* SearchResultsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05D50602118025300645956 /* SearchResultsTVC.swift */; };
@@ -174,6 +176,8 @@
 		D01AF59721243E8E00DCEDEC /* WalkThroughVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalkThroughVC.xib; sourceTree = "<group>"; };
 		D01AF59B21243F1600DCEDEC /* LanguageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageVC.swift; sourceTree = "<group>"; };
 		D01AF59C21243F1600DCEDEC /* LanguageVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LanguageVC.xib; sourceTree = "<group>"; };
+		D01AF5A021244FEA00DCEDEC /* WalkThroughCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkThroughCVC.swift; sourceTree = "<group>"; };
+		D01AF5A121244FEA00DCEDEC /* WalkThroughCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalkThroughCVC.xib; sourceTree = "<group>"; };
 		D05D505B2118005400645956 /* SearchResultsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsVC.swift; sourceTree = "<group>"; };
 		D05D505C2118005400645956 /* SearchResultsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultsVC.xib; sourceTree = "<group>"; };
 		D05D50602118025300645956 /* SearchResultsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsTVC.swift; sourceTree = "<group>"; };
@@ -649,6 +653,7 @@
 		D01AF59521243E4800DCEDEC /* WalkThroughVC */ = {
 			isa = PBXGroup;
 			children = (
+				D01AF59F21244FA900DCEDEC /* WalkThroughCell */,
 				D01AF59621243E8E00DCEDEC /* WalkThroughVC.swift */,
 				D01AF59721243E8E00DCEDEC /* WalkThroughVC.xib */,
 			);
@@ -662,6 +667,15 @@
 				D01AF59C21243F1600DCEDEC /* LanguageVC.xib */,
 			);
 			path = LanguageVC;
+			sourceTree = "<group>";
+		};
+		D01AF59F21244FA900DCEDEC /* WalkThroughCell */ = {
+			isa = PBXGroup;
+			children = (
+				D01AF5A021244FEA00DCEDEC /* WalkThroughCVC.swift */,
+				D01AF5A121244FEA00DCEDEC /* WalkThroughCVC.xib */,
+			);
+			path = WalkThroughCell;
 			sourceTree = "<group>";
 		};
 		D05D505A2118003500645956 /* SearchResultsVC */ = {
@@ -830,6 +844,7 @@
 				BC9C16A1211948D500ED49A4 /* OrderListVC.xib in Resources */,
 				D01888C021153A0E00B01946 /* ViewMoreVC.xib in Resources */,
 				D05D505E2118005400645956 /* SearchResultsVC.xib in Resources */,
+				D01AF5A321244FEA00DCEDEC /* WalkThroughCVC.xib in Resources */,
 				BCB66BD7211D7D3F002FB1FF /* ReviewsTableCell.xib in Resources */,
 				BC93070421181F7600D129B7 /* CartVC.xib in Resources */,
 				BC388DF72119A2A6002CC86A /* PaymentTableCell.xib in Resources */,
@@ -937,6 +952,7 @@
 				BC388DEC21198BA1002CC86A /* DeliveryDetailsVC.swift in Sources */,
 				D00FAD272112EE5D00C8C176 /* LanguageManger.swift in Sources */,
 				D01888CF21153D6D00B01946 /* MenuVC.swift in Sources */,
+				D01AF5A221244FEA00DCEDEC /* WalkThroughCVC.swift in Sources */,
 				D01888AE2115388800B01946 /* ExSlideMenuController.swift in Sources */,
 				D00FAD172112EE5D00C8C176 /* CartManager.swift in Sources */,
 				BC835EF7212039FB00A08247 /* LoginViewController.swift in Sources */,

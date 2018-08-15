@@ -10,6 +10,18 @@
 
 "Qoot" = "Qoot";
 
+//WalkThrough
+
+"Walkthrough1_Title" = "Are you hungry?";
+"Walkthrough1_SubTitle" = "Got for it";
+"Walkthrough2_Title" = "Food is on your way";
+"Walkthrough2_SubTitle" = "The food is delivered to you and\njust ready to serve and feel the\ntaste";
+"Walkthrough3_Title" = "Pick your Meal";
+"Walkthrough3_SubTitle" = "Pick the dish you want or find new\nbest tastes based on reviews and rating";
+"Walkthrough4_Title" = "Search and Find";
+"Walkthrough4_SubTitle" = "Browse among the best kitchens\naround you and find the one for\nyour taste";
+
+
 //Login
 
 "LOGIN" = "LOGIN";

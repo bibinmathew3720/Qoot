@@ -28,22 +28,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func initWindow(){
-        let homeVC = HomeVC.init(nibName: "HomeVC", bundle: nil)
-        let homeNavVC = UINavigationController.init(rootViewController: homeVC)
-        
-        let menuVC = MenuVC.init(nibName: "MenuVC", bundle: nil)
-
-        let viewMoreVC = ViewMoreVC.init(nibName: "ViewMoreVC", bundle: nil)
-        
-        var slideMenuController:ExSlideMenuController?
-        if LanguageManger.shared.currentLanguage == .en {
-            slideMenuController = ExSlideMenuController(mainViewController: homeNavVC, leftMenuViewController:menuVC , rightMenuViewController: viewMoreVC)
+        let secondLogin = UserDefaults.standard.bool(forKey: Constant.VariableNames.isSecondLogIn)
+        if secondLogin{
+            let homeVC = HomeVC.init(nibName: "HomeVC", bundle: nil)
+            let homeNavVC = UINavigationController.init(rootViewController: homeVC)
+            let menuVC = MenuVC.init(nibName: "MenuVC", bundle: nil)
+            let viewMoreVC = ViewMoreVC.init(nibName: "ViewMoreVC", bundle: nil)
+            var slideMenuController:ExSlideMenuController?
+            if LanguageManger.shared.currentLanguage == .en {
+                slideMenuController = ExSlideMenuController(mainViewController: homeNavVC, leftMenuViewController:menuVC , rightMenuViewController: viewMoreVC)
+            }
+            else{
+                slideMenuController = ExSlideMenuController(mainViewController: homeNavVC, leftMenuViewController:viewMoreVC , rightMenuViewController: menuVC)
+            }
+            self.window?.rootViewController = slideMenuController
         }
         else{
-           slideMenuController = ExSlideMenuController(mainViewController: homeNavVC, leftMenuViewController:viewMoreVC , rightMenuViewController: menuVC)
+            let languageVC = LanguageVC.init(nibName: "LanguageVC", bundle: nil)
+            self.window?.rootViewController = languageVC
         }
-        self.window?.rootViewController = slideMenuController
-    
     }
     
     func localisationMethod(){

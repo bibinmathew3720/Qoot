@@ -23,10 +23,12 @@ struct Constant{
     }
     struct VariableNames {
         static let isLoogedIn = "isLoggedIn"
+        static let isSecondLogIn = "isSecLogin"
         static let userToken = "userToken"
         static let userName = "userName"
         static let userImage = "userImage"
         static let userId = "userId"
+        
     }
     
     struct Colors {

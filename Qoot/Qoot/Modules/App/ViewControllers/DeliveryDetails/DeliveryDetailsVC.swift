@@ -6,6 +6,7 @@
 //  Copyright © 2018 Cl. All rights reserved.
 //
 let PAY_FIELDS = ["COD".localiz(),"Paypal".localiz(),"Visa".localiz(),"Wallet".localiz()]
+let PAYMENT_TYPE_IMAGES = [#imageLiteral(resourceName: "cod"),#imageLiteral(resourceName: "paypal"),#imageLiteral(resourceName: "visa"),#imageLiteral(resourceName: "payviawallet")]
 import UIKit
 
 class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate {
@@ -109,6 +110,7 @@ extension DeliveryDetailsVC : UITableViewDelegate,UITableViewDataSource {
             payCell.delegate = self
             payCell.tag = indexPath.row
             payCell.paymentTypeLabel.text = PAY_FIELDS[indexPath.row]
+            payCell.paymentTypeImageView.image = PAYMENT_TYPE_IMAGES[indexPath.row]
             payCell.setModel(index:indexPath.row,selectedIndex:selectedIndex)
             cell = payCell
         }

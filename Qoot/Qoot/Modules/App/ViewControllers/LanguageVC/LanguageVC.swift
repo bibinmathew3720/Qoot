@@ -9,14 +9,20 @@
 import UIKit
 
 class LanguageVC: BaseViewController {
-
+    @IBOutlet weak var segmentControl: UISegmentedControl!
+    
     override func initView() {
         super.initView()
         initialisation()
     }
     
     func initialisation(){
-        
+        if LanguageManger.shared.currentLanguage == .en {
+            segmentControl.selectedSegmentIndex = 0
+        }
+        else{
+            segmentControl.selectedSegmentIndex = 1
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,6 +34,27 @@ class LanguageVC: BaseViewController {
     }
     
     @IBAction func startButtonAction(_ sender: UIButton) {
+        if segmentControl.selectedSegmentIndex == 0 {
+            if LanguageManger.shared.currentLanguage != .en {
+                let selectedLanguage:Languages = .en
+                UserDefaults.standard.set("en" , forKey: "language")
+                LanguageManger.shared.setLanguage(language: selectedLanguage)
+            }
+        }
+        else{
+            if LanguageManger.shared.currentLanguage != .ar {
+                let selectedLanguage:Languages = .ar
+                UserDefaults.standard.set("ar" , forKey: "language")
+                LanguageManger.shared.setLanguage(language: selectedLanguage)
+            }
+        }
+        setWalkThroughView()
+    }
+    
+    func setWalkThroughView(){
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let walkThroughVC = WalkThroughVC.init(nibName: "WalkThroughVC", bundle: nil)
+        appDelegate.window?.rootViewController = walkThroughVC
     }
     
     /*

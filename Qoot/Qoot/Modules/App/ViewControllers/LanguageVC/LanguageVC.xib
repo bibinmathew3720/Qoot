@@ -17,6 +17,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LanguageVC" customModule="Qoot" customModuleProvider="target">
             <connections>
+                <outlet property="segmentControl" destination="5sP-Ta-X7x" id="J6K-8R-F6b"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

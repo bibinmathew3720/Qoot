@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -43,16 +43,14 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="26F-cw-fKg">
-                        <rect key="frame" x="385" y="25.5" width="35" height="35"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="paypal" translatesAutoresizingMaskIntoConstraints="NO" id="26F-cw-fKg">
+                        <rect key="frame" x="400" y="33" width="20" height="20"/>
                     </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="oqR-wG-jU6" firstAttribute="leading" secondItem="YAp-5v-hls" secondAttribute="trailing" constant="10" id="5OV-ld-FU9"/>
                     <constraint firstItem="26F-cw-fKg" firstAttribute="centerY" secondItem="YAp-5v-hls" secondAttribute="centerY" id="AAD-Fn-FWA"/>
-                    <constraint firstItem="26F-cw-fKg" firstAttribute="width" secondItem="YAp-5v-hls" secondAttribute="width" id="Bhz-au-0Yp"/>
                     <constraint firstItem="YAp-5v-hls" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Ewl-OO-LHz"/>
-                    <constraint firstItem="26F-cw-fKg" firstAttribute="height" secondItem="YAp-5v-hls" secondAttribute="height" id="Nre-aV-H7N"/>
                     <constraint firstItem="oqR-wG-jU6" firstAttribute="centerY" secondItem="YAp-5v-hls" secondAttribute="centerY" id="a12-k7-DJh"/>
                     <constraint firstAttribute="trailing" secondItem="26F-cw-fKg" secondAttribute="trailing" constant="15" id="tFC-a2-vMj"/>
                     <constraint firstItem="YAp-5v-hls" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="v6I-0s-pim"/>
@@ -70,5 +68,6 @@
     <resources>
         <image name="buttonSelImage" width="15" height="15"/>
         <image name="buttonUnselImage" width="15" height="15"/>
+        <image name="paypal" width="20" height="20"/>
     </resources>
 </document>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -20,6 +20,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MenuVC" customModule="Qoot" customModuleProvider="target">
             <connections>
+                <outlet property="languageSegment" destination="CXZ-Qr-twP" id="MKy-nY-f5Z"/>
                 <outlet property="logInButton" destination="ml6-mO-xXA" id="XbF-IT-ueo"/>
                 <outlet property="logInButtonView" destination="Ba2-AU-PwU" id="dEq-Uf-ABO"/>
                 <outlet property="loginButtonViewHeightConstraint" destination="aBf-5s-KK6" id="NqM-jA-d8H"/>

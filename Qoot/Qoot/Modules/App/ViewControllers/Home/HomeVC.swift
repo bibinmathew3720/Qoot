@@ -46,7 +46,12 @@ class HomeVC: BaseViewController {
     }
     
     override func leftNavButtonAction() {
-        self.slideMenuController()?.openLeft()
+        if LanguageManger.shared.currentLanguage == .en {
+            self.slideMenuController()?.openLeft()
+        }
+        else{
+            self.slideMenuController()?.openRight()
+        }
     }
     
     func initialisation(){

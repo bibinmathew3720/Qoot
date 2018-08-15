@@ -34,9 +34,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let menuVC = MenuVC.init(nibName: "MenuVC", bundle: nil)
 
         let viewMoreVC = ViewMoreVC.init(nibName: "ViewMoreVC", bundle: nil)
-
-
-         let slideMenuController = ExSlideMenuController(mainViewController: homeNavVC, leftMenuViewController:menuVC , rightMenuViewController: viewMoreVC)
+        
+        var slideMenuController:ExSlideMenuController?
+        if LanguageManger.shared.currentLanguage == .en {
+            slideMenuController = ExSlideMenuController(mainViewController: homeNavVC, leftMenuViewController:menuVC , rightMenuViewController: viewMoreVC)
+        }
+        else{
+           slideMenuController = ExSlideMenuController(mainViewController: homeNavVC, leftMenuViewController:viewMoreVC , rightMenuViewController: menuVC)
+        }
         self.window?.rootViewController = slideMenuController
     
     }

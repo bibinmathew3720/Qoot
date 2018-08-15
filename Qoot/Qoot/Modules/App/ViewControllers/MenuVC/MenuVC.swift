@@ -19,6 +19,7 @@ class MenuVC: BaseViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var logInButton: UIButton!
     @IBOutlet weak var menuTableView: UITableView!
+    @IBOutlet weak var languageSegment: UISegmentedControl!
     
     var titleArray = ["Offers".localiz(),"Support".localiz()]
     var imageArray = [#imageLiteral(resourceName: "offers"),#imageLiteral(resourceName: "support")]
@@ -36,6 +37,12 @@ class MenuVC: BaseViewController {
     
     func initialisation(){
          menuTableView.register(UINib.init(nibName: "ManuTVC", bundle: nil), forCellReuseIdentifier: "menuTVC")
+        if LanguageManger.shared.currentLanguage == .en {
+            languageSegment.selectedSegmentIndex = 0
+        }
+        else{
+           languageSegment.selectedSegmentIndex = 1
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -10,6 +10,19 @@
 
 "Qoot" = "قوت";
 
+//WalkThrough
+
+"SKIP" = "تخطي";
+"GOTIT" = "استلمتها";
+"Walkthrough1_Title" = "جيعان؟";
+"Walkthrough1_SubTitle" = "استلمتها";
+"Walkthrough2_Title" = "الاكل جاي في الطريق";
+"Walkthrough2_SubTitle" = "الأكل يوصلك جاهز للتقديم والاستمتاع بالطعم";
+"Walkthrough3_Title" = "اختر وجبتك";
+"Walkthrough3_SubTitle" = "اختار الطبق الي يعجبك او استشكف اطباق جديدة عن طريق مراجعة التقيمات";
+"Walkthrough4_Title" = "البحث والعثور";
+"Walkthrough4_SubTitle" = "تصفح افضل ما تقدمه افضل المطابخ في منطقك وحتلاقي الطبق المناسب لذوقك";
+
 //Login
 
 "LOGIN" = "تسجيل الدخول";

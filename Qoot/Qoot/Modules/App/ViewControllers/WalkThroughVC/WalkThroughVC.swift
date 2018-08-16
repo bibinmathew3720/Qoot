@@ -11,12 +11,19 @@ import UIKit
 class WalkThroughVC: BaseViewController {
     @IBOutlet weak var walkThroughCV: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
-    
+    @IBOutlet weak var skipButton: UIButton!
+    @IBOutlet weak var gotitButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        localisation()
         walkThroughCV.register(UINib(nibName: "WalkThroughCVC", bundle: nil), forCellWithReuseIdentifier:"walkThroughCell" )
 
         // Do any additional setup after loading the view.
+    }
+    
+    func localisation(){
+        gotitButton.setTitle("GOTIT".localiz(), for: UIControlState.normal)
+        skipButton.setTitle("SKIP".localiz(), for: UIControlState.normal)
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,6 +32,17 @@ class WalkThroughVC: BaseViewController {
     }
     
     @IBAction func skipButtonAction(_ sender: UIButton) {
+        setHomePage()
+    }
+    
+    @IBAction func gotItButtonAction(_ sender: UIButton) {
+        setHomePage()
+    }
+    
+    func setHomePage(){
+        UserDefaults.standard.set(true, forKey: Constant.VariableNames.isSecondLogIn)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+       appDelegate.initWindow()
     }
     
     /*
@@ -94,6 +112,13 @@ extension WalkThroughVC:UICollectionViewDataSource,UICollectionViewDelegate,UICo
         
         let pageNumber = round(scrollView.contentOffset.x / scrollView.frame.size.width)
         pageControl.currentPage = Int(pageNumber)
+        if pageNumber == 3{
+            gotitButton.isHidden = false
+        }
+        else{
+           gotitButton.isHidden = true
+        }
+        
     }
     
 }

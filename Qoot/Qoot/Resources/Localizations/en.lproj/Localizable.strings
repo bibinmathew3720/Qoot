@@ -12,6 +12,8 @@
 
 //WalkThrough
 
+"SKIP" = "SKIP";
+"GOTIT" = "GOT IT";
 "Walkthrough1_Title" = "Are you hungry?";
 "Walkthrough1_SubTitle" = "Got for it";
 "Walkthrough2_Title" = "Food is on your way";

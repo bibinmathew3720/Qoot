@@ -16,6 +16,7 @@
 //Common
 
 "Qoot" = "قوت";
+"OK" = "حسنا";
 
 //WalkThrough
 
@@ -33,6 +34,15 @@
 //Login
 
 "LOGIN" = "تسجيل الدخول";
+
+//OTP VC
+
+"CONFIRMCODEMGE" = "لقد أرسلنا رمز التأكيد عبر الرسائل القصيرة إلى";
+"ENTERCODEBELOW" = " أدخل الرمز في الأسفل";
+"DIDNTRECEIVESMS" = "لم تتلقى أي رسالة قصيرة؟";
+"RESENDOTP" = "إعادة إرسال رقم الرسالة القصيرة";
+"VERIFYOTP" = "التحقق من رمز الرسالة القصيرة";
+"INVALIDOTP" = "رقم الرسالة القصيرة غير صالح";
 
 //Dashboard
 

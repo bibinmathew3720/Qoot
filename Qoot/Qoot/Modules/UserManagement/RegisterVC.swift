@@ -62,9 +62,10 @@ class RegisterVC: BaseViewController,UITextFieldDelegate {
     }
     
     @IBAction func submitButtonAction(_ sender: UIButton) {
-        if isValidInputs(){
-           callingSignUpApi()
-        }
+        self.performSegue(withIdentifier: Constant.SegueIdentifiers.registerToOTP, sender: self)
+//        if isValidInputs(){
+//           callingSignUpApi()
+//        }
     }
     
     //MARK: Validation
@@ -179,6 +180,13 @@ class RegisterVC: BaseViewController,UITextFieldDelegate {
         }
         dict.updateValue("Direct", forKey: "RegType")
         return CCUtility.getJSONfrom(dictionary: dict)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Constant.SegueIdentifiers.registerToOTP{
+            let otpVC = segue.destination as! OTPVC
+            otpVC.mobNoString = self.phoneNoTF.text
+        }
     }
    
 }

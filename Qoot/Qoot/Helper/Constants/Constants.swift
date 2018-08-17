@@ -54,6 +54,7 @@ struct Constant{
     
     struct SegueIdentifiers {
         static let dashBoardToRegister = "dashBoardtoRegister"
+         static let registerToOTP = "registerToOTP"
         
         
     }

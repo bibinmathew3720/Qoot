@@ -16,6 +16,7 @@
 //Common
 
 "Qoot" = "Qoot";
+"OK" = "OK";
 
 //WalkThrough
 
@@ -34,6 +35,15 @@
 //Login
 
 "LOGIN" = "LOGIN";
+
+//OTP VC
+
+"CONFIRMCODEMGE" = "We sent a confirmation code via SMS to";
+"ENTERCODEBELOW" = "Enter the code below";
+"DIDNTRECEIVESMS" = "Didn't receive any sms?";
+"RESENDOTP" = "RESEND OTP";
+"VERIFYOTP" = "VERIFY OTP";
+"INVALIDOTP" = "Invalid OTP";
 
 //Dashboard
 

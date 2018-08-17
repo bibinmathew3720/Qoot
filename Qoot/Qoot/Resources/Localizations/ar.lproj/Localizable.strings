@@ -6,6 +6,13 @@
   Copyright © 2018 Cl. All rights reserved.
 */
 
+//Validations
+
+"FILLMANDATORYFIELDS" = "ملء الحقول الإلزامية";
+"PASSWORDSDOESNOTMATCHES" = "كلمات المرور غير متطابقة";
+"INVALIDPASSWORDCHARACTERS" = "استخدم 8 أحرف أو أكثر مع مزيج من الحروف والأرقام والرموز";
+"INVALIDEMAIL" = "عنوان البريد الإلكتروني غير صالح";
+
 //Common
 
 "Qoot" = "قوت";

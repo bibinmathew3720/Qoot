@@ -331,7 +331,7 @@
                                                     <constraint firstAttribute="trailing" secondItem="b5A-5s-YgW" secondAttribute="trailing" constant="5" id="svc-SD-0Ow"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QQW-fW-J7f">
+                                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QQW-fW-J7f">
                                                 <rect key="frame" x="15" y="320" width="15" height="22"/>
                                                 <state key="normal" image="buttonUnselImage"/>
                                                 <state key="selected" image="buttonSelImage"/>

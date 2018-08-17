@@ -52,16 +52,62 @@ class RegisterVC: BaseViewController,UITextFieldDelegate {
         self.view.endEditing(true)
     }
     @IBAction func maleButtonAction(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
+        sender.isSelected = true
         femaleButton.isSelected = false
     }
     
     @IBAction func femaleButtonAction(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
+        sender.isSelected = true
         maleButton.isSelected = false
     }
     
     @IBAction func submitButtonAction(_ sender: UIButton) {
+        if isValidInputs(){
+           callingSignUpApi()
+        }
+    }
+    
+    //MARK: Validation
+    
+    func isValidInputs()->Bool{
+        var valid = true
+        var message = ""
+        if (nameTF.text?.isEmpty)!{
+            message = "FILLMANDATORYFIELDS".localiz()
+            valid = false
+        }
+        else if (emailTF.text?.isEmpty)!{
+            message = "FILLMANDATORYFIELDS".localiz()
+            valid = false
+        }
+        else if (phoneNoTF.text?.isEmpty)!{
+            message = "FILLMANDATORYFIELDS".localiz()
+            valid = false
+        }
+        else if (pwdTF.text?.isEmpty)!{
+            message = "FILLMANDATORYFIELDS".localiz()
+            valid = false
+        }
+        else if (confirmPwdTF.text?.isEmpty)!{
+            message = "FILLMANDATORYFIELDS".localiz()
+            valid = false
+        }
+        else if (pwdTF.text != confirmPwdTF.text){
+            message = "PASSWORDSDOESNOTMATCHES".localiz()
+            valid = false
+        }
+        else if ((pwdTF.text?.count)!<8){
+            message = "INVALIDPASSWORDCHARACTERS".localiz()
+            valid = false
+        }
+        else if !(emailTF.text?.isValidEmail())!{
+            message = "INVALIDEMAIL".localiz()
+            valid = false
+        }
+        if (!valid){
+            CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: message, parentController: self)
+        }
+        return valid
     }
     
     //MARK: UITextField Delegate
@@ -83,6 +129,56 @@ class RegisterVC: BaseViewController,UITextFieldDelegate {
             textField.resignFirstResponder()
         }
        return true
+    }
+    
+    //MARK: Sign Up Api
+    
+    func  callingSignUpApi(){
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        UserManager().callingSignUpApi(with: getRegisterRequestBody(), success: {
+            (model) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if let model = model as? QootRegisterResponseModel{
+                if model.statusCode == 1{
+                    CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: model.errorMessage, parentController: self)
+                }
+                else{
+                    CCUtility.showDefaultAlertwithCompletionHandler(_title: Constant.AppName, _message: model.statusMessage, parentController: self, completion: { (okSuccess) in
+                            self.navigationController?.popViewController(animated: true)
+                    })
+                }
+                
+            }
+            
+        }) { (ErrorType) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if(ErrorType == .noNetwork){
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+            }
+            else{
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+            }
+            
+            print(ErrorType)
+        }
+    }
+    
+    func getRegisterRequestBody()->String{
+        var dict:[String:String] = [String:String]()
+        if let name = self.nameTF.text {
+            dict.updateValue(name, forKey: "Name")
+        }
+        if let email = self.emailTF.text {
+            dict.updateValue(email, forKey: "Email")
+        }
+        if let phone = self.phoneNoTF.text {
+            dict.updateValue(phone, forKey: "Phone")
+        }
+        if let password = self.pwdTF.text {
+            dict.updateValue(password, forKey: "Password")
+        }
+        dict.updateValue("Direct", forKey: "RegType")
+        return CCUtility.getJSONfrom(dictionary: dict)
     }
    
 }

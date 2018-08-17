@@ -6,6 +6,13 @@
   Copyright © 2018 Cl. All rights reserved.
 */
 
+//Validations
+
+"FILLMANDATORYFIELDS" = "Fill mandatory fields";
+"PASSWORDSDOESNOTMATCHES" = "Passwords does not matches";
+"INVALIDPASSWORDCHARACTERS" = "Use 8 or more characters with a mix of letters, numbers and symbols";
+"INVALIDEMAIL" = "Invalid email address";
+
 //Common
 
 "Qoot" = "Qoot";

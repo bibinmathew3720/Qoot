@@ -594,7 +594,7 @@ class FetchRegister: NSObject {
     }
 }
 
-class FetchRegisterResponseModel : NSObject{
+class QootRegisterResponseModel : NSObject{
     var statusMessage:String = ""
     var errorMessage:String = ""
     var statusCode:Int = 0

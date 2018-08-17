@@ -8,12 +8,14 @@
 
 import UIKit
 
-let LOCAL  = "http://34.214.67.129/kpFetch/index.php/"
-let PRODUCTION  = "http://localhost/kpFetch/index.php/"
+let LOCAL  = "https://qoot.online/ksa/test/"
+let PRODUCTION  = "https://qoot.online/ksa/"
 
 let BASE_URL = LOCAL
+
+let REGISTER_URL = "Ios/Customer/CustomerSignup"
+
 let LOGIN_URL = "user/signIn"
-let REGISTER_URL = "user/signUp"
 let FORGOT_PASS_URL = "user/forgotPassword"
 let CHANGE_PASS_URL = "user/changePassword"
 let EDIT_PROFILE_URL = "user/editProfile"

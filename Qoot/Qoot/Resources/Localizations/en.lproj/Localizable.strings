@@ -19,6 +19,7 @@
 "OK" = "OK";
 "YES" = "YES";
 "NO" = "NO";
+"NONETWORK" = "No internet connection!";
 
 //WalkThrough
 

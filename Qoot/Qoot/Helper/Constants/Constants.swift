@@ -41,7 +41,7 @@ struct Constant{
     }
     
     struct ErrorMessages {
-        static let noNetworkMessage = "No Internet connection. Please check your connection settings and try again!"
+        static let noNetworkMessage = "NONETWORK".localiz()
         static let serverErrorMessamge = "Cannot connect to server, please try again."
     }
     

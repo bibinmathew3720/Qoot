@@ -17,6 +17,8 @@
 
 "Qoot" = "قوت";
 "OK" = "حسنا";
+"YES" = "نعم";
+"NO" = "لا";
 
 //WalkThrough
 
@@ -74,6 +76,8 @@
 "Settings" = "إعدادات";
 "Logout" = "الخروج";
 "SwitchToKitchen" = "قم بالتبديل إلى المطبخ";
+"LOGOUT" = "الخروج";
+"AREYOUSURE" = "هل أنت متأكد؟";
 
 //Home
 

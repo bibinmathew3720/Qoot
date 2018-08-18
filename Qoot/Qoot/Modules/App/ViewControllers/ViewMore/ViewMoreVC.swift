@@ -15,6 +15,7 @@ enum ViewMoreType{
 
 class ViewMoreVC: BaseViewController {
 
+    var isFromMenu:Bool?
     var pageType:ViewMoreType?
     @IBOutlet var collectionView: UICollectionView!
     
@@ -45,13 +46,24 @@ class ViewMoreVC: BaseViewController {
     func setUpCollectionView(){
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             let itemWidth = (UIScreen.main.bounds.width - 30)/2
-            layout.itemSize = CGSize(width: itemWidth, height: 120)
+            layout.itemSize = CGSize(width: itemWidth, height: 130)
         }
        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    //Button Actions
+    
+    override func leftNavButtonAction() {
+        if let isMenu = self.isFromMenu{
+            self.dismiss(animated: true, completion: nil)
+        }
+        else{
+            self.navigationController?.popViewController(animated: true)
+        }
     }
    
 }

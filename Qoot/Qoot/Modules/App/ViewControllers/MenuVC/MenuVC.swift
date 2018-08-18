@@ -152,12 +152,48 @@ extension MenuVC : UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        if isLoggedIn{
+            if indexPath.row == 2 {
+                setOffersVC()
+            }
+            else if (indexPath.row == 5){
+                settingLogoutPopup()
+            }
+        }
+        else{
+            if indexPath.row == 0 {
+                setOffersVC()
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let rowHieght = 60
         return CGFloat(rowHieght)
+    }
+    
+    func setOffersVC(){
+        let viewMoreVC:ViewMoreVC = ViewMoreVC(nibName: "ViewMoreVC", bundle: nil)
+        viewMoreVC.pageType = ViewMoreType.Offers
+        viewMoreVC.isFromMenu = true
+        let navController = UINavigationController.init(rootViewController: viewMoreVC)
+        self.present(navController, animated: true, completion: nil)
+    }
+    
+    func settingLogoutPopup(){
+        self.slideMenuController()?.closeLeft()
+        let alertController = UIAlertController(title: "LOGOUT".localiz(), message: "AREYOUSURE".localiz(), preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "YES".localiz(), style: .default) { (action:UIAlertAction) in
+            UserDefaults.standard.set(false, forKey: Constant.VariableNames.isLoogedIn)
+            self.uiUpdations()
+        }
+        let noAction = UIAlertAction(title: "NO".localiz(), style: .default) { (action:UIAlertAction) in
+            
+        }
+        alertController.addAction(yesAction)
+        alertController.addAction(noAction)
+        self.present(alertController, animated: true) {
+        }
     }
     
 }

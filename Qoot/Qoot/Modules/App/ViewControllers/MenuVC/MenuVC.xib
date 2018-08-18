@@ -100,13 +100,13 @@
                             <rect key="frame" x="0.0" y="210" width="220" height="40"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ml6-mO-xXA">
-                                    <rect key="frame" x="80" y="5" width="60" height="30"/>
+                                    <rect key="frame" x="82" y="5" width="56" height="30"/>
                                     <color key="backgroundColor" red="0.58039215686274503" green="0.75686274509803919" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="60" id="vM9-q9-adX"/>
                                         <constraint firstAttribute="height" constant="30" id="xLw-XW-tps"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="14"/>
+                                    <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                     <state key="normal" title="Login">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>

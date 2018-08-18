@@ -80,11 +80,11 @@ class HomeVC: BaseViewController {
     func setUpCollectionView(){
         if let readylayout = readyNowCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             let itemWidth = (UIScreen.main.bounds.width - 45)/3
-            readylayout.itemSize = CGSize(width: itemWidth, height: 120)
+            readylayout.itemSize = CGSize(width: itemWidth, height: 130)
         }
         if let offerslayout = offersCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             let itemWidth = (UIScreen.main.bounds.width - 45)/3
-            offerslayout.itemSize = CGSize(width: itemWidth, height: 120)
+            offerslayout.itemSize = CGSize(width: itemWidth, height: 130)
         }
     }
    

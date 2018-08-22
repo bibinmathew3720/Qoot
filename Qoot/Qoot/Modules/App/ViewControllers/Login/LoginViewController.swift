@@ -46,9 +46,6 @@ class LoginViewController: BaseViewController,UITextFieldDelegate {
         if isValidInputs(){
            callingLoginApi()
         }
-//        UserDefaults.standard.set(true, forKey: Constant.VariableNames.isLoogedIn)
-//        self.dismiss(animated: true, completion: nil)
-        
     }
     @IBAction func toolBarDoneButtonAction(_ sender: Any) {
         passwordTextField.becomeFirstResponder()
@@ -91,9 +88,12 @@ class LoginViewController: BaseViewController,UITextFieldDelegate {
         UserManager().callingLogInApi(with: getLoginRequestBody(), success: {
             (model) in
             MBProgressHUD.hide(for: self.view, animated: true)
-            if let model = model as? QootRegisterResponseModel{
+            if let model = model as? QootLogInResponseModel{
+                UserDefaults.standard.set(true, forKey: Constant.VariableNames.isLoogedIn)
+                self.dismiss(animated: true, completion: nil)
                 if model.statusCode == 1{
                     CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: model.errorMessage, parentController: self)
+                   
                 }
                 else{
                     CCUtility.showDefaultAlertwithCompletionHandler(_title: Constant.AppName, _message: model.statusMessage, parentController: self, completion: { (okSuccess) in

@@ -40,7 +40,7 @@ class UserManager: CLBaseService {
     }
     
     func getRegisterResponseModel(dict:[String : Any?]) -> Any? {
-        let loginReponseModel = FetchLogInResponseModel.init(dict:dict)
+        let loginReponseModel = QootLogInResponseModel.init(dict:dict)
         return loginReponseModel
     }
     
@@ -74,7 +74,7 @@ class UserManager: CLBaseService {
     }
     
     func getLogInResponseModel(dict:[String : Any?]) -> Any? {
-        let logInReponseModel = FetchLogInResponseModel.init(dict:dict)
+        let logInReponseModel = QootLogInResponseModel.init(dict:dict)
         return logInReponseModel
     }
     
@@ -108,7 +108,7 @@ class UserManager: CLBaseService {
     }
     
     func getLogOutResponseModel(dict:[String : Any?]) -> Any? {
-        let logOutReponseModel = FetchLogInResponseModel.init(dict:dict)
+        let logOutReponseModel = QootLogInResponseModel.init(dict:dict)
         return logOutReponseModel
     }
     //MARK : Edit Profile Api
@@ -141,7 +141,7 @@ class UserManager: CLBaseService {
     }
     
     func getEditProfileResponseModel(dict:[String : Any?]) -> Any? {
-        let editProfileRequestModel = FetchLogInResponseModel.init(dict:dict)
+        let editProfileRequestModel = QootLogInResponseModel.init(dict:dict)
         return editProfileRequestModel
     }
     
@@ -638,7 +638,7 @@ class FetchLogIn: NSObject {
 }
 
 
-class FetchLogInResponseModel : NSObject{
+class QootLogInResponseModel : NSObject{
     
     var statusMessage:String = ""
     var errorMessage:String = ""
@@ -662,7 +662,7 @@ class FetchLogInResponseModel : NSObject{
     var userProfileImageUrl:String = ""
     var userCategories = [UserCategories]()
     init(dict:[String:Any?]) {
-        if let value = dict["statusMessage"] as? String{
+        if let value = dict["message"] as? String{
             statusMessage = value
         }
         if let value = dict["errorMsg"] as? String{

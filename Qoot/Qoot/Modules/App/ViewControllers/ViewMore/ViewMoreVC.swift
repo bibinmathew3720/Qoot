@@ -81,6 +81,8 @@ extension ViewMoreVC:UICollectionViewDataSource,UICollectionViewDelegate{
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let viewController:ProductDetailVC = ProductDetailVC(nibName: "ProductDetailVC", bundle: nil)
+        self.navigationController?.pushViewController(viewController, animated: true)
        
     }
     

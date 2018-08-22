@@ -94,6 +94,12 @@ class CLNetworkManager: NSObject {
                     urlRequest!.httpMethod = requestType
                 }
                 if let requestBody = networkModel_.requestBody{
+                   // let postData = requestBody.data(using: String.Encoding.ascii, allowLossyConversion: true)
+                    //urlRequest!.httpBody = postData
+                    
+                    //let postLength = String(format: "%d", postData!.count)
+                    //urlRequest?.setValue(postLength, forHTTPHeaderField: "Content-Length")
+                    //urlRequest?.httpBody = requestBody.data(using: String.Encoding.ascii, allowLossyConversion: true)
                     urlRequest!.httpBody = requestBody.data(using: String.Encoding.utf8)
                 }
                 return urlRequest

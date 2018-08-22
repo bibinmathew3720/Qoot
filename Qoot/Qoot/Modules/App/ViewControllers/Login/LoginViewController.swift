@@ -43,11 +43,11 @@ class LoginViewController: BaseViewController,UITextFieldDelegate {
         view.endEditing(true)
     }
     @IBAction func loginButtonAction(_ sender: Any) {
-//        if isValidInputs(){
-//           callingLoginApi()
-//        }
-        UserDefaults.standard.set(true, forKey: Constant.VariableNames.isLoogedIn)
-        self.dismiss(animated: true, completion: nil)
+        if isValidInputs(){
+           callingLoginApi()
+        }
+//        UserDefaults.standard.set(true, forKey: Constant.VariableNames.isLoogedIn)
+//        self.dismiss(animated: true, completion: nil)
         
     }
     @IBAction func toolBarDoneButtonAction(_ sender: Any) {
@@ -117,13 +117,36 @@ class LoginViewController: BaseViewController,UITextFieldDelegate {
     }
     
     func getLoginRequestBody()->String{
-        var dict:[String:String] = [String:String]()
+        var dataString:String = ""
         if let phone = self.mobileTextField.text {
-            dict.updateValue(phone, forKey: "username")
+            let phoneString:String = "username=\(phone.urlEncode())"
+            dataString = dataString + phoneString + "&"
         }
         if let password = self.passwordTextField.text {
-            dict.updateValue(password, forKey: "password")
+            let passwordString:String = "password=\(password.urlEncode())"
+            dataString = dataString + passwordString
         }
-        return CCUtility.getJSONfrom(dictionary: dict)
+        //dataString = "username=0550154967&password=123456"
+        return dataString
+    }
+}
+
+extension String {
+    func urlEncode() -> String {
+        let unreserved = "*-._"
+        let allowed = NSMutableCharacterSet.alphanumeric()
+        allowed.addCharacters(in: unreserved)
+        
+        //if plusForSpace {
+            allowed.addCharacters(in: " ")
+       // }
+        var encoded = addingPercentEncoding(withAllowedCharacters: allowed as CharacterSet)
+        //if plusForSpace {
+            encoded = encoded?.replacingOccurrences(of: "", with: "+")
+        //}
+        if let enc = encoded{
+            return enc
+        }
+        return ""
     }
 }

@@ -26,14 +26,14 @@ class CLNetworkModel: NSObject {
         requestMethod = requestMethod_
         //let user = User.getUser()
         requestHeader = [String : String]()
-        _ = requestHeader?.updateValue("application/json", forKey: "Content-Type")
-        _ = requestHeader?.updateValue("cW9vdC5vbmxpbmVhcGl0b2tlbmJ5amlqbw==", forKey: "apikey")
-        if LanguageManger.shared.currentLanguage != .ar {
-            _ = requestHeader?.updateValue("en", forKey: "lang")
-        }
-        else{
-            _ = requestHeader?.updateValue("ar", forKey: "lang")
-        }
+        _ = requestHeader?.updateValue("application/x-www-form-urlencoded", forKey: "Content-Type")
+//        _ = requestHeader?.updateValue("cW9vdC5vbmxpbmVhcGl0b2tlbmJ5amlqbw==", forKey: "apikey")
+//        if LanguageManger.shared.currentLanguage != .ar {
+//            _ = requestHeader?.updateValue("en", forKey: "lang")
+//        }
+//        else{
+//            _ = requestHeader?.updateValue("ar", forKey: "lang")
+//        }
         
 //        if let _sessionToken = user?.sessionToken{
 //            _ = requestHeader?.updateValue(_sessionToken, forKey: "Session-Token")

@@ -920,8 +920,10 @@ class MealTypes : NSObject{
     var categoryIcon:String = ""
     var sort_col:Int = 0
     init(dict:[String:Any?]) {
-        if let value = dict["category_id"] as? Int{
-            catId = value
+        if let value = dict["category_id"] as? String{
+            if let catID = Int(value){
+                catId = catID
+            }
         }
         if let value = dict["category_name"] as? String{
             catName = value

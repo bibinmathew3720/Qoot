@@ -5,7 +5,6 @@
 //  Created by Vishnu KM on 03/08/18.
 //  Copyright © 2018 Vishnu KM. All rights reserved.
 //
-let ARR2 = ["2","3","4","5"]
 let ARR3 = ["3","4","5","6"]
 let ARR4 = ["4","5","6","7"]
 
@@ -34,7 +33,8 @@ class HomeVC: BaseViewController {
     var imagesArray = [#imageLiteral(resourceName: "city"),#imageLiteral(resourceName: "mealtype"),#imageLiteral(resourceName: "cuisine"),#imageLiteral(resourceName: "kitchenName")]
     var cityNamesResponseModel:QootCityNamesResponseModel?
     var selCity:CityName?
-    var mealModel = [MealTypes]()
+    var mealModel:QootMealTypeResponseModel?
+    var selMeal:MealTypes?
     var cuisinesModel = [ViewCuisines]()
     var kitchenModel = [ViewKitchens]()
     
@@ -101,12 +101,14 @@ class HomeVC: BaseViewController {
      //MARK: City Names Api
     
     func callingCityNameApi(){
-        MBProgressHUD.showAdded(to: self.view, animated: true)
+        //MBProgressHUD.showAdded(to: self.view, animated: true)
         UserManager().callingCityNameApi(with: "", success: {
             (model) in
             MBProgressHUD.hide(for: self.view, animated: true)
             if let model = model as? QootCityNamesResponseModel{
                 self.cityNamesResponseModel = model
+                self.pickerView.reloadAllComponents()
+                self.callingMealTypeApi()
             }
             
         }) { (ErrorType) in
@@ -125,12 +127,13 @@ class HomeVC: BaseViewController {
     //MARK: MealType Api
     
     func  callingMealTypeApi(){
-        MBProgressHUD.showAdded(to: self.view, animated: true)
+        //MBProgressHUD.showAdded(to: self.view, animated: true)
         UserManager().callingViewMealTypeApi(with: "", success: {
             (model) in
             MBProgressHUD.hide(for: self.view, animated: true)
             if let model = model as? QootMealTypeResponseModel{
-               self.mealModel = model.mealTypes
+               self.mealModel = model
+               self.pickerView.reloadAllComponents()
             }
             
         }) { (ErrorType) in
@@ -221,7 +224,9 @@ class HomeVC: BaseViewController {
                     selCity = cityModel.cityNames[pickerView.selectedRow(inComponent: 0)]
                 }
             case 1:
-                selectedMeal = self.mealModel[0].catName
+                if let mealMd = self.mealModel {
+                    selMeal = mealMd.mealTypes[pickerView.selectedRow(inComponent: 0)]
+                }
             case 2:
                 selectedCuisine = self.cuisinesModel[0].subCatName
             case 3:
@@ -263,7 +268,12 @@ extension HomeVC : UITableViewDelegate,UITableViewDataSource {
             }
             
         case 1:
-            cell.nameLabel.text = selectedMeal
+            if let selMeal = self.selMeal{
+                cell.nameLabel.text = selMeal.catName
+            }
+            else{
+                cell.nameLabel.text = selectedMeal
+            }
         case 2:
             cell.nameLabel.text = selectedCuisine
         case 3:
@@ -337,7 +347,10 @@ extension HomeVC:UIPickerViewDelegate,UIPickerViewDataSource{
             }
             return 0
         case 1:
-           return self.mealModel.count
+            if let mealTypeModel = self.mealModel{
+                return mealTypeModel.mealTypes.count
+            }
+           return 0
         case 2:
             return self.cuisinesModel.count
         case 3:
@@ -356,7 +369,10 @@ extension HomeVC:UIPickerViewDelegate,UIPickerViewDataSource{
             }
             return ""
         case 1:
-            return self.mealModel[row].catName
+            if let mealTypeModel = self.mealModel{
+                return mealTypeModel.mealTypes[row].catName
+            }
+            return ""
         case 2:
             return self.cuisinesModel[row].subCatName
         case 3:
@@ -372,7 +388,7 @@ extension HomeVC:UIPickerViewDelegate,UIPickerViewDataSource{
         case 0:
            print("")
         case 1:
-            selectedMeal = self.mealModel[row].catName
+            print("")
         case 2:
             selectedCuisine = self.cuisinesModel[row].subCatName
         case 3:

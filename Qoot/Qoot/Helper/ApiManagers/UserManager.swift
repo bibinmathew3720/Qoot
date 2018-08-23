@@ -43,6 +43,41 @@ class UserManager: CLBaseService {
         let loginReponseModel = QootLogInResponseModel.init(dict:dict)
         return loginReponseModel
     }
+    
+    //MARK : City Name Api
+    
+    func callingCityNameApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForCityNames(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveArrayResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict)
+                    success(self.getCityNamesResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForCityNames(with body:String)->CLNetworkModel{
+        let registerRequestModel = CLNetworkModel.init(url: BASE_URL+GETCITYNAMES_URL, requestMethod_: "POST")
+        registerRequestModel.requestBody = body
+        return registerRequestModel
+    }
+    
+    func getCityNamesResponseModel(dict:NSArray) -> Any? {
+        let cityNamesResponseModel = QootCityNamesResponseModel.init(arr:dict)
+        return cityNamesResponseModel
+    }
+    
     //MARK : MealType Api
     
     func callingViewMealTypeApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
@@ -841,26 +876,49 @@ class UserCategories : NSObject{
     }
 }
 
+class QootCityNamesResponseModel : NSObject{
+    var cityNames = [CityName]()
+    init(arr:(NSArray)) {
+        for item in arr{
+            if let it = item as? [String : Any?]{
+                cityNames.append(CityName.init(dict: it ))
+            }
+        }
+    }
+}
+
+class CityName : NSObject{
+    var cityId:Int = 0
+    var cityName:String = ""
+    init(dict:[String:Any?]) {
+        if let value = dict["city_id"] as? String{
+            if let ctyId = Int(value){
+               cityId = ctyId
+            }
+        }
+        if let value = dict["city_name"] as? String{
+            cityName = value
+        }
+    }
+}
+
 
 class QootMealTypeResponseModel : NSObject{
     var mealTypes = [MealTypes]()
     init(arr:(NSArray)) {
-                for item in arr{
-                    if let it = item as? [String : Any?]{
-                        mealTypes.append(MealTypes.init(dict: it ))
-                    }
-                }
-           
-        
+        for item in arr{
+            if let it = item as? [String : Any?]{
+                mealTypes.append(MealTypes.init(dict: it ))
+            }
+        }
     }
 }
 
 class MealTypes : NSObject{
     var catId:Int = 0
     var catName:String = ""
-     var categoryIcon:String = ""
-     var sort_col:Int = 0
-    
+    var categoryIcon:String = ""
+    var sort_col:Int = 0
     init(dict:[String:Any?]) {
         if let value = dict["category_id"] as? Int{
             catId = value

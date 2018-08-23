@@ -16,6 +16,7 @@ let BASE_URL = LOCAL
 //Customer
 let REGISTER_URL = "Ios/Customer/CustomerSignup"
 let LOGIN_URL = "Ios/Customer/LoginAction"
+let GETCITYNAMES_URL = "Ios/Customer/ViewCityNames"
 let VIEWMEALTYPE_URL = "Ios/Customer/ViewMealType"
 let ViewCuisines_URL = "Ios/Customer/ViewCuisines"
 let ViewKitchens_URL = "Ios/Customer/ViewKitchens"

@@ -5,8 +5,6 @@
 //  Created by Vishnu KM on 03/08/18.
 //  Copyright © 2018 Vishnu KM. All rights reserved.
 //
-
-let ARR1 = ["1","2","3","4"]
 let ARR2 = ["2","3","4","5"]
 let ARR3 = ["3","4","5","6"]
 let ARR4 = ["4","5","6","7"]
@@ -34,9 +32,11 @@ class HomeVC: BaseViewController {
     var selectedKitchen: String = "KitchenName".localiz()
     
     var imagesArray = [#imageLiteral(resourceName: "city"),#imageLiteral(resourceName: "mealtype"),#imageLiteral(resourceName: "cuisine"),#imageLiteral(resourceName: "kitchenName")]
-   var mealModel = [MealTypes]()
+    var cityNamesResponseModel:QootCityNamesResponseModel?
+    var selCity:CityName?
+    var mealModel = [MealTypes]()
     var cuisinesModel = [ViewCuisines]()
-     var kitchenModel = [ViewKitchens]()
+    var kitchenModel = [ViewKitchens]()
     
     override func initView() {
         super.initView()
@@ -44,9 +44,10 @@ class HomeVC: BaseViewController {
         localisation()
         addingLeftBarButton()
         addCartIconOnly()
-        callingMealTypeApi()
-        callingViewCuisinesApi()
-        callingKitchensApi()
+        callingCityNameApi()
+//        callingMealTypeApi()
+//        callingViewCuisinesApi()
+//        callingKitchensApi()
         self.leftButton?.setImage(UIImage(named: "hamburger"), for: UIControlState.normal)
     }
     
@@ -96,6 +97,29 @@ class HomeVC: BaseViewController {
     @IBAction func searchButtonAction(_ sender: Any) {
         let searchResultsVC = SearchResultsVC.init(nibName: "SearchResultsVC", bundle: nil)
         self.navigationController?.pushViewController(searchResultsVC, animated: true)
+    }
+     //MARK: City Names Api
+    
+    func callingCityNameApi(){
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        UserManager().callingCityNameApi(with: "", success: {
+            (model) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if let model = model as? QootCityNamesResponseModel{
+                self.cityNamesResponseModel = model
+            }
+            
+        }) { (ErrorType) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if(ErrorType == .noNetwork){
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+            }
+            else{
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+            }
+            
+            print(ErrorType)
+        }
     }
     
     //MARK: MealType Api
@@ -193,7 +217,9 @@ class HomeVC: BaseViewController {
 //        if selectedCity == TYPE_FIELDS[0] || selectedMeal == TYPE_FIELDS[1] || selectedCuisine == TYPE_FIELDS[2] || selectedKitchen == TYPE_FIELDS[3]{
             switch selectedTableRowIndex {
             case 0:
-                selectedCity = ARR1[0]
+                if let cityModel = self.cityNamesResponseModel{
+                    selCity = cityModel.cityNames[pickerView.selectedRow(inComponent: 0)]
+                }
             case 1:
                 selectedMeal = self.mealModel[0].catName
             case 2:
@@ -229,7 +255,13 @@ extension HomeVC : UITableViewDelegate,UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! HomeTableCell
         switch indexPath.row {
         case 0:
-            cell.nameLabel.text = selectedCity
+            if let selCity = self.selCity{
+               cell.nameLabel.text = selCity.cityName
+            }
+            else{
+                cell.nameLabel.text = selectedCity
+            }
+            
         case 1:
             cell.nameLabel.text = selectedMeal
         case 2:
@@ -300,7 +332,10 @@ extension HomeVC:UIPickerViewDelegate,UIPickerViewDataSource{
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         switch selectedTableRowIndex {
         case 0:
-            return 4
+            if let cityModel = self.cityNamesResponseModel{
+                return cityModel.cityNames.count
+            }
+            return 0
         case 1:
            return self.mealModel.count
         case 2:
@@ -316,7 +351,10 @@ extension HomeVC:UIPickerViewDelegate,UIPickerViewDataSource{
     {
         switch selectedTableRowIndex {
         case 0:
-            return ARR1[row]
+            if let cityModel = self.cityNamesResponseModel{
+                return cityModel.cityNames[row].cityName
+            }
+            return ""
         case 1:
             return self.mealModel[row].catName
         case 2:
@@ -332,7 +370,7 @@ extension HomeVC:UIPickerViewDelegate,UIPickerViewDataSource{
     {
         switch selectedTableRowIndex {
         case 0:
-            selectedCity = ARR1[row]
+           print("")
         case 1:
             selectedMeal = self.mealModel[row].catName
         case 2:

@@ -46,6 +46,7 @@ class HomeVC: BaseViewController {
         addCartIconOnly()
         callingMealTypeApi()
         callingViewCuisinesApi()
+        callingKitchensApi()
         self.leftButton?.setImage(UIImage(named: "hamburger"), for: UIControlState.normal)
     }
     

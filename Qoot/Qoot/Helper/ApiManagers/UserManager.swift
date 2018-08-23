@@ -43,7 +43,107 @@ class UserManager: CLBaseService {
         let loginReponseModel = QootLogInResponseModel.init(dict:dict)
         return loginReponseModel
     }
+    //MARK : MealType Api
     
+    func callingViewMealTypeApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForViewMealType(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveArrayResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict)
+                    success(self.getViewMealTypeResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForViewMealType(with body:String)->CLNetworkModel{
+        let registerRequestModel = CLNetworkModel.init(url: BASE_URL+VIEWMEALTYPE_URL, requestMethod_: "POST")
+        registerRequestModel.requestBody = body
+        return registerRequestModel
+    }
+    
+    func getViewMealTypeResponseModel(dict:NSArray) -> Any? {
+        let mealTypeReponseModel = QootMealTypeResponseModel.init(arr:dict)
+        return mealTypeReponseModel
+    }
+    
+    //MARK : ViewCuisines Api
+    
+    func callingViewCuisinesApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForViewCuisines(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveArrayResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict)
+                    success(self.getViewCuisinesResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForViewCuisines(with body:String)->CLNetworkModel{
+        let registerRequestModel = CLNetworkModel.init(url: BASE_URL+ViewCuisines_URL, requestMethod_: "POST")
+        registerRequestModel.requestBody = body
+        return registerRequestModel
+    }
+    
+    func getViewCuisinesResponseModel(dict:NSArray) -> Any? {
+        let viewCuisinesResponseModel = ViewCuisinesResponseModel.init(arr:dict)
+        return viewCuisinesResponseModel
+    }
+    
+    //MARK : Kitchens Api
+    
+    func callingKitchensApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForKitchens(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveArrayResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict)
+                    success(self.getKitchensResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForKitchens(with body:String)->CLNetworkModel{
+        let registerRequestModel = CLNetworkModel.init(url: BASE_URL+ViewKitchens_URL, requestMethod_: "POST")
+        registerRequestModel.requestBody = body
+        return registerRequestModel
+    }
+    
+    func getKitchensResponseModel(dict:NSArray) -> Any? {
+        let kitchensResponseModel = KitchensResponseModel.init(arr:dict)
+        return kitchensResponseModel
+    }
     //MARK : Log In Api
     
     func callingLogInApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
@@ -741,6 +841,110 @@ class UserCategories : NSObject{
     }
 }
 
+
+class QootMealTypeResponseModel : NSObject{
+    var mealTypes = [MealTypes]()
+    init(arr:(NSArray)) {
+                for item in arr{
+                    if let it = item as? [String : Any?]{
+                        mealTypes.append(MealTypes.init(dict: it ))
+                    }
+                }
+           
+        
+    }
+}
+
+class MealTypes : NSObject{
+    var catId:Int = 0
+    var catName:String = ""
+     var categoryIcon:String = ""
+     var sort_col:Int = 0
+    
+    init(dict:[String:Any?]) {
+        if let value = dict["category_id"] as? Int{
+            catId = value
+        }
+        if let value = dict["category_name"] as? String{
+            catName = value
+        }
+        if let value = dict["category_icon"] as? String{
+            categoryIcon = value
+        }
+        if let value = dict["sort_col"] as? Int{
+            sort_col = value
+        }
+    }
+}
+
+class KitchensResponseModel : NSObject{
+    var viewKitchens = [ViewKitchens]()
+    init(arr:(NSArray)) {
+        for item in arr{
+            if let it = item as? [String : Any?]{
+                viewKitchens.append(ViewKitchens.init(dict: it ))
+            }
+        }
+    }
+}
+
+class ViewKitchens : NSObject{
+    var KitchenId:Int = 0
+    var KitchenName:String = ""
+    var KitchenLogo:String = ""
+    var KitchenDeliveryFee:Int = 0
+    var CutomerRating:Int = 0
+    var OpenStatus:Bool = false
+    
+    init(dict:[String:Any?]) {
+        if let value = dict["KitchenId"] as? Int{
+            KitchenId = value
+        }
+        if let value = dict["KitchenName"] as? String{
+            KitchenName = value
+        }
+        if let value = dict["KitchenLogo"] as? String{
+            KitchenLogo = value
+        }
+        if let value = dict["KitchenDeliveryFee"] as? Int{
+            KitchenDeliveryFee = value
+        }
+        if let value = dict["CutomerRating"] as? Int{
+            CutomerRating = value
+        }
+        if let value = dict["OpenStatus"] as? Bool{
+            OpenStatus = value
+        }
+    }
+}
+class ViewCuisinesResponseModel : NSObject{
+    var viewCuisines = [ViewCuisines]()
+    init(arr:(NSArray)) {
+        for item in arr{
+            if let it = item as? [String : Any?]{
+                viewCuisines.append(ViewCuisines.init(dict: it ))
+            }
+        }
+    }
+}
+
+class ViewCuisines : NSObject{
+    var catId:Int = 0
+    var subCatName:String = ""
+    var subCatId:Int = 0
+    
+    init(dict:[String:Any?]) {
+        if let value = dict["category_id"] as? Int{
+            catId = value
+        }
+        if let value = dict["sub_category_name"] as? String{
+            subCatName = value
+        }
+        if let value = dict["sub_category_id"] as? Int{
+            subCatId = value
+        }
+    }
+}
 class FetchLocationsResponseModel : NSObject{
     var statusMessage:String = ""
     var errorMessage:String = ""

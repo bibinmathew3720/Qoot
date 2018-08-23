@@ -34,7 +34,9 @@ class HomeVC: BaseViewController {
     var selectedKitchen: String = "KitchenName".localiz()
     
     var imagesArray = [#imageLiteral(resourceName: "city"),#imageLiteral(resourceName: "mealtype"),#imageLiteral(resourceName: "cuisine"),#imageLiteral(resourceName: "kitchenName")]
-   
+   var mealModel = [MealTypes]()
+    var cuisinesModel = [ViewCuisines]()
+     var kitchenModel = [ViewKitchens]()
     
     override func initView() {
         super.initView()
@@ -42,6 +44,8 @@ class HomeVC: BaseViewController {
         localisation()
         addingLeftBarButton()
         addCartIconOnly()
+        callingMealTypeApi()
+        callingViewCuisinesApi()
         self.leftButton?.setImage(UIImage(named: "hamburger"), for: UIControlState.normal)
     }
     
@@ -93,17 +97,108 @@ class HomeVC: BaseViewController {
         self.navigationController?.pushViewController(searchResultsVC, animated: true)
     }
     
+    //MARK: MealType Api
+    
+    func  callingMealTypeApi(){
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        UserManager().callingViewMealTypeApi(with: "", success: {
+            (model) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if let model = model as? QootMealTypeResponseModel{
+               self.mealModel = model.mealTypes
+            }
+            
+        }) { (ErrorType) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if(ErrorType == .noNetwork){
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+            }
+            else{
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+            }
+            
+            print(ErrorType)
+        }
+    }
+    //MARK: ViewCuisines Api
+    
+    func  callingViewCuisinesApi(){
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        UserManager().callingViewCuisinesApi(with: getCuisinesRequestBody(), success: {
+            (model) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if let model = model as? ViewCuisinesResponseModel{
+                self.cuisinesModel = model.viewCuisines
+            }
+            
+        }) { (ErrorType) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if(ErrorType == .noNetwork){
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+            }
+            else{
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+            }
+            
+            print(ErrorType)
+        }
+    }
+    
+    func getCuisinesRequestBody()->String{
+        var dict:[String:String] = [String:String]()
+        dict.updateValue("22", forKey: "CategoryId")
+        return CCUtility.getJSONfrom(dictionary: dict)
+    }
+    
+    //MARK: Kitchens Api
+    
+    func  callingKitchensApi(){
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        UserManager().callingKitchensApi(with: "", success: {
+            (model) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if let model = model as? KitchensResponseModel{
+                self.kitchenModel = model.viewKitchens
+            }
+            
+        }) { (ErrorType) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if(ErrorType == .noNetwork){
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+            }
+            else{
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+            }
+            
+            print(ErrorType)
+        }
+    }
+    
+//    func getLoginRequestBody()->String{
+//        var dataString:String = ""
+//        if let phone = self.mobileTextField.text {
+//            let phoneString:String = "username=\(phone.urlEncode())"
+//            dataString = dataString + phoneString + "&"
+//        }
+//        if let password = self.passwordTextField.text {
+//            let passwordString:String = "password=\(password.urlEncode())"
+//            dataString = dataString + passwordString
+//        }
+//        //dataString = "username=0550154967&password=123456"
+//        return dataString
+//    }
+    
     @IBAction func toolBarDoneAction(_ sender: Any) {
 //        if selectedCity == TYPE_FIELDS[0] || selectedMeal == TYPE_FIELDS[1] || selectedCuisine == TYPE_FIELDS[2] || selectedKitchen == TYPE_FIELDS[3]{
             switch selectedTableRowIndex {
             case 0:
                 selectedCity = ARR1[0]
             case 1:
-                selectedMeal = ARR2[0]
+                selectedMeal = self.mealModel[0].catName
             case 2:
-                selectedCuisine = ARR3[0]
+                selectedCuisine = self.cuisinesModel[0].subCatName
             case 3:
-                selectedKitchen = ARR4[0]
+                selectedKitchen = self.kitchenModel[0].KitchenName
             default:
                 print("default")
             }
@@ -202,7 +297,18 @@ extension HomeVC:UIPickerViewDelegate,UIPickerViewDataSource{
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 4
+        switch selectedTableRowIndex {
+        case 0:
+            return 4
+        case 1:
+           return self.mealModel.count
+        case 2:
+            return self.cuisinesModel.count
+        case 3:
+            return self.kitchenModel.count
+        default:
+            return 4
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?
@@ -211,11 +317,11 @@ extension HomeVC:UIPickerViewDelegate,UIPickerViewDataSource{
         case 0:
             return ARR1[row]
         case 1:
-            return ARR2[row]
+            return self.mealModel[row].catName
         case 2:
-            return ARR3[row]
+            return self.cuisinesModel[row].subCatName
         case 3:
-            return ARR4[row]
+            return self.kitchenModel[row].KitchenName
         default:
             return ""
         }
@@ -227,11 +333,11 @@ extension HomeVC:UIPickerViewDelegate,UIPickerViewDataSource{
         case 0:
             selectedCity = ARR1[row]
         case 1:
-            selectedMeal = ARR2[row]
+            selectedMeal = self.mealModel[row].catName
         case 2:
-            selectedCuisine = ARR3[row]
+            selectedCuisine = self.cuisinesModel[row].subCatName
         case 3:
-            selectedKitchen = ARR4[row]
+            selectedKitchen = self.kitchenModel[row].KitchenName
         default:
             print("default")
         }

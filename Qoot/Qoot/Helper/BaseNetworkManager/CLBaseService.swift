@@ -37,4 +37,32 @@ class CLBaseService: NSObject {
             return (nil , jsonError)
         }
     }
+    func didReceiveArrayResponseSuccessFully(_ responseData:Data?)->(responseJson : NSArray? , error_:Any?){
+        let jsonError : NSError = NSError(domain: "FAILED", code: 0, userInfo: nil)
+        let responseArray = [String]()
+        if let results = responseData{
+            
+            do{
+                
+                if let responseObj = try JSONSerialization.jsonObject(with: results, options: .allowFragments) as? NSArray{
+                    if JSONSerialization.isValidJSONObject(responseObj){
+                        return (responseObj,nil)
+                    }
+                    else{
+                        return (responseArray as NSArray , jsonError)
+                    }
+                }
+                else{
+                    return (responseArray as NSArray , jsonError)
+                }
+            }
+            catch let error as NSError{
+                print(error)
+                return (responseArray as NSArray , error)
+            }
+        }else{
+            print(jsonError)
+            return (responseArray as NSArray , jsonError)
+        }
+    }
 }

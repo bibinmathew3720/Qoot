@@ -22,8 +22,14 @@ class SearchResultsTVC: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        settingBorderToImageview()
         customerRatingTitleLabel.text = "CustomerRating".localiz()
         // Initialization code
+    }
+    
+    func settingBorderToImageview(){
+        kitchenImageView.layer.borderColor = Constant.Colors.CommonBlackColor.cgColor
+        kitchenImageView.layer.borderWidth = 0.5
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -36,7 +42,7 @@ class SearchResultsTVC: UITableViewCell {
          kitchenImageView.sd_setImage(with: URL(string: kitchen.KitchenLogo), placeholderImage: UIImage(named: Constant.ImageNames.placeholderImage))
         kitchenNameLabel.text = kitchen.KitchenName
         ratingLabel.text = String(format: "%.1f", kitchen.CutomerRating)
-        setRating(rating: kitchen.CutomerRating)
+        setRating(rating: kitchen.AdminRating)
     }
     
     func setRating(rating:Int){

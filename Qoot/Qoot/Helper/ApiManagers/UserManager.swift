@@ -955,6 +955,7 @@ class ViewKitchens : NSObject{
     var KitchenDeliveryFee:Int = 0
     var CutomerRating:Int = 0
     var OpenStatus:Bool = false
+    var AdminRating:Int = 0
     
     init(dict:[String:Any?]) {
 //        if let value = dict["KitchenId"] as? String{
@@ -981,6 +982,9 @@ class ViewKitchens : NSObject{
         }
         if let value = dict["OpenStatus"] as? Bool{
             OpenStatus = value
+        }
+        if let value = dict["AdminRating"] as? Int{
+            AdminRating = value
         }
     }
 }

@@ -5,8 +5,6 @@
 //  Created by Vishnu KM on 03/08/18.
 //  Copyright © 2018 Vishnu KM. All rights reserved.
 //
-let ARR3 = ["3","4","5","6"]
-let ARR4 = ["4","5","6","7"]
 
 import UIKit
 
@@ -35,8 +33,10 @@ class HomeVC: BaseViewController {
     var selCity:CityName?
     var mealModel:QootMealTypeResponseModel?
     var selMeal:MealTypes?
-    var cuisinesModel = [ViewCuisines]()
-    var kitchenModel = [ViewKitchens]()
+    var cuisinesModel:ViewCuisinesResponseModel?
+    var selCuisine:ViewCuisines?
+    var kitchenModel:KitchensResponseModel?
+    var selKitchen:ViewKitchens?
     
     override func initView() {
         super.initView()
@@ -45,8 +45,6 @@ class HomeVC: BaseViewController {
         addingLeftBarButton()
         addCartIconOnly()
         callingCityNameApi()
-//        callingMealTypeApi()
-//        callingViewCuisinesApi()
 //        callingKitchensApi()
         self.leftButton?.setImage(UIImage(named: "hamburger"), for: UIControlState.normal)
     }
@@ -151,12 +149,13 @@ class HomeVC: BaseViewController {
     //MARK: ViewCuisines Api
     
     func  callingViewCuisinesApi(){
-        MBProgressHUD.showAdded(to: self.view, animated: true)
+        //MBProgressHUD.showAdded(to: self.view, animated: true)
         UserManager().callingViewCuisinesApi(with: getCuisinesRequestBody(), success: {
             (model) in
             MBProgressHUD.hide(for: self.view, animated: true)
             if let model = model as? ViewCuisinesResponseModel{
-                self.cuisinesModel = model.viewCuisines
+                self.cuisinesModel = model
+                self.pickerView.reloadAllComponents()
             }
             
         }) { (ErrorType) in
@@ -173,20 +172,24 @@ class HomeVC: BaseViewController {
     }
     
     func getCuisinesRequestBody()->String{
-        var dict:[String:String] = [String:String]()
-        dict.updateValue("22", forKey: "CategoryId")
-        return CCUtility.getJSONfrom(dictionary: dict)
+        var dataString:String = ""
+        if let seMeal = self.selMeal {
+            let mealId:String = "CategoryId=\(String(seMeal.catId).urlEncode())"
+            dataString = dataString + mealId
+        }
+        return dataString
     }
     
     //MARK: Kitchens Api
     
     func  callingKitchensApi(){
-        MBProgressHUD.showAdded(to: self.view, animated: true)
-        UserManager().callingKitchensApi(with: "", success: {
+        //MBProgressHUD.showAdded(to: self.view, animated: true)
+        UserManager().callingKitchensApi(with: getKitchenRequestBody(), success: {
             (model) in
             MBProgressHUD.hide(for: self.view, animated: true)
             if let model = model as? KitchensResponseModel{
-                self.kitchenModel = model.viewKitchens
+                self.kitchenModel = model
+                self.pickerView.reloadAllComponents()
             }
             
         }) { (ErrorType) in
@@ -201,6 +204,32 @@ class HomeVC: BaseViewController {
             print(ErrorType)
         }
     }
+    
+    func getKitchenRequestBody()->String{
+        var dataString:String = ""
+        if let seCity = self.selCity {
+            let cityId:String = "CityName=\(String(seCity.cityName).urlEncode())"
+            dataString = dataString + cityId
+            
+        }
+        if let seMeal = self.selMeal {
+            if dataString.count>0{
+                dataString = dataString + "&"
+            }
+            let mealId:String = "Category=\(String(seMeal.catId).urlEncode())"
+            dataString = dataString + mealId
+        }
+       
+        if let seCuisine = self.selCuisine {
+            if dataString.count>0{
+                dataString = dataString + "&"
+            }
+            let cuisineId:String = "SubCategory=\(String(seCuisine.subCatId).urlEncode())"
+            dataString = dataString + cuisineId
+        }
+        return dataString
+    }
+    
     
 //    func getLoginRequestBody()->String{
 //        var dataString:String = ""
@@ -226,11 +255,17 @@ class HomeVC: BaseViewController {
             case 1:
                 if let mealMd = self.mealModel {
                     selMeal = mealMd.mealTypes[pickerView.selectedRow(inComponent: 0)]
+                    callingViewCuisinesApi()
                 }
             case 2:
-                selectedCuisine = self.cuisinesModel[0].subCatName
+                if let cuisineModel = self.cuisinesModel{
+                    selCuisine = cuisineModel.viewCuisines[pickerView.selectedRow(inComponent: 0)]
+                    callingKitchensApi()
+                }
             case 3:
-                selectedKitchen = self.kitchenModel[0].KitchenName
+                if let kitchenModel = self.kitchenModel{
+                     selKitchen = kitchenModel.viewKitchens[pickerView.selectedRow(inComponent: 0)]
+                }
             default:
                 print("default")
             }
@@ -275,9 +310,19 @@ extension HomeVC : UITableViewDelegate,UITableViewDataSource {
                 cell.nameLabel.text = selectedMeal
             }
         case 2:
-            cell.nameLabel.text = selectedCuisine
+            if let selCui = self.selCuisine{
+                cell.nameLabel.text = selCui.subCatName
+            }
+            else{
+                cell.nameLabel.text = selectedCuisine
+            }
         case 3:
-            cell.nameLabel.text = selectedKitchen
+            if let selKi = self.selKitchen{
+                cell.nameLabel.text = selKi.KitchenName
+            }
+            else{
+                cell.nameLabel.text = selectedKitchen
+            }
         default:
             print("default")
         }
@@ -352,9 +397,15 @@ extension HomeVC:UIPickerViewDelegate,UIPickerViewDataSource{
             }
            return 0
         case 2:
-            return self.cuisinesModel.count
+            if let cuisineModel = self.cuisinesModel{
+                return cuisineModel.viewCuisines.count
+            }
+            return 0
         case 3:
-            return self.kitchenModel.count
+            if let kitchenModel = self.kitchenModel{
+                return kitchenModel.viewKitchens.count
+            }
+            return 0
         default:
             return 4
         }
@@ -374,9 +425,15 @@ extension HomeVC:UIPickerViewDelegate,UIPickerViewDataSource{
             }
             return ""
         case 2:
-            return self.cuisinesModel[row].subCatName
+            if let cuisineModel = self.cuisinesModel{
+                return cuisineModel.viewCuisines[row].subCatName
+            }
+            return ""
         case 3:
-            return self.kitchenModel[row].KitchenName
+            if let kitchenModel = self.kitchenModel{
+                return kitchenModel.viewKitchens[row].KitchenName
+            }
+            return ""
         default:
             return ""
         }
@@ -384,17 +441,5 @@ extension HomeVC:UIPickerViewDelegate,UIPickerViewDataSource{
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
-        switch selectedTableRowIndex {
-        case 0:
-           print("")
-        case 1:
-            print("")
-        case 2:
-            selectedCuisine = self.cuisinesModel[row].subCatName
-        case 3:
-            selectedKitchen = self.kitchenModel[row].KitchenName
-        default:
-            print("default")
-        }
     }
 }

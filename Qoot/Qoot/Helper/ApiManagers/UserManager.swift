@@ -957,6 +957,11 @@ class ViewKitchens : NSObject{
     var OpenStatus:Bool = false
     
     init(dict:[String:Any?]) {
+//        if let value = dict["KitchenId"] as? String{
+//            if let kitchenID = Int(value){
+//                catId = kitchenID
+//            }
+//        }
         if let value = dict["KitchenId"] as? Int{
             KitchenId = value
         }
@@ -966,8 +971,10 @@ class ViewKitchens : NSObject{
         if let value = dict["KitchenLogo"] as? String{
             KitchenLogo = value
         }
-        if let value = dict["KitchenDeliveryFee"] as? Int{
-            KitchenDeliveryFee = value
+        if let value = dict["KitchenDeliveryFee"] as? String{
+            if let deliveryFee = Int(value){
+                KitchenDeliveryFee = deliveryFee
+            }
         }
         if let value = dict["CutomerRating"] as? Int{
             CutomerRating = value
@@ -994,14 +1001,19 @@ class ViewCuisines : NSObject{
     var subCatId:Int = 0
     
     init(dict:[String:Any?]) {
-        if let value = dict["category_id"] as? Int{
-            catId = value
+        
+        if let value = dict["category_id"] as? String{
+            if let catID = Int(value){
+                catId = catID
+            }
         }
         if let value = dict["sub_category_name"] as? String{
             subCatName = value
         }
-        if let value = dict["sub_category_id"] as? Int{
-            subCatId = value
+        if let value = dict["sub_category_id"] as? String{
+            if let sub_catID = Int(value){
+                subCatId = sub_catID
+            }
         }
     }
 }

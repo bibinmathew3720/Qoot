@@ -10,6 +10,7 @@ import UIKit
 
 class SearchResultsVC: BaseViewController {
     @IBOutlet weak var searchResultsTV: UITableView!
+    var kitchensResponseModel:KitchensResponseModel?
     
     override func initView() {
         super.initView()
@@ -53,13 +54,18 @@ extension SearchResultsVC : UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var rowCount :Int = 10
-        return rowCount
+        if let kitchenResponse = self.kitchensResponseModel {
+            return kitchenResponse.viewKitchens.count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchResults", for: indexPath) as!SearchResultsTVC
         cell.tag = indexPath.row
+        if let kitchenResponse = self.kitchensResponseModel {
+            cell.setKitchen(kitchen: kitchenResponse.viewKitchens[indexPath.row])
+        }
         return cell
     }
     

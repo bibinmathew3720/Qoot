@@ -93,8 +93,20 @@ class HomeVC: BaseViewController {
     }
    
     @IBAction func searchButtonAction(_ sender: Any) {
-        let searchResultsVC = SearchResultsVC.init(nibName: "SearchResultsVC", bundle: nil)
-        self.navigationController?.pushViewController(searchResultsVC, animated: true)
+        if let city = self.selCity {
+            MBProgressHUD.showAdded(to: self.view, animated: true)
+            callingKitchensApi { (status, kitchenResponseModel) in
+                if status {
+                    let searchResultsVC = SearchResultsVC.init(nibName: "SearchResultsVC", bundle: nil)
+                    searchResultsVC.kitchensResponseModel = kitchenResponseModel
+                self.navigationController?.pushViewController(searchResultsVC, animated: true)
+                }
+            }
+        }
+        else{
+            CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: "CHOOSECITYFIRST".localiz(), parentController: self)
+        }
+        
     }
      //MARK: City Names Api
     
@@ -146,6 +158,7 @@ class HomeVC: BaseViewController {
             print(ErrorType)
         }
     }
+    
     //MARK: ViewCuisines Api
     
     func  callingViewCuisinesApi(){
@@ -182,15 +195,16 @@ class HomeVC: BaseViewController {
     
     //MARK: Kitchens Api
     
-    func  callingKitchensApi(){
+    func  callingKitchensApi(response:@escaping(Bool,KitchensResponseModel?)->()){
         //MBProgressHUD.showAdded(to: self.view, animated: true)
         UserManager().callingKitchensApi(with: getKitchenRequestBody(), success: {
             (model) in
             MBProgressHUD.hide(for: self.view, animated: true)
             if let model = model as? KitchensResponseModel{
-                self.kitchenModel = model
-                self.pickerView.reloadAllComponents()
+               
+                response(true,model)
             }
+            response(false,nil)
             
         }) { (ErrorType) in
             MBProgressHUD.hide(for: self.view, animated: true)
@@ -260,7 +274,12 @@ class HomeVC: BaseViewController {
             case 2:
                 if let cuisineModel = self.cuisinesModel{
                     selCuisine = cuisineModel.viewCuisines[pickerView.selectedRow(inComponent: 0)]
-                    callingKitchensApi()
+                    callingKitchensApi { (status, kitchenResponseModel) in
+                        if status {
+                            self.kitchenModel = kitchenResponseModel
+                            self.pickerView.reloadAllComponents()
+                        }
+                    }
                 }
             case 3:
                 if let kitchenModel = self.kitchenModel{

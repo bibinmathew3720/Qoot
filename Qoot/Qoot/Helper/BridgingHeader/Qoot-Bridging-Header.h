@@ -7,6 +7,7 @@
 //
 #import "Reachability.h"
 #import <MBProgressHUD/MBProgressHUD.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 #ifndef Qoot_Bridging_Header_h
 #define Qoot_Bridging_Header_h
 

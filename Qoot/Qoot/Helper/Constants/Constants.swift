@@ -75,6 +75,6 @@ struct Constant{
         static let logoutMessage = "Do you want to logout?"
         
     }
-    static let AuthenticationToken = "53067a56941ff00369b726d450ef3bb9495c7224"
+    static let ApiKey = "cW9vdC5vbmxpbmVhcGl0b2tlbmJ5amlqbw=="
     
 }

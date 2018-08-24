@@ -200,4 +200,13 @@ class CCUtility: NSObject {
         
        
     }
+    
+    class func getCurrentLanguage()->String{
+        let language = UserDefaults.standard.value(forKey: "language")
+        if let _language = language as? String{
+            return _language
+        }else{
+            return "en"
+        }
+    }
 }

@@ -93,7 +93,14 @@ class CLNetworkManager: NSObject {
                 if let requestType = networkModel_.requestMethod{
                     urlRequest!.httpMethod = requestType
                 }
-                if let requestBody = networkModel_.requestBody{
+                if var requestBody = networkModel_.requestBody{
+                    let appendingString = "apikey=\(Constant.ApiKey)&lang=\(CCUtility.getCurrentLanguage())"
+                    if requestBody.count>0{
+                        requestBody = requestBody + "&" + appendingString
+                    }
+                    else{
+                        requestBody = requestBody + appendingString
+                    }
                    // let postData = requestBody.data(using: String.Encoding.ascii, allowLossyConversion: true)
                     //urlRequest!.httpBody = postData
                     

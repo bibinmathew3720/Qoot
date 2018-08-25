@@ -179,6 +179,40 @@ class UserManager: CLBaseService {
         let kitchensResponseModel = KitchensResponseModel.init(arr:dict)
         return kitchensResponseModel
     }
+    
+    //MARK : Get Offer Api
+    
+    func callingOfferDishesApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelOfferDishes(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveArrayResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict)
+                    success(self.getOfferDishesResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelOfferDishes(with body:String)->CLNetworkModel{
+        let registerRequestModel = CLNetworkModel.init(url: BASE_URL+OfferDishes_URL, requestMethod_: "POST")
+        registerRequestModel.requestBody = body
+        return registerRequestModel
+    }
+    
+    func getOfferDishesResponseModel(dict:NSArray) -> Any? {
+        let offerDishesResponseModel = OfferDishesResponseModel.init(arr:dict)
+        return offerDishesResponseModel
+    }
     //MARK : Log In Api
     
     func callingLogInApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
@@ -1370,6 +1404,81 @@ class FetchFeedbackResponseModel : NSObject{
         
         if let value = dict["statusCode"] as? Int{
             statusCode = value
+        }
+    }
+}
+
+class OfferDishesResponseModel : NSObject{
+    var dishes = [Dishes]()
+    init(arr:(NSArray)) {
+        for item in arr{
+            if let it = item as? [String : Any?]{
+                dishes.append(Dishes.init(dict: it ))
+            }
+        }
+    }
+}
+
+class Dishes : NSObject{
+    var DishAmount:Float = 0.0
+    var DishCategory:Int = 0
+    var DishDescription:String = ""
+    var DishId:Int = 0
+    var DishImage:String = ""
+    var DishMainCategory:Int = 0
+    var DishName:String = ""
+    var DishQuantity:String = "'"
+    var DishServe:Int = 0
+    var DishTime:String = ""
+    var KitchenId:Int = 0
+    var MenuId:Int = 0
+    init(dict:[String:Any?]) {
+        //        if let value = dict["KitchenId"] as? String{
+        //            if let kitchenID = Int(value){
+        //                catId = kitchenID
+        //            }
+        //        }
+        if let value = dict["DishAmount"] as? Float{
+            DishAmount = value
+        }
+        if let value = dict["DishCategory"] as? String{
+            if let dishCategory = Int(value){
+                DishCategory = dishCategory
+            }
+        }
+        if let value = dict["DishDescription"] as? String{
+            DishDescription = value
+        }
+        if let value = dict["DishId"] as? Int{
+            DishId = value
+        }
+        if let value = dict["DishImage"] as? String{
+            DishImage = value
+        }
+        if let value = dict["DishMainCategory"] as? String{
+            if let dishMainCategory = Int(value){
+                DishMainCategory = dishMainCategory
+            }
+        }
+        if let value = dict["DishName"] as? String{
+            DishName = value
+        }
+        if let value = dict["DishQuantity"] as? String{
+                DishQuantity = value
+        }
+        if let value = dict["DishServe"] as? String{
+            if let dishServe = Int(value){
+                DishServe = dishServe
+            }
+        }
+        if let value = dict["DishTime"] as? String{
+            DishTime = value
+        }
+        if let value = dict["KitchenId"] as? Int{
+            KitchenId = value
+        }
+        if let value = dict["MenuId"] as? Int{
+            MenuId = value
         }
     }
 }

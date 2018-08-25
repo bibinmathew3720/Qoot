@@ -10,15 +10,41 @@ import UIKit
 
 class HomeCollectionCell: UICollectionViewCell {
     @IBOutlet var priceLabel: UILabel!
+    @IBOutlet var dishNameLabel: UILabel!
+    @IBOutlet var dishImage: UIImageView!
+    @IBOutlet weak var priceBackView: UIView!
     
-    @IBOutlet var itemNameLabel: UILabel!
     @IBOutlet var viewMoreLabel: UILabel!
-    @IBOutlet var itemIcon: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        itemIcon.layer.borderColor = UIColor.black.cgColor
-        itemIcon.layer.borderWidth = 1.0
+        
+        dishImage.layer.borderColor = Constant.Colors.CommonBlackColor.cgColor
+        dishImage.layer.borderWidth = 0.5
         viewMoreLabel.text = "ViewMore".localiz()
+    }
+    
+    func setDish(dish:Dishes){
+        setDishControls()
+        dishNameLabel.text = dish.DishName
+        priceLabel.text = "SAR".localiz() + " " + String(format: "%.2f", dish.DishAmount)
+        dishImage.sd_setImage(with: URL(string: dish.DishImage), placeholderImage: UIImage(named: Constant.ImageNames.placeholderImage))
+    }
+    
+    func setDishControls(){
+        viewMoreLabel.isHidden = true
+        dishNameLabel.isHidden = false
+        dishImage.backgroundColor = UIColor.clear
+        priceLabel.isHidden = false
+        priceBackView.isHidden = false
+    }
+    
+    func hideDishControls(){
+        viewMoreLabel.isHidden = false
+        dishNameLabel.isHidden = true
+        dishImage.backgroundColor = Constant.Colors.CommonMeroonColor
+        priceLabel.isHidden = true
+        priceBackView.isHidden = true
     }
 
 }

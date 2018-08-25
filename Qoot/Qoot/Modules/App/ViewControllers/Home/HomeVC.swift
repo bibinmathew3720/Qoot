@@ -37,6 +37,7 @@ class HomeVC: BaseViewController {
     var selCuisine:ViewCuisines?
     var kitchenModel:KitchensResponseModel?
     var selKitchen:ViewKitchens?
+    var offersResponseModel:OfferDishesResponseModel?
     
     override func initView() {
         super.initView()
@@ -44,8 +45,8 @@ class HomeVC: BaseViewController {
         localisation()
         addingLeftBarButton()
         addCartIconOnly()
-        callingCityNameApi()
-//        callingKitchensApi()
+        getOfferDishesApi()
+        //callingCityNameApi()
         self.leftButton?.setImage(UIImage(named: "hamburger"), for: UIControlState.normal)
     }
     
@@ -244,20 +245,29 @@ class HomeVC: BaseViewController {
         return dataString
     }
     
-    
-//    func getLoginRequestBody()->String{
-//        var dataString:String = ""
-//        if let phone = self.mobileTextField.text {
-//            let phoneString:String = "username=\(phone.urlEncode())"
-//            dataString = dataString + phoneString + "&"
-//        }
-//        if let password = self.passwordTextField.text {
-//            let passwordString:String = "password=\(password.urlEncode())"
-//            dataString = dataString + passwordString
-//        }
-//        //dataString = "username=0550154967&password=123456"
-//        return dataString
-//    }
+    func getOfferDishesApi(){
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        UserManager().callingOfferDishesApi(with:"", success: {
+            (model) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if let model = model as? OfferDishesResponseModel{
+                self.offersResponseModel = model
+                self.offersCollectionView.reloadData()
+            }
+            
+            
+        }) { (ErrorType) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if(ErrorType == .noNetwork){
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+            }
+            else{
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+            }
+            
+            print(ErrorType)
+        }
+    }
     
     @IBAction func toolBarDoneAction(_ sender: Any) {
 //        if selectedCity == TYPE_FIELDS[0] || selectedMeal == TYPE_FIELDS[1] || selectedCuisine == TYPE_FIELDS[2] || selectedKitchen == TYPE_FIELDS[3]{
@@ -363,19 +373,37 @@ extension HomeVC:UICollectionViewDataSource,UICollectionViewDelegate{
         return 1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 7
+        if collectionView == offersCollectionView {
+            if let offerDishes = self.offersResponseModel{
+                if offerDishes.dishes.count>7{
+                    return 7
+                }
+                else{
+                    return offerDishes.dishes.count
+                }
+            }
+        }
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell:HomeCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "homeCollectionCell", for: indexPath) as! HomeCollectionCell
-        if indexPath.row == 6{
-            cell.itemIcon.backgroundColor = UIColor(red:0.64, green:0.10, blue:0.36, alpha:1.0)
-            cell.viewMoreLabel.isHidden = false
+        if collectionView == offersCollectionView {
+            if let offerDishes = self.offersResponseModel{
+                if offerDishes.dishes.count>7{
+                    if indexPath.row != 6{
+                        cell.setDish(dish:offerDishes.dishes[indexPath.row])
+                    }
+                    else{
+                        cell.hideDishControls()
+                    }
+                }
+                else{
+                     cell.setDish(dish:offerDishes.dishes[indexPath.row])
+                }
+            }
         }
-        else{
-            cell.itemIcon.backgroundColor = .clear
-            cell.viewMoreLabel.isHidden = true
-        }
+        
         return cell
     }
     

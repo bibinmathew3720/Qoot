@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -51,13 +51,13 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QoU-Ie-D73">
-                        <rect key="frame" x="100" y="78" width="41.5" height="22.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QoU-Ie-D73">
+                        <rect key="frame" x="3" y="78" width="234" height="22.5"/>
                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZY8-U3-M61">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZY8-U3-M61">
                         <rect key="frame" x="90" y="10" width="60" height="60"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="60" id="IVQ-yh-ew8"/>
@@ -79,7 +79,8 @@
             </view>
             <constraints>
                 <constraint firstItem="QoU-Ie-D73" firstAttribute="top" secondItem="ZY8-U3-M61" secondAttribute="bottom" constant="8" id="30l-TK-oEw"/>
-                <constraint firstItem="QoU-Ie-D73" firstAttribute="centerX" secondItem="rjV-X5-QUk" secondAttribute="centerX" id="E5y-3V-2Vx"/>
+                <constraint firstItem="QoU-Ie-D73" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" constant="3" id="7wa-om-0Mf"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="QoU-Ie-D73" secondAttribute="trailing" constant="3" id="Gt6-5M-TrZ"/>
                 <constraint firstItem="Qau-qj-Guf" firstAttribute="centerX" secondItem="ZY8-U3-M61" secondAttribute="centerX" id="SDv-UG-3fR"/>
                 <constraint firstItem="rjV-X5-QUk" firstAttribute="top" secondItem="QoU-Ie-D73" secondAttribute="bottom" constant="3" id="TKA-2G-sjb"/>
                 <constraint firstItem="MBf-U6-SBY" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="WqF-cF-esu"/>
@@ -90,8 +91,9 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="240" height="140"/>
             <connections>
-                <outlet property="itemIcon" destination="ZY8-U3-M61" id="T0A-TO-gfD"/>
-                <outlet property="itemNameLabel" destination="QoU-Ie-D73" id="DmW-tr-GDa"/>
+                <outlet property="dishImage" destination="ZY8-U3-M61" id="oYz-d3-Z6a"/>
+                <outlet property="dishNameLabel" destination="QoU-Ie-D73" id="rwM-yp-xGb"/>
+                <outlet property="priceBackView" destination="MBf-U6-SBY" id="Qy9-L9-E8c"/>
                 <outlet property="priceLabel" destination="rjV-X5-QUk" id="wJa-bd-UNQ"/>
                 <outlet property="viewMoreLabel" destination="Qau-qj-Guf" id="ZBa-ZL-plA"/>
             </connections>

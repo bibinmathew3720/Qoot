@@ -20,6 +20,7 @@ let GETCITYNAMES_URL = "Ios/Customer/ViewCityNames"
 let VIEWMEALTYPE_URL = "Ios/Customer/ViewMealType"
 let ViewCuisines_URL = "Ios/Customer/ViewCuisines"
 let ViewKitchens_URL = "Ios/Customer/ViewKitchens"
+let OfferDishes_URL = "/Ios/Customer/ViewOfferDishes"
 
 let FORGOT_PASS_URL = "user/forgotPassword"
 let CHANGE_PASS_URL = "user/changePassword"

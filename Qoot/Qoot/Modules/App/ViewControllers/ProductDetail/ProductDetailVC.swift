@@ -33,6 +33,7 @@ class ProductDetailVC: BaseViewController {
         addingLeftBarButton()
         addCartIconOnly()
         populateDishDetails()
+        getDishDetailsApi()
     }
     
     func localisation(){
@@ -52,8 +53,41 @@ class ProductDetailVC: BaseViewController {
             timeLabel.text = dish.DishTime
             quantityLabel.text = dish.DishQuantity
         }
-        
     }
+    
+    func getDishDetailsApi(){
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        UserManager().callingGetDishDetailsApi(with:getDishDetailsRequestBody(), success: {
+            (model) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if let model = model as? Dishes{
+                self.dishDetail = model
+                self.populateDishDetails()
+            }
+        }) { (ErrorType) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if(ErrorType == .noNetwork){
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+            }
+            else{
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+            }
+            
+            print(ErrorType)
+        }
+    }
+    
+    func getDishDetailsRequestBody()->String{
+        var dataString:String = ""
+        if let dish = self.dishDetail {
+            let kitchenId:String = "KitchenId=\(String(dish.KitchenId).urlEncode())"
+            dataString = dataString + kitchenId
+            let menuId:String = "MenuId=\(String(dish.MenuId).urlEncode())"
+            dataString = dataString + "&" + menuId
+        }
+        return dataString
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

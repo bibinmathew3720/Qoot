@@ -283,6 +283,40 @@ class UserManager: CLBaseService {
         return readyNowDishesResponseModel
     }
     
+    //Get Dish Details Api
+    
+    func callingGetDishDetailsApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForGetDishDetails(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict)
+                    success(self.getDishDetailsResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForGetDishDetails(with body:String)->CLNetworkModel{
+        let dishDetailsRequestModel = CLNetworkModel.init(url: BASE_URL+DishDetails_URL, requestMethod_: "POST")
+        dishDetailsRequestModel.requestBody = body
+        return dishDetailsRequestModel
+    }
+    
+    func getDishDetailsResponseModel(dict:[String : Any?]) -> Any? {
+        let dishDetailsReponseModel = Dishes.init(dict:dict)
+        return dishDetailsReponseModel
+    }
+    
     //MARK : Log Out Api
     
     func callingLogOutApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){

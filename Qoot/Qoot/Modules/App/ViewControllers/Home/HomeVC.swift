@@ -462,9 +462,11 @@ extension HomeVC:UICollectionViewDataSource,UICollectionViewDelegate{
             let viewMoreVC:ViewMoreVC = ViewMoreVC(nibName: "ViewMoreVC", bundle: nil)
             if collectionView == offersCollectionView{
                viewMoreVC.pageType = ViewMoreType.Offers
+               viewMoreVC.offersResponseModel = self.offersResponseModel
             }
             else{
                 viewMoreVC.pageType = ViewMoreType.ReadyNow
+                viewMoreVC.readyNowResponseModel = self.reayNowDishesReaponseModel
             }
             self.navigationController?.pushViewController(viewMoreVC, animated: true)
         }

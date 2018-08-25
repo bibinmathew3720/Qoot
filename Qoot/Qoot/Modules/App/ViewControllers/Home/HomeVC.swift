@@ -472,6 +472,16 @@ extension HomeVC:UICollectionViewDataSource,UICollectionViewDelegate{
         }
         else{
             let viewController:ProductDetailVC = ProductDetailVC(nibName: "ProductDetailVC", bundle: nil)
+            if collectionView == offersCollectionView{
+                if let offerDishes = self.offersResponseModel{
+                    viewController.dishDetail =  offerDishes.dishes[indexPath.row]
+                }
+            }
+            if collectionView == readyNowCollectionView{
+                if let readyDishes = self.reayNowDishesReaponseModel{
+                    viewController.dishDetail =  readyDishes.dishes[indexPath.row]
+                }
+            }
             self.navigationController?.pushViewController(viewController, animated: true)
         }
     }

@@ -10,6 +10,7 @@ import UIKit
 
 class ProductDetailVC: BaseViewController {
 
+    @IBOutlet weak var dishImageView: UIImageView!
     @IBOutlet var countLabel: UILabel!
     @IBOutlet var priceLabel: UILabel!
     @IBOutlet var productDescriptionLabel: UILabel!
@@ -24,11 +25,14 @@ class ProductDetailVC: BaseViewController {
     @IBOutlet var servesAvailableTitle: UILabel!
     var count: Int = 1
     
+    var dishDetail:Dishes?
+    
     override func initView() {
         super.initView()
         localisation()
         addingLeftBarButton()
         addCartIconOnly()
+        populateDishDetails()
     }
     
     func localisation(){
@@ -36,6 +40,19 @@ class ProductDetailVC: BaseViewController {
         self.preparationTimeTitle.text = "PreparationTime".localiz()
         self.quantityTitle.text = "Quantity".localiz()
         self.addCartLabel.text = "AddToCart".localiz()
+    }
+    
+    func populateDishDetails(){
+        if let dish = dishDetail{
+            dishImageView.sd_setImage(with: URL(string: dish.DishImage), placeholderImage: UIImage(named: Constant.ImageNames.placeholderImage))
+            productTitle.text = dish.DishName
+            priceLabel.text = "SAR".localiz() + " " + String(format: "%0.2f", dish.DishAmount)
+            productDescriptionLabel.text = dish.DishDescription
+            servesCountLabel.text = String(format: "%d", dish.DishServe)
+            timeLabel.text = dish.DishTime
+            quantityLabel.text = dish.DishQuantity
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {

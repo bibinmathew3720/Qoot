@@ -124,6 +124,12 @@ extension ViewMoreVC:UICollectionViewDataSource,UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let viewController:ProductDetailVC = ProductDetailVC(nibName: "ProductDetailVC", bundle: nil)
+        if let offerDishes = self.offersResponseModel{
+            viewController.dishDetail =  offerDishes.dishes[indexPath.row]
+        }
+        if let readyDishes = self.readyNowResponseModel{
+            viewController.dishDetail =  readyDishes.dishes[indexPath.row]
+        }
         self.navigationController?.pushViewController(viewController, animated: true)
        
     }

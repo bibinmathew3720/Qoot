@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -22,6 +22,7 @@
             <connections>
                 <outlet property="addCartLabel" destination="5Hg-Xy-jnp" id="exR-vo-t2F"/>
                 <outlet property="countLabel" destination="1Ny-Qf-dP0" id="4TO-qs-TF7"/>
+                <outlet property="dishImageView" destination="F0Y-UQ-3tE" id="GS7-v5-tLA"/>
                 <outlet property="preparationTimeTitle" destination="u2L-Dw-dwu" id="W50-T5-JtB"/>
                 <outlet property="priceLabel" destination="Oca-M1-aaX" id="h3g-tj-8M8"/>
                 <outlet property="productDescriptionLabel" destination="eJ3-96-dTs" id="aVk-0F-KO2"/>
@@ -45,14 +46,14 @@
                         <constraint firstAttribute="height" constant="200" id="3HV-RR-pVB"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cinnavon" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mOp-pD-nAe">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cinnavon" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mOp-pD-nAe">
                     <rect key="frame" x="10" y="240" width="84" height="26.5"/>
                     <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="20"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SAR 75.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oca-M1-aaX">
-                    <rect key="frame" x="281" y="240" width="84" height="26.5"/>
+                    <rect key="frame" x="281" y="243" width="84" height="26.5"/>
                     <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="20"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -226,10 +227,11 @@
                 <constraint firstItem="YEG-JS-cQ2" firstAttribute="leading" secondItem="pTv-cB-mhh" secondAttribute="leading" id="awJ-Jg-RMG"/>
                 <constraint firstItem="u2L-Dw-dwu" firstAttribute="centerY" secondItem="pTv-cB-mhh" secondAttribute="centerY" id="c36-9s-auT"/>
                 <constraint firstItem="C8R-x1-G4b" firstAttribute="leading" secondItem="YEG-JS-cQ2" secondAttribute="trailing" constant="15" id="d4o-Gj-lrn"/>
+                <constraint firstItem="Oca-M1-aaX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="mOp-pD-nAe" secondAttribute="trailing" constant="3" id="dpn-oL-TOi"/>
                 <constraint firstItem="5Hg-Xy-jnp" firstAttribute="leading" secondItem="lEm-fN-cMy" secondAttribute="trailing" constant="13" id="fDy-pX-Dry"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Oca-M1-aaX" secondAttribute="trailing" constant="10" id="fWR-XA-QQP"/>
                 <constraint firstItem="lmD-xJ-wE0" firstAttribute="top" secondItem="YEG-JS-cQ2" secondAttribute="bottom" constant="15" id="fiq-Jz-ZdU"/>
-                <constraint firstItem="Oca-M1-aaX" firstAttribute="centerY" secondItem="mOp-pD-nAe" secondAttribute="centerY" id="gAH-us-a5P"/>
+                <constraint firstItem="Oca-M1-aaX" firstAttribute="centerY" secondItem="mOp-pD-nAe" secondAttribute="centerY" constant="3" id="gAH-us-a5P"/>
                 <constraint firstItem="9FR-WW-uVT" firstAttribute="top" secondItem="eJ3-96-dTs" secondAttribute="bottom" constant="3" id="iJQ-pB-3Bx"/>
                 <constraint firstItem="gpu-ip-eEp" firstAttribute="leading" secondItem="u2L-Dw-dwu" secondAttribute="trailing" constant="10" id="kAX-7a-1ay"/>
                 <constraint firstItem="77w-T7-xwY" firstAttribute="centerY" secondItem="A2o-dC-eLG" secondAttribute="centerY" id="kgl-N5-ANh"/>

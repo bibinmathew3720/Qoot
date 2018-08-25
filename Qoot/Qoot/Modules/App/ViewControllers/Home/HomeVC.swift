@@ -38,6 +38,7 @@ class HomeVC: BaseViewController {
     var kitchenModel:KitchensResponseModel?
     var selKitchen:ViewKitchens?
     var offersResponseModel:OfferDishesResponseModel?
+    var reayNowDishesReaponseModel:ReadyNowDishesResponseModel?
     
     override func initView() {
         super.initView()
@@ -253,9 +254,32 @@ class HomeVC: BaseViewController {
             if let model = model as? OfferDishesResponseModel{
                 self.offersResponseModel = model
                 self.offersCollectionView.reloadData()
+                self.getReadyNowDishesApi()
             }
             
             
+        }) { (ErrorType) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if(ErrorType == .noNetwork){
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+            }
+            else{
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+            }
+            
+            print(ErrorType)
+        }
+    }
+    
+    func getReadyNowDishesApi(){
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        UserManager().callingReadyNowDishesApi(with:"", success: {
+            (model) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if let model = model as? ReadyNowDishesResponseModel{
+                self.reayNowDishesReaponseModel = model
+                self.readyNowCollectionView.reloadData()
+            }
         }) { (ErrorType) in
             MBProgressHUD.hide(for: self.view, animated: true)
             if(ErrorType == .noNetwork){
@@ -383,6 +407,16 @@ extension HomeVC:UICollectionViewDataSource,UICollectionViewDelegate{
                 }
             }
         }
+        if collectionView == readyNowCollectionView {
+            if let readyDishes = self.reayNowDishesReaponseModel{
+                if readyDishes.dishes.count>7{
+                    return 7
+                }
+                else{
+                    return readyDishes.dishes.count
+                }
+            }
+        }
         return 0
     }
     
@@ -400,6 +434,22 @@ extension HomeVC:UICollectionViewDataSource,UICollectionViewDelegate{
                 }
                 else{
                      cell.setDish(dish:offerDishes.dishes[indexPath.row])
+                }
+            }
+        }
+        
+        if collectionView == readyNowCollectionView {
+            if let readyDishes = self.reayNowDishesReaponseModel{
+                if readyDishes.dishes.count>7{
+                    if indexPath.row != 6{
+                        cell.setDish(dish:readyDishes.dishes[indexPath.row])
+                    }
+                    else{
+                        cell.hideDishControls()
+                    }
+                }
+                else{
+                    cell.setDish(dish:readyDishes.dishes[indexPath.row])
                 }
             }
         }

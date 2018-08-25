@@ -180,6 +180,41 @@ class UserManager: CLBaseService {
         return kitchensResponseModel
     }
     
+  
+    //MARK : Log In Api
+    
+    func callingLogInApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForLogIn(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict)
+                    success(self.getLogInResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForLogIn(with body:String)->CLNetworkModel{
+        let loginRequestModel = CLNetworkModel.init(url: BASE_URL+LOGIN_URL, requestMethod_: "POST")
+        loginRequestModel.requestBody = body
+        return loginRequestModel
+    }
+    
+    func getLogInResponseModel(dict:[String : Any?]) -> Any? {
+        let logInReponseModel = QootLogInResponseModel.init(dict:dict)
+        return logInReponseModel
+    }
+    
     //MARK : Get Offer Api
     
     func callingOfferDishesApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
@@ -213,16 +248,17 @@ class UserManager: CLBaseService {
         let offerDishesResponseModel = OfferDishesResponseModel.init(arr:dict)
         return offerDishesResponseModel
     }
-    //MARK : Log In Api
     
-    func callingLogInApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
-        CLNetworkManager().initateWebRequest(networkModelForLogIn(with:body), success: {
+    //MARK : Get Ready Now Dishes Api
+    
+    func callingReadyNowDishesApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelReadyNowDishes(with:body), success: {
             (resultData) in
-            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
+            let (jsonDict, error) = self.didReceiveArrayResponseSuccessFully(resultData)
             if error == nil {
                 if let jdict = jsonDict{
                     print(jsonDict)
-                    success(self.getLogInResponseModel(dict: jdict) as Any)
+                    success(self.readyNowDishesResponseModel(dict: jdict) as Any)
                 }else{
                     failure(ErrorType.dataError)
                 }
@@ -236,15 +272,15 @@ class UserManager: CLBaseService {
         
     }
     
-    func networkModelForLogIn(with body:String)->CLNetworkModel{
-        let loginRequestModel = CLNetworkModel.init(url: BASE_URL+LOGIN_URL, requestMethod_: "POST")
-        loginRequestModel.requestBody = body
-        return loginRequestModel
+    func networkModelReadyNowDishes(with body:String)->CLNetworkModel{
+        let registerRequestModel = CLNetworkModel.init(url: BASE_URL+ReadyNowDishes_URL, requestMethod_: "POST")
+        registerRequestModel.requestBody = body
+        return registerRequestModel
     }
     
-    func getLogInResponseModel(dict:[String : Any?]) -> Any? {
-        let logInReponseModel = QootLogInResponseModel.init(dict:dict)
-        return logInReponseModel
+    func readyNowDishesResponseModel(dict:NSArray) -> Any? {
+        let readyNowDishesResponseModel = ReadyNowDishesResponseModel.init(arr:dict)
+        return readyNowDishesResponseModel
     }
     
     //MARK : Log Out Api
@@ -1409,6 +1445,17 @@ class FetchFeedbackResponseModel : NSObject{
 }
 
 class OfferDishesResponseModel : NSObject{
+    var dishes = [Dishes]()
+    init(arr:(NSArray)) {
+        for item in arr{
+            if let it = item as? [String : Any?]{
+                dishes.append(Dishes.init(dict: it ))
+            }
+        }
+    }
+}
+
+class ReadyNowDishesResponseModel : NSObject{
     var dishes = [Dishes]()
     init(arr:(NSArray)) {
         for item in arr{

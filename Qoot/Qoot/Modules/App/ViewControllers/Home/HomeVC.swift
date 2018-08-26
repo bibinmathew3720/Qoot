@@ -47,7 +47,6 @@ class HomeVC: BaseViewController {
         addingLeftBarButton()
         addCartIconOnly()
         getOfferDishesApi()
-        //callingCityNameApi()
         self.leftButton?.setImage(UIImage(named: "hamburger"), for: UIControlState.normal)
     }
     
@@ -254,7 +253,8 @@ class HomeVC: BaseViewController {
             if let model = model as? OfferDishesResponseModel{
                 self.offersResponseModel = model
                 self.offersCollectionView.reloadData()
-                self.getReadyNowDishesApi()
+                self.callingCityNameApi()
+                //self.getReadyNowDishesApi()
             }
             
             

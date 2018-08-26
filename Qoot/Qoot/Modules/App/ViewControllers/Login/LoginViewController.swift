@@ -89,18 +89,13 @@ class LoginViewController: BaseViewController,UITextFieldDelegate {
             (model) in
             MBProgressHUD.hide(for: self.view, animated: true)
             if let model = model as? QootLogInResponseModel{
-                UserDefaults.standard.set(true, forKey: Constant.VariableNames.isLoogedIn)
-                self.dismiss(animated: true, completion: nil)
-                if model.statusCode == 1{
-                    CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: model.errorMessage, parentController: self)
-                   
+                if model.statusMessage.count > 0 {
+                    CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: model.statusMessage, parentController: self)
                 }
                 else{
-                    CCUtility.showDefaultAlertwithCompletionHandler(_title: Constant.AppName, _message: model.statusMessage, parentController: self, completion: { (okSuccess) in
-                        self.navigationController?.popViewController(animated: true)
-                    })
+                    UserDefaults.standard.set(true, forKey: Constant.VariableNames.isLoogedIn)
+                    self.dismiss(animated: true, completion: nil)
                 }
-                
             }
             
         }) { (ErrorType) in

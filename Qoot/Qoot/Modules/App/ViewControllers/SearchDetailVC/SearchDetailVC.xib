@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -25,11 +25,16 @@
                 <outlet property="deliveryFeeLabel" destination="3NT-Ix-Kmq" id="zAc-Yx-FKh"/>
                 <outlet property="deliveryFeeTitleLabel" destination="NJv-Ou-YV8" id="ylL-ZT-cIS"/>
                 <outlet property="deliveryTitleLabel" destination="6VQ-vi-qab" id="dcb-UI-Jp9"/>
+                <outlet property="kitchenImageView" destination="RZP-vv-6Si" id="7m0-bi-44S"/>
+                <outlet property="kitchenNameLabel" destination="X5p-RZ-G1s" id="hLf-vE-VOU"/>
                 <outlet property="menuTableView" destination="dRT-OM-4a0" id="3NL-MN-fUO"/>
-                <outlet property="productImageView" destination="RZP-vv-6Si" id="ryi-cP-eTb"/>
-                <outlet property="productNameLabel" destination="X5p-RZ-G1s" id="4js-Vd-kPM"/>
                 <outlet property="ratingLabel" destination="IOA-bJ-Imr" id="5dA-00-4OY"/>
                 <outlet property="segmentControl" destination="q4a-7M-I61" id="edS-Nj-owU"/>
+                <outlet property="star1" destination="wqS-B9-LHZ" id="tpX-L8-8gl"/>
+                <outlet property="star2" destination="XNb-aO-XaG" id="4Mx-0w-Vjd"/>
+                <outlet property="star3" destination="qwy-1X-g1T" id="XXr-je-c5b"/>
+                <outlet property="star4" destination="s8Y-kh-efv" id="WyI-jF-FDL"/>
+                <outlet property="star5" destination="cf3-kI-XyR" id="arE-b0-zvX"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -39,29 +44,29 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Znz-9I-U7K">
-                    <rect key="frame" x="10" y="90" width="355" height="140"/>
+                    <rect key="frame" x="10" y="90" width="355" height="120"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RZP-vv-6Si">
-                            <rect key="frame" x="0.0" y="10" width="120" height="120"/>
+                            <rect key="frame" x="0.0" y="10" width="100" height="100"/>
                             <color key="backgroundColor" red="0.99607843139999996" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="120" id="Cfh-z7-54e"/>
-                                <constraint firstAttribute="width" constant="120" id="fqr-oF-qhp"/>
+                                <constraint firstAttribute="height" constant="100" id="Cfh-z7-54e"/>
+                                <constraint firstAttribute="width" constant="100" id="fqr-oF-qhp"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                    <integer key="value" value="60"/>
+                                    <integer key="value" value="50"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manals Art" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X5p-RZ-G1s">
-                            <rect key="frame" x="125" y="10" width="73.5" height="20"/>
+                            <rect key="frame" x="105" y="10" width="73.5" height="20"/>
                             <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="15"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wUM-OM-yWI">
-                            <rect key="frame" x="125" y="35" width="75" height="20"/>
+                            <rect key="frame" x="105" y="35" width="75" height="20"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wqS-B9-LHZ">
                                     <rect key="frame" x="0.0" y="2" width="15" height="15"/>
@@ -118,7 +123,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ci6-dp-hYx">
-                            <rect key="frame" x="125" y="60" width="28" height="26.5"/>
+                            <rect key="frame" x="105" y="60" width="28" height="26.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7.5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IOA-bJ-Imr">
                                     <rect key="frame" x="4" y="4" width="20" height="18.5"/>
@@ -141,30 +146,30 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Customer Rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZFh-cy-tzZ">
-                            <rect key="frame" x="158" y="64.5" width="106.5" height="18.5"/>
+                            <rect key="frame" x="138" y="64.5" width="106.5" height="18.5"/>
                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delivery" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6VQ-vi-qab">
-                            <rect key="frame" x="125" y="111.5" width="50" height="18.5"/>
+                            <rect key="frame" x="105" y="91.5" width="50" height="18.5"/>
                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I3c-VH-2U7">
-                            <rect key="frame" x="180" y="110" width="10" height="22"/>
+                            <rect key="frame" x="160" y="90" width="10" height="22"/>
                             <state key="normal" image="tickIconGreen"/>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delivery fee" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NJv-Ou-YV8">
-                            <rect key="frame" x="195" y="112" width="73" height="18.5"/>
+                            <rect key="frame" x="175" y="92" width="73" height="18.5"/>
                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
-                            <nil key="textColor"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SAR 20.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3NT-Ix-Kmq">
-                            <rect key="frame" x="273" y="110.5" width="66.5" height="21.5"/>
-                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                            <rect key="frame" x="253" y="92.5" width="58" height="18.5"/>
+                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                             <color key="textColor" red="0.58039215686274503" green="0.75686274509803919" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -193,7 +198,7 @@
                     </constraints>
                 </view>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="q4a-7M-I61">
-                    <rect key="frame" x="0.0" y="240" width="375" height="29"/>
+                    <rect key="frame" x="0.0" y="220" width="375" height="29"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <segments>
                         <segment title="Menu"/>
@@ -206,7 +211,7 @@
                     </connections>
                 </segmentedControl>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dRT-OM-4a0">
-                    <rect key="frame" x="0.0" y="278" width="375" height="379"/>
+                    <rect key="frame" x="0.0" y="258" width="375" height="399"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="DSM-bq-6L9"/>
@@ -214,7 +219,7 @@
                     </connections>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lw6-8R-J6k">
-                    <rect key="frame" x="0.0" y="278" width="375" height="379"/>
+                    <rect key="frame" x="0.0" y="258" width="375" height="399"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
             </subviews>

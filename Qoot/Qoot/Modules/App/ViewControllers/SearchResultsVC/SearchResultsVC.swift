@@ -71,6 +71,9 @@ extension SearchResultsVC : UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let searchDetailVC = SearchDetailVC.init(nibName: "SearchDetailVC", bundle: nil)
+        if let kitchenResponse = self.kitchensResponseModel {
+            searchDetailVC.kitchenResponse = kitchenResponse.viewKitchens[indexPath.row]
+        }
         self.navigationController?.pushViewController(searchDetailVC, animated: true)
         
     }

@@ -17,19 +17,30 @@ class SearchDetailVC: BaseViewController {
     
     
     @IBOutlet var customView: UIView!
-    @IBOutlet weak var productImageView: UIImageView!
-    @IBOutlet weak var productNameLabel: UILabel!
+    @IBOutlet weak var kitchenImageView: UIImageView!
+    @IBOutlet weak var kitchenNameLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var deliveryFeeLabel: UILabel!
+    @IBOutlet weak var star1: UIButton!
+    @IBOutlet weak var star2: UIButton!
+    @IBOutlet weak var star3: UIButton!
+    @IBOutlet weak var star4: UIButton!
+    @IBOutlet weak var star5: UIButton!
+    
+    
+    
     var buttonBar =  UIView()
     var infoView = InfoHeaderView()
     var reviewsView = ReviewsHeaderView()
+    
+    var kitchenResponse:ViewKitchens?
     
     
     override func initView() {
         super.initView()
         initialisation()
         localisation()
+        populateKitchenDetails()
     }
     
     func initialisation(){
@@ -67,7 +78,53 @@ class SearchDetailVC: BaseViewController {
         self.segmentControl.setTitle("Menu".localiz(), forSegmentAt: 0)
         self.segmentControl.setTitle("Reviews".localiz(), forSegmentAt: 1)
         self.segmentControl.setTitle("Info".localiz(), forSegmentAt: 2)
-        
+    }
+    
+    func populateKitchenDetails(){
+        if let kichenDetail = self.kitchenResponse{
+             kitchenImageView.sd_setImage(with: URL(string: kichenDetail.KitchenLogo), placeholderImage: UIImage(named: Constant.ImageNames.placeholderImage))
+            kitchenNameLabel.text = kichenDetail.KitchenName
+            ratingLabel.text = String(format: "%.1f", kichenDetail.CutomerRating)
+            deliveryFeeLabel.text = "SAR".localiz() + " " + String(format: "%.1f", kichenDetail.KitchenDeliveryFee)
+            setRating(rating: kichenDetail.AdminRating)
+        }
+    }
+    
+    func setRating(rating:Int){
+        unselectingAllRatingButtons()
+        if rating == 1{
+            star1.isSelected = true
+        }
+        else if rating == 2 {
+            star1.isSelected = true
+            star2.isSelected = true
+        }
+        else if rating == 3 {
+            star1.isSelected = true
+            star2.isSelected = true
+            star3.isSelected = true
+        }
+        else if rating == 4 {
+            star1.isSelected = true
+            star2.isSelected = true
+            star3.isSelected = true
+            star4.isSelected = true
+        }
+        else if rating == 5 {
+            star1.isSelected = true
+            star2.isSelected = true
+            star3.isSelected = true
+            star4.isSelected = true
+            star5.isSelected = true
+        }
+    }
+    
+    func unselectingAllRatingButtons(){
+        star1.isSelected = false
+        star2.isSelected = false
+        star3.isSelected = false
+        star4.isSelected = false
+        star5.isSelected = false
     }
 
     override func didReceiveMemoryWarning() {

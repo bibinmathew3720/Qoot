@@ -317,6 +317,40 @@ class UserManager: CLBaseService {
         return dishDetailsReponseModel
     }
     
+    //Get Kitchen Details Api
+    
+    func callingGetKitchenDetailsApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForGetKitchenDetails(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict)
+                    success(self.getKitchenDetailsResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForGetKitchenDetails(with body:String)->CLNetworkModel{
+        let kitchenDetailsRequestModel = CLNetworkModel.init(url: BASE_URL+KitchenDetails_URL, requestMethod_: "POST")
+        kitchenDetailsRequestModel.requestBody = body
+        return kitchenDetailsRequestModel
+    }
+    
+    func getKitchenDetailsResponseModel(dict:[String : Any?]) -> Any? {
+        let kitchenDetailsReponseModel = ViewKitchens.init(dict:dict)
+        return kitchenDetailsReponseModel
+    }
+    
     //MARK : Log Out Api
     
     func callingLogOutApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){

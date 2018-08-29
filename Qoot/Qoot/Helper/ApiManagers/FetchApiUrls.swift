@@ -23,6 +23,7 @@ let ViewKitchens_URL = "Ios/Customer/ViewKitchens"
 let OfferDishes_URL = "Ios/Customer/ViewOfferDishes"
 let ReadyNowDishes_URL = "Ios/Customer/ViewReadyNow"
 let DishDetails_URL = "Ios/Customer/ViewDishDetails"
+let KitchenDetails_URL = "Ios/Customer/ViewKitchenDetails"
 
 let FORGOT_PASS_URL = "user/forgotPassword"
 let CHANGE_PASS_URL = "user/changePassword"

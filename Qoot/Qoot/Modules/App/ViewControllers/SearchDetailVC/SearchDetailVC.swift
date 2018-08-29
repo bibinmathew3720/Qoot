@@ -41,6 +41,7 @@ class SearchDetailVC: BaseViewController {
         initialisation()
         localisation()
         populateKitchenDetails()
+        getKitchenDetailsApi()
     }
     
     func initialisation(){
@@ -191,6 +192,37 @@ extension SearchDetailVC : UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30
+    }
+    
+    func getKitchenDetailsApi(){
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+    UserManager().callingGetKitchenDetailsApi(with:getKitchenDetailsRequestBody(), success: {
+            (model) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if let model = model as? ViewKitchens{
+                self.kitchenResponse = model
+                self.populateKitchenDetails()
+            }
+        }) { (ErrorType) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if(ErrorType == .noNetwork){
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+            }
+            else{
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+            }
+            
+            print(ErrorType)
+        }
+    }
+    
+    func getKitchenDetailsRequestBody()->String{
+        var dataString:String = ""
+        if let kitchen = self.kitchenResponse {
+            let kitchenId:String = "KitchenId=\(String(kitchen.KitchenId).urlEncode())"
+            dataString = dataString + kitchenId
+        }
+        return dataString
     }
     
 }

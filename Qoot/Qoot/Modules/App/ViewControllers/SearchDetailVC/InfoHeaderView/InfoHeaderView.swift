@@ -14,7 +14,7 @@ class InfoHeaderView: UIView {
     @IBOutlet weak var eventServiceLabel: UILabel!
     @IBOutlet weak var qootRatingTitleLabel: UILabel!
     @IBOutlet weak var customerRatingTitleLabel: UILabel!
-    
+    var viewKitchensInfo:ViewKitchensInfo?
     
     override func awakeFromNib() {
         super.awakeFromNib()

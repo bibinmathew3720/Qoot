@@ -34,7 +34,7 @@ class SearchDetailVC: BaseViewController {
     var reviewsView = ReviewsHeaderView()
     
     var kitchenResponse:ViewKitchens?
-    
+     var viewKitchensInfo:ViewKitchensInfo?
     
     override func initView() {
         super.initView()
@@ -42,6 +42,7 @@ class SearchDetailVC: BaseViewController {
         localisation()
         populateKitchenDetails()
         getKitchenDetailsApi()
+        getKitchenInfoApi()
     }
     
     func initialisation(){
@@ -146,6 +147,7 @@ class SearchDetailVC: BaseViewController {
         case 2:
             customView.isHidden = false
             infoView.isHidden = false
+            infoView.viewKitchensInfo = self.viewKitchensInfo
         default:
             print("default")
         }
@@ -224,5 +226,25 @@ extension SearchDetailVC : UITableViewDelegate,UITableViewDataSource {
         }
         return dataString
     }
-    
+   
+    func getKitchenInfoApi(){
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        UserManager().callingGetKitchenInfoApi(with:getKitchenDetailsRequestBody(), success: {
+            (model) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if let model = model as? ViewKitchensInfoResponseModel{
+               self.viewKitchensInfo = model.kitchensInfo[0]
+            }
+        }) { (ErrorType) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if(ErrorType == .noNetwork){
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+            }
+            else{
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+            }
+            
+            print(ErrorType)
+        }
+    }
 }

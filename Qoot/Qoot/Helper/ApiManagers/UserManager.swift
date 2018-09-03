@@ -383,6 +383,38 @@ class UserManager: CLBaseService {
         return kitchenDetailsReponseModel
     }
     
+    func callingGetKitchenAdminRatingApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForGetKitchenAdminRating(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict)
+                    success(self.getKitchenAdminRatingResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForGetKitchenAdminRating(with body:String)->CLNetworkModel{
+        let kitchenDetailsRequestModel = CLNetworkModel.init(url: BASE_URL+KitchenAdminRating_URL, requestMethod_: "POST")
+        kitchenDetailsRequestModel.requestBody = body
+        return kitchenDetailsRequestModel
+    }
+    
+    func getKitchenAdminRatingResponseModel(dict:[String : Any?]) -> Any? {
+        let kitchenDetailsReponseModel = Dishes.init(dict:dict)
+        return kitchenDetailsReponseModel
+    }
+
     
     //MARK : Log Out Api
     
@@ -1202,6 +1234,65 @@ class ViewKitchensInfo : NSObject{
         }
     }
 }
+
+class KitchenAdminRatingResponseModel : NSObject{
+    var kitchen_id:Int = 0
+    var kitchen_rating:String = ""
+    var packing:Int = 0
+    var delivery:String = ""
+    var quality:Int = 0
+  
+    init(dict:[String:Any?]) {
+        //        if let value = dict["KitchenId"] as? String{
+        //            if let kitchenID = Int(value){
+        //                catId = kitchenID
+        //            }
+        //        }
+        if let value = dict["DishAmount"] as? Float{
+            DishAmount = value
+        }
+        if let value = dict["DishCategory"] as? String{
+            if let dishCategory = Int(value){
+                DishCategory = dishCategory
+            }
+        }
+        if let value = dict["DishDescription"] as? String{
+            DishDescription = value
+        }
+        if let value = dict["DishId"] as? Int{
+            DishId = value
+        }
+        if let value = dict["DishImage"] as? String{
+            DishImage = value
+        }
+        if let value = dict["DishMainCategory"] as? String{
+            if let dishMainCategory = Int(value){
+                DishMainCategory = dishMainCategory
+            }
+        }
+        if let value = dict["DishName"] as? String{
+            DishName = value
+        }
+        if let value = dict["DishQuantity"] as? String{
+            DishQuantity = value
+        }
+        if let value = dict["DishServe"] as? String{
+            if let dishServe = Int(value){
+                DishServe = dishServe
+            }
+        }
+        if let value = dict["DishTime"] as? String{
+            DishTime = value
+        }
+        if let value = dict["KitchenId"] as? Int{
+            KitchenId = value
+        }
+        if let value = dict["MenuId"] as? Int{
+            MenuId = value
+        }
+    }
+}
+
 
 class ViewCuisinesResponseModel : NSObject{
     var viewCuisines = [ViewCuisines]()

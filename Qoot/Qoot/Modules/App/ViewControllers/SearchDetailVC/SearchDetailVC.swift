@@ -253,8 +253,8 @@ extension SearchDetailVC : UITableViewDelegate,UITableViewDataSource {
         UserManager().callingGetKitchenAdminRatingApi(with:getKitchenDetailsRequestBody(), success: {
             (model) in
             MBProgressHUD.hide(for: self.view, animated: true)
-            if let model = model as? ViewKitchensInfoResponseModel{
-                self.viewKitchensInfo = model.kitchensInfo[0]
+            if let model = model as? KitchenAdminRatingResponseModel{
+               
             }
         }) { (ErrorType) in
             MBProgressHUD.hide(for: self.view, animated: true)

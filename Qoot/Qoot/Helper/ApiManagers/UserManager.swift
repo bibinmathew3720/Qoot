@@ -411,7 +411,7 @@ class UserManager: CLBaseService {
     }
     
     func getKitchenAdminRatingResponseModel(dict:[String : Any?]) -> Any? {
-        let kitchenDetailsReponseModel = Dishes.init(dict:dict)
+        let kitchenDetailsReponseModel = KitchenAdminRatingResponseModel.init(dict:dict)
         return kitchenDetailsReponseModel
     }
 
@@ -1243,53 +1243,29 @@ class KitchenAdminRatingResponseModel : NSObject{
     var quality:Int = 0
   
     init(dict:[String:Any?]) {
-        //        if let value = dict["KitchenId"] as? String{
-        //            if let kitchenID = Int(value){
-        //                catId = kitchenID
-        //            }
-        //        }
-        if let value = dict["DishAmount"] as? Float{
-            DishAmount = value
-        }
-        if let value = dict["DishCategory"] as? String{
-            if let dishCategory = Int(value){
-                DishCategory = dishCategory
+        if let value = dict["KitchenId"] as? String{
+            if let _kitchenID = Int(value){
+                kitchen_id = _kitchenID
             }
         }
-        if let value = dict["DishDescription"] as? String{
-            DishDescription = value
+        if let value = dict["kitchen_rating"] as? String{
+            kitchen_rating = value
         }
-        if let value = dict["DishId"] as? Int{
-            DishId = value
-        }
-        if let value = dict["DishImage"] as? String{
-            DishImage = value
-        }
-        if let value = dict["DishMainCategory"] as? String{
-            if let dishMainCategory = Int(value){
-                DishMainCategory = dishMainCategory
+        if let value = dict["packing"] as? String{
+            if let _packing = Int(value){
+                packing = _packing
             }
         }
-        if let value = dict["DishName"] as? String{
-            DishName = value
+        if let value = dict["delivery"] as? String{
+            delivery = value
         }
-        if let value = dict["DishQuantity"] as? String{
-            DishQuantity = value
-        }
-        if let value = dict["DishServe"] as? String{
-            if let dishServe = Int(value){
-                DishServe = dishServe
+        
+        if let value = dict["quality"] as? String{
+            if let _quality = Int(value){
+                quality = _quality
             }
         }
-        if let value = dict["DishTime"] as? String{
-            DishTime = value
-        }
-        if let value = dict["KitchenId"] as? Int{
-            KitchenId = value
-        }
-        if let value = dict["MenuId"] as? Int{
-            MenuId = value
-        }
+
     }
 }
 

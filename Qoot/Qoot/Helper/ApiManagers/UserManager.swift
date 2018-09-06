@@ -414,7 +414,38 @@ class UserManager: CLBaseService {
         let kitchenDetailsReponseModel = KitchenAdminRatingResponseModel.init(dict:dict)
         return kitchenDetailsReponseModel
     }
-
+    
+    func callingGetKitchenCustomerRatingApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForGetKitchenCustomerRating(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveArrayResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict)
+                    success(self.getKitchenCustomerRatingResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForGetKitchenCustomerRating(with body:String)->CLNetworkModel{
+        let kitchenCustomerRatingRequestModel = CLNetworkModel.init(url: BASE_URL+KitchenCustomerRating_URL, requestMethod_: "POST")
+        kitchenCustomerRatingRequestModel.requestBody = body
+        return kitchenCustomerRatingRequestModel
+    }
+    
+    func getKitchenCustomerRatingResponseModel(dict:NSArray) -> Any? {
+        let kitchenCustomerRatingReponseModel = KitchenCustomerRatingsResponseModel.init(arr: dict)
+        return kitchenCustomerRatingReponseModel
+    }
     
     //MARK : Log Out Api
     
@@ -1741,3 +1772,40 @@ class Dishes : NSObject{
         }
     }
 }
+    class KitchenCustomerRatingsResponseModel : NSObject{
+        var customerRating = [KitchenCustomerRating]()
+        init(arr:(NSArray)) {
+            for item in arr{
+                if let it = item as? [String : Any?]{
+                    customerRating.append(KitchenCustomerRating.init(dict: it ))
+                }
+            }
+        }
+    }
+
+    class KitchenCustomerRating : NSObject{
+        var customerRating:Int = 0
+        var ratingId:String = ""
+        var customerName:String = ""
+        var customerComment:String = ""
+        var customerDate:String = ""
+        init(dict:[String:Any?]) {
+            if let value = dict["CustomerRating"] as? String{
+                if let ctyId = Int(value){
+                    customerRating = ctyId
+                }
+            }
+            if let value = dict["RatingId"] as? String{
+                ratingId = value
+            }
+            if let value = dict["CustomerName"] as? String{
+                customerName = value
+            }
+            if let value = dict["CustomerComment"] as? String{
+                customerComment = value
+            }
+            if let value = dict["CustomerDate"] as? String{
+                customerDate = value
+            }
+        }
+    }

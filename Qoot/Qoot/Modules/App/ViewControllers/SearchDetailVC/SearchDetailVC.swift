@@ -44,6 +44,7 @@ class SearchDetailVC: BaseViewController {
         getKitchenDetailsApi()
         getKitchenInfoApi()
         getKitchenAdminRatingApi()
+        getKitchenCustomerRatingApi()
     }
     
     func initialisation(){
@@ -255,6 +256,26 @@ extension SearchDetailVC : UITableViewDelegate,UITableViewDataSource {
             MBProgressHUD.hide(for: self.view, animated: true)
             if let model = model as? KitchenAdminRatingResponseModel{
                
+            }
+        }) { (ErrorType) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if(ErrorType == .noNetwork){
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+            }
+            else{
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+            }
+            
+            print(ErrorType)
+        }
+    }
+    func getKitchenCustomerRatingApi(){
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        UserManager().callingGetKitchenCustomerRatingApi(with:getKitchenDetailsRequestBody(), success: {
+            (model) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if let model = model as? KitchenAdminRatingResponseModel{
+                
             }
         }) { (ErrorType) in
             MBProgressHUD.hide(for: self.view, animated: true)

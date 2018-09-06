@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -234,10 +234,19 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="deliveryTimeHeadingLabel" destination="uaQ-rf-1SU" id="iV9-I1-aI8"/>
+                <outlet property="deliveryTimeRateLabel" destination="v10-qm-37P" id="mrJ-Aw-5Ry"/>
                 <outlet property="deliveryView" destination="75n-TA-mHI" id="8CD-in-p0L"/>
+                <outlet property="moneyHeadingLabel" destination="qSg-Fj-S6a" id="Z59-LA-efy"/>
+                <outlet property="moneyRateLabel" destination="Int-Kq-lPW" id="wmp-V1-CVI"/>
                 <outlet property="moneyView" destination="dmg-MO-fOg" id="Ap4-ZX-dAI"/>
+                <outlet property="packagingHeadingLabel" destination="HKn-pY-SmJ" id="nTq-mc-V5e"/>
                 <outlet property="packagingView" destination="BvR-bC-ry4" id="dAp-lh-yjj"/>
+                <outlet property="packingRateLabel" destination="67x-rv-8gr" id="Jmn-qw-FY5"/>
+                <outlet property="qualityHeadingLabel" destination="GuA-gs-XJE" id="hpQ-3c-Kz9"/>
+                <outlet property="qualityRateLabel" destination="TNu-tO-gbK" id="tBC-YZ-1tx"/>
                 <outlet property="qualityView" destination="UQA-M7-dSm" id="Sng-G3-ciw"/>
+                <outlet property="reviewsHeadingLabel" destination="aLk-6Q-AE1" id="ZZr-Rm-L3o"/>
                 <outlet property="reviewsTable" destination="yRl-2F-NTT" id="DXA-V0-PET"/>
             </connections>
             <point key="canvasLocation" x="32.5" y="78.5"/>

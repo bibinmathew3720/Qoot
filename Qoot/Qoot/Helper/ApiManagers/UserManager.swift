@@ -1268,35 +1268,31 @@ class ViewKitchensInfo : NSObject{
 
 class KitchenAdminRatingResponseModel : NSObject{
     var kitchen_id:Int = 0
-    var kitchen_rating:String = ""
-    var packing:Int = 0
-    var delivery:String = ""
-    var quality:Int = 0
+    var kitchen_rating:Float = 0.0
+    var money:Float = 0.0
+    var packing:Float = 0.0
+    var delivery:Float = 0.0
+    var quality:Float = 0.0
   
     init(dict:[String:Any?]) {
-        if let value = dict["KitchenId"] as? String{
-            if let _kitchenID = Int(value){
-                kitchen_id = _kitchenID
-            }
+        if let value = dict["KitchenId"] as? Int{
+            kitchen_id = value
         }
-        if let value = dict["kitchen_rating"] as? String{
+        if let value = dict["kitchen_rating"] as? Float{
             kitchen_rating = value
         }
-        if let value = dict["packing"] as? String{
-            if let _packing = Int(value){
-                packing = _packing
-            }
+        if let value = dict["money"] as? Float{
+            money = value
         }
-        if let value = dict["delivery"] as? String{
+        if let value = dict["packing"] as? Float{
+            packing = value
+        }
+        if let value = dict["delivery"] as? Float{
             delivery = value
         }
-        
-        if let value = dict["quality"] as? String{
-            if let _quality = Int(value){
-                quality = _quality
-            }
+        if let value = dict["quality"] as? Float{
+            quality = value
         }
-
     }
 }
 

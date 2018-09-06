@@ -43,8 +43,6 @@ class SearchDetailVC: BaseViewController {
         populateKitchenDetails()
         getKitchenDetailsApi()
         getKitchenInfoApi()
-        getKitchenAdminRatingApi()
-        getKitchenCustomerRatingApi()
     }
     
     func initialisation(){
@@ -146,6 +144,7 @@ class SearchDetailVC: BaseViewController {
         case 1:
             customView.isHidden = false
             infoView.isHidden = true
+            getKitchenAdminRatingApi()
         case 2:
             customView.isHidden = false
             infoView.isHidden = false
@@ -255,27 +254,7 @@ extension SearchDetailVC : UITableViewDelegate,UITableViewDataSource {
             (model) in
             MBProgressHUD.hide(for: self.view, animated: true)
             if let model = model as? KitchenAdminRatingResponseModel{
-               
-            }
-        }) { (ErrorType) in
-            MBProgressHUD.hide(for: self.view, animated: true)
-            if(ErrorType == .noNetwork){
-                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
-            }
-            else{
-                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
-            }
-            
-            print(ErrorType)
-        }
-    }
-    func getKitchenCustomerRatingApi(){
-        MBProgressHUD.showAdded(to: self.view, animated: true)
-        UserManager().callingGetKitchenCustomerRatingApi(with:getKitchenDetailsRequestBody(), success: {
-            (model) in
-            MBProgressHUD.hide(for: self.view, animated: true)
-            if let model = model as? KitchenAdminRatingResponseModel{
-                
+                self.reviewsView.setAdminRating(adminRating:model)
             }
         }) { (ErrorType) in
             MBProgressHUD.hide(for: self.view, animated: true)

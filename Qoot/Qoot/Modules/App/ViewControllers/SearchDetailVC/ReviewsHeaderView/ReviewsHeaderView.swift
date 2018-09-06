@@ -9,7 +9,16 @@
 import UIKit
 
 class ReviewsHeaderView: UIView {
-
+    @IBOutlet weak var reviewsHeadingLabel: UILabel!
+    @IBOutlet weak var qualityRateLabel: UILabel!
+    @IBOutlet weak var packingRateLabel: UILabel!
+    @IBOutlet weak var moneyRateLabel: UILabel!
+    @IBOutlet weak var deliveryTimeRateLabel: UILabel!
+    @IBOutlet weak var qualityHeadingLabel: UILabel!
+    @IBOutlet weak var packagingHeadingLabel: UILabel!
+    @IBOutlet weak var moneyHeadingLabel: UILabel!
+    @IBOutlet weak var deliveryTimeHeadingLabel: UILabel!
+    
     @IBOutlet var reviewsTable: UITableView!
     @IBOutlet var deliveryView: UIView!
     @IBOutlet var moneyView: UIView!
@@ -18,7 +27,7 @@ class ReviewsHeaderView: UIView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-         
+        localisation()
         deliveryView.layer.borderWidth = 3.0
         deliveryView.layer.borderColor = UIColor(red:0.58, green:0.76, blue:0.12, alpha:1.0).cgColor
         moneyView.layer.borderWidth = 3.0
@@ -28,6 +37,21 @@ class ReviewsHeaderView: UIView {
         qualityView.layer.borderWidth = 3.0
         qualityView.layer.borderColor = UIColor(red:0.58, green:0.76, blue:0.12, alpha:1.0).cgColor
         reviewsTable.register(UINib.init(nibName: "ReviewsTableCell", bundle: nil), forCellReuseIdentifier: "reviewsCell")
+    }
+    
+    func localisation(){
+        reviewsHeadingLabel.text = "Reviews".localiz()
+        qualityHeadingLabel.text = "Quality".localiz()
+        packagingHeadingLabel.text = "Packaging".localiz()
+        moneyHeadingLabel.text = "Value For Money".localiz()
+        deliveryTimeHeadingLabel.text = "Delivery Time".localiz()
+    }
+    
+    func setAdminRating(adminRating:KitchenAdminRatingResponseModel){
+        self.qualityRateLabel.text = String(format: "%0.1f", adminRating.quality)
+        self.packingRateLabel.text = String(format: "%0.1f", adminRating.packing)
+        self.moneyRateLabel.text = String(format: "%0.1f", adminRating.money)
+        self.deliveryTimeRateLabel.text = String(format: "%0.1f", adminRating.delivery)
     }
   
         func numberOfSections(in tableView: UITableView) -> Int {

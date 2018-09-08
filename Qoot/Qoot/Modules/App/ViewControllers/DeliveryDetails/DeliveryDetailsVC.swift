@@ -28,6 +28,8 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate {
     var selectedDate:String = ""
     var selectedIndex: Int = -1
    
+    var addressResponseModel:AddressResponseModel?
+    var selAddress:Address?
     override func initView() {
         initialisation()
         localization()
@@ -98,7 +100,14 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate {
             (model) in
             MBProgressHUD.hide(for: self.view, animated: true)
             if let model = model as? AddressResponseModel{
-               
+               self.addressResponseModel = model
+                if model.addresses.count>0{
+                    self.selAddress = model.addresses.first
+                }
+                else{
+                    
+                }
+               self.addressTable.reloadData()
             }
             
         }) { (ErrorType) in
@@ -129,7 +138,10 @@ extension DeliveryDetailsVC : UITableViewDelegate,UITableViewDataSource {
             return 4
         }
         else{
-            return 2
+            if let addressResponse = self.addressResponseModel{
+                return addressResponse.addresses.count
+            }
+            return 0
         }
     }
     
@@ -146,6 +158,16 @@ extension DeliveryDetailsVC : UITableViewDelegate,UITableViewDataSource {
         }
         else{
              let addressCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! AddressTableCell
+            if let addressResponse = self.addressResponseModel{
+                let address = addressResponse.addresses[indexPath.row]
+                if address.addressId == self.selAddress?.addressId{
+                    addressCell.radioButton.isSelected = true
+                }
+                else{
+                    addressCell.radioButton.isSelected = false
+                }
+                addressCell.setAddress(address:address)
+            }
             cell = addressCell
         }
         return cell
@@ -160,6 +182,12 @@ extension DeliveryDetailsVC : UITableViewDelegate,UITableViewDataSource {
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        if tableView == addressTable{
+            if let addressResponse = self.addressResponseModel{
+                let address = addressResponse.addresses[indexPath.row]
+                self.selAddress = address
+                addressTable.reloadData()
+            }
+        }
     }
 }

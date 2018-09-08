@@ -9,7 +9,9 @@
 import UIKit
 
 class AddressTableCell: UITableViewCell {
-
+    @IBOutlet weak var radioButton: UIButton!
+    @IBOutlet weak var addressNameLabel: UILabel!
+    @IBOutlet weak var addressSubNameLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,6 +21,11 @@ class AddressTableCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func setAddress(address:Address){
+        addressNameLabel.text = address.customerLocationName
+        addressSubNameLabel.text = address.deliveryLandMark
     }
     
 }

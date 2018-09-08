@@ -24,14 +24,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="460" height="96.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1WD-PY-UIs">
+                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1WD-PY-UIs">
                         <rect key="frame" x="10" y="10" width="30" height="30"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="EHg-l5-Wqo"/>
                             <constraint firstAttribute="width" constant="30" id="FwB-wV-Hj7"/>
                         </constraints>
-                        <state key="normal" image="radioButtonRoseUnsel"/>
+                        <state key="normal" image="buttonUnselImage"/>
                         <state key="selected" image="radioButtonRoseSel"/>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eve-Nm-2e9">
@@ -68,12 +68,17 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="addressNameLabel" destination="eve-Nm-2e9" id="ZdP-MV-UMG"/>
+                <outlet property="addressSubNameLabel" destination="xWG-AB-W3O" id="Z4f-s1-Lr9"/>
+                <outlet property="radioButton" destination="1WD-PY-UIs" id="Pmz-pq-BKj"/>
+            </connections>
             <point key="canvasLocation" x="28" y="2.5"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="buttonUnselImage" width="15" height="15"/>
         <image name="cartCloseIcon" width="15" height="15"/>
         <image name="radioButtonRoseSel" width="15" height="15"/>
-        <image name="radioButtonRoseUnsel" width="15" height="15"/>
     </resources>
 </document>

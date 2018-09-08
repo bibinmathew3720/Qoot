@@ -253,29 +253,55 @@ class AddressResponseModel : NSObject{
 }
 
 class Address : NSObject{
-    var statusMessage:String = ""
-    var errorMessage:String = ""
-    var statusCode:Int = 0
-    var paymentUrl:String = ""
-    var paymentMode:String = ""
-    // var product:FetchProduct?
+    var addressId:Int = 0
+    var customerId:Int = 0
+    var customerLocationName:String = ""
+    var deliveryAddress:String = ""
+    var deliveryCity:String = ""
+    var deliveryLandMark:String = ""
+    var deliveryMapLocation:String = ""
+    var deliveryNickName:String = ""
+    var deliveryPhoneNumber:String = ""
+    var deliveryState:String = ""
+    var deliveryCoordinates:String = ""
     init(dict:[String:Any?]) {
-        if let value = dict["statusMessage"] as? String{
-            statusMessage = value
+        if let value = dict["address_id"] as? String{
+            if let addID = Int(value){
+                addressId = addID
+            }
         }
-        if let value = dict["errorMsg"] as? String{
-            errorMessage = value
+        if let value = dict["customer_id"] as? String{
+            if let cusID = Int(value){
+                customerId = cusID
+            }
         }
-        if let value = dict["statusCode"] as? Int{
-            statusCode = value
+        if let value = dict["customer_location_name"] as? String{
+            customerLocationName = value
         }
-        if let value = dict["paymentUrl"] as? String{
-            paymentUrl = value
+        if let value = dict["delivary_address"] as? String{
+            deliveryAddress = value
         }
-        if let value = dict["paymode"] as? String{
-            paymentMode = value
+        if let value = dict["delivary_city"] as? String{
+            deliveryCity = value
         }
-        
+        if let value = dict["delivary_landmark"] as? String{
+            deliveryLandMark = value
+        }
+        if let value = dict["delivary_map_location"] as? String{
+            deliveryMapLocation = value
+        }
+        if let value = dict["delivary_nick_name"] as? String{
+            deliveryNickName = value
+        }
+        if let value = dict["delivary_phone_number"] as? String{
+            deliveryPhoneNumber = value
+        }
+        if let value = dict["delivary_state"] as? String{
+            deliveryState = value
+        }
+        if let value = dict["delivery_coordinates"] as? String{
+            deliveryCoordinates = value
+        }
     }
 }
 

@@ -80,6 +80,7 @@
 		D01AF59E21243F1600DCEDEC /* LanguageVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D01AF59C21243F1600DCEDEC /* LanguageVC.xib */; };
 		D01AF5A221244FEA00DCEDEC /* WalkThroughCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01AF5A021244FEA00DCEDEC /* WalkThroughCVC.swift */; };
 		D01AF5A321244FEA00DCEDEC /* WalkThroughCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D01AF5A121244FEA00DCEDEC /* WalkThroughCVC.xib */; };
+		D01F78FB2143932E004C375D /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01F78FA2143932C004C375D /* Cart.swift */; };
 		D05D505D2118005400645956 /* SearchResultsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05D505B2118005400645956 /* SearchResultsVC.swift */; };
 		D05D505E2118005400645956 /* SearchResultsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05D505C2118005400645956 /* SearchResultsVC.xib */; };
 		D05D50622118025300645956 /* SearchResultsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05D50602118025300645956 /* SearchResultsTVC.swift */; };
@@ -180,6 +181,7 @@
 		D01AF59C21243F1600DCEDEC /* LanguageVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LanguageVC.xib; sourceTree = "<group>"; };
 		D01AF5A021244FEA00DCEDEC /* WalkThroughCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkThroughCVC.swift; sourceTree = "<group>"; };
 		D01AF5A121244FEA00DCEDEC /* WalkThroughCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalkThroughCVC.xib; sourceTree = "<group>"; };
+		D01F78FA2143932C004C375D /* Cart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
 		D05D505B2118005400645956 /* SearchResultsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsVC.swift; sourceTree = "<group>"; };
 		D05D505C2118005400645956 /* SearchResultsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultsVC.xib; sourceTree = "<group>"; };
 		D05D50602118025300645956 /* SearchResultsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsTVC.swift; sourceTree = "<group>"; };
@@ -380,7 +382,6 @@
 				D00FACDB2112DF2200C8C176 /* Assets.xcassets */,
 				D00FACDD2112DF2200C8C176 /* LaunchScreen.storyboard */,
 				D00FACE02112DF2200C8C176 /* Info.plist */,
-				D00FACD82112DF1300C8C176 /* Qoot.xcdatamodeld */,
 			);
 			path = Qoot;
 			sourceTree = "<group>";
@@ -404,6 +405,8 @@
 		D00FACE82112EC6700C8C176 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D01F78F92143932C004C375D /* Cart */,
+				D00FACD82112DF1300C8C176 /* Qoot.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -680,6 +683,14 @@
 			path = WalkThroughCell;
 			sourceTree = "<group>";
 		};
+		D01F78F92143932C004C375D /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				D01F78FA2143932C004C375D /* Cart.swift */,
+			);
+			path = Cart;
+			sourceTree = "<group>";
+		};
 		D05D505A2118003500645956 /* SearchResultsVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -954,6 +965,7 @@
 				D00FAD1C2112EE5D00C8C176 /* CLBaseService.swift in Sources */,
 				D00FAD282112EE5D00C8C176 /* L012Localizer.swift in Sources */,
 				BC388DEC21198BA1002CC86A /* DeliveryDetailsVC.swift in Sources */,
+				D01F78FB2143932E004C375D /* Cart.swift in Sources */,
 				D00FAD272112EE5D00C8C176 /* LanguageManger.swift in Sources */,
 				D01888CF21153D6D00B01946 /* MenuVC.swift in Sources */,
 				D01AF5A221244FEA00DCEDEC /* WalkThroughCVC.swift in Sources */,

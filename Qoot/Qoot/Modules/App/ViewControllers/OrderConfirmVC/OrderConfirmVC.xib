@@ -32,7 +32,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mdi-JZ-DsP">
-                    <rect key="frame" x="20" y="40" width="335" height="80"/>
+                    <rect key="frame" x="20" y="110" width="335" height="80"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tickIconGreen" translatesAutoresizingMaskIntoConstraints="NO" id="lcb-PI-zZh">
                             <rect key="frame" x="162.5" y="10" width="10" height="10"/>
@@ -62,7 +62,7 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mKI-24-gyx">
-                    <rect key="frame" x="20" y="150" width="335" height="40"/>
+                    <rect key="frame" x="20" y="220" width="335" height="40"/>
                     <color key="backgroundColor" red="0.58039215690000001" green="0.75686274509999996" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="rY2-9z-gon"/>
@@ -79,7 +79,7 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Mdi-JZ-DsP" secondAttribute="trailing" constant="20" id="8dO-3n-jS9"/>
-                <constraint firstItem="Mdi-JZ-DsP" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="JLF-c4-s29"/>
+                <constraint firstItem="Mdi-JZ-DsP" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="90" id="JLF-c4-s29"/>
                 <constraint firstItem="mKI-24-gyx" firstAttribute="trailing" secondItem="Mdi-JZ-DsP" secondAttribute="trailing" id="Zbu-6p-54B"/>
                 <constraint firstItem="Mdi-JZ-DsP" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="hjK-nj-FRX"/>
                 <constraint firstItem="mKI-24-gyx" firstAttribute="top" secondItem="Mdi-JZ-DsP" secondAttribute="bottom" constant="30" id="mf4-JY-VsF"/>

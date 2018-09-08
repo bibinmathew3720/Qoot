@@ -36,7 +36,6 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate {
         localization()
         addingLeftBarButton()
         callingGetAddressListApi()
-        addCustomerOrderApi()
     }
     
     func initialisation(){
@@ -77,6 +76,10 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate {
         closeButtonHeight.constant = 30
         addAddressButtonHeightConstraint.constant = 0
         mapViewHeight.constant = 190
+    }
+    
+    @IBAction func confirmButtonAction(_ sender: UIButton) {
+        addCustomerOrderApi()
     }
     
     @IBAction func closeButtonAction(_ sender: Any) {
@@ -140,6 +143,8 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate {
             MBProgressHUD.hide(for: self.view, animated: true)
             if let model = model as? AddCustomerOrderResponseModel{
                 self.addCustomerOrderResponseModel = model
+                Cart.deletAllItemsFromCart()
+                self.addOrderConfirmVC()
             }
         }) { (ErrorType) in
             MBProgressHUD.hide(for: self.view, animated: true)
@@ -155,8 +160,6 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate {
     }
     func addCustomerOrderRequestBody()->String{
         var dataString:String = ""
-            let phoneString:String = "apikey=cW9vdC5vbmxpbmVhcGl0b2tlbmJ5amlqbw=="
-            dataString = dataString + phoneString + "&"
         let passwordString:String = NSString.init(format: "OrderDetails=%@", adddetail()) as String
             dataString = dataString + passwordString
         //dataString = "username=0550154967&password=123456"
@@ -242,5 +245,11 @@ extension DeliveryDetailsVC : UITableViewDelegate,UITableViewDataSource {
                 addressTable.reloadData()
             }
         }
+    }
+    
+    func addOrderConfirmVC(){
+       let orderConfirmVC = OrderConfirmVC.init(nibName: "OrderConfirmVC", bundle: nil)
+        orderConfirmVC.customerOrderResponse = self.addCustomerOrderResponseModel
+        self.navigationController?.pushViewController(orderConfirmVC, animated: true)
     }
 }

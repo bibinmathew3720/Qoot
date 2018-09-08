@@ -149,6 +149,38 @@ class CartManager: CLBaseService {
         return addressesResponseModel
     }
    
+    
+    //MARK: Add Customer Order Api
+    
+    func addCustomerOrderApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForAddCustomerOrder(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict as Any)
+                    success(self.addCustomerOrderResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+    }
+    
+    func networkModelForAddCustomerOrder(with body:String)->CLNetworkModel{
+        let addressRequestModel = CLNetworkModel.init(url: BASE_URL+AddCustomerOrder_URL, requestMethod_: "POST")
+        addressRequestModel.requestBody = body
+        return addressRequestModel
+    }
+    
+    func addCustomerOrderResponseModel(dict:[String : Any?]) -> Any? {
+        let addressesResponseModel = AddCustomerOrderResponseModel.init(dict:dict)
+        return addressesResponseModel
+    }
 }
 
 class CheckOutResponseModel : NSObject{
@@ -184,6 +216,23 @@ class CheckOutResponseModel : NSObject{
         }
         if let value = dict["delivery_date"] as? String{
             deleveryDate = value
+        }
+    }
+}
+
+class AddCustomerOrderResponseModel : NSObject{
+    var statusMessage:String = ""
+    var statusCode:Int = 0
+    var order_Id:Int = 0
+    init(dict:[String:Any?]) {
+        if let value = dict["statusMessage"] as? String{
+            statusMessage = value
+        }
+        if let value = dict["statusCode"] as? Int{
+            statusCode = value
+        }
+        if let value = dict["orderid"] as? Int{
+            order_Id = value
         }
     }
 }

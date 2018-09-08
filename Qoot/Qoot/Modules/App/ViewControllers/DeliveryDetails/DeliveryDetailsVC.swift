@@ -29,12 +29,14 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate {
     var selectedIndex: Int = -1
    
     var addressResponseModel:AddressResponseModel?
+    var addCustomerOrderResponseModel:AddCustomerOrderResponseModel?
     var selAddress:Address?
     override func initView() {
         initialisation()
         localization()
         addingLeftBarButton()
         callingGetAddressListApi()
+        addCustomerOrderApi()
     }
     
     func initialisation(){
@@ -128,6 +130,57 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate {
         return dataString
     }
 
+    
+    //MARK: Add Customer Order Api
+    
+    func  addCustomerOrderApi(){
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        CartManager().addCustomerOrderApi(with: addCustomerOrderRequestBody(), success: {
+            (model) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if let model = model as? AddCustomerOrderResponseModel{
+                self.addCustomerOrderResponseModel = model
+            }
+        }) { (ErrorType) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if(ErrorType == .noNetwork){
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+            }
+            else{
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+            }
+            
+            print(ErrorType)
+        }
+    }
+    func addCustomerOrderRequestBody()->String{
+        var dataString:String = ""
+            let phoneString:String = "apikey=cW9vdC5vbmxpbmVhcGl0b2tlbmJ5amlqbw=="
+            dataString = dataString + phoneString + "&"
+        let passwordString:String = NSString.init(format: "OrderDetails=%@", adddetail()) as String
+            dataString = dataString + passwordString
+        //dataString = "username=0550154967&password=123456"
+        return dataString
+    }
+    func addOrderDetails()->String {
+        var dict:[String:AnyObject] = [String:AnyObject]()
+        dict.updateValue("2" as AnyObject, forKey: "customerid")
+        dict.updateValue("458" as AnyObject, forKey: "menuid")
+        dict.updateValue("1" as AnyObject, forKey: "quantity")
+        dict.updateValue("Cash On Delivery" as AnyObject, forKey: "paymenttype")
+        dict.updateValue("1" as AnyObject, forKey: "addressid")
+        dict.updateValue("" as AnyObject, forKey: "promocode")
+        dict.updateValue("spicy" as AnyObject, forKey: "comment")
+        dict.updateValue("2018-05-01 04:15 PM" as AnyObject, forKey: "deliverydate")
+        return CCUtility.getJSONfrom(dictionary: dict)
+    }
+    
+    func adddetail() -> Array<Any> {
+        let array:NSMutableArray = NSMutableArray()
+        array.add(addOrderDetails())
+        array.add(addOrderDetails())
+        return array as! Array<Any>
+    }
 }
 extension DeliveryDetailsVC : UITableViewDelegate,UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {

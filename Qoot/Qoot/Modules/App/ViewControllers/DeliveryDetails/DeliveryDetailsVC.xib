@@ -184,7 +184,7 @@
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
                                     <connections>
-                                        <action selector="addAddressButtonAction:" destination="-1" eventType="touchUpInside" id="KoZ-z2-UWC"/>
+                                        <action selector="confirmButtonAction:" destination="-1" eventType="touchUpInside" id="0tJ-b3-7Ia"/>
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SAR 109.0/-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNC-j9-oxz">

@@ -151,3 +151,9 @@
 "ItemSuccessfullyAdded" = "Item Successfully Added";
 "YourCartIsEmpty" = "Your Cart is empty";
 
+//Order Completed
+
+"OrderCompleted" = "Order Completed";
+"OrderNumber" = "Order Number";
+"GOTOMYORDERS" = "GOTO MY ORDERS";
+

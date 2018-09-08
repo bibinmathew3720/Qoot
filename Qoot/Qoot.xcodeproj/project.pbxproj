@@ -81,6 +81,8 @@
 		D01AF5A221244FEA00DCEDEC /* WalkThroughCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01AF5A021244FEA00DCEDEC /* WalkThroughCVC.swift */; };
 		D01AF5A321244FEA00DCEDEC /* WalkThroughCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D01AF5A121244FEA00DCEDEC /* WalkThroughCVC.xib */; };
 		D01F78FB2143932E004C375D /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01F78FA2143932C004C375D /* Cart.swift */; };
+		D01F78FF21445087004C375D /* OrderConfirmVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01F78FD21445087004C375D /* OrderConfirmVC.swift */; };
+		D01F790021445087004C375D /* OrderConfirmVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D01F78FE21445087004C375D /* OrderConfirmVC.xib */; };
 		D05D505D2118005400645956 /* SearchResultsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05D505B2118005400645956 /* SearchResultsVC.swift */; };
 		D05D505E2118005400645956 /* SearchResultsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05D505C2118005400645956 /* SearchResultsVC.xib */; };
 		D05D50622118025300645956 /* SearchResultsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05D50602118025300645956 /* SearchResultsTVC.swift */; };
@@ -182,6 +184,8 @@
 		D01AF5A021244FEA00DCEDEC /* WalkThroughCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkThroughCVC.swift; sourceTree = "<group>"; };
 		D01AF5A121244FEA00DCEDEC /* WalkThroughCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalkThroughCVC.xib; sourceTree = "<group>"; };
 		D01F78FA2143932C004C375D /* Cart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
+		D01F78FD21445087004C375D /* OrderConfirmVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderConfirmVC.swift; sourceTree = "<group>"; };
+		D01F78FE21445087004C375D /* OrderConfirmVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderConfirmVC.xib; sourceTree = "<group>"; };
 		D05D505B2118005400645956 /* SearchResultsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsVC.swift; sourceTree = "<group>"; };
 		D05D505C2118005400645956 /* SearchResultsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultsVC.xib; sourceTree = "<group>"; };
 		D05D50602118025300645956 /* SearchResultsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsTVC.swift; sourceTree = "<group>"; };
@@ -575,6 +579,7 @@
 		D01888B1211539CA00B01946 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D01F78FC21445060004C375D /* OrderConfirmVC */,
 				D01AF59A21243F0000DCEDEC /* LanguageVC */,
 				D01AF59521243E4800DCEDEC /* WalkThroughVC */,
 				BC835EF4212039E600A08247 /* Login */,
@@ -689,6 +694,15 @@
 				D01F78FA2143932C004C375D /* Cart.swift */,
 			);
 			path = Cart;
+			sourceTree = "<group>";
+		};
+		D01F78FC21445060004C375D /* OrderConfirmVC */ = {
+			isa = PBXGroup;
+			children = (
+				D01F78FD21445087004C375D /* OrderConfirmVC.swift */,
+				D01F78FE21445087004C375D /* OrderConfirmVC.xib */,
+			);
+			path = OrderConfirmVC;
 			sourceTree = "<group>";
 		};
 		D05D505A2118003500645956 /* SearchResultsVC */ = {
@@ -864,6 +878,7 @@
 				BC388DF72119A2A6002CC86A /* PaymentTableCell.xib in Resources */,
 				D00FACD72112DF1300C8C176 /* Main.storyboard in Resources */,
 				D0ECF2C821220CBB008E9A79 /* Roboto-Bold.ttf in Resources */,
+				D01F790021445087004C375D /* OrderConfirmVC.xib in Resources */,
 				D00A25D0211A82BC008B4D00 /* MenuHeaderView.xib in Resources */,
 				D01888D021153D6D00B01946 /* MenuVC.xib in Resources */,
 				BC388DE721196775002CC86A /* ItemDetailTableCell.xib in Resources */,
@@ -978,6 +993,7 @@
 				D05D506C2118635800645956 /* SearchDetailVC.swift in Sources */,
 				D00FAD1B2112EE5D00C8C176 /* ApplicationController.swift in Sources */,
 				D00FAD292112EE5D00C8C176 /* L102Language.swift in Sources */,
+				D01F78FF21445087004C375D /* OrderConfirmVC.swift in Sources */,
 				BC388DF12119928C002CC86A /* AddressTableCell.swift in Sources */,
 				D01888CA21153A1800B01946 /* HomeTableCell.swift in Sources */,
 				D00FACDA2112DF1300C8C176 /* Qoot.xcdatamodeld in Sources */,

@@ -52,6 +52,7 @@ class ProductDetailVC: BaseViewController {
             servesCountLabel.text = String(format: "%d", dish.DishServe)
             timeLabel.text = dish.DishTime
             quantityLabel.text = dish.DishQuantity
+            countLabel.text = String(dish.SelectedQuantity)
         }
     }
     
@@ -61,8 +62,8 @@ class ProductDetailVC: BaseViewController {
             (model) in
             MBProgressHUD.hide(for: self.view, animated: true)
             if let model = model as? Dishes{
-                self.dishDetail = model
-                self.populateDishDetails()
+                //self.dishDetail = model
+                //self.populateDishDetails()
             }
         }) { (ErrorType) in
             MBProgressHUD.hide(for: self.view, animated: true)
@@ -94,16 +95,30 @@ class ProductDetailVC: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     @IBAction func minusButtonAction(_ sender: Any) {
-        if count != 0{
-            count = count - 1
+        if let dish = dishDetail {
+            if dish.SelectedQuantity != 0{
+                dish.SelectedQuantity = dish.SelectedQuantity - 1
+                countLabel.text = String(dish.SelectedQuantity)
+            }
         }
-        countLabel.text = String(count)
     }
     
     @IBAction func plusButtonAction(_ sender: Any) {
-         count = count + 1
-        countLabel.text = String(count)
+        if let dish = dishDetail {
+            dish.SelectedQuantity = dish.SelectedQuantity + 1
+            countLabel.text = String(dish.SelectedQuantity)
+        }
+        
     }
+    
+    @IBAction func addToCartButtonAction(_ sender: UIButton) {
+        if let dish = dishDetail{
+            Cart.addProductToCart(dish: dish)
+            CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: "ItemSuccessfullyAdded".localiz(), parentController: self)
+            updateCartLabel()
+        }
+    }
+    
     /*
     // MARK: - Navigation
 

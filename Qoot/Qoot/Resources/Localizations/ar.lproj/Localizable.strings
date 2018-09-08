@@ -144,3 +144,7 @@
 "Wallet" = "ادفع عبر المحفظة";
 "Total" = "مجموع";
 "Confirm" = "تأكيد الطلب";
+
+//Cart
+
+"ItemSuccessfullyAdded" = "تمت إضافة الطبق بنجاح";

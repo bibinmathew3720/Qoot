@@ -1718,6 +1718,7 @@ class Dishes : NSObject{
     var DishTime:String = ""
     var KitchenId:Int = 0
     var MenuId:Int = 0
+    var SelectedQuantity:Int = 1
     init(dict:[String:Any?]) {
         //        if let value = dict["KitchenId"] as? String{
         //            if let kitchenID = Int(value){
@@ -1737,6 +1738,10 @@ class Dishes : NSObject{
         }
         if let value = dict["DishId"] as? Int{
             DishId = value
+        }
+        if let value = dict["DishId"] as? String{
+            print(value)
+            //DishId = value
         }
         if let value = dict["DishImage"] as? String{
             DishImage = value

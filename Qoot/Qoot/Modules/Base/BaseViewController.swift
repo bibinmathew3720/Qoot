@@ -57,10 +57,21 @@ class BaseViewController: UIViewController {
         cartLabel?.clipsToBounds = true
         cartLabel?.text = "1"
         cartButtonView.addSubview(cartLabel!)
-        //updateCartLabel()
+        updateCartLabel()
         let rightBarButton = UIBarButtonItem(customView: cartButtonView)
         self.navigationItem.rightBarButtonItems  = [rightBarButton]
         return rightBarButton
+    }
+    
+    func updateCartLabel(){
+        let cartCount = Cart.getAllCartItems().count
+        if (cartCount == 0){
+            cartLabel?.isHidden = true
+        }
+        else{
+            cartLabel?.isHidden = false
+            cartLabel?.text = "\(cartCount)"
+        }
     }
     
     func addHomeIconAndCartIcon(){

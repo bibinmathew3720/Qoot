@@ -10,22 +10,23 @@ import UIKit
 import CoreData
 
 class Cart: NSManagedObject {
-    static func addProductToCart(product:FetchProduct){
+    static func addProductToCart(dish:Dishes){
         var cart:Cart?
-        let cartPredicate = NSPredicate(format: "productId==%d",product.productId)
+        let cartPredicate = NSPredicate(format: "productId==%d",dish.DishId)
         let cartArray = CoreDataHandler.sharedInstance.getAllDatasWithPredicate(entity: "Cart", predicate:cartPredicate , sortDescriptor: nil)
         if (cartArray.count == 0){
             cart = CoreDataHandler.sharedInstance.newEntityForName(entityName: "Cart") as? Cart
-            cart?.productCount = Int64(product.selectedQuantity)
+            cart?.productCount = Int64(dish.SelectedQuantity)
         }
         else{
             cart = cartArray.first as? Cart
-            cart?.productCount += Int64(product.selectedQuantity)
+            cart?.productCount = Int64(dish.SelectedQuantity)
+            //cart?.productCount += Int64(dish.SelectedQuantity)
         }
-        cart?.productId = Int64(product.productId)
-        cart?.productName = product.productName
-        cart?.productPrice = Float(product.productAmount)
-        cart?.availability = Int64(product.productQuantity)
+        cart?.productId = Int64(dish.DishId)
+        cart?.productName = dish.DishName
+        cart?.productPrice = Float(dish.DishAmount)
+       // cart?.availability = Int64(dish.DishQuantity)!
         CoreDataHandler.sharedInstance.saveContext()
     }
     
@@ -45,8 +46,8 @@ class Cart: NSManagedObject {
     
     static func calculateCartAmount()->Double{
         var totalAmount:Double = 0
-        let cartArray = CoreDataHandler.sharedInstance.getAllDatas(entity: "Cart")
-        for item   in cartArray{
+        let cartArray = CoreDataHandler.sharedInstance.getAllDatas(entity: "Cart") as? [Cart]
+        for item   in cartArray!{
             let prodPrice = Double(item.productPrice)
             let countDouble:Double = Double(item.productCount)
             totalAmount = totalAmount + prodPrice * countDouble

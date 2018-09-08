@@ -65,7 +65,7 @@ public class CoreDataHandler: NSObject {
     lazy var managedObjectModel: NSManagedObjectModel = {
         // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
         //let modelURL = Bundle.main.url(forResource: Bundle.main.infoDictionary!["CFBundleName"] as? String, withExtension: "momd")!
-          let modelURL = Bundle.main.url(forResource:  "FetchDataModel", withExtension: "momd")!
+          let modelURL = Bundle.main.url(forResource:  "Qoot", withExtension: "momd")!
         return NSManagedObjectModel(contentsOf: modelURL)!
     }()
     

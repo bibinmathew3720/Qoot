@@ -21,12 +21,19 @@ class CartVC: BaseViewController,CartTableCellDelegate,UIGestureRecognizerDelega
     var count: Int = 1
     var selectedIndex: Int = -1
     var commentsTextViewPlaceholder:String?
+    var cartList:[Cart]?
     override func initView() {
         super.initView()
         initialisation()
         localization()
         addingLeftBarButton()
         addingHomeBarButton()
+        populateCartList()
+    }
+    
+    func populateCartList(){
+        cartList = Cart.getAllCartItems()
+        
     }
     
     func initialisation(){
@@ -98,7 +105,10 @@ extension CartVC : UITableViewDelegate,UITableViewDataSource {
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        if let carList = self.cartList{
+            return carList.count
+        }
+        return 0
     }
     
     
@@ -106,7 +116,9 @@ extension CartVC : UITableViewDelegate,UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CartTableCell
         cell.delegate = self
         cell.tag = indexPath.row
-        cell.setCartModel(index: indexPath.row, selectedIndex: selectedIndex, value: String(count))
+        if let carList = self.cartList{
+            cell.setCartModel(cart:carList[indexPath.row])
+        }
         return cell
     }
     

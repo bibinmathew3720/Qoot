@@ -12,6 +12,8 @@ protocol CartTableCellDelegate {
      func minusButtonActionDelegate(with tag:Int) -> ()
 }
 class CartTableCell: UITableViewCell {
+    @IBOutlet weak var dishNameLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
     
     @IBOutlet var countLabel: UILabel!
     var delegate:CartTableCellDelegate?
@@ -26,10 +28,13 @@ class CartTableCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setCartModel(index:Int, selectedIndex:Int, value:String) ->(){
-        if index == selectedIndex{
-            countLabel.text = value
-        }
+    func setCartModel(cart:Cart) ->(){
+        dishNameLabel.text = cart.productName
+        priceLabel.text = String(format: "%0.2f", cart.productPrice)
+        countLabel.text = String(format: "%d", cart.productCount)
+        //if index == selectedIndex{
+        
+       // }
     }
     
     @IBAction func minusButtonAction(_ sender: Any) {

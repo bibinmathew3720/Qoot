@@ -27,6 +27,7 @@ let KitchenDetails_URL = "Ios/Customer/ViewKitchenDetails"
 let KitchenInfo_URL = "Ios/Customer/ViewKitchenInfo"
 let KitchenAdminRating_URL = "Ios/Customer/ViewKitchenAdminRating"
 let KitchenCustomerRating_URL = "Ios/Customer/ViewKitchenCustomerRating"
+let GetAllAddresses_URL = "Ios/Customer/ViewCustomerdeliveryAddress"
 
 let FORGOT_PASS_URL = "user/forgotPassword"
 let CHANGE_PASS_URL = "user/changePassword"

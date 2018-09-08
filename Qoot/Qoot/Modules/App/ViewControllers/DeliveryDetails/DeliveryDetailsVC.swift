@@ -32,6 +32,7 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate {
         initialisation()
         localization()
         addingLeftBarButton()
+        callingGetAddressListApi()
     }
     
     func initialisation(){
@@ -87,6 +88,35 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate {
     func paymentButtonDelegateAction(with tag: Int) {
         selectedIndex = tag
         paymentTable.reloadData()
+    }
+    
+    //MARK: Login Api
+    
+    func  callingGetAddressListApi(){
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        CartManager().callingGetAddressessApi(with: getAddressRequestBody(), success: {
+            (model) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if let model = model as? AddressResponseModel{
+               
+            }
+            
+        }) { (ErrorType) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if(ErrorType == .noNetwork){
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+            }
+            else{
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+            }
+            
+            print(ErrorType)
+        }
+    }
+    func getAddressRequestBody()->String{
+        var dataString:String = ""
+        dataString = "CustomerId=2"
+        return dataString
     }
 
 }

@@ -55,28 +55,6 @@ class Cart: NSManagedObject {
         return totalAmount
     }
     
-    static func addAllProductsToCart(cartItems:[FetchCartItem]){
-        for cartItem in cartItems{
-            var cart:Cart?
-            let cartPredicate = NSPredicate(format: "productId==%d",cartItem.prodId)
-            let cartArray = CoreDataHandler.sharedInstance.getAllDatasWithPredicate(entity: "Cart", predicate:cartPredicate , sortDescriptor: nil)
-            if (cartArray.count == 0){
-                cart = CoreDataHandler.sharedInstance.newEntityForName(entityName: "Cart") as? Cart
-                cart?.productCount = Int64(cartItem.count)
-            }
-            else{
-                cart = cartArray.first as? Cart
-                //cart?.productCount += Int64(cartItem.count)
-                // cart?.productCount = Int64(cartItem.count)
-            }
-            cart?.productId = Int64(cartItem.prodId)
-            cart?.productName = cartItem.prodName
-            cart?.availability = Int64(cartItem.availability)
-            cart?.productPrice = Float(cartItem.price)
-            CoreDataHandler.sharedInstance.saveContext()
-        }
-    }
-    
     static func addAllPurchasedProductsToCart(orderItems:[OrderHistory]){
         for orderItem in orderItems{
             var cart:Cart?

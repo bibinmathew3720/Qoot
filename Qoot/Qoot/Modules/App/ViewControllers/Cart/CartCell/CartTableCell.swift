@@ -10,6 +10,7 @@ import UIKit
 protocol CartTableCellDelegate {
     func plusButtonActionDelegate(with tag:Int) -> ()
      func minusButtonActionDelegate(with tag:Int) -> ()
+    func closeButtonActionDelegate(with tag:Int)->()
 }
 class CartTableCell: UITableViewCell {
     @IBOutlet weak var dishNameLabel: UILabel!
@@ -49,5 +50,12 @@ class CartTableCell: UITableViewCell {
             return
         }
         _delegate.plusButtonActionDelegate(with: self.tag)
+    }
+    
+    @IBAction func closeButtonAction(_ sender: UIButton) {
+        guard let _delegate = delegate else {
+            return
+        }
+        _delegate.closeButtonActionDelegate(with: self.tag)
     }
 }

@@ -16,12 +16,16 @@ class CartVC: BaseViewController,CartTableCellDelegate,UIGestureRecognizerDelega
     @IBOutlet var commentsTextView: GrowingTextView!
     @IBOutlet weak var proceedToCheckOutButton: UIButton!
     
+    @IBOutlet weak var deliveryFeePriceLabel: UILabel!
+    @IBOutlet weak var subTotalPriceLabel: UILabel!
+    @IBOutlet weak var noCartItemsLabel: UILabel!
+    
     
     @IBOutlet var cartTable: UITableView!
-    var count: Int = 1
-    var selectedIndex: Int = -1
     var commentsTextViewPlaceholder:String?
     var cartList:[Cart]?
+    var deliveryFee:Double = 20.0
+    var totalAmount:Double = 10
     override func initView() {
         super.initView()
         initialisation()
@@ -33,7 +37,18 @@ class CartVC: BaseViewController,CartTableCellDelegate,UIGestureRecognizerDelega
     
     func populateCartList(){
         cartList = Cart.getAllCartItems()
-        
+        cartTable.reloadData()
+        if cartList?.count == 0{
+            deliveryFee = 0.0
+            noCartItemsLabel.isHidden = false
+        }
+        else{
+            deliveryFee = 20.0
+            noCartItemsLabel.isHidden = true
+        }
+        self.deliveryFeePriceLabel.text = "SAR".localiz() + " \(deliveryFee)"  + "/-"
+        totalAmount = Cart.calculateCartAmount() + deliveryFee
+        self.subTotalPriceLabel.text = "SAR".localiz() + " \(totalAmount)" + "/-"
     }
     
     func initialisation(){
@@ -52,6 +67,7 @@ class CartVC: BaseViewController,CartTableCellDelegate,UIGestureRecognizerDelega
         deliveryFeeLabel.text = "Delivery Fee".localiz()
         subTotalLabel.text = "Sub Total".localiz()
         proceedToCheckOutButton.setTitle("PROCEEDTOCHECKOUT".localiz(), for: UIControlState.normal)
+        noCartItemsLabel.text = "YourCartIsEmpty".localiz()
     }
 
     func tableInitialisation(){
@@ -68,18 +84,27 @@ class CartVC: BaseViewController,CartTableCellDelegate,UIGestureRecognizerDelega
     }
     
     func plusButtonActionDelegate(with tag: Int) {
-        count = count + 1
-        selectedIndex = tag
-        cartTable.reloadData()
+        if let carList = self.cartList{
+            let cartItem = carList[tag]
+            Cart.incrementCartItemCount(cartItem: cartItem)
+        }
+        populateCartList()
     }
     
     func minusButtonActionDelegate(with tag: Int) {
-        if count != 0{
-            count = count - 1
+        if let carList = self.cartList{
+            let cartItem = carList[tag]
+            Cart.decrementCartItemCount(cartItem: cartItem)
         }
-        selectedIndex = tag
-        cartTable.reloadData()
-        
+        populateCartList()
+    }
+    
+    func closeButtonActionDelegate(with tag: Int) {
+        if let carList = self.cartList{
+            let cartItem = carList[tag]
+            Cart.deletCartItem(cartItem: cartItem)
+        }
+        populateCartList()
     }
     
     override func leftNavButtonAction() {

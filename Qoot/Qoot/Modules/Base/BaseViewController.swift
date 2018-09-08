@@ -110,6 +110,11 @@ class BaseViewController: UIViewController {
         shadowView.layer.shadowOffset = CGSize.zero
         shadowView.layer.shadowRadius = 3
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        updateCartLabel()
+    }
 
     /*
     // MARK: - Navigation

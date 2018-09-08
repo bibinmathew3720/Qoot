@@ -104,6 +104,9 @@
                             <constraint firstAttribute="width" constant="30" id="p8Z-05-h7T"/>
                         </constraints>
                         <state key="normal" image="cartCloseIcon"/>
+                        <connections>
+                            <action selector="closeButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="bCd-vi-yjo"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>

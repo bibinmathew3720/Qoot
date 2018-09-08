@@ -149,3 +149,9 @@
 
 "ItemSuccessfullyAdded" = "تمت إضافة الطبق بنجاح";
 "YourCartIsEmpty" = "سلتك التسوق فارغة";
+
+//Order Completed
+
+"OrderCompleted" = "تم اكتمال الطلب";
+"OrderNumber" = "رقم الطلب";
+"GOTOMYORDERS" = "اذهب الى صفحة طلباتي";

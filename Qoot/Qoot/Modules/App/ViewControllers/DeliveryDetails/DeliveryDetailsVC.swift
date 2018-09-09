@@ -8,8 +8,10 @@
 let PAY_FIELDS = ["COD".localiz(),"Paypal".localiz(),"Visa".localiz(),"Wallet".localiz()]
 let PAYMENT_TYPE_IMAGES = [#imageLiteral(resourceName: "cod"),#imageLiteral(resourceName: "paypal"),#imageLiteral(resourceName: "visa"),#imageLiteral(resourceName: "payviawallet")]
 import UIKit
+import GoogleMaps
+import GooglePlaces
 
-class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate {
+class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapViewDelegate {
     @IBOutlet weak var deliveryDetailsLabel: UILabel!
      @IBOutlet var addAddressButton: UIButton!
     @IBOutlet var dateTextField: UITextField!
@@ -25,8 +27,14 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate {
     @IBOutlet var closeButtonHeight: NSLayoutConstraint!
     @IBOutlet var addAddressButtonHeightConstraint: NSLayoutConstraint!
     @IBOutlet var mapViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var mapView: GMSMapView!
+    var locationMarker:GMSMarker!
+    
     var selectedDate:String = ""
     var selectedIndex: Int = -1
+    let locationMgr = CLLocationManager()
+    var userLocLatitude = 0.000000
+    var userLocLongitude = 0.00000
    
     var addressResponseModel:AddressResponseModel?
     var addCustomerOrderResponseModel:AddCustomerOrderResponseModel?
@@ -36,6 +44,7 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate {
         localization()
         addingLeftBarButton()
         callingGetAddressListApi()
+        getLocation()
     }
     
     func initialisation(){
@@ -97,6 +106,26 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate {
         paymentTable.reloadData()
     }
     
+    // MARK:- Get location
+    
+    func getLocation() {
+        let status  = CLLocationManager.authorizationStatus()
+        if status == .notDetermined {
+            locationMgr.requestWhenInUseAuthorization()
+            //return
+        }
+        if status == .denied || status == .restricted {
+            let alert = UIAlertController(title: "Location Services Disabled", message: "Please enable Location Services in Settings", preferredStyle: .alert)
+            
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(okAction)
+            
+            present(alert, animated: true, completion: nil)
+            return
+        }
+        locationMgr.delegate = self
+        locationMgr.startUpdatingLocation()
+    }
     //MARK: Login Api
     
     func  callingGetAddressListApi(){
@@ -251,5 +280,22 @@ extension DeliveryDetailsVC : UITableViewDelegate,UITableViewDataSource {
        let orderConfirmVC = OrderConfirmVC.init(nibName: "OrderConfirmVC", bundle: nil)
         orderConfirmVC.customerOrderResponse = self.addCustomerOrderResponseModel
         self.navigationController?.pushViewController(orderConfirmVC, animated: true)
+    }
+}
+
+extension DeliveryDetailsVC:CLLocationManagerDelegate{
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let currentLocation:CLLocation = locations.last!
+        let camera = GMSCameraPosition.camera(withLatitude: (currentLocation.coordinate.latitude), longitude: (currentLocation.coordinate.longitude), zoom: 17.5)
+        
+        self.mapView?.animate(to: camera)
+        locationMgr.stopUpdatingLocation()
+        let position = currentLocation.coordinate
+        let marker = GMSMarker(position: position)
+        marker.map = mapView
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Error \(error)")
     }
 }

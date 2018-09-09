@@ -53,5 +53,7 @@
 		<string>Roboto-Bold.ttf</string>
 		<string>Roboto-Regular.ttf</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>App needs to access your location</string>
 </dict>
 </plist>

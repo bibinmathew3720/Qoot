@@ -28,6 +28,7 @@
                 <outlet property="datePicker" destination="GWx-DK-hTJ" id="dfI-B2-Rex"/>
                 <outlet property="dateTextField" destination="0og-fQ-Phg" id="Y9e-08-2D3"/>
                 <outlet property="deliveryDetailsLabel" destination="Vni-xi-qHm" id="mCn-Ed-uMn"/>
+                <outlet property="mapView" destination="2e3-5f-MTg" id="fEO-DB-pFO"/>
                 <outlet property="mapViewHeight" destination="IiN-lQ-oQX" id="Azd-D0-XP3"/>
                 <outlet property="paymentDetailsLabel" destination="ngs-7M-mR2" id="deI-co-iWD"/>
                 <outlet property="paymentTable" destination="OsI-mg-Yqy" id="VbG-Es-KeC"/>
@@ -91,6 +92,9 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2e3-5f-MTg" customClass="GMSMapView">
                                             <rect key="frame" x="0.0" y="0.0" width="355" height="0.0"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="-1" id="mFn-jH-LEk"/>
+                                            </connections>
                                         </view>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nmN-u4-YsL">
                                             <rect key="frame" x="10" y="10" width="30" height="0.0"/>
@@ -104,7 +108,7 @@
                                             </connections>
                                         </button>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.22352941179999999" green="0.76862745099999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="nmN-u4-YsL" firstAttribute="leading" secondItem="fWM-ep-cDQ" secondAttribute="leading" constant="10" id="A7p-aa-213"/>
                                         <constraint firstAttribute="height" id="IiN-lQ-oQX"/>

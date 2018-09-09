@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -96,13 +96,14 @@
                                                 <outlet property="delegate" destination="-1" id="mFn-jH-LEk"/>
                                             </connections>
                                         </view>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nmN-u4-YsL">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nmN-u4-YsL">
                                             <rect key="frame" x="10" y="10" width="30" height="0.0"/>
-                                            <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="30" id="RCJ-xD-2A2"/>
                                                 <constraint firstAttribute="height" id="VD3-nh-5Az"/>
                                             </constraints>
+                                            <state key="normal" image="closeIcon"/>
                                             <connections>
                                                 <action selector="closeButtonAction:" destination="-1" eventType="touchUpInside" id="hig-NM-6my"/>
                                             </connections>
@@ -309,6 +310,7 @@
         </toolbar>
     </objects>
     <resources>
+        <image name="closeIcon" width="30" height="30"/>
         <image name="dateAndTime" width="20" height="20"/>
     </resources>
 </document>

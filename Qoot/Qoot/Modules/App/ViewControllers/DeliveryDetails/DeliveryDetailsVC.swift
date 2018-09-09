@@ -126,7 +126,8 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
         locationMgr.delegate = self
         locationMgr.startUpdatingLocation()
     }
-    //MARK: Login Api
+    
+    //MARK: Get Address Api
     
     func  callingGetAddressListApi(){
         MBProgressHUD.showAdded(to: self.view, animated: true)
@@ -162,6 +163,42 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
         return dataString
     }
 
+    
+    //MARK: Add Address Api
+    
+    func  callingAddAddressApi(){
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        CartManager().callingAddCustomerAddressApi(with: getAddAddressRequestBody(), success: {
+            (model) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if let model = model as? AddressResponseModel{
+                self.addressResponseModel = model
+                if model.addresses.count>0{
+                    self.selAddress = model.addresses.first
+                }
+                else{
+                    
+                }
+                self.addressTable.reloadData()
+            }
+            
+        }) { (ErrorType) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if(ErrorType == .noNetwork){
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+            }
+            else{
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+            }
+            
+            print(ErrorType)
+        }
+    }
+    func getAddAddressRequestBody()->String{
+        var dataString:String = ""
+        dataString = "CustomerId=2"
+        return dataString
+    }
     
     //MARK: Add Customer Order Api
     
@@ -292,6 +329,7 @@ extension DeliveryDetailsVC:CLLocationManagerDelegate{
         locationMgr.stopUpdatingLocation()
         let position = currentLocation.coordinate
         let marker = GMSMarker(position: position)
+        marker.title = "wewl"
         marker.map = mapView
     }
     

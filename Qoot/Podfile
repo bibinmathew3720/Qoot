@@ -9,6 +9,9 @@ target 'Qoot' do
   pod 'SDWebImage'
   pod 'SlideMenuControllerSwift'
   pod 'GrowingTextView', '~> 0.5'
+  pod 'GooglePlaces'
+  pod 'GooglePlacePicker'
+  pod 'GoogleMaps'
   # Pods for Qoot
 
 end

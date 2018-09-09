@@ -77,4 +77,7 @@ struct Constant{
     }
     static let ApiKey = "cW9vdC5vbmxpbmVhcGl0b2tlbmJ5amlqbw=="
     
+    struct ApiKeys {
+        static let googleMapKey = "AIzaSyDW3gXZCjFcNoBn3L2bA3nl6ZO6xw_EByw"
+    }
 }

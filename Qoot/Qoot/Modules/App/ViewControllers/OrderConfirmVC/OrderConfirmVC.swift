@@ -13,6 +13,7 @@ class OrderConfirmVC: BaseViewController {
     @IBOutlet weak var orderNumberLabel: UILabel!
     @IBOutlet weak var gotoMyOrdersButton: UIButton!
     
+    var customerOrderResponse:AddCustomerOrderResponseModel?
     override func initView() {
         initialisation()
         localization()
@@ -26,7 +27,7 @@ class OrderConfirmVC: BaseViewController {
     func localization(){
         self.title = "Qoot".localiz()
         orderCompletedLabel.text = "OrderCompleted".localiz()
-        orderNumberLabel.text = "OrderNumber".localiz() + "131231331"
+        orderNumberLabel.text = "OrderNumber".localiz() + " " + "131231331"
         gotoMyOrdersButton.setTitle("GOTOMYORDERS".localiz(), for: UIControlState.normal)
     }
 
@@ -36,6 +37,10 @@ class OrderConfirmVC: BaseViewController {
     }
     
     @IBAction func gotoMyOrdersButtonAction(_ sender: UIButton) {
+    }
+    
+    override func homeButtonAction() {
+        self.dismiss(animated: true, completion: nil)
     }
     
     /*

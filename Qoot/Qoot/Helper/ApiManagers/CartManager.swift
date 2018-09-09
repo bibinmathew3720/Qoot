@@ -148,6 +148,40 @@ class CartManager: CLBaseService {
         let addressesResponseModel = AddressResponseModel.init(arr:dict)
         return addressesResponseModel
     }
+    
+    //MARK: Add Customer Delivery Addresse Api
+    
+    func callingAddCustomerAddressApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForAddCustomerAddress(with:body), success: {
+            (resultData) in
+             let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict)
+                    success(self.addAddressResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForAddCustomerAddress(with body:String)->CLNetworkModel{
+        let addressRequestModel = CLNetworkModel.init(url: BASE_URL+AddCustomerAddress_URL, requestMethod_: "POST")
+        addressRequestModel.requestBody = body
+        return addressRequestModel
+    }
+    
+    func addAddressResponseModel(dict:[String : Any?]) -> Any? {
+        let addressesResponseModel = AddCustomerOrderResponseModel.init(dict:dict)
+        return addressesResponseModel
+    }
    
     
     //MARK: Add Customer Order Api

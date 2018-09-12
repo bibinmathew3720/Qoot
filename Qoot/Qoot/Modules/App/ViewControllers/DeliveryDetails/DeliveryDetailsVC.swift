@@ -39,6 +39,7 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
     var addressResponseModel:AddressResponseModel?
     var addCustomerOrderResponseModel:AddCustomerOrderResponseModel?
     var selAddress:Address?
+     var camera: GMSCameraPosition = GMSCameraPosition.camera(withLatitude: 10.0068361, longitude: 76.3655878, zoom: 17.5)
     override func initView() {
         initialisation()
         localization()
@@ -250,6 +251,38 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
         array.add(addOrderDetails())
         return array as! Array<Any>
     }
+    
+    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
+        var destinationLocation = CLLocation()
+  
+            destinationLocation = CLLocation(latitude: mapView.camera.target.latitude, longitude: mapView.camera.target.longitude)
+            let destinationCoordinate:CLLocationCoordinate2D = destinationLocation.coordinate
+            updateLocationoordinates(coordinates: destinationCoordinate)
+            
+            userLocLatitude = mapView.camera.target.latitude
+            userLocLongitude = mapView.camera.target.longitude
+        
+    }
+    
+    func updateLocationoordinates(coordinates:CLLocationCoordinate2D) {
+        if locationMarker == nil
+        {
+            locationMarker = GMSMarker()
+            let markerImage = UIImage(named: "buttonSelImage")!.withRenderingMode(.alwaysOriginal)
+            let markerView = UIImageView(image: markerImage)
+            locationMarker.iconView = markerView
+            locationMarker.position = coordinates
+            locationMarker.map = mapView
+            locationMarker.appearAnimation = GMSMarkerAnimation.pop
+        }
+        else
+        {
+            CATransaction.begin()
+            CATransaction.setAnimationDuration(0.25)
+            locationMarker.position =  coordinates
+            CATransaction.commit()
+        }
+    }
 }
 extension DeliveryDetailsVC : UITableViewDelegate,UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -336,4 +369,5 @@ extension DeliveryDetailsVC:CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error \(error)")
     }
+    
 }

@@ -145,6 +145,10 @@
 "Total" = "مجموع";
 "Confirm" = "تأكيد الطلب";
 
+"City" = "مدينة";
+"Address" = "عنوان";
+"Landmark" = "معلم معروف";
+
 //Cart
 
 "ItemSuccessfullyAdded" = "تمت إضافة الطبق بنجاح";

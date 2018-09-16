@@ -146,6 +146,10 @@
 "Total" = "Total";
 "Confirm" = "Confirm";
 
+"City" = "city";
+"Address" = "Address";
+"Landmark" = "landmark";
+
 //Cart
 
 "ItemSuccessfullyAdded" = "Item Successfully Added";

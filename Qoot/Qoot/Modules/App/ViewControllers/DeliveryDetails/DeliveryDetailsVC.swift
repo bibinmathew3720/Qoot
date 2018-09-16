@@ -40,6 +40,12 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
     var addCustomerOrderResponseModel:AddCustomerOrderResponseModel?
     var selAddress:Address?
      var camera: GMSCameraPosition = GMSCameraPosition.camera(withLatitude: 10.0068361, longitude: 76.3655878, zoom: 17.5)
+    
+    @IBOutlet weak var cityNameTF: UITextField!
+    @IBOutlet weak var addressTF: UITextField!
+    @IBOutlet weak var landmarkTF: UITextField!
+    @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var mapBackView: UIView!
     override func initView() {
         initialisation()
         localization()
@@ -64,6 +70,9 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
         paymentDetailsLabel.text = "PAYMENTDETAILS".localiz()
         totalLabel.text = "Total".localiz()
         confirmButton.setTitle("Confirm".localiz(), for: UIControlState.normal)
+        cityNameTF.placeholder = "City".localiz()
+        addressTF.placeholder = "Address".localiz()
+        landmarkTF.placeholder = "Landmark".localiz()
     }
    
     @IBAction func datePickerAction(_ sender: UIDatePicker) {
@@ -85,7 +94,8 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
     @IBAction func addAddressButtonAction(_ sender: Any) {
         closeButtonHeight.constant = 30
         addAddressButtonHeightConstraint.constant = 0
-        mapViewHeight.constant = 190
+        mapViewHeight.constant = 220
+        mapBackView.isHidden = false
     }
     
     @IBAction func confirmButtonAction(_ sender: UIButton) {
@@ -93,9 +103,13 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
     }
     
     @IBAction func closeButtonAction(_ sender: Any) {
+        mapBackView.isHidden = true
         mapViewHeight.constant = 0
         closeButtonHeight.constant = 0
         addAddressButtonHeightConstraint.constant = 40
+    }
+    
+    @IBAction func addButtonAction(_ sender: UIButton) {
     }
     
     override func didReceiveMemoryWarning() {
@@ -282,6 +296,44 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
             locationMarker.position =  coordinates
             CATransaction.commit()
         }
+    }
+    
+    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
+        getLocationInformation(coordinate: coordinate)
+        print(coordinate)
+    }
+    
+    func getLocationInformation(coordinate: CLLocationCoordinate2D){
+        // Add below code to get address for touch coordinates.
+        let geoCoder = CLGeocoder()
+        let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+        geoCoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
+            
+            // Place details
+            var placeMark: CLPlacemark!
+            placeMark = placemarks?[0]
+            
+            // Location name
+            if let locationName = placeMark.location {
+                print(locationName)
+            }
+            // Street address
+            if let street = placeMark.thoroughfare {
+                print(street)
+            }
+            // City
+            if let city = placeMark.subAdministrativeArea {
+                print(city)
+            }
+            // Zip code
+            if let zip = placeMark.isoCountryCode {
+                print(zip)
+            }
+            // Country
+            if let country = placeMark.country {
+                print(country)
+            }
+        })
     }
 }
 extension DeliveryDetailsVC : UITableViewDelegate,UITableViewDataSource {

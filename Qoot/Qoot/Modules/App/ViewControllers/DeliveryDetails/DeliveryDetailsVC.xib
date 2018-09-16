@@ -22,12 +22,17 @@
             <connections>
                 <outlet property="addAddressButton" destination="ovy-Qh-D2a" id="1Jo-47-BkJ"/>
                 <outlet property="addAddressButtonHeightConstraint" destination="n4M-sj-wzT" id="dae-cE-dCL"/>
+                <outlet property="addButton" destination="gho-g3-IkF" id="HHx-xI-10Y"/>
+                <outlet property="addressTF" destination="h3G-4H-GKC" id="F2y-qW-XZr"/>
                 <outlet property="addressTable" destination="h5L-pI-rGf" id="azH-aa-SGi"/>
+                <outlet property="cityNameTF" destination="zxs-DF-aci" id="Ed0-Jl-NkN"/>
                 <outlet property="closeButtonHeight" destination="VD3-nh-5Az" id="mbz-Ix-mQc"/>
                 <outlet property="confirmButton" destination="EpB-8Q-sfV" id="fKe-al-Q7A"/>
                 <outlet property="datePicker" destination="GWx-DK-hTJ" id="dfI-B2-Rex"/>
                 <outlet property="dateTextField" destination="0og-fQ-Phg" id="Y9e-08-2D3"/>
                 <outlet property="deliveryDetailsLabel" destination="Vni-xi-qHm" id="mCn-Ed-uMn"/>
+                <outlet property="landmarkTF" destination="MZv-Gf-vFq" id="Gef-zk-ZZ5"/>
+                <outlet property="mapBackView" destination="fWM-ep-cDQ" id="JQ6-jv-6Uh"/>
                 <outlet property="mapView" destination="2e3-5f-MTg" id="fEO-DB-pFO"/>
                 <outlet property="mapViewHeight" destination="IiN-lQ-oQX" id="Azd-D0-XP3"/>
                 <outlet property="paymentDetailsLabel" destination="ngs-7M-mR2" id="deI-co-iWD"/>
@@ -39,11 +44,6 @@
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tapGestureRecognizer id="98g-Ra-WC0">
-            <connections>
-                <action selector="tapAction:" destination="-1" id="7QX-Ia-ZD5"/>
-            </connections>
-        </tapGestureRecognizer>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -86,7 +86,7 @@
                                         <action selector="addAddressButtonAction:" destination="-1" eventType="touchUpInside" id="spb-WI-Bne"/>
                                     </connections>
                                 </button>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fWM-ep-cDQ">
+                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fWM-ep-cDQ">
                                     <rect key="frame" x="10" y="296.5" width="355" height="0.0"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2e3-5f-MTg" customClass="GMSMapView">
@@ -108,16 +108,67 @@
                                                 <action selector="closeButtonAction:" destination="-1" eventType="touchUpInside" id="hig-NM-6my"/>
                                             </connections>
                                         </button>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MZv-Gf-vFq">
+                                            <rect key="frame" x="5" y="-35" width="290" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="gyI-sZ-jzv"/>
+                                            </constraints>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zxs-DF-aci">
+                                            <rect key="frame" x="5" y="-70" width="120" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="120" id="6zZ-Z0-M0v"/>
+                                            </constraints>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h3G-4H-GKC">
+                                            <rect key="frame" x="130" y="-70" width="220" height="30"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gho-g3-IkF">
+                                            <rect key="frame" x="300" y="-35" width="50" height="30"/>
+                                            <color key="backgroundColor" red="0.58039215690000001" green="0.75686274509999996" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="50" id="2ci-Rx-dGb"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                                            <state key="normal" title="Add">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="addButtonAction:" destination="-1" eventType="touchUpInside" id="hIl-4P-RsH"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="gho-g3-IkF" secondAttribute="trailing" constant="5" id="3QG-Zg-trS"/>
                                         <constraint firstItem="nmN-u4-YsL" firstAttribute="leading" secondItem="fWM-ep-cDQ" secondAttribute="leading" constant="10" id="A7p-aa-213"/>
+                                        <constraint firstItem="h3G-4H-GKC" firstAttribute="leading" secondItem="zxs-DF-aci" secondAttribute="trailing" constant="5" id="CCY-sd-i22"/>
+                                        <constraint firstItem="gho-g3-IkF" firstAttribute="bottom" secondItem="MZv-Gf-vFq" secondAttribute="bottom" id="DfA-h4-btt"/>
                                         <constraint firstAttribute="height" id="IiN-lQ-oQX"/>
                                         <constraint firstItem="nmN-u4-YsL" firstAttribute="top" secondItem="fWM-ep-cDQ" secondAttribute="top" constant="10" id="KeG-IY-Ds8"/>
+                                        <constraint firstItem="h3G-4H-GKC" firstAttribute="height" secondItem="zxs-DF-aci" secondAttribute="height" id="OtJ-9O-uMI"/>
                                         <constraint firstItem="2e3-5f-MTg" firstAttribute="leading" secondItem="fWM-ep-cDQ" secondAttribute="leading" id="Psm-nc-5yR"/>
+                                        <constraint firstItem="zxs-DF-aci" firstAttribute="leading" secondItem="MZv-Gf-vFq" secondAttribute="leading" id="QIO-sX-yia"/>
+                                        <constraint firstAttribute="bottom" secondItem="MZv-Gf-vFq" secondAttribute="bottom" constant="5" id="RDV-Cc-U7g"/>
                                         <constraint firstItem="2e3-5f-MTg" firstAttribute="top" secondItem="fWM-ep-cDQ" secondAttribute="top" id="YZo-Cq-x0f"/>
+                                        <constraint firstItem="MZv-Gf-vFq" firstAttribute="top" secondItem="zxs-DF-aci" secondAttribute="bottom" constant="5" id="Zwh-nI-TVc"/>
                                         <constraint firstAttribute="bottom" secondItem="2e3-5f-MTg" secondAttribute="bottom" id="aan-CW-NdE"/>
                                         <constraint firstAttribute="trailing" secondItem="2e3-5f-MTg" secondAttribute="trailing" id="cO4-lI-s1V"/>
+                                        <constraint firstAttribute="trailing" secondItem="h3G-4H-GKC" secondAttribute="trailing" constant="5" id="dkX-Dq-4RR"/>
+                                        <constraint firstItem="h3G-4H-GKC" firstAttribute="bottom" secondItem="zxs-DF-aci" secondAttribute="bottom" id="hQK-uf-Hnm"/>
+                                        <constraint firstItem="MZv-Gf-vFq" firstAttribute="leading" secondItem="fWM-ep-cDQ" secondAttribute="leading" constant="5" id="hnC-Et-Pk8"/>
+                                        <constraint firstItem="zxs-DF-aci" firstAttribute="height" secondItem="MZv-Gf-vFq" secondAttribute="height" id="lQR-sv-Upf"/>
+                                        <constraint firstItem="gho-g3-IkF" firstAttribute="leading" secondItem="MZv-Gf-vFq" secondAttribute="trailing" constant="5" id="pnK-2G-TwR"/>
+                                        <constraint firstItem="gho-g3-IkF" firstAttribute="height" secondItem="zxs-DF-aci" secondAttribute="height" id="qhx-Z3-c6j"/>
                                     </constraints>
                                 </view>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Choose Date and Time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0og-fQ-Phg">
@@ -269,6 +320,7 @@
                 </scrollView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <gestureRecognizers/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="618-Fj-DnT" secondAttribute="trailing" id="0GB-vY-4dX"/>
                 <constraint firstItem="618-Fj-DnT" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Cme-yf-xSD"/>
@@ -276,6 +328,9 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="618-Fj-DnT" secondAttribute="bottom" id="t3U-b4-1u4"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="GTL-Mo-D67" appends="YES" id="vwb-lR-0RT"/>
+            </connections>
             <point key="canvasLocation" x="24.5" y="193.5"/>
         </view>
         <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" id="GWx-DK-hTJ">
@@ -308,6 +363,11 @@
             </items>
             <point key="canvasLocation" x="446" y="-330"/>
         </toolbar>
+        <tapGestureRecognizer id="GTL-Mo-D67">
+            <connections>
+                <action selector="tapAction:" destination="-1" id="MSD-cv-HYX"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="closeIcon" width="30" height="30"/>

@@ -12,6 +12,7 @@
 "PASSWORDSDOESNOTMATCHES" = "كلمات المرور غير متطابقة";
 "INVALIDPASSWORDCHARACTERS" = "استخدم 8 أحرف أو أكثر مع مزيج من الحروف والأرقام والرموز";
 "INVALIDEMAIL" = "عنوان البريد الإلكتروني غير صالح";
+"CITYNAMEANDHOMEADDRESSEMPTY" = "لا يمكن أن يكون اسم المدينة وعنوان المنزل فارغين";
 
 //Common
 

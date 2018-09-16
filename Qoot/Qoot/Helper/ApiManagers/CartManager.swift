@@ -335,6 +335,15 @@ class AddressResponseModel : NSObject{
     }
 }
 
+class AddAddressResponseModel : NSObject{
+    var statusCode:Int = 0
+    init(dict:[String:Any?]) {
+        if let value = dict["Status"] as? Int{
+            statusCode = value
+        }
+    }
+}
+
 class Address : NSObject{
     var addressId:Int = 0
     var customerId:Int = 0

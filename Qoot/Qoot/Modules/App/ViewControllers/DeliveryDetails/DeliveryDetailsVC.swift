@@ -40,6 +40,7 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
     var addCustomerOrderResponseModel:AddCustomerOrderResponseModel?
     var selAddress:Address?
      var camera: GMSCameraPosition = GMSCameraPosition.camera(withLatitude: 10.0068361, longitude: 76.3655878, zoom: 17.5)
+    var addAddressResponseModel:AddAddressResponseModel?
     
     @IBOutlet weak var cityNameTF: UITextField!
     @IBOutlet weak var addressTF: UITextField!
@@ -110,6 +111,30 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
     }
     
     @IBAction func addButtonAction(_ sender: UIButton) {
+        if isValidAddressDetails(){
+            callingAddAddressApi()
+        }
+    }
+    
+    func isValidAddressDetails()->Bool{
+        var isValid = true
+        var messageString = ""
+        if let cityNameText = cityNameTF.text{
+            if cityNameText.isEmpty{
+                isValid = false
+                messageString = "CITYNAMEANDHOMEADDRESSEMPTY".localiz()
+            }
+        }
+        if let landmarkText = landmarkTF.text{
+            if landmarkText.isEmpty{
+                isValid = false
+                messageString = "CITYNAMEANDHOMEADDRESSEMPTY".localiz()
+            }
+        }
+        if !isValid{
+            CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: messageString, parentController: self)
+        }
+        return isValid
     }
     
     override func didReceiveMemoryWarning() {
@@ -186,15 +211,12 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
         CartManager().callingAddCustomerAddressApi(with: getAddAddressRequestBody(), success: {
             (model) in
             MBProgressHUD.hide(for: self.view, animated: true)
-            if let model = model as? AddressResponseModel{
-                self.addressResponseModel = model
-                if model.addresses.count>0{
-                    self.selAddress = model.addresses.first
+            if let model = model as? AddAddressResponseModel{
+                self.addAddressResponseModel = model
+                if model.statusCode == 1 {
+                    self.callingGetAddressListApi()
+                    self.clearAllAddressFields()
                 }
-                else{
-                    
-                }
-                self.addressTable.reloadData()
             }
             
         }) { (ErrorType) in
@@ -211,8 +233,30 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
     }
     func getAddAddressRequestBody()->String{
         var dataString:String = ""
-        dataString = "CustomerId=2"
+        if let cityName = self.cityNameTF.text {
+            let cityNameString:String = "LocationName=\(cityName.urlEncode())"
+            dataString = dataString + cityNameString + "&"
+        }
+        dataString = dataString + "CustomerId=2&"
+        if let address = self.addressTF.text {
+            let addressString:String = "Address=\(address.urlEncode())"
+            dataString = dataString + addressString + "&"
+        }
+        if let landmark = self.landmarkTF.text {
+            let landmarkString:String = "Description=\(landmark.urlEncode())" + "&"
+            dataString = dataString + landmarkString
+        }
+        let latAndLongString:String = "GeoCode=\(self.userLocLatitude)" + ",\(self.userLocLongitude)"
+        dataString = dataString + latAndLongString
         return dataString
+    }
+    
+    func clearAllAddressFields(){
+        self.landmarkTF.text = ""
+        self.addressTF.text = ""
+        self.cityNameTF.text = ""
+        self.mapBackView.isHidden = true
+        self.mapViewHeight.constant = 0
     }
     
     //MARK: Add Customer Order Api
@@ -315,7 +359,7 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
             
             // Location name
             if let locationName = placeMark.location {
-                print(locationName)
+                 print("Location Name:\(locationName)")
             }
             // Street address
             if let street = placeMark.thoroughfare {
@@ -323,7 +367,8 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
             }
             // City
             if let city = placeMark.subAdministrativeArea {
-                print(city)
+                self.cityNameTF.text = city
+                print("City:\(city)")
             }
             // Zip code
             if let zip = placeMark.isoCountryCode {
@@ -332,6 +377,13 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
             // Country
             if let country = placeMark.country {
                 print(country)
+            }
+            
+            if let locality = placeMark.locality {
+                self.landmarkTF.text = locality
+            }
+            if let subLocality = placeMark.subLocality {
+                self.addressTF.text = subLocality
             }
         })
     }

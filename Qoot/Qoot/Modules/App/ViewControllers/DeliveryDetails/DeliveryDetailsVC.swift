@@ -321,12 +321,15 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
             let destinationCoordinate:CLLocationCoordinate2D = destinationLocation.coordinate
             updateLocationoordinates(coordinates: destinationCoordinate)
             
-            userLocLatitude = mapView.camera.target.latitude
-            userLocLongitude = mapView.camera.target.longitude
+//            userLocLatitude = mapView.camera.target.latitude
+//            userLocLongitude = mapView.camera.target.longitude
         
     }
     
     func updateLocationoordinates(coordinates:CLLocationCoordinate2D) {
+        userLocLatitude = mapView.camera.target.latitude
+        userLocLongitude = mapView.camera.target.longitude
+        getLocationInformation(coordinate: coordinates)
         if locationMarker == nil
         {
             locationMarker = GMSMarker()
@@ -347,7 +350,7 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
     }
     
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
-        getLocationInformation(coordinate: coordinate)
+        //getLocationInformation(coordinate: coordinate)
         print(coordinate)
     }
     
@@ -475,6 +478,7 @@ extension DeliveryDetailsVC:CLLocationManagerDelegate{
         
         self.mapView?.animate(to: camera)
         locationMgr.stopUpdatingLocation()
+        getLocation()
 //        let position = currentLocation.coordinate
 //        let marker = GMSMarker(position: position)
 //        marker.title = "wewl"

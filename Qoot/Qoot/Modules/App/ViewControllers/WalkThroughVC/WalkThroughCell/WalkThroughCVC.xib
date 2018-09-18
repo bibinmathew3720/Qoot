@@ -30,22 +30,18 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dw8-my-AB3">
                         <rect key="frame" x="0.0" y="0.0" width="206" height="359"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cb5-Oi-hpD">
-                                <rect key="frame" x="36.5" y="85.5" width="133" height="108"/>
-                                <color key="backgroundColor" red="0.99607843139999996" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="133" id="Fic-IM-3KN"/>
-                                    <constraint firstAttribute="height" constant="108" id="P1P-XJ-SqS"/>
-                                </constraints>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="walkThrough1" translatesAutoresizingMaskIntoConstraints="NO" id="cb5-Oi-hpD">
+                                <rect key="frame" x="53" y="89.5" width="100" height="100"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vmg-hY-Sce">
-                                <rect key="frame" x="0.0" y="213.5" width="206" height="21.5"/>
+                                <rect key="frame" x="0.0" y="209.5" width="206" height="21.5"/>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uRi-nx-cvy">
-                                <rect key="frame" x="0.0" y="245" width="206" height="18.5"/>
+                                <rect key="frame" x="0.0" y="241" width="206" height="18.5"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                 <color key="textColor" red="0.72156862745098038" green="0.70588235294117641" blue="0.70196078431372544" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -82,4 +78,7 @@
             <point key="canvasLocation" x="157" y="263.5"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="walkThrough1" width="100" height="100"/>
+    </resources>
 </document>

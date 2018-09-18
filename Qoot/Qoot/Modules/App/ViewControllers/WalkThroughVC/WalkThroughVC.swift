@@ -69,21 +69,25 @@ extension WalkThroughVC:UICollectionViewDataSource,UICollectionViewDelegate,UICo
         let cell:WalkThroughCVC = collectionView.dequeueReusableCell(withReuseIdentifier: "walkThroughCell", for: indexPath) as! WalkThroughCVC
         if indexPath.row == 0 {
             cell.backView.backgroundColor = Constant.Colors.CommonRedColor
+            cell.imageView.image = UIImage.init(named: "walkThrough1")
             cell.headingLabel.text = "Walkthrough1_Title".localiz()
             cell.subHeadinglabel.text = "Walkthrough1_SubTitle".localiz()
         }
         else if indexPath.row == 1 {
            cell.backView.backgroundColor = Constant.Colors.CommonGreyColor
+            cell.imageView.image = UIImage.init(named: "walkThrough2")
             cell.headingLabel.text = "Walkthrough2_Title".localiz()
             cell.subHeadinglabel.text = "Walkthrough2_SubTitle".localiz()
         }
         else if indexPath.row == 2 {
             cell.backView.backgroundColor = Constant.Colors.CommonGreenColor
+            cell.imageView.image = UIImage.init(named: "walkThrough3")
             cell.headingLabel.text = "Walkthrough3_Title".localiz()
             cell.subHeadinglabel.text = "Walkthrough3_SubTitle".localiz()
         }
         else if indexPath.row == 3 {
             cell.backView.backgroundColor = Constant.Colors.CommonMeroonColor
+            cell.imageView.image = UIImage.init(named: "walkThrough4")
             cell.headingLabel.text = "Walkthrough4_Title".localiz()
             cell.subHeadinglabel.text = "Walkthrough4_SubTitle".localiz()
         }

@@ -366,6 +366,7 @@
         <tapGestureRecognizer id="GTL-Mo-D67">
             <connections>
                 <action selector="tapAction:" destination="-1" id="MSD-cv-HYX"/>
+                <outlet property="delegate" destination="-1" id="WBc-Lu-3SK"/>
             </connections>
         </tapGestureRecognizer>
     </objects>

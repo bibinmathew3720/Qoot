@@ -11,7 +11,7 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 
-class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapViewDelegate {
+class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapViewDelegate,UIGestureRecognizerDelegate {
     @IBOutlet weak var deliveryDetailsLabel: UILabel!
      @IBOutlet var addAddressButton: UIButton!
     @IBOutlet var dateTextField: UITextField!
@@ -199,7 +199,9 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
     }
     func getAddressRequestBody()->String{
         var dataString:String = ""
-        dataString = "CustomerId=2"
+        if let user = User.getUser(){
+            dataString = "CustomerId=\(user.userId)"
+        }
         return dataString
     }
 
@@ -237,7 +239,9 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
             let cityNameString:String = "LocationName=\(cityName.urlEncode())"
             dataString = dataString + cityNameString + "&"
         }
-        dataString = dataString + "CustomerId=2&"
+        if let user = User.getUser(){
+            dataString = dataString + "CustomerId=\(user.userId)&"
+        }
         if let address = self.addressTF.text {
             let addressString:String = "Address=\(address.urlEncode())"
             dataString = dataString + addressString + "&"
@@ -326,7 +330,7 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
         if locationMarker == nil
         {
             locationMarker = GMSMarker()
-            let markerImage = UIImage(named: "buttonSelImage")!.withRenderingMode(.alwaysOriginal)
+            let markerImage = UIImage(named: "locationPin")!.withRenderingMode(.alwaysOriginal)
             let markerView = UIImageView(image: markerImage)
             locationMarker.iconView = markerView
             locationMarker.position = coordinates
@@ -386,6 +390,13 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
                 self.addressTF.text = subLocality
             }
         })
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if (touch.view?.isDescendant(of: addressTable ))! {
+            return false
+        }
+        return true
     }
 }
 extension DeliveryDetailsVC : UITableViewDelegate,UITableViewDataSource {
@@ -464,10 +475,10 @@ extension DeliveryDetailsVC:CLLocationManagerDelegate{
         
         self.mapView?.animate(to: camera)
         locationMgr.stopUpdatingLocation()
-        let position = currentLocation.coordinate
-        let marker = GMSMarker(position: position)
-        marker.title = "wewl"
-        marker.map = mapView
+//        let position = currentLocation.coordinate
+//        let marker = GMSMarker(position: position)
+//        marker.title = "wewl"
+//        marker.map = mapView
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

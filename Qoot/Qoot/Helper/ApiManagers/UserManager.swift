@@ -1008,106 +1008,35 @@ class FetchLogIn: NSObject {
 
 
 class QootLogInResponseModel : NSObject{
-    
     var statusMessage:String = ""
-    var errorMessage:String = ""
-    var statusCode:Int = 0
-    var sessionToken:String = ""
-    var refreshToken:String = ""
-    
     var userId:Int = 0
-    var catId:Int = 0
-    var locId:Int = 0
-    var languageId:Int = 0
-    var notSettings:Bool = true
     var userName:String = ""
     var userEmail:String = ""
-    var userMobile:Int = 0
-    var userDOB:String = ""
-    var userArea:String = ""
-    var userPet:String = ""
-    var userAddress1:String = ""
-    var userAddress2:String = ""
-    var userProfileImageUrl:String = ""
-    var userCategories = [UserCategories]()
+    var gender:String = ""
+    var userMobile:String = ""
     init(dict:[String:Any?]) {
         if let value = dict["message"] as? String{
             statusMessage = value
         }
-        if let value = dict["errorMsg"] as? String{
-            errorMessage = value
+        if let value = dict["customer_id"] as? String{
+            if let userID = Int(value){
+                userId = userID
+            }
         }
-        if let value = dict["statusCode"] as? Int{
-            statusCode = value
+        if let value = dict["customer_name"] as? String{
+            userName = value
+        }
+        if let value = dict["email_id"] as? String{
+            userEmail = value
+        }
+        if let value = dict["customer_gender"] as? String{
+            gender = value
+        }
+        if let value = dict["mobile_number"] as? String{
+            gender = value
         }
         
-        if let value = dict["session_token"] as? String{
-            sessionToken = value
-        }
-        if let value = dict["refresh_token"] as? String{
-            refreshToken = value
-        }
-        if let user = dict["user"] as? AnyObject{
-            if let value = user["user_id"] as? Int{
-                userId = value
-            }
-            if let value = user["categories"] as? NSArray{
-                
-                    for item in value{
-                        if let it = item as? [String : Any?]{
-                            userCategories.append(UserCategories.init(dict: it ))
-                        }
-                    }
-            }
-            if let value = user["location_id"] as? Int{
-                locId = value
-            }
-            if let value = user["language_id"] as? Int{
-                languageId = value
-            }
-            if let value = user["u_Name"] as? String{
-                userName = value
-            }
-            if let value = user["u_address1"] as? String{
-                userAddress1 = value
-            }
-            if let value = user["u_address2"] as? String{
-                userAddress2 = value
-            }
-            if let value = user["u_dob"] as? String{
-                userDOB = value
-            }
-            if let value = user["u_email"] as? String{
-                userEmail = value
-            }
-            if let value = user["u_mobile"] as? NSNumber{
-                userMobile = Int(truncating: value)
-            }
-            if let value = user["u_profilePicURL"] as? String{
-                userProfileImageUrl = value
-            }
-            if let value = user["location_name"] as? String{
-                userArea = value
-            }
-            if let value = user["category_name"] as? String{
-                userPet = value
-            }
-        }
 }
-}
-
-class UserCategories : NSObject{
-    var catId:Int = 0
-    var catName:String = ""
-    
-    init(dict:[String:Any?]) {
-        if let value = dict["category_id"] as? Int{
-            catId = value
-        }
-        if let value = dict["category_name"] as? String{
-            catName = value
-        }
-    }
 }
 
 class QootCityNamesResponseModel : NSObject{

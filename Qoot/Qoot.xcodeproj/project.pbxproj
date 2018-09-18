@@ -94,6 +94,7 @@
 		D0C865622113477800383A48 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C865612113477800383A48 /* BaseViewController.swift */; };
 		D0C865642113608400383A48 /* DashboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C865632113608400383A48 /* DashboardVC.swift */; };
 		D0C865672113739500383A48 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C865662113739500383A48 /* RegisterVC.swift */; };
+		D0EB103C2150D993000CD2C9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EB103B2150D992000CD2C9 /* User.swift */; };
 		D0ECF2C821220CBB008E9A79 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0ECF2C621220CBB008E9A79 /* Roboto-Bold.ttf */; };
 		D0ECF2C921220CBB008E9A79 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0ECF2C721220CBB008E9A79 /* Roboto-Regular.ttf */; };
 		D0F9E11921161B1F004F7833 /* ManuTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F9E11721161B1F004F7833 /* ManuTVC.swift */; };
@@ -198,6 +199,7 @@
 		D0C865632113608400383A48 /* DashboardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardVC.swift; sourceTree = "<group>"; };
 		D0C86565211360C400383A48 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D0C865662113739500383A48 /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
+		D0EB103B2150D992000CD2C9 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D0ECF2C621220CBB008E9A79 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		D0ECF2C721220CBB008E9A79 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		D0F9E11721161B1F004F7833 /* ManuTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManuTVC.swift; sourceTree = "<group>"; };
@@ -409,6 +411,7 @@
 		D00FACE82112EC6700C8C176 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D0EB103A2150D992000CD2C9 /* User */,
 				D01F78F92143932C004C375D /* Cart */,
 				D00FACD82112DF1300C8C176 /* Qoot.xcdatamodeld */,
 			);
@@ -765,6 +768,14 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		D0EB103A2150D992000CD2C9 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				D0EB103B2150D992000CD2C9 /* User.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
 		D0ECF2C521220CBB008E9A79 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -1022,6 +1033,7 @@
 				D00FACDA2112DF1300C8C176 /* Qoot.xcdatamodeld in Sources */,
 				D00FAD1D2112EE5D00C8C176 /* CLNetworkManager.swift in Sources */,
 				D00FAD212112EE5D00C8C176 /* Constants.swift in Sources */,
+				D0EB103C2150D993000CD2C9 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

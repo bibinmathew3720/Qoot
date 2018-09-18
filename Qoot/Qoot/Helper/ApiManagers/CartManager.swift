@@ -179,8 +179,8 @@ class CartManager: CLBaseService {
     }
     
     func addAddressResponseModel(dict:[String : Any?]) -> Any? {
-        let addressesResponseModel = AddCustomerOrderResponseModel.init(dict:dict)
-        return addressesResponseModel
+        let addAddressesResponseModel = AddAddressResponseModel.init(dict:dict)
+        return addAddressesResponseModel
     }
    
     
@@ -253,6 +253,7 @@ class CheckOutResponseModel : NSObject{
         }
     }
 }
+
 
 class AddCustomerOrderResponseModel : NSObject{
     var statusMessage:String = ""

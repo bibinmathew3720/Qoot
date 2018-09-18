@@ -185,7 +185,6 @@ extension MenuVC : UITableViewDelegate,UITableViewDataSource {
         let alertController = UIAlertController(title: "LOGOUT".localiz(), message: "AREYOUSURE".localiz(), preferredStyle: .alert)
         let yesAction = UIAlertAction(title: "YES".localiz(), style: .default) { (action:UIAlertAction) in
             UserDefaults.standard.set(false, forKey: Constant.VariableNames.isLoogedIn)
-            User.deleteUser()
             self.uiUpdations()
         }
         let noAction = UIAlertAction(title: "NO".localiz(), style: .default) { (action:UIAlertAction) in

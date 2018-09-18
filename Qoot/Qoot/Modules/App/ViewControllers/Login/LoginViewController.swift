@@ -94,6 +94,7 @@ class LoginViewController: BaseViewController,UITextFieldDelegate {
                 }
                 else{
                     UserDefaults.standard.set(true, forKey: Constant.VariableNames.isLoogedIn)
+                    User.saveUserData(userData: model)
                     self.dismiss(animated: true, completion: nil)
                 }
             }

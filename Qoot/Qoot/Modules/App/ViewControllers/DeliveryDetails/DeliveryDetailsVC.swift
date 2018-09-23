@@ -289,22 +289,49 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
     }
     func addCustomerOrderRequestBody()->String{
         var dataString:String = ""
-        let passwordString:String = NSString.init(format: "OrderDetails=%@", adddetail()) as String
-            dataString = dataString + passwordString
+        dataString = dataString + "OrderDetails=\(addOrderDetails())"
+        //let passwordString:String = NSString.init(format: "OrderDetails=%@", addOrderDetails())
+       // dataString = dataString + passwordString
         //dataString = "username=0550154967&password=123456"
         return dataString
     }
     func addOrderDetails()->String {
-        var dict:[String:AnyObject] = [String:AnyObject]()
-        dict.updateValue("2" as AnyObject, forKey: "customerid")
-        dict.updateValue("458" as AnyObject, forKey: "menuid")
-        dict.updateValue("1" as AnyObject, forKey: "quantity")
-        dict.updateValue("Cash On Delivery" as AnyObject, forKey: "paymenttype")
-        dict.updateValue("1" as AnyObject, forKey: "addressid")
-        dict.updateValue("" as AnyObject, forKey: "promocode")
-        dict.updateValue("spicy" as AnyObject, forKey: "comment")
-        dict.updateValue("2018-05-01 04:15 PM" as AnyObject, forKey: "deliverydate")
-        return CCUtility.getJSONfrom(dictionary: dict)
+//        var array = NSMutableArray()
+//        var paramDict = [String:String]()
+//        paramDict["customerid"] = "2"
+//        paramDict["menuid"] = "458"
+//         paramDict["quantity"] = "1"
+//        paramDict["paymenttype"] = "Cash On Delivery"
+//        paramDict["addressid"] = "1"
+//        paramDict["promocode"] = ""
+//         paramDict["comment"] = "wefwe"
+//        paramDict["deliverydate"] = "2018-05-01 04:15"
+//        array.add(paramDict)
+        var dataString:String = "[{"
+        let customerIdString:String = "customerid=" + "2".urlEncode()
+        dataString = dataString + customerIdString + ","
+
+       let menuIdString:String = "menuid=" + "458".urlEncode()
+        dataString = dataString + menuIdString + ","
+        
+        let quantityString:String = "quantity=" + "1".urlEncode()
+        dataString = dataString + quantityString + ","
+        
+       let paymentString:String = "paymenttype=" + "Cash On Delivery".urlEncode()
+        dataString = dataString + paymentString + ","
+        
+        let addressIdString:String = "addressid=" + "1".urlEncode()
+        dataString = dataString + addressIdString + ","
+        
+//        let promocodeString:String = "promocode=" + "".urlEncode()
+//        dataString = dataString + promocodeString + "&"
+
+        let commentString:String = "comment=" + "csdjh".urlEncode()
+        dataString = dataString + commentString + ","
+        
+        let dateString:String = "deliverydate=" + "2018-05-01 04:15 PM".urlEncode()
+        dataString = dataString + dateString + "}]"
+        return dataString
     }
     
     func adddetail() -> Array<Any> {
@@ -441,6 +468,8 @@ extension DeliveryDetailsVC : UITableViewDelegate,UITableViewDataSource {
                 }
                 addressCell.setAddress(address:address)
             }
+            addressCell.tag = indexPath.row
+            addressCell.delegate = self
             cell = addressCell
         }
         return cell
@@ -489,4 +518,48 @@ extension DeliveryDetailsVC:CLLocationManagerDelegate{
         print("Error \(error)")
     }
     
+}
+
+extension DeliveryDetailsVC:AddressCellDelegate{
+    func closeButtonDelegateAction(with tag: Int) {
+        callingRemoveAddressApi(tag: tag)
+    }
+    
+    //MARK: Remove Address Api
+    
+    func  callingRemoveAddressApi(tag:Int){
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        CartManager().callingRemoveCustomerAddressApi(with: getRemoveAddressRequestBody(index: tag), success: {
+            (model) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if let model = model as? RemoveAddressResponseModel{
+                if model.statusCode == 1 {
+                    if let addressList = self.addressResponseModel{
+                        addressList.addresses.remove(at: tag)
+                        self.addressTable.reloadData()
+                    }
+                }
+            }
+            
+        }) { (ErrorType) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if(ErrorType == .noNetwork){
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+            }
+            else{
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+            }
+            
+            print(ErrorType)
+        }
+    }
+    func getRemoveAddressRequestBody(index:Int)->String{
+        var dataString:String = ""
+        if let addressList = self.addressResponseModel{
+            let address = addressList.addresses[index]
+            let addressIdString:String = "AddressId=\(address.addressId)"
+            dataString = dataString + addressIdString
+        }
+        return dataString
+    }
 }

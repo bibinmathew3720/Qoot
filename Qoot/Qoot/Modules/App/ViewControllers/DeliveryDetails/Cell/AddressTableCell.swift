@@ -8,10 +8,15 @@
 
 import UIKit
 
+protocol AddressCellDelegate {
+    func closeButtonDelegateAction(with tag:Int) -> ()
+}
+
 class AddressTableCell: UITableViewCell {
     @IBOutlet weak var radioButton: UIButton!
     @IBOutlet weak var addressNameLabel: UILabel!
     @IBOutlet weak var addressSubNameLabel: UILabel!
+    var delegate:AddressCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -26,6 +31,15 @@ class AddressTableCell: UITableViewCell {
     func setAddress(address:Address){
         addressNameLabel.text = address.customerLocationName
         addressSubNameLabel.text = address.deliveryLandMark
+    }
+    
+    //Button Action
+    
+    @IBAction func closeButtonAction(_ sender: UIButton) {
+        guard let _delegate = delegate else {
+            return
+        }
+        _delegate.closeButtonDelegateAction(with: self.tag)
     }
     
 }

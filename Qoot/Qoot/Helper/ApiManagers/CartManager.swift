@@ -182,6 +182,40 @@ class CartManager: CLBaseService {
         let addAddressesResponseModel = AddAddressResponseModel.init(dict:dict)
         return addAddressesResponseModel
     }
+    
+    //MARK: Remove Customer Addresse Api
+    
+    func callingRemoveCustomerAddressApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForRemoveCustomerAddress(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict)
+                    success(self.removeAddressResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForRemoveCustomerAddress(with body:String)->CLNetworkModel{
+        let addressRequestModel = CLNetworkModel.init(url: BASE_URL+RemoveCustomerAddress_URL, requestMethod_: "POST")
+        addressRequestModel.requestBody = body
+        return addressRequestModel
+    }
+    
+    func removeAddressResponseModel(dict:[String : Any?]) -> Any? {
+        let removeAddressesResponseModel = RemoveAddressResponseModel.init(dict:dict)
+        return removeAddressesResponseModel
+    }
    
     
     //MARK: Add Customer Order Api
@@ -337,6 +371,15 @@ class AddressResponseModel : NSObject{
 }
 
 class AddAddressResponseModel : NSObject{
+    var statusCode:Int = 0
+    init(dict:[String:Any?]) {
+        if let value = dict["Status"] as? Int{
+            statusCode = value
+        }
+    }
+}
+
+class RemoveAddressResponseModel : NSObject{
     var statusCode:Int = 0
     init(dict:[String:Any?]) {
         if let value = dict["Status"] as? Int{

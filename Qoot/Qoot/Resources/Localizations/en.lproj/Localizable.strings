@@ -12,7 +12,11 @@
 "PASSWORDSDOESNOTMATCHES" = "Passwords does not matches";
 "INVALIDPASSWORDCHARACTERS" = "Use 8 or more characters with a mix of letters, numbers and symbols";
 "INVALIDEMAIL" = "Invalid email address";
+"THEREISNOITEMSTOCHECKOUT" = "There are no items to checkout";
 "CITYNAMEANDHOMEADDRESSEMPTY" = "City Name and home address can not be empty";
+"PLEASECHOOSEADELIVERYADDRESS" = "Please choose a delivery address.";
+"PLEASECHOOSEADELIVERYDATEANDTIME" = "Please choose a delivery date and time.";
+
 
 //Common
 
@@ -132,6 +136,8 @@
 "Sub Total" = "Sub Total";
 "Comments if any" = "Comments if any";
 "PROCEEDTOCHECKOUT" = "PROCEED TO CHECKOUT";
+"REMOVE" = "REMOVE";
+"REMOVETHISITEMFROMCART" = "Remove this item from your cart?";
 
 //Delivery Details VC
 

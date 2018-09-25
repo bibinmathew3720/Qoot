@@ -100,11 +100,23 @@ class CartVC: BaseViewController,CartTableCellDelegate,UIGestureRecognizerDelega
     }
     
     func closeButtonActionDelegate(with tag: Int) {
-        if let carList = self.cartList{
-            let cartItem = carList[tag]
-            Cart.deletCartItem(cartItem: cartItem)
+        let messageString = "REMOVETHISITEMFROMCART".localiz()
+        let alertController = UIAlertController(title: Constant.AppName, message: messageString, preferredStyle: .alert)
+        let noAction = UIAlertAction(title: "NO".localiz(), style: .default) { (action:UIAlertAction) in
+            
         }
-        populateCartList()
+        let removeAction = UIAlertAction(title: "REMOVE".localiz(), style: .default) { (action:UIAlertAction) in
+            if let carList = self.cartList{
+                let cartItem = carList[tag]
+                Cart.deletCartItem(cartItem: cartItem)
+            }
+            self.populateCartList()
+        }
+        
+        alertController.addAction(noAction)
+        alertController.addAction(removeAction)
+        self.present(alertController, animated: true) {
+        }
     }
     
     override func leftNavButtonAction() {
@@ -116,8 +128,27 @@ class CartVC: BaseViewController,CartTableCellDelegate,UIGestureRecognizerDelega
     }
 
     @IBAction func proceedToCheckoutAction(_ sender: UIButton) {
-        let delivertDetailVC = DeliveryDetailsVC.init(nibName: "DeliveryDetailsVC", bundle: nil)
-        self.navigationController?.pushViewController(delivertDetailVC, animated: true)
+        if isValidCartItems(){
+            let delivertDetailVC = DeliveryDetailsVC.init(nibName: "DeliveryDetailsVC", bundle: nil)
+            self.navigationController?.pushViewController(delivertDetailVC, animated: true)
+        }
+    }
+    
+    func isValidCartItems()->Bool{
+        var isValid = true
+        if let carList = self.cartList{
+            if carList.count == 0 {
+                isValid = false
+            }
+        }
+        else{
+           isValid = false
+        }
+        if !isValid{
+            let messageString = "THEREISNOITEMSTOCHECKOUT".localiz()
+            CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: messageString, parentController: self)
+        }
+        return isValid
     }
     
     @IBAction func tapAction(_ sender: Any) {

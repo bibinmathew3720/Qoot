@@ -127,7 +127,7 @@ class CCUtility: NSObject {
     class func stringFromDate(date : Date) -> String
     {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMM dd hh:mm a"
+        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm a"
         let dateString = dateFormatter.string(from: date)
         return dateString
     }

@@ -30,7 +30,7 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
     @IBOutlet weak var mapView: GMSMapView!
     var locationMarker:GMSMarker!
     
-    var selectedDate:String = ""
+    var selectedDate:String?
     var selectedIndex: Int = -1
     let locationMgr = CLLocationManager()
     var userLocLatitude = 0.000000
@@ -61,6 +61,7 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
         paymentTable.register(UINib(nibName: "PaymentTableCell", bundle: nil), forCellReuseIdentifier: "paymentCell")
         dateTextField.inputAccessoryView = toolbar
         dateTextField.inputView = datePicker
+        datePicker.minimumDate = Date()
     }
     
     func localization(){
@@ -84,9 +85,11 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
         view.endEditing(true)
     }
     @IBAction func toolbarDoneAction(_ sender: Any) {
-         if selectedDate == ""{
-            
+        self.selectedDate = CCUtility.stringFromDate(date: self.datePicker.date)
+        if let seDate = self.selectedDate{
+            self.dateTextField.text = seDate
         }
+        self.view.endEditing(true)
     }
     @IBAction func tapAction(_ sender: Any) {
           view.endEditing(true)
@@ -100,7 +103,31 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
     }
     
     @IBAction func confirmButtonAction(_ sender: UIButton) {
-        addCustomerOrderApi()
+        if isValidDeliveryDetails(){
+            addCustomerOrderApi()
+        }
+    }
+    
+    func isValidDeliveryDetails()->Bool{
+        var isValid = true
+        var messageString = ""
+        if let address = self.selAddress{
+            if let seDate = self.selectedDate{
+                
+            }
+            else{
+                isValid = false
+                messageString = "PLEASECHOOSEADELIVERYDATEANDTIME".localiz()
+            }
+        }
+        else{
+            isValid = false
+            messageString = "PLEASECHOOSEADELIVERYADDRESS".localiz()
+        }
+        if !isValid{
+            CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: messageString, parentController: self)
+        }
+        return isValid
     }
     
     @IBAction func closeButtonAction(_ sender: Any) {
@@ -290,9 +317,6 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
     func addCustomerOrderRequestBody()->String{
         var dataString:String = ""
         dataString = dataString + "OrderDetails=\(addOrderDetails())"
-        //let passwordString:String = NSString.init(format: "OrderDetails=%@", addOrderDetails())
-       // dataString = dataString + passwordString
-        //dataString = "username=0550154967&password=123456"
         return dataString
     }
     func addOrderDetails()->String {
@@ -307,30 +331,41 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
 //         paramDict["comment"] = "wefwe"
 //        paramDict["deliverydate"] = "2018-05-01 04:15"
 //        array.add(paramDict)
-        var dataString:String = "[{"
-        let customerIdString:String = "customerid=" + "2".urlEncode()
-        dataString = dataString + customerIdString + ","
-
-       let menuIdString:String = "menuid=" + "458".urlEncode()
-        dataString = dataString + menuIdString + ","
-        
-        let quantityString:String = "quantity=" + "1".urlEncode()
-        dataString = dataString + quantityString + ","
-        
-       let paymentString:String = "paymenttype=" + "Cash On Delivery".urlEncode()
-        dataString = dataString + paymentString + ","
-        
-        let addressIdString:String = "addressid=" + "1".urlEncode()
-        dataString = dataString + addressIdString + ","
-        
-//        let promocodeString:String = "promocode=" + "".urlEncode()
-//        dataString = dataString + promocodeString + "&"
-
-        let commentString:String = "comment=" + "csdjh".urlEncode()
-        dataString = dataString + commentString + ","
-        
-        let dateString:String = "deliverydate=" + "2018-05-01 04:15 PM".urlEncode()
-        dataString = dataString + dateString + "}]"
+        var dataString:String = "["
+        for item in Cart.getAllCartItems(){
+            dataString = dataString + "{"
+            if let user = User.getUser(){
+                dataString = dataString + "customerid=\(user.userId)" + "&"
+            }
+            
+            let menuIdString:String = "menuid=\(item.menuId)"
+            dataString = dataString + menuIdString + "&"
+            
+            let quantityString:String = "quantity=\(item.productCount)"
+            dataString = dataString + quantityString + "&"
+            
+            let paymentString:String = "paymenttype=" + "Cash On Delivery".urlEncode()
+            dataString = dataString + paymentString + "&"
+            
+            if let address = self.selAddress{
+                let addressIdString:String = "addressid=\(address.addressId)"
+                dataString = dataString + addressIdString + "&"
+            }
+            
+            if let promo = self.promoCodeTextField.text {
+                let promocodeString:String = "promocode=" + promo.urlEncode()
+                dataString = dataString + promocodeString + "&"
+            }
+            
+            let commentString:String = "comment=" + "f".urlEncode()
+            dataString = dataString + commentString + "&"
+            if let delDate = self.selectedDate{
+                let dateString:String = "deliverydate=" + delDate.urlEncode()
+                dataString = dataString + dateString
+            }
+            dataString = dataString + "}"
+        }
+        dataString = dataString + "]"
         return dataString
     }
     
@@ -535,12 +570,17 @@ extension DeliveryDetailsVC:AddressCellDelegate{
             if let model = model as? RemoveAddressResponseModel{
                 if model.statusCode == 1 {
                     if let addressList = self.addressResponseModel{
+                        let address = addressList.addresses[tag]
+                        if let selAdd = self.selAddress{
+                            if selAdd.isEqual(address){
+                                self.selAddress = nil
+                            }
+                        }
                         addressList.addresses.remove(at: tag)
                         self.addressTable.reloadData()
                     }
                 }
             }
-            
         }) { (ErrorType) in
             MBProgressHUD.hide(for: self.view, animated: true)
             if(ErrorType == .noNetwork){

@@ -2,6 +2,7 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14133" systemVersion="17E199" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Cart" representedClassName=".Cart" syncable="YES" codeGenerationType="category">
         <attribute name="availability" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="menuId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="productCount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="productId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="productName" optional="YES" attributeType="String" syncable="YES"/>
@@ -14,7 +15,7 @@
         <attribute name="userId" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Cart" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="Cart" positionX="-63" positionY="-18" width="128" height="135"/>
         <element name="User" positionX="-63" positionY="18" width="128" height="105"/>
     </elements>
 </model>

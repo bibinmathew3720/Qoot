@@ -24,6 +24,7 @@ class Cart: NSManagedObject {
             //cart?.productCount += Int64(dish.SelectedQuantity)
         }
         cart?.productId = Int64(dish.DishId)
+        cart?.menuId = Int64(dish.MenuId)
         cart?.productName = dish.DishName
         cart?.productPrice = Float(dish.DishAmount)
        // cart?.availability = Int64(dish.DishQuantity)!

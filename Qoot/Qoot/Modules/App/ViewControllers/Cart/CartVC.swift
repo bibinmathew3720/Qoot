@@ -130,6 +130,8 @@ class CartVC: BaseViewController,CartTableCellDelegate,UIGestureRecognizerDelega
     @IBAction func proceedToCheckoutAction(_ sender: UIButton) {
         if isValidCartItems(){
             let delivertDetailVC = DeliveryDetailsVC.init(nibName: "DeliveryDetailsVC", bundle: nil)
+            delivertDetailVC.commentString = self.commentsTextView.text
+            delivertDetailVC.totalAmount = self.totalAmount
             self.navigationController?.pushViewController(delivertDetailVC, animated: true)
         }
     }

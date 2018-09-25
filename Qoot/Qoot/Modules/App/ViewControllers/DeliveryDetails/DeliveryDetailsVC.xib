@@ -37,6 +37,7 @@
                 <outlet property="mapViewHeight" destination="IiN-lQ-oQX" id="Azd-D0-XP3"/>
                 <outlet property="paymentDetailsLabel" destination="ngs-7M-mR2" id="deI-co-iWD"/>
                 <outlet property="paymentTable" destination="OsI-mg-Yqy" id="VbG-Es-KeC"/>
+                <outlet property="priceTotalLabel" destination="eNC-j9-oxz" id="fxM-Uz-Fw8"/>
                 <outlet property="promoCodeTextField" destination="Vbt-Rs-1tX" id="PCI-Zm-SMX"/>
                 <outlet property="toolbar" destination="nTS-uf-8xx" id="ou4-cd-bpg"/>
                 <outlet property="totalLabel" destination="DcV-mD-0Rq" id="RJN-n1-YXT"/>

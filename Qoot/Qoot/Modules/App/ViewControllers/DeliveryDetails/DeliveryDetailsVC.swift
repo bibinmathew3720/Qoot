@@ -19,6 +19,7 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
     @IBOutlet weak var paymentDetailsLabel: UILabel!
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var totalLabel: UILabel!
+    @IBOutlet weak var priceTotalLabel: UILabel!
     
     @IBOutlet var toolbar: UIToolbar!
     @IBOutlet var paymentTable: UITableView!
@@ -35,6 +36,8 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
     let locationMgr = CLLocationManager()
     var userLocLatitude = 0.000000
     var userLocLongitude = 0.00000
+    var commentString:String?
+    var totalAmount:Double?
    
     var addressResponseModel:AddressResponseModel?
     var addCustomerOrderResponseModel:AddCustomerOrderResponseModel?
@@ -62,6 +65,9 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
         dateTextField.inputAccessoryView = toolbar
         dateTextField.inputView = datePicker
         datePicker.minimumDate = Date()
+        if let total = self.totalAmount{
+            priceTotalLabel.text = "SAR".localiz() + " \(total)" + "/-"
+        }
     }
     
     func localization(){
@@ -356,9 +362,10 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
                 let promocodeString:String = "promocode=" + promo.urlEncode()
                 dataString = dataString + promocodeString + "&"
             }
-            
-            let commentString:String = "comment=" + "f".urlEncode()
-            dataString = dataString + commentString + "&"
+            if let comment = self.commentString {
+                let commentString:String = "comment=" + comment.urlEncode()
+                dataString = dataString + commentString + "&"
+            }
             if let delDate = self.selectedDate{
                 let dateString:String = "deliverydate=" + delDate.urlEncode()
                 dataString = dataString + dateString

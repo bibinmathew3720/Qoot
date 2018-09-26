@@ -64,7 +64,7 @@ class CartVC: BaseViewController,CartTableCellDelegate,UIGestureRecognizerDelega
     
     func localization(){
         yourCartLabel.text = "Your Cart".localiz()
-        deliveryFeeLabel.text = "Delivery Fee".localiz()
+        deliveryFeeLabel.text = "DeliveryFee".localiz()
         subTotalLabel.text = "Sub Total".localiz()
         proceedToCheckOutButton.setTitle("PROCEEDTOCHECKOUT".localiz(), for: UIControlState.normal)
         noCartItemsLabel.text = "YourCartIsEmpty".localiz()

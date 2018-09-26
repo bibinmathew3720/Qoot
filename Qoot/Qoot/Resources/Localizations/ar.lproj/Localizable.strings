@@ -130,10 +130,9 @@
 //Cart List
 
 "Your Cart" = "سلتك التسوق";
-"Delivery Fee" = "رسوم التوصيل";
 "Sub Total" = "المجموع الكلي";
 "Comments if any" = "ملاحظات إن وجدت";
-"PROCEEDTOCHECKOUT" = "PROCEED TO CHECKOUT"; // Not get
+"PROCEEDTOCHECKOUT" = "المتابعة إلى الدفع والاستلام";
 "REMOVE" = "إزالة";
 "REMOVETHISITEMFROMCART" = "هل تريد إزالة هذا العنصر من سلة التسوق الخاصة بك؟";
 

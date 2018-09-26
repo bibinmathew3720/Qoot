@@ -81,6 +81,7 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
         cityNameTF.placeholder = "City".localiz()
         addressTF.placeholder = "Address".localiz()
         landmarkTF.placeholder = "Landmark".localiz()
+        addButton.setTitle("Add".localiz(), for: UIControlState.normal)
     }
    
     @IBAction func datePickerAction(_ sender: UIDatePicker) {

@@ -128,11 +128,19 @@ class CartVC: BaseViewController,CartTableCellDelegate,UIGestureRecognizerDelega
     }
 
     @IBAction func proceedToCheckoutAction(_ sender: UIButton) {
-        if isValidCartItems(){
-            let delivertDetailVC = DeliveryDetailsVC.init(nibName: "DeliveryDetailsVC", bundle: nil)
-            delivertDetailVC.commentString = self.commentsTextView.text
-            delivertDetailVC.totalAmount = self.totalAmount
-            self.navigationController?.pushViewController(delivertDetailVC, animated: true)
+        if let user = User.getUser(){
+            if isValidCartItems(){
+                let delivertDetailVC = DeliveryDetailsVC.init(nibName: "DeliveryDetailsVC", bundle: nil)
+                delivertDetailVC.commentString = self.commentsTextView.text
+                delivertDetailVC.totalAmount = self.totalAmount
+                self.navigationController?.pushViewController(delivertDetailVC, animated: true)
+            }
+        }
+        else{
+            let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
+            let dashBoardVC = storyBoard.instantiateViewController(withIdentifier: "DashboardVC") as! DashboardVC
+            let dashBoardNavCntlr = UINavigationController.init(rootViewController: dashBoardVC)
+            self.present(dashBoardNavCntlr, animated: true, completion: nil)
         }
     }
     

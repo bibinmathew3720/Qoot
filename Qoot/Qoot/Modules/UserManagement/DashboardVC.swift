@@ -18,6 +18,7 @@ class DashboardVC: BaseViewController {
         initialisation()
         localisation()
         addRegisterLabel()
+        addingLeftBarButton()
     }
     
     func initialisation(){
@@ -60,6 +61,11 @@ class DashboardVC: BaseViewController {
         let loginVC = LoginViewController.init(nibName: "LoginViewController", bundle: nil)
         self.navigationController?.pushViewController(loginVC, animated: true)
     }
+    
+    override func leftNavButtonAction() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

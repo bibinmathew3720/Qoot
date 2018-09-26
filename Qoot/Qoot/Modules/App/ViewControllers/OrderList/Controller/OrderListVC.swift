@@ -8,8 +8,8 @@
 
 import UIKit
 
-class OrderListVC: UIViewController,PastOrderTableCellDelegate {
-   
+class OrderListVC: BaseViewController,PastOrderTableCellDelegate {
+    var isFromMenu:Bool?
     @IBOutlet var orderListTable: UITableView!
     @IBOutlet var orderSegmentControl: UISegmentedControl!
     var selectedIndex: Int = -1
@@ -18,6 +18,7 @@ class OrderListVC: UIViewController,PastOrderTableCellDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialisation()
+        localization()
         // Do any additional setup after loading the view.
     }
 
@@ -33,8 +34,14 @@ class OrderListVC: UIViewController,PastOrderTableCellDelegate {
         orderSegmentControl.selectedSegmentIndex = 0
         orderSegmentControl.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.black,NSAttributedStringKey.font: UIFont(name: Constant.Font.Bold, size: 17)!], for: .selected)
         orderSegmentControl.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.black,NSAttributedStringKey.font: UIFont(name: Constant.Font.Bold, size: 17)!], for: .normal)
-        orderSegmentControl.setTitle("Ongoing Orders", forSegmentAt: 0)
-        orderSegmentControl.setTitle("Past Orders", forSegmentAt: 1)
+        
+        addingLeftBarButton()
+    }
+    
+    func localization(){
+        self.title = "MyOrders".localiz()
+        orderSegmentControl.setTitle("OngoingOrders".localiz(), forSegmentAt: 0)
+        orderSegmentControl.setTitle("PastOrders".localiz(), forSegmentAt: 1)
     }
 
     @IBAction func segmentControlClickAction(_ sender: Any) {
@@ -47,6 +54,17 @@ class OrderListVC: UIViewController,PastOrderTableCellDelegate {
         selectedIndex = tag
         heightConstraint = tableheight
         orderListTable.reloadData()
+    }
+    
+    //Button Actions
+    
+    override func leftNavButtonAction() {
+        if let isMenu = self.isFromMenu{
+            self.dismiss(animated: true, completion: nil)
+        }
+        else{
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 
     override func didReceiveMemoryWarning() {

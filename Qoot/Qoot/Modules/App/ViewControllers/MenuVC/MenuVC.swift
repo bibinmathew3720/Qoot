@@ -153,7 +153,10 @@ extension MenuVC : UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if isLoggedIn{
-            if indexPath.row == 2 {
+            if indexPath.row == 0{
+               setOrderListVC()
+            }
+            else if indexPath.row == 2 {
                 setOffersVC()
             }
             else if (indexPath.row == 5){
@@ -177,6 +180,13 @@ extension MenuVC : UITableViewDelegate,UITableViewDataSource {
         viewMoreVC.pageType = ViewMoreType.Offers
         viewMoreVC.isFromMenu = true
         let navController = UINavigationController.init(rootViewController: viewMoreVC)
+        self.present(navController, animated: true, completion: nil)
+    }
+    
+    func setOrderListVC(){
+        let orderListVC:OrderListVC = OrderListVC(nibName: "OrderListVC", bundle: nil)
+        orderListVC.isFromMenu = true
+        let navController = UINavigationController.init(rootViewController: orderListVC)
         self.present(navController, animated: true, completion: nil)
     }
     

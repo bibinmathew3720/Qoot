@@ -165,3 +165,9 @@
 "OrderCompleted" = "تم اكتمال الطلب";
 "OrderNumber" = "رقم الطلب";
 "GOTOMYORDERS" = "اذهب الى صفحة طلباتي";
+
+//Order List
+
+"MyOrders" = "طلباتي";
+"OngoingOrders" = "أوامر قائمة";
+"PastOrders" = "طلبات سابقة";

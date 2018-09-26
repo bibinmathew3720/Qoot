@@ -168,3 +168,11 @@
 "OrderNumber" = "Order Number";
 "GOTOMYORDERS" = "GOTO MY ORDERS";
 
+//Order List
+
+"MyOrders" = "My Orders";
+"OngoingOrders" = "Ongoing Orders";
+"PastOrders" = "Past Orders";
+
+
+

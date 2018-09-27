@@ -9,10 +9,19 @@
 import UIKit
 
 class ItemDetailTableCell: UITableViewCell {
-
+    @IBOutlet weak var itemNameLabel: UILabel!
+    @IBOutlet weak var quantityHeadingLabel: UILabel!
+    @IBOutlet weak var quantityLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        initialisation()
         // Initialization code
+    }
+    
+    func initialisation(){
+      quantityHeadingLabel.text = "QTY"
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

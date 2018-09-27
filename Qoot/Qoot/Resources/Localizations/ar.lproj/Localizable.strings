@@ -171,3 +171,5 @@
 "MyOrders" = "طلباتي";
 "OngoingOrders" = "أوامر قائمة";
 "PastOrders" = "طلبات سابقة";
+"OrderNo" = "رقم الطلب";
+"OrderOn" = "order on"; // Not Get

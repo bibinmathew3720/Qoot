@@ -10,6 +10,39 @@ import UIKit
 
 class CartManager: CLBaseService {
     
+    //MARK: Order List Api
+    
+    func callingGetOrderListApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForOrderList(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveArrayResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict)
+                    success(self.getOrderHistoryResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForOrderList(with body:String)->CLNetworkModel{
+        let orderListRequestModel = CLNetworkModel.init(url: BASE_URL+CustomerOrderHistory_URL, requestMethod_: "POST")
+        orderListRequestModel.requestBody = body
+        return orderListRequestModel
+    }
+    
+    func getOrderHistoryResponseModel(dict:NSArray) -> Any? {
+        let orderHistoryResponseModel = QootOrderHistoryResponseModel.init(history:dict)
+        return orderHistoryResponseModel
+    }
    
    
     //MARK: CheckOut Api
@@ -438,6 +471,86 @@ class Address : NSObject{
         if let value = dict["delivery_coordinates"] as? String{
             deliveryCoordinates = value
         }
+    }
+}
+
+class QootOrderHistoryResponseModel : NSObject{
+    var orderArray = [Order]()
+    init(history:NSArray) {
+        if let _dict = history as? [[String:Any?]]{
+            for item in _dict{
+                orderArray.append(Order.init(dict: item))
+            }
+        }
+    }
+}
+
+class Order : NSObject{
+    var orderId:Int = 0
+    var kitchenName:String = ""
+    var Status:Int = 0
+    var kitchenComment:String = ""
+    var date:String = ""
+    var location:String = ""
+    var amount:Float = 0.0
+    var kitchenLogo:String = ""
+    var orderGroup:Int = 0
+    var kitchenId:Int = 0
+    var delivery:Float = 0.0
+    var dishes = [Dishes]()
+    
+    init(dict:[String:Any?]) {
+        if let value = dict["orderid"] as? String{
+            if let orderID = Int(value){
+                orderId = orderID
+            }
+        }
+        if let value = dict["kitchenname"] as? String{
+            kitchenName = value
+        }
+        if let value = dict["status"] as? String{
+            if let status = Int(value){
+                Status = status
+            }
+        }
+        if let value = dict["KitchenComment"] as? String{
+            kitchenComment = value
+        }
+        if let value = dict["date"] as? String{
+            date = value
+        }
+        if let value = dict["location"] as? String{
+            location = value
+        }
+        if let value = dict["amount"] as? Float{
+            amount = value
+        }
+        if let value = dict["kitchenlogo"] as? String{
+            kitchenLogo = value
+        }
+        
+        if let value = dict["ordergroup"] as? String{
+            if let ordGroup = Int(value){
+                orderGroup = ordGroup
+            }
+        }
+        if let value = dict["kitchenid"] as? String{
+            if let kitId = Int(value){
+                kitchenId = kitId
+            }
+        }
+        if let value = dict["delivery"] as? String{
+            if let deliv = Float(value){
+                delivery = deliv
+            }
+        }
+        
+        if let value = dict["Dishes"] as? NSArray{
+            for item in value{
+                dishes.append(Dishes.init(dict: item as! [String : Any?]))
+            }
+        }
+        
     }
 }
 

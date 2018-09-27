@@ -31,6 +31,9 @@ let GetAllAddresses_URL = "Ios/Customer/ViewCustomerdeliveryAddress"
 let AddCustomerOrder_URL = "Ios/Customer/AddCustomerOrder"
 let AddCustomerAddress_URL = "Ios/Customer/AddCustomerdeliveryAddress"
 let RemoveCustomerAddress_URL = "Ios/Customer/DeleteCustomerAddress"
+let CustomerOrderHistory_URL = "Ios/Customer/ViewCustomerOrderHistory"
+
+
 
 let FORGOT_PASS_URL = "user/forgotPassword"
 let CHANGE_PASS_URL = "user/changePassword"
@@ -47,6 +50,7 @@ let GET_CART_LIST = "purchase/getMyCartDetails"
 let GET_CART_LIST_HISTORY = "purchase/purchaseHistory"
 let ADD_TO_CART = "purchase/addToCart"
 let CHECK_OUT_URL = "order/checkOutMyCart"
+
 let GET_COUPON_CODE = "order/promotionalCode"
 let TERMS_AND_CONDITIONS = "documents/termsConditions"
 let PAYMENT_URL = "payment/processPayment"

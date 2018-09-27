@@ -173,6 +173,9 @@
 "MyOrders" = "My Orders";
 "OngoingOrders" = "Ongoing Orders";
 "PastOrders" = "Past Orders";
+"OrderNo" = "Order No";
+"OrderOn" = "order on";
+
 
 
 

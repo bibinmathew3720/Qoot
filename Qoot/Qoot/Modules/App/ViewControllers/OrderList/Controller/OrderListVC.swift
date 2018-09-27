@@ -15,10 +15,12 @@ class OrderListVC: BaseViewController,PastOrderTableCellDelegate {
     var selectedIndex: Int = -1
     var heightConstraint: CGFloat = 0.0
     var buttonBar =  UIView()
+    var orderHistoryResponse:QootOrderHistoryResponseModel?
     override func viewDidLoad() {
         super.viewDidLoad()
         initialisation()
         localization()
+        getOrderListApi()
         // Do any additional setup after loading the view.
     }
 
@@ -66,6 +68,36 @@ class OrderListVC: BaseViewController,PastOrderTableCellDelegate {
             self.navigationController?.popViewController(animated: true)
         }
     }
+    
+    func getOrderListApi(){
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        CartManager().callingGetOrderListApi(with:getOrderListRequestBody(), success: {
+            (model) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if let model = model as? QootOrderHistoryResponseModel{
+               self.orderHistoryResponse = model
+            }
+        }) { (ErrorType) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if(ErrorType == .noNetwork){
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+            }
+            else{
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+            }
+            
+            print(ErrorType)
+        }
+    }
+    
+    func getOrderListRequestBody()->String{
+        var dataString:String = ""
+        if let user = User.getUser() {
+            let customerId:String = "CustomerId=\(String(user.userId))"
+            dataString = dataString + customerId
+        }
+        return dataString
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -100,7 +132,6 @@ extension OrderListVC : UITableViewDelegate,UITableViewDataSource {
         
         let view:UIView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: self.view.bounds.size.width, height: 10))
         view.backgroundColor = .clear
-        
         return view
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

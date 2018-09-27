@@ -11,6 +11,7 @@ protocol PastOrderTableCellDelegate {
     func expandButtonActionDelegate(with tag:Int, tableheight: CGFloat) -> ()
 }
 class PastOrderTableCell: UITableViewCell {
+    
 
     @IBOutlet var orderNumberLabel: UILabel!
     @IBOutlet var orderNoTitle: UILabel!
@@ -33,6 +34,7 @@ class PastOrderTableCell: UITableViewCell {
     @IBOutlet var tableViewHeightConstraint: NSLayoutConstraint!
     override func awakeFromNib() {
         super.awakeFromNib()
+        localisation()
         self.layer.borderColor = UIColor.lightGray.cgColor
         self.layer.borderWidth = 1.0
         firstTrackView.layer.borderColor = UIColor.darkGray.cgColor
@@ -44,6 +46,12 @@ class PastOrderTableCell: UITableViewCell {
         fourthTrackView.layer.borderColor = UIColor.darkGray.cgColor
         fourthTrackView.layer.borderWidth = 3.0
     }
+    
+    func localisation(){
+       orderNoTitle.text = "OrderNo".localiz()
+       orderOnTiitle.text = "OrderOn".localiz()
+    }
+    
     @IBAction func expandButtonAction(_ sender: Any) {
         rowCount = 3
         guard let _delegate = delegate else {

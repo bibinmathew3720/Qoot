@@ -1648,6 +1648,11 @@ class Dishes : NSObject{
     var KitchenId:Int = 0
     var MenuId:Int = 0
     var SelectedQuantity:Int = 1
+    
+    
+    var OrderName:String = ""
+    var OrderQuantity:Int = 0
+    var OrderAmount:Float = 0.0
     init(dict:[String:Any?]) {
         //        if let value = dict["KitchenId"] as? String{
         //            if let kitchenID = Int(value){
@@ -1700,6 +1705,21 @@ class Dishes : NSObject{
         if let value = dict["MenuId"] as? Int{
             MenuId = value
         }
+        
+        //For Order
+        
+        if let value = dict["order_name"] as? String{
+            OrderName = value
+        }
+        if let value = dict["order_quantity"] as? String{
+            if let orderQuantity = Int(value){
+                OrderQuantity = orderQuantity
+            }
+        }
+        if let value = dict["order_amount"] as? Float{
+            OrderAmount = value
+        }
+        
     }
 }
     class KitchenCustomerRatingsResponseModel : NSObject{

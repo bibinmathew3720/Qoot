@@ -159,6 +159,9 @@ extension MenuVC : UITableViewDelegate,UITableViewDataSource {
             else if indexPath.row == 2 {
                 setOffersVC()
             }
+            else if (indexPath.row == 4){
+                setSettingsVC()
+            }
             else if (indexPath.row == 5){
                 settingLogoutPopup()
             }
@@ -187,6 +190,12 @@ extension MenuVC : UITableViewDelegate,UITableViewDataSource {
         let orderListVC:OrderListVC = OrderListVC(nibName: "OrderListVC", bundle: nil)
         orderListVC.isFromMenu = true
         let navController = UINavigationController.init(rootViewController: orderListVC)
+        self.present(navController, animated: true, completion: nil)
+    }
+    
+    func setSettingsVC(){
+        let settingsVC:SettingsVC = SettingsVC(nibName: "SettingsVC", bundle: nil)
+        let navController = UINavigationController.init(rootViewController: settingsVC)
         self.present(navController, animated: true, completion: nil)
     }
     

@@ -30,4 +30,10 @@ class ItemDetailTableCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func setDishes(dish:Dishes){
+        self.itemNameLabel.text = dish.OrderName
+        self.quantityLabel.text = "\(dish.OrderQuantity)"
+        self.priceLabel.text = "SAR".localiz() + " " + "\(dish.OrderAmount)" + "/-"
+    }
+    
 }

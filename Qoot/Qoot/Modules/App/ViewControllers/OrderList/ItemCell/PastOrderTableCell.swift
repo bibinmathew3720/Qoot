@@ -29,9 +29,9 @@ class PastOrderTableCell: UITableViewCell {
     @IBOutlet var fourthTrackView: UIView!
     @IBOutlet var secondTrackView: UIView!
     @IBOutlet var firstTrackView: UIView!
-    var rowCount:CGFloat = 0
     var delegate:PastOrderTableCellDelegate?
-    @IBOutlet var tableViewHeightConstraint: NSLayoutConstraint!
+    
+    var dishes:[Dishes]?
     override func awakeFromNib() {
         super.awakeFromNib()
         localisation()
@@ -45,6 +45,9 @@ class PastOrderTableCell: UITableViewCell {
         thirdTrackView.layer.borderWidth = 3.0
         fourthTrackView.layer.borderColor = UIColor.darkGray.cgColor
         fourthTrackView.layer.borderWidth = 3.0
+        itemDetailTable.dataSource = self
+        itemDetailTable.delegate = self
+        itemDetailTable.register(UINib(nibName: "ItemDetailTableCell", bundle: nil), forCellReuseIdentifier: "itemCell")
     }
     
     func localisation(){
@@ -53,11 +56,6 @@ class PastOrderTableCell: UITableViewCell {
     }
     
     @IBAction func expandButtonAction(_ sender: Any) {
-        rowCount = 3
-        guard let _delegate = delegate else {
-            return
-        }
-        _delegate.expandButtonActionDelegate(with: self.tag, tableheight: rowCount * 40)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -66,22 +64,36 @@ class PastOrderTableCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func setOrderDetails(orderDetail:Order){
+        self.orderNumberLabel.text = "\(orderDetail.orderGroup)"
+        self.orderTimeLabel.text = orderDetail.date
+        self.priceLabel.text = "SAR".localiz() + " :" + "\(orderDetail.amount)" + "/-"
+        self.kitchenTitle.text = orderDetail.kitchenName
+        self.dishes = orderDetail.dishes
+        itemDetailTable.reloadData()
+    }
 }
 extension PastOrderTableCell : UITableViewDelegate,UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Int(rowCount)
+        if let dishs = self.dishes{
+            return dishs.count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ItemDetailTableCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as! ItemDetailTableCell
+        if let dishs = self.dishes{
+            cell.setDishes(dish: dishs[indexPath.row])
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 40
+        return 20
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         

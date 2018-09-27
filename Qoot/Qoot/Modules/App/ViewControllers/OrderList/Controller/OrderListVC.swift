@@ -76,6 +76,7 @@ class OrderListVC: BaseViewController,PastOrderTableCellDelegate {
             MBProgressHUD.hide(for: self.view, animated: true)
             if let model = model as? QootOrderHistoryResponseModel{
                self.orderHistoryResponse = model
+               self.orderListTable.reloadData()
             }
         }) { (ErrorType) in
             MBProgressHUD.hide(for: self.view, animated: true)
@@ -106,7 +107,10 @@ class OrderListVC: BaseViewController,PastOrderTableCellDelegate {
 }
 extension OrderListVC : UITableViewDelegate,UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        if let orderReponse = self.orderHistoryResponse{
+            return orderReponse.orderArray.count
+        }
+        return 0
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -117,11 +121,14 @@ extension OrderListVC : UITableViewDelegate,UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! PastOrderTableCell
         cell.delegate = self
         cell.tag = indexPath.section
-        if selectedIndex == indexPath.section{
-            cell.tableViewHeightConstraint.constant = heightConstraint
-        }
-        else{
-            cell.tableViewHeightConstraint.constant = 0.0
+//        if selectedIndex == indexPath.section{
+//            cell.tableViewHeightConstraint.constant = heightConstraint
+//        }
+//        else{
+//            cell.tableViewHeightConstraint.constant = 0.0
+//        }
+        if let orderResponse = self.orderHistoryResponse{
+            cell.setOrderDetails(orderDetail:orderResponse.orderArray[indexPath.section])
         }
         return cell
     }
@@ -135,7 +142,7 @@ extension OrderListVC : UITableViewDelegate,UITableViewDataSource {
         return view
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+        return 200
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         

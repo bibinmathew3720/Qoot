@@ -44,6 +44,74 @@ class UserManager: CLBaseService {
         return loginReponseModel
     }
     
+    //MARK : Send OTP Api
+    
+    func callingSendOTPApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForSendOTP(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict)
+                    success(self.sendOTPResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForSendOTP(with body:String)->CLNetworkModel{
+        let sendOTPRequestModel = CLNetworkModel.init(url: BASE_URL+SENDOTP_URL, requestMethod_: "POST")
+        sendOTPRequestModel.requestBody = body
+        return sendOTPRequestModel
+    }
+    
+    func sendOTPResponseModel(dict:[String : Any?]) -> Any? {
+        let loginReponseModel = QootLogInResponseModel.init(dict:dict)
+        return loginReponseModel
+    }
+    
+    //MARK : Check OTP Api
+    
+    func callingCheckOTPApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForCheckOTP(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict)
+                    success(self.checkOTPResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForCheckOTP(with body:String)->CLNetworkModel{
+        let checkOTPRequestModel = CLNetworkModel.init(url: BASE_URL+CHECK_OTP_URL, requestMethod_: "POST")
+        checkOTPRequestModel.requestBody = body
+        return checkOTPRequestModel
+    }
+    
+    func checkOTPResponseModel(dict:[String : Any?]) -> Any? {
+        let loginReponseModel = QootLogInResponseModel.init(dict:dict)
+        return loginReponseModel
+    }
+    
     //MARK : City Name Api
     
     func callingCityNameApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
@@ -514,73 +582,6 @@ class UserManager: CLBaseService {
         return editProfileRequestModel
     }
     
-    //MARK: Get All Locations
-    
-    func callingGetAllLocationsApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
-        CLNetworkManager().initateWebRequest(networkModelForLocations(with:body), success: {
-            (resultData) in
-            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
-            if error == nil {
-                if let jdict = jsonDict{
-                    print(jsonDict)
-                    success(self.getLocationsResponseModel(dict: jdict) as Any)
-                }else{
-                    failure(ErrorType.dataError)
-                }
-            }else{
-                failure(ErrorType.dataError)
-            }
-            
-        }, failiure: {(error)-> () in failure(error)
-            
-        })
-        
-    }
-    
-    func networkModelForLocations(with body:String)->CLNetworkModel{
-        let locationRequestModel = CLNetworkModel.init(url: BASE_URL+GET_LOCATIONS_URL, requestMethod_: "GET")
-        locationRequestModel.requestBody = body
-        return locationRequestModel
-    }
-    
-    func getLocationsResponseModel(dict:[String : Any?]) -> Any? {
-        let locationReponseModel = FetchLocationsResponseModel.init(dict:dict)
-        return locationReponseModel
-    }
-    
-    //MARK: Get All Categories
-    
-    func callingGetAllCategoriesApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
-        CLNetworkManager().initateWebRequest(networkModelForCategories(with:body), success: {
-            (resultData) in
-            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
-            if error == nil {
-                if let jdict = jsonDict{
-                    print(jsonDict)
-                    success(self.getCategoriesResponseModel(dict: jdict) as Any)
-                }else{
-                    failure(ErrorType.dataError)
-                }
-            }else{
-                failure(ErrorType.dataError)
-            }
-            
-        }, failiure: {(error)-> () in failure(error)
-            
-        })
-        
-    }
-    
-    func networkModelForCategories(with body:String)->CLNetworkModel{
-        let categoriesRequestModel = CLNetworkModel.init(url: BASE_URL+GET_CATEGORIES_URL, requestMethod_: "POST")
-        categoriesRequestModel.requestBody = body
-        return categoriesRequestModel
-    }
-    
-    func getCategoriesResponseModel(dict:[String : Any?]) -> Any? {
-        let catgoeyReponseModel = FetchCategoriesResponseModel.init(dict:dict)
-        return catgoeyReponseModel
-    }
     func getProductResponseModel(dict:[String : Any?]) -> Any? {
         let productResponseModel = FetchProductTypeResponseModel.init(dict:dict)
         return productResponseModel
@@ -832,36 +833,6 @@ class UserManager: CLBaseService {
         return feedbackResponseModel
     }
     
-    //MARK: Get All Categories Subcategories Api
-    
-    func callingGetAllCategoriesSubcategoriesApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
-        CLNetworkManager().initateWebRequest(networkModelForCatSubcategories(with:body), success: {
-            (resultData) in
-            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
-            if error == nil {
-                if let jdict = jsonDict{
-                    print(jsonDict)
-                    success(self.getCategoriesResponseModel(dict: jdict) as Any)
-                }else{
-                    failure(ErrorType.dataError)
-                }
-            }else{
-                failure(ErrorType.dataError)
-            }
-            
-        }, failiure: {(error)-> () in failure(error)
-            
-        })
-        
-    }
-    
-    func networkModelForCatSubcategories(with body:String)->CLNetworkModel{
-        let categoriesRequestModel = CLNetworkModel.init(url: BASE_URL+GET_CAT_SUBCAT_URL, requestMethod_: "POST")
-        categoriesRequestModel.requestBody = body
-        return categoriesRequestModel
-    }
-    
-    
     
     //MARK: Get All Types
     
@@ -1037,6 +1008,32 @@ class QootLogInResponseModel : NSObject{
         }
         
 }
+}
+
+class SendOTPResponseModel : NSObject{
+    var statusMessage:String = ""
+    var statusString:String = ""
+    init(dict:[String:Any?]) {
+        if let value = dict["message"] as? String{
+            statusMessage = value
+        }
+        if let value = dict["Status"] as? String{
+            statusString = value
+        }
+    }
+}
+
+class CheckOTPResponseModel : NSObject{
+    var statusMessage:String = ""
+    var statusString:String = ""
+    init(dict:[String:Any?]) {
+        if let value = dict["message"] as? String{
+            statusMessage = value
+        }
+        if let value = dict["Status"] as? String{
+            statusString = value
+        }
+    }
 }
 
 class QootCityNamesResponseModel : NSObject{
@@ -1259,28 +1256,6 @@ class ViewCuisines : NSObject{
         }
     }
 }
-class FetchLocationsResponseModel : NSObject{
-    var statusMessage:String = ""
-    var errorMessage:String = ""
-    var statusCode:Int = 0
-    var locations = [FetchLocation]()
-    init(dict:[String:Any?]) {
-        if let value = dict["statusMessage"] as? String{
-            statusMessage = value
-        }
-        
-        if let value = dict["statusCode"] as? Int{
-            statusCode = value
-        }
-        if let value = dict["data"] as? NSArray{
-            for item in value{
-                locations.append(FetchLocation.init(dict: item as! [String : Any?]))
-            }
-        }
-        
-        
-    }
-}
 
 class FetchForgotPasswordResponseModel : NSObject{
     var statusMessage:String = ""
@@ -1399,26 +1374,6 @@ class FetchChangeNotificationsResponseModel : NSObject{
     }
 }
 
-class FetchLocation : NSObject{
-    var delivery_charge:Int = 0
-    var delivery_time:String = ""
-    var location_id:Int = 0
-    var location_name:String = ""
-    init(dict:[String:Any?]) {
-        if let value = dict["delivery_charge"] as? Int{
-            delivery_charge = value
-        }
-        if let value = dict["delivery_time"] as? String{
-            delivery_time = value
-        }
-        if let value = dict["location_id"] as? Int{
-            location_id = value
-        }
-        if let value = dict["location_name"] as? String{
-            location_name = value
-        }
-    }
-}
 class FetchContactUsResponseModel: NSObject {
     var statusMessage:String = ""
     var errorMessage:String = ""
@@ -1455,28 +1410,6 @@ class FetchContactUsRequestModel: NSObject {
         return CCUtility.getJSONfrom(dictionary: dict)
     }
 }
-
-class FetchCategoriesResponseModel : NSObject{
-    var statusMessage:String = ""
-    var errorMessage:String = ""
-    var statusCode:Int = 0
-    var categories = [FetchCategory]()
-    init(dict:[String:Any?]) {
-        if let value = dict["statusMessage"] as? String{
-            statusMessage = value
-        }
-        
-        if let value = dict["statusCode"] as? Int{
-            statusCode = value
-        }
-        if let value = dict["data"] as? NSArray{
-            for item in value{
-                categories.append(FetchCategory.init(dict: item as! [String : Any?]))
-            }
-        }
-    }
-}
-
 class FetchProductTypeResponseModel : NSObject{
     var statusMessage:String = ""
     var errorMessage:String = ""
@@ -1515,78 +1448,6 @@ class FetchProductType :NSObject {
         }
         if let value = dict["type_pic"] as? String{
             type_pic = value
-        }
-        if let value = dict["created_date"] as? String{
-            created_date = value
-        }
-        if let value = dict["last_updated_date"] as? String{
-            last_updated_date = value
-        }
-    }
-}
-
-class FetchCategory : NSObject{
-    var category_id:Int = 0
-    var category_pic:String = ""
-    var categoryName:String = ""
-    var gradient1:String = ""
-    var gradient2:String = ""
-    var created_date:String = ""
-    var last_updated_date:String = ""
-    var subCategories = [FetchSubCategory]()
-    init(dict:[String:Any?]) {
-        if let value = dict["categoryName"] as? String{
-            categoryName = value
-        }
-        if let value = dict["category_id"] as? Int{
-            category_id = value
-        }
-        if let value = dict["categoryImage"] as? String{
-            category_pic = value
-        }
-        if let value = dict["gradient1"] as? String{
-            gradient1 = value
-        }
-        if let value = dict["gradient2"] as? String{
-            gradient2 = value
-        }
-        if let value = dict["created_date"] as? String{
-            created_date = value
-        }
-        if let value = dict["last_updated_date"] as? String{
-            last_updated_date = value
-        }
-        if let value = dict["subCategories"] as? NSArray{
-            for item in value{
-                subCategories.append(FetchSubCategory.init(dict: item as! [String : Any?]))
-            }
-        }
-    }
-}
-
-class FetchSubCategory : NSObject{
-    var subcat_id:Int = 0
-    var subCategoryName:String = ""
-    var gradient1:String = ""
-    var subcat_pic:String = ""
-    var gradient2:String = ""
-    var created_date:String = ""
-    var last_updated_date:String = ""
-    init(dict:[String:Any?]) {
-        if let value = dict["subcat_id"] as? Int{
-            subcat_id = value
-        }
-        if let value = dict["subCategoryName"] as? String{
-            subCategoryName = value
-        }
-        if let value = dict["color_gradient1"] as? String{
-            gradient1 = value
-        }
-        if let value = dict["subCategoryImage"] as? String{
-            subcat_pic = value
-        }
-        if let value = dict["color_gradient2"] as? String{
-            gradient2 = value
         }
         if let value = dict["created_date"] as? String{
             created_date = value

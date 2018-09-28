@@ -14,15 +14,17 @@ class OTPVC: BaseViewController,UITextFieldDelegate {
     @IBOutlet weak var smsTitleLabel: UILabel!
     @IBOutlet weak var resendOTPButton: UIButton!
     @IBOutlet weak var verifyOTPButton: UIButton!
-    
+    var phoneNumberString:String?
     var mobNoString:String?
     override func initView() {
+        super.initView()
         initialisation()
     }
     
     func initialisation(){
         self.title = Constant.AppName
         self.navigationController?.navigationItem.leftBarButtonItem = nil
+        self.navigationItem.leftBarButtonItem = nil
         otpTF.becomeFirstResponder()
         localisation()
     }
@@ -37,10 +39,11 @@ class OTPVC: BaseViewController,UITextFieldDelegate {
     }
 
     @IBAction func resendOTPButtonAction(_ sender: UIButton) {
+        callingSendOTPApi()
     }
     @IBAction func verifyOTPButtonAction(_ sender: UIButton) {
         if isValidInputs(){
-            
+            callingCheckOTPApi()
         }
     }
     
@@ -73,6 +76,86 @@ class OTPVC: BaseViewController,UITextFieldDelegate {
             CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: message, parentController: self)
         }
         return valid
+    }
+    
+    //MARK: Send OTP Api
+    
+    func  callingSendOTPApi(){
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        UserManager().callingSendOTPApi(with: getSendOTPRequestBody(), success: {
+            (model) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if let model = model as? SendOTPResponseModel{
+//                if model.statusMessage.count > 0 {
+//                    CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: model.statusMessage, parentController: self)
+//                }
+//                else{
+//                    self.dismiss(animated: true, completion: nil)
+//                }
+            }
+            
+        }) { (ErrorType) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if(ErrorType == .noNetwork){
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+            }
+            else{
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+            }
+            
+            print(ErrorType)
+        }
+    }
+    
+    func getSendOTPRequestBody()->String{
+        var dataString:String = ""
+        if let phoneString = self.phoneNumberString{
+            let phString:String = "Phone=\(phoneString.urlEncode())"
+            dataString = dataString + phString + "&"
+        }
+        return dataString
+    }
+    
+    //MARK: Check OTP Api
+    
+    func  callingCheckOTPApi(){
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        UserManager().callingCheckOTPApi(with: getCheckOTPRequestBody(), success: {
+            (model) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if let model = model as? CheckOTPResponseModel{
+                //                if model.statusMessage.count > 0 {
+                //                    CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: model.statusMessage, parentController: self)
+                //                }
+                //                else{
+                //                    self.dismiss(animated: true, completion: nil)
+                //                }
+            }
+            
+        }) { (ErrorType) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if(ErrorType == .noNetwork){
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+            }
+            else{
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+            }
+            
+            print(ErrorType)
+        }
+    }
+    
+    func getCheckOTPRequestBody()->String{
+        var dataString:String = ""
+        if let phoneString = self.phoneNumberString{
+            let phString:String = "Phone=\(phoneString.urlEncode())"
+            dataString = dataString + phString + "&"
+        }
+        if let otp = self.otpTF.text{
+            let otpString:String = "Otp=\(otp.urlEncode())"
+            dataString = dataString + otpString
+        }
+        return dataString
     }
     
 

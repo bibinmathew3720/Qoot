@@ -179,12 +179,14 @@ class RegisterVC: BaseViewController,UITextFieldDelegate {
             dict.updateValue(password, forKey: "Password")
         }
         dict.updateValue("Direct", forKey: "RegType")
+        dict.updateValue("1", forKey: "RegId")
         return CCUtility.getJSONfrom(dictionary: dict)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Constant.SegueIdentifiers.registerToOTP{
             let otpVC = segue.destination as! OTPVC
+            otpVC.phoneNumberString = self.phoneNoTF.text
             otpVC.mobNoString = self.phoneNoTF.text
         }
     }

@@ -1126,6 +1126,11 @@ class ViewKitchens : NSObject{
         if let value = dict["KitchenId"] as? Int{
             KitchenId = value
         }
+        if let value = dict["KitchenId"] as? String{
+            if let kitID = Int(value){
+                KitchenId = kitID
+            }
+        }
         if let value = dict["KitchenName"] as? String{
             KitchenName = value
         }
@@ -1605,6 +1610,9 @@ class Dishes : NSObject{
                 if let ctyId = Int(value){
                     customerRating = ctyId
                 }
+            }
+            if let value = dict["CustomerRating"] as? Int{
+                customerRating = value
             }
             if let value = dict["RatingId"] as? String{
                 ratingId = value

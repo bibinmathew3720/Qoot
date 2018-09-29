@@ -135,7 +135,9 @@ class SearchDetailVC: BaseViewController {
     }
     
     @IBAction func segmentControlAction(_ sender: Any) {
+        print(self.segmentControl.selectedSegmentIndex)
         UIView.animate(withDuration: 0.3) {
+            print(((self.segmentControl.frame.width / CGFloat(self.segmentControl.numberOfSegments)) * CGFloat(self.segmentControl.selectedSegmentIndex)))
             self.buttonBar.frame.origin.x = ((self.segmentControl.frame.width / CGFloat(self.segmentControl.numberOfSegments)) * CGFloat(self.segmentControl.selectedSegmentIndex))
         }
         switch self.segmentControl.selectedSegmentIndex {
@@ -145,7 +147,6 @@ class SearchDetailVC: BaseViewController {
             customView.isHidden = false
             infoView.isHidden = true
             getKitchenAdminRatingApi()
-            getKitchenCustomerRatingApi()
         case 2:
             customView.isHidden = false
             infoView.isHidden = false
@@ -256,6 +257,7 @@ extension SearchDetailVC : UITableViewDelegate,UITableViewDataSource {
             MBProgressHUD.hide(for: self.view, animated: true)
             if let model = model as? KitchenAdminRatingResponseModel{
                 self.reviewsView.setAdminRating(adminRating:model)
+                self.getKitchenCustomerRatingApi()
             }
         }) { (ErrorType) in
             MBProgressHUD.hide(for: self.view, animated: true)
@@ -269,13 +271,14 @@ extension SearchDetailVC : UITableViewDelegate,UITableViewDataSource {
             print(ErrorType)
         }
     }
+    
     func getKitchenCustomerRatingApi(){
         MBProgressHUD.showAdded(to: self.view, animated: true)
         UserManager().callingGetKitchenCustomerRatingApi(with:getKitchenDetailsRequestBody(), success: {
             (model) in
             MBProgressHUD.hide(for: self.view, animated: true)
-            if let model = model as? KitchenAdminRatingResponseModel{
-                
+            if let model = model as? KitchenCustomerRatingsResponseModel{
+                self.reviewsView.setCustomerRating(customerRatngs:model.customerRating)
             }
         }) { (ErrorType) in
             MBProgressHUD.hide(for: self.view, animated: true)

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ReviewsHeaderView: UIView {
+class ReviewsHeaderView: UIView,UITableViewDataSource,UITableViewDelegate {
     @IBOutlet weak var reviewsHeadingLabel: UILabel!
     @IBOutlet weak var qualityRateLabel: UILabel!
     @IBOutlet weak var packingRateLabel: UILabel!
@@ -24,6 +24,7 @@ class ReviewsHeaderView: UIView {
     @IBOutlet var moneyView: UIView!
     @IBOutlet var packagingView: UIView!
     @IBOutlet var qualityView: UIView!
+    var customerRatings:[KitchenCustomerRating]?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -37,6 +38,10 @@ class ReviewsHeaderView: UIView {
         qualityView.layer.borderWidth = 3.0
         qualityView.layer.borderColor = UIColor(red:0.58, green:0.76, blue:0.12, alpha:1.0).cgColor
         reviewsTable.register(UINib.init(nibName: "ReviewsTableCell", bundle: nil), forCellReuseIdentifier: "reviewsCell")
+        reviewsTable.dataSource = self
+        reviewsTable.delegate = self
+        reviewsTable.estimatedRowHeight = 80
+        reviewsTable.rowHeight = UITableViewAutomaticDimension
     }
     
     func localisation(){
@@ -53,16 +58,27 @@ class ReviewsHeaderView: UIView {
         self.moneyRateLabel.text = String(format: "%0.1f", adminRating.money)
         self.deliveryTimeRateLabel.text = String(format: "%0.1f", adminRating.delivery)
     }
+    
+    func setCustomerRating(customerRatngs:[KitchenCustomerRating]){
+        customerRatings = customerRatngs
+        reviewsTable.reloadData()
+    }
   
         func numberOfSections(in tableView: UITableView) -> Int {
             return 1
         }
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return 4
+            if let custRatings = customerRatings{
+                return custRatings.count
+            }
+            return 0
         }
         
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: "reviewsCell", for: indexPath) as! ReviewsTableCell
+            if let custRatings = customerRatings{
+                cell.setCustomerRating(customerRating:custRatings[indexPath.row])
+            }
             return cell
         }
     

@@ -14,7 +14,6 @@ class OTPVC: BaseViewController,UITextFieldDelegate {
     @IBOutlet weak var smsTitleLabel: UILabel!
     @IBOutlet weak var resendOTPButton: UIButton!
     @IBOutlet weak var verifyOTPButton: UIButton!
-    var phoneNumberString:String?
     var mobNoString:String?
     override func initView() {
         super.initView()
@@ -109,7 +108,7 @@ class OTPVC: BaseViewController,UITextFieldDelegate {
     
     func getSendOTPRequestBody()->String{
         var dataString:String = ""
-        if let phoneString = self.phoneNumberString{
+        if let phoneString = self.mobNoString{
             let phString:String = "Phone=\(phoneString.urlEncode())"
             dataString = dataString + phString + "&"
         }
@@ -147,7 +146,7 @@ class OTPVC: BaseViewController,UITextFieldDelegate {
     
     func getCheckOTPRequestBody()->String{
         var dataString:String = ""
-        if let phoneString = self.phoneNumberString{
+        if let phoneString = self.mobNoString{
             let phString:String = "Phone=\(phoneString.urlEncode())"
             dataString = dataString + phString + "&"
         }

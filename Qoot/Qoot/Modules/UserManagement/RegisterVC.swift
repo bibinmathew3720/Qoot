@@ -62,10 +62,9 @@ class RegisterVC: BaseViewController,UITextFieldDelegate {
     }
     
     @IBAction func submitButtonAction(_ sender: UIButton) {
-        self.performSegue(withIdentifier: Constant.SegueIdentifiers.registerToOTP, sender: self)
-//        if isValidInputs(){
-//           callingSignUpApi()
-//        }
+        if isValidInputs(){
+           callingSignUpApi()
+        }
     }
     
     //MARK: Validation
@@ -139,6 +138,7 @@ class RegisterVC: BaseViewController,UITextFieldDelegate {
         UserManager().callingSignUpApi(with: getRegisterRequestBody(), success: {
             (model) in
             MBProgressHUD.hide(for: self.view, animated: true)
+            self.performSegue(withIdentifier: Constant.SegueIdentifiers.registerToOTP, sender: self)
             if let model = model as? QootRegisterResponseModel{
                 if model.statusCode == 1{
                     CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: model.errorMessage, parentController: self)
@@ -165,28 +165,38 @@ class RegisterVC: BaseViewController,UITextFieldDelegate {
     }
     
     func getRegisterRequestBody()->String{
-        var dict:[String:String] = [String:String]()
+        var dataString:String = ""
         if let name = self.nameTF.text {
-            dict.updateValue(name, forKey: "Name")
+            let nameString:String = "Name=\(name.urlEncode())"
+            dataString = dataString + nameString + "&"
         }
         if let email = self.emailTF.text {
-            dict.updateValue(email, forKey: "Email")
+            let emailString:String = "Email=\(email.urlEncode())"
+            dataString = dataString + emailString + "&"
         }
+        
         if let phone = self.phoneNoTF.text {
-            dict.updateValue(phone, forKey: "Phone")
+            let phoneString:String = "Phone=\(phone.urlEncode())"
+            dataString = dataString + phoneString + "&"
         }
+        
         if let password = self.pwdTF.text {
-            dict.updateValue(password, forKey: "Password")
+            let passwordString:String = "Password=\(password.urlEncode())"
+            dataString = dataString + passwordString + "&"
         }
-        dict.updateValue("Direct", forKey: "RegType")
-        dict.updateValue("1", forKey: "RegId")
-        return CCUtility.getJSONfrom(dictionary: dict)
+        if maleButton.isSelected {
+            dataString = dataString + "RegType=1&"
+        }
+        else{
+            dataString = dataString + "RegType=2&"
+        }
+        dataString = dataString + "RegId=1"
+        return dataString
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Constant.SegueIdentifiers.registerToOTP{
             let otpVC = segue.destination as! OTPVC
-            otpVC.phoneNumberString = self.phoneNoTF.text
             otpVC.mobNoString = self.phoneNoTF.text
         }
     }

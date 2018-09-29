@@ -74,8 +74,8 @@ class UserManager: CLBaseService {
     }
     
     func sendOTPResponseModel(dict:[String : Any?]) -> Any? {
-        let loginReponseModel = QootLogInResponseModel.init(dict:dict)
-        return loginReponseModel
+        let sendOTPReponseModel = SendOTPResponseModel.init(dict:dict)
+        return sendOTPReponseModel
     }
     
     //MARK : Check OTP Api
@@ -108,8 +108,8 @@ class UserManager: CLBaseService {
     }
     
     func checkOTPResponseModel(dict:[String : Any?]) -> Any? {
-        let loginReponseModel = QootLogInResponseModel.init(dict:dict)
-        return loginReponseModel
+        let checkOTPReponseModel = CheckOTPResponseModel.init(dict:dict)
+        return checkOTPReponseModel
     }
     
     //MARK : City Name Api
@@ -1012,26 +1012,26 @@ class QootLogInResponseModel : NSObject{
 
 class SendOTPResponseModel : NSObject{
     var statusMessage:String = ""
-    var statusString:String = ""
+    var status:Int = 0
     init(dict:[String:Any?]) {
-        if let value = dict["message"] as? String{
+        if let value = dict["Message"] as? String{
             statusMessage = value
         }
-        if let value = dict["Status"] as? String{
-            statusString = value
+        if let value = dict["Status"] as? Int{
+            status = value
         }
     }
 }
 
 class CheckOTPResponseModel : NSObject{
     var statusMessage:String = ""
-    var statusString:String = ""
+    var status:Int = 0
     init(dict:[String:Any?]) {
         if let value = dict["message"] as? String{
             statusMessage = value
         }
-        if let value = dict["Status"] as? String{
-            statusString = value
+        if let value = dict["Status"] as? Int{
+            status = value
         }
     }
 }

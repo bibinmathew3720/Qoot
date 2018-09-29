@@ -1170,7 +1170,7 @@ class ViewKitchensInfo : NSObject{
     var Location:String = ""
     var Event:Bool = false
     var QootRating:Int = 0
-    var customerRating:Int = 0
+    var customerRating:Float = 0
     
     init(dict:[String:Any?]) {
         //        if let value = dict["KitchenId"] as? String{
@@ -1192,6 +1192,9 @@ class ViewKitchensInfo : NSObject{
             QootRating = value
         }
         if let value = dict["customerRating"] as? Int{
+            customerRating = Float(value)
+        }
+        if let value = dict["customerRating"] as? Float{
             customerRating = value
         }
     }

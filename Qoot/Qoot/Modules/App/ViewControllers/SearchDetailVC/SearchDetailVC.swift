@@ -42,7 +42,6 @@ class SearchDetailVC: BaseViewController {
         localisation()
         populateKitchenDetails()
         getKitchenDetailsApi()
-        getKitchenInfoApi()
     }
     
     func initialisation(){
@@ -150,7 +149,10 @@ class SearchDetailVC: BaseViewController {
         case 2:
             customView.isHidden = false
             infoView.isHidden = false
-            infoView.viewKitchensInfo = self.viewKitchensInfo
+            if let kitchenInfo = self.viewKitchensInfo{
+                self.infoView.setKitchenInfo(kitchenInfo: kitchenInfo)
+            }
+            getKitchenInfoApi()
         default:
             print("default")
         }
@@ -237,6 +239,9 @@ extension SearchDetailVC : UITableViewDelegate,UITableViewDataSource {
             MBProgressHUD.hide(for: self.view, animated: true)
             if let model = model as? ViewKitchensInfoResponseModel{
                self.viewKitchensInfo = model.kitchensInfo[0]
+                if let kitchenInfo = self.viewKitchensInfo{
+                    self.infoView.setKitchenInfo(kitchenInfo: kitchenInfo)
+                }
             }
         }) { (ErrorType) in
             MBProgressHUD.hide(for: self.view, animated: true)

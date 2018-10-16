@@ -36,15 +36,19 @@ class PastOrderTableCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         localisation()
-        self.layer.borderColor = UIColor.lightGray.cgColor
+        self.layer.borderColor = Constant.Colors.CommonGreyColor.cgColor
         self.layer.borderWidth = 1.0
-        firstTrackView.layer.borderColor = UIColor.darkGray.cgColor
+        firstTrackView.layer.borderColor = Constant.Colors.CommonGreyColor.cgColor
+        firstInnerTrackView.backgroundColor = Constant.Colors.CommonGreyColor
         firstTrackView.layer.borderWidth = 3.0
-        secondTrackView.layer.borderColor = UIColor.darkGray.cgColor
+        secondTrackView.layer.borderColor = Constant.Colors.CommonGreyColor.cgColor
+        secondInnerTrackView.backgroundColor = Constant.Colors.CommonGreyColor
         secondTrackView.layer.borderWidth = 3.0
-        thirdTrackView.layer.borderColor = UIColor.darkGray.cgColor
+        thirdTrackView.layer.borderColor = Constant.Colors.CommonGreyColor.cgColor
+        thirdInnerTrackView.backgroundColor = Constant.Colors.CommonGreyColor
         thirdTrackView.layer.borderWidth = 3.0
-        fourthTrackView.layer.borderColor = UIColor.darkGray.cgColor
+        fourthTrackView.layer.borderColor = Constant.Colors.CommonGreyColor.cgColor
+        fourthInnerTrackView.backgroundColor = Constant.Colors.CommonGreyColor
         fourthTrackView.layer.borderWidth = 3.0
         itemDetailTable.dataSource = self
         itemDetailTable.delegate = self
@@ -72,6 +76,69 @@ class PastOrderTableCell: UITableViewCell {
         self.kitchenTitle.text = orderDetail.kitchenName
         self.dishes = orderDetail.dishes
         itemDetailTable.reloadData()
+        switch orderDetail.Status {
+        case 0:
+            rejectedTitle.text = "OrderPlaced".localiz()
+            settingOrderPlacedLayer()
+        case 1:
+            rejectedTitle.text = "RejectedByTheKitchen".localiz()
+            settingRejectedByKitchenLayer()
+        case 2:
+            rejectedTitle.text = "Preparing".localiz()
+            settingPreparingLayer()
+        case 3:
+            rejectedTitle.text = "CancelledByTheUser".localiz()
+            settingCancelledByTheUserLayer()
+        case 4:
+            rejectedTitle.text = "OnTheWay".localiz()
+            settingOnTheWayLayer()
+        case 5:
+            rejectedTitle.text = "Delivered".localiz()
+            settingDeliveredLayer()
+        case 6:
+            rejectedTitle.text = "RejectedByTheKitchen".localiz()
+            settingRejectedByKitchenLayer()
+        default:
+           rejectedTitle.text = "".localiz()
+        }
+    }
+    
+    func settingOrderPlacedLayer(){
+        
+    }
+    
+    func settingRejectedByKitchenLayer(){
+        firstTrackView.layer.borderColor = Constant.Colors.CommonGreenColor.cgColor
+        firstInnerTrackView.backgroundColor = Constant.Colors.CommonGreenColor
+        secondTrackView.layer.borderColor = Constant.Colors.CommonRedColor.cgColor
+        secondInnerTrackView.backgroundColor = Constant.Colors.CommonRedColor
+    }
+    
+    func settingPreparingLayer(){
+        firstTrackView.layer.borderColor = Constant.Colors.CommonGreenColor.cgColor
+        firstInnerTrackView.backgroundColor = Constant.Colors.CommonGreenColor
+    }
+    
+    func settingCancelledByTheUserLayer(){
+        firstTrackView.layer.borderColor = Constant.Colors.CommonGreenColor.cgColor
+        firstInnerTrackView.backgroundColor = Constant.Colors.CommonGreenColor
+        secondTrackView.layer.borderColor = Constant.Colors.CommonRedColor.cgColor
+        secondInnerTrackView.backgroundColor = Constant.Colors.CommonRedColor
+    }
+    
+    func settingOnTheWayLayer(){
+        
+    }
+    
+    func settingDeliveredLayer(){
+        firstTrackView.layer.borderColor = Constant.Colors.CommonGreenColor.cgColor
+        firstInnerTrackView.backgroundColor = Constant.Colors.CommonGreenColor
+        secondTrackView.layer.borderColor = Constant.Colors.CommonGreenColor.cgColor
+        secondInnerTrackView.backgroundColor = Constant.Colors.CommonGreenColor
+        thirdTrackView.layer.borderColor = Constant.Colors.CommonGreenColor.cgColor
+        thirdInnerTrackView.backgroundColor = Constant.Colors.CommonGreenColor
+        fourthTrackView.layer.borderColor = Constant.Colors.CommonGreenColor.cgColor
+        fourthInnerTrackView.backgroundColor = Constant.Colors.CommonGreenColor
     }
 }
 extension PastOrderTableCell : UITableViewDelegate,UITableViewDataSource {

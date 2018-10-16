@@ -176,6 +176,12 @@
 "OrderNo" = "Order No";
 "OrderOn" = "order on:";
 "QTY" = "QTY";
+"OrderPlaced" = "Order Placed";
+"RejectedByTheKitchen" = "Rejected by the Kitchen";
+"Preparing" = "Preparing";
+"CancelledByTheUser" = "Cancelled by the User";
+"OnTheWay" = "On the way";
+"Delivered" = "Delivered";
 
 
 

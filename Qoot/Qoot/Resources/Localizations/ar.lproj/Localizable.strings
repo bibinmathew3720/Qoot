@@ -174,3 +174,12 @@
 "OrderNo" = "رقم الطلب";
 "OrderOn" = "order on"; // Not Get
 "QTY" = "QTY";
+
+"OrderPlaced" = "تم الطلب";
+"RejectedByTheKitchen" = "مرفوض من قبل المطبخ";
+"Preparing" = "قيد التحضير";
+"CancelledByTheUser" = "ملغى من قبل المستخدم";
+"OnTheWay" = "علي الطريق";
+"Delivered" = "تم التوصيل";
+"RejectedByTheKitchen" = "مرفوض من قبل المطبخ";
+

@@ -435,32 +435,34 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
             placeMark = placemarks?[0]
             
             // Location name
-            if let locationName = placeMark.location {
-                 print("Location Name:\(locationName)")
-            }
-            // Street address
-            if let street = placeMark.thoroughfare {
-                print(street)
-            }
-            // City
-            if let city = placeMark.subAdministrativeArea {
-                self.cityNameTF.text = city
-                print("City:\(city)")
-            }
-            // Zip code
-            if let zip = placeMark.isoCountryCode {
-                print(zip)
-            }
-            // Country
-            if let country = placeMark.country {
-                print(country)
-            }
-            
-            if let locality = placeMark.locality {
-                self.landmarkTF.text = locality
-            }
-            if let subLocality = placeMark.subLocality {
-                self.addressTF.text = subLocality
+            if let plceMark = placeMark {
+                if let locationName = plceMark.location {
+                    print("Location Name:\(locationName)")
+                }
+                // Street address
+                if let street = plceMark.thoroughfare {
+                    print(street)
+                }
+                // City
+                if let city = plceMark.subAdministrativeArea {
+                    self.cityNameTF.text = city
+                    print("City:\(city)")
+                }
+                // Zip code
+                if let zip = plceMark.isoCountryCode {
+                    print(zip)
+                }
+                // Country
+                if let country = plceMark.country {
+                    print(country)
+                }
+                
+                if let locality = plceMark.locality {
+                    self.landmarkTF.text = locality
+                }
+                if let subLocality = plceMark.subLocality {
+                    self.addressTF.text = subLocality
+                }
             }
         })
     }

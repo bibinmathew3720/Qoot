@@ -23,6 +23,9 @@ class OrderListVC: BaseViewController,PastOrderTableCellDelegate {
     var orderHistoryResponse:QootOrderHistoryResponseModel?
     var orderType = OrderType.ongoingOrder
     
+    var ongoingOrderArray = [Order]()
+    var pastOrderArray = [Order]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initialisation()
@@ -90,6 +93,8 @@ class OrderListVC: BaseViewController,PastOrderTableCellDelegate {
             MBProgressHUD.hide(for: self.view, animated: true)
             if let model = model as? QootOrderHistoryResponseModel{
                self.orderHistoryResponse = model
+                self.ongoingOrderArray = model.orderArray.filter({($0.Status == 0 || $0.Status == 2 || $0.Status == 4)})
+                self.pastOrderArray = model.orderArray.filter({($0.Status == 1 || $0.Status == 3 || $0.Status == 5 || $0.Status == 6)})
                self.orderListTable.reloadData()
             }
         }) { (ErrorType) in
@@ -121,11 +126,17 @@ class OrderListVC: BaseViewController,PastOrderTableCellDelegate {
 }
 extension OrderListVC : UITableViewDelegate,UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        if let orderReponse = self.orderHistoryResponse{
-            return orderReponse.orderArray.count
+        if orderType == OrderType.ongoingOrder{
+            return ongoingOrderArray.count
         }
-        return 0
+        else if orderType == OrderType.pastOrder{
+            return pastOrderArray.count
+        }
+        else{
+            return 0
+        }
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
@@ -141,8 +152,11 @@ extension OrderListVC : UITableViewDelegate,UITableViewDataSource {
 //        else{
 //            cell.tableViewHeightConstraint.constant = 0.0
 //        }
-        if let orderResponse = self.orderHistoryResponse{
-            cell.setOrderDetails(orderDetail:orderResponse.orderArray[indexPath.section])
+        if orderType == OrderType.ongoingOrder{
+            cell.setOrderDetails(orderDetail:ongoingOrderArray[indexPath.section])
+        }
+        else if orderType == OrderType.pastOrder{
+           cell.setOrderDetails(orderDetail:pastOrderArray[indexPath.section])
         }
         return cell
     }

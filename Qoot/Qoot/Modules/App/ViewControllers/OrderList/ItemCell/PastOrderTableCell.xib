@@ -254,6 +254,7 @@
                 <outlet property="fourthInnerTrackView" destination="Tqt-KM-026" id="0Wh-GR-bfJ"/>
                 <outlet property="fourthTrackView" destination="3aT-Vt-yvW" id="ewb-BM-A6K"/>
                 <outlet property="itemDetailTable" destination="xFv-tg-JQd" id="lfs-8A-QkV"/>
+                <outlet property="itemsListTVHeightCnstrant" destination="UXg-6g-Jsa" id="VB6-KM-On6"/>
                 <outlet property="kitchenTitle" destination="01P-aT-D2t" id="fAF-1A-q9v"/>
                 <outlet property="orderNoTitle" destination="9RS-hj-6Sq" id="xbv-N3-ClY"/>
                 <outlet property="orderNumberLabel" destination="vad-Dq-L2R" id="2w2-nY-7rs"/>

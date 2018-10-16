@@ -173,3 +173,4 @@
 "PastOrders" = "طلبات سابقة";
 "OrderNo" = "رقم الطلب";
 "OrderOn" = "order on"; // Not Get
+"QTY" = "QTY";

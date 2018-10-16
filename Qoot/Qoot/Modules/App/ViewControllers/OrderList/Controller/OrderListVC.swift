@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum OrderType{
+    case ongoingOrder
+    case pastOrder
+}
+
 class OrderListVC: BaseViewController,PastOrderTableCellDelegate {
     var isFromMenu:Bool?
     @IBOutlet var orderListTable: UITableView!
@@ -16,6 +21,8 @@ class OrderListVC: BaseViewController,PastOrderTableCellDelegate {
     var heightConstraint: CGFloat = 0.0
     var buttonBar =  UIView()
     var orderHistoryResponse:QootOrderHistoryResponseModel?
+    var orderType = OrderType.ongoingOrder
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initialisation()
@@ -46,10 +53,17 @@ class OrderListVC: BaseViewController,PastOrderTableCellDelegate {
         orderSegmentControl.setTitle("PastOrders".localiz(), forSegmentAt: 1)
     }
 
-    @IBAction func segmentControlClickAction(_ sender: Any) {
+    @IBAction func segmentControlAction(_ sender: UISegmentedControl) {
         UIView.animate(withDuration: 0.3) {
             self.buttonBar.frame.origin.x = ((self.orderSegmentControl.frame.width / CGFloat(self.orderSegmentControl.numberOfSegments)) * CGFloat(self.orderSegmentControl.selectedSegmentIndex))
         }
+        if sender.selectedSegmentIndex == 0 {
+            self.orderType = OrderType.ongoingOrder
+        }
+        else{
+            self.orderType = OrderType.pastOrder
+        }
+        orderListTable.reloadData()
     }
   
     func expandButtonActionDelegate(with tag: Int, tableheight: CGFloat) {
@@ -142,7 +156,7 @@ extension OrderListVC : UITableViewDelegate,UITableViewDataSource {
         return view
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        return 230
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         

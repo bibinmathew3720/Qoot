@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -23,7 +23,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="jq5-PG-lMf">
-                    <rect key="frame" x="0.0" y="40" width="375" height="41"/>
+                    <rect key="frame" x="0.0" y="90" width="375" height="41"/>
                     <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="ezY-hG-yyU"/>
@@ -34,18 +34,18 @@
                     </segments>
                     <color key="tintColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <connections>
-                        <action selector="segmentControlClickAction:" destination="-1" eventType="valueChanged" id="j8P-G6-ORI"/>
+                        <action selector="segmentControlAction:" destination="-1" eventType="valueChanged" id="xOx-NR-C6T"/>
                     </connections>
                 </segmentedControl>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wtj-Cp-s9D">
-                    <rect key="frame" x="0.0" y="84" width="375" height="1"/>
+                    <rect key="frame" x="0.0" y="134" width="375" height="1"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="Oc8-fY-qEI"/>
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="E5s-wy-F4u">
-                    <rect key="frame" x="5" y="95" width="365" height="562"/>
+                    <rect key="frame" x="5" y="145" width="365" height="512"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="vyg-5U-8XH"/>
@@ -58,7 +58,7 @@
                 <constraint firstItem="wtj-Cp-s9D" firstAttribute="top" secondItem="jq5-PG-lMf" secondAttribute="bottom" constant="4" id="0i0-SS-auB"/>
                 <constraint firstItem="jq5-PG-lMf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="7cw-sA-i74"/>
                 <constraint firstItem="E5s-wy-F4u" firstAttribute="leading" secondItem="jq5-PG-lMf" secondAttribute="leading" constant="5" id="OCM-0Y-c63"/>
-                <constraint firstItem="jq5-PG-lMf" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="PWO-Kb-VmX"/>
+                <constraint firstItem="jq5-PG-lMf" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="70" id="PWO-Kb-VmX"/>
                 <constraint firstItem="E5s-wy-F4u" firstAttribute="top" secondItem="jq5-PG-lMf" secondAttribute="bottom" constant="15" id="QZG-Qg-Xjw"/>
                 <constraint firstItem="wtj-Cp-s9D" firstAttribute="leading" secondItem="jq5-PG-lMf" secondAttribute="leading" id="TUI-4N-4rQ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="E5s-wy-F4u" secondAttribute="bottom" constant="10" id="V8m-ZE-xty"/>

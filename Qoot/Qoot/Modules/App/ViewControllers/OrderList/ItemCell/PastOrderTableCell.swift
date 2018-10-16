@@ -30,6 +30,7 @@ class PastOrderTableCell: UITableViewCell {
     @IBOutlet var secondTrackView: UIView!
     @IBOutlet var firstTrackView: UIView!
     var delegate:PastOrderTableCellDelegate?
+    @IBOutlet weak var itemsListTVHeightCnstrant: NSLayoutConstraint!
     
     var dishes:[Dishes]?
     override func awakeFromNib() {

@@ -13,7 +13,6 @@ class MenuVC: BaseViewController {
     @IBOutlet weak var profileView: UIView!
     @IBOutlet weak var profileViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var logInButtonView: UIView!
-    @IBOutlet weak var switchToKitchenButton: UIButton!
     @IBOutlet weak var loginButtonViewHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -68,7 +67,6 @@ class MenuVC: BaseViewController {
     
     func localisation(){
         self.logInButton.setTitle("Login".localiz(), for: UIControlState.normal)
-        self.switchToKitchenButton.setTitle("SwitchToKitchen".localiz(), for: UIControlState.normal)
     }
 
     override func didReceiveMemoryWarning() {

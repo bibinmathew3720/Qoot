@@ -81,7 +81,6 @@
 "Support" = "الدعم";
 "Settings" = "إعدادات";
 "Logout" = "الخروج";
-"SwitchToKitchen" = "قم بالتبديل إلى المطبخ";
 "LOGOUT" = "الخروج";
 "AREYOUSURE" = "هل أنت متأكد؟";
 
@@ -174,3 +173,12 @@
 "OrderNo" = "رقم الطلب";
 "OrderOn" = "order on"; // Not Get
 "QTY" = "QTY";
+
+"OrderPlaced" = "تم الطلب";
+"RejectedByTheKitchen" = "مرفوض من قبل المطبخ";
+"Preparing" = "قيد التحضير";
+"CancelledByTheUser" = "ملغى من قبل المستخدم";
+"OnTheWay" = "علي الطريق";
+"Delivered" = "تم التوصيل";
+"RejectedByTheKitchen" = "مرفوض من قبل المطبخ";
+

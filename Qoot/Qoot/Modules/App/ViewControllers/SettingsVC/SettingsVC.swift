@@ -7,9 +7,15 @@
 //
 
 import UIKit
+import CoreData
 
-class SettingsVC: BaseViewController {
 
+class SettingsVC: BaseViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+
+    @IBOutlet weak var profileImageButton: UIButton!
+    @IBOutlet weak var changePassword: UILabel!
+    @IBOutlet weak var addressesTitle: UILabel!
+    @IBOutlet weak var changeProfileTitle: UILabel!
     override func initView() {
         initialisation()
         localization()
@@ -35,15 +41,32 @@ class SettingsVC: BaseViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // MARK: - Camera Actions
+    
+    @IBAction func imageClickAction(_ sender: Any) {
+        CameraHandler().checkCameraPermissionFromViewController(viewController: self) { (isSucess, imagePicker) in
+            imagePicker.delegate = self;
+        }
+        
     }
-    */
+    
+    // MARK: - PickerDelegates
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let selectedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+       
+//        self.imageData = UIImagePNGRepresentation(selectedImage)!;
+//        profileImage.image = selectedImage
+        self.profileImageButton.setImage(selectedImage, for: .normal)
+        
+        // Dismiss the picker.
+        
+        dismiss(animated: true, completion: nil)
+        
+    }
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+        
+    }
 
 }

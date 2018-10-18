@@ -327,10 +327,10 @@ class AddCustomerOrderResponseModel : NSObject{
     var statusCode:Int = 0
     var order_Id:Int = 0
     init(dict:[String:Any?]) {
-        if let value = dict["statusMessage"] as? String{
+        if let value = dict["message"] as? String{
             statusMessage = value
         }
-        if let value = dict["statusCode"] as? Int{
+        if let value = dict["Status"] as? Int{
             statusCode = value
         }
         if let value = dict["orderid"] as? Int{

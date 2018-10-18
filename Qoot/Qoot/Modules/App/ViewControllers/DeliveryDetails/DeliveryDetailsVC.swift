@@ -306,8 +306,13 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
             MBProgressHUD.hide(for: self.view, animated: true)
             if let model = model as? AddCustomerOrderResponseModel{
                 self.addCustomerOrderResponseModel = model
-                Cart.deletAllItemsFromCart()
-                self.addOrderConfirmVC()
+                if model.statusCode == 1 {
+                    Cart.deletAllItemsFromCart()
+                    self.addOrderConfirmVC()
+                }
+                else{
+                   CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: model.statusMessage, parentController: self)
+                }
             }
         }) { (ErrorType) in
             MBProgressHUD.hide(for: self.view, animated: true)
@@ -327,61 +332,36 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
         return dataString
     }
     func addOrderDetails()->String {
-//        var array = NSMutableArray()
-//        var paramDict = [String:String]()
-//        paramDict["customerid"] = "2"
-//        paramDict["menuid"] = "458"
-//         paramDict["quantity"] = "1"
-//        paramDict["paymenttype"] = "Cash On Delivery"
-//        paramDict["addressid"] = "1"
-//        paramDict["promocode"] = ""
-//         paramDict["comment"] = "wefwe"
-//        paramDict["deliverydate"] = "2018-05-01 04:15"
-//        array.add(paramDict)
-        var dataString:String = "["
+        let array = NSMutableArray()
+        var paramDict = [String:String]()
         for item in Cart.getAllCartItems(){
-            dataString = dataString + "{"
             if let user = User.getUser(){
-                dataString = dataString + "customerid=\(user.userId)" + "&"
+                paramDict["customerid"] = "\(user.userId)"
             }
-            
-            let menuIdString:String = "menuid=\(item.menuId)"
-            dataString = dataString + menuIdString + "&"
-            
-            let quantityString:String = "quantity=\(item.productCount)"
-            dataString = dataString + quantityString + "&"
-            
-            let paymentString:String = "paymenttype=" + "Cash On Delivery".urlEncode()
-            dataString = dataString + paymentString + "&"
-            
+            paramDict["menuid"] = "\(item.menuId)"
+            paramDict["quantity"] = "\(item.productCount)"
+            paramDict["paymenttype"] = "Cash On Delivery"
             if let address = self.selAddress{
-                let addressIdString:String = "addressid=\(address.addressId)"
-                dataString = dataString + addressIdString + "&"
+                paramDict["addressid"] = "\(address.addressId)"
             }
-            
             if let promo = self.promoCodeTextField.text {
-                let promocodeString:String = "promocode=" + promo.urlEncode()
-                dataString = dataString + promocodeString + "&"
+                paramDict["promocode"] = promo
             }
             if let comment = self.commentString {
-                let commentString:String = "comment=" + comment.urlEncode()
-                dataString = dataString + commentString + "&"
+                paramDict["comment"] = comment
             }
             if let delDate = self.selectedDate{
-                let dateString:String = "deliverydate=" + delDate.urlEncode()
-                dataString = dataString + dateString
+                paramDict["deliverydate"] = delDate
             }
-            dataString = dataString + "}"
+            array.add(paramDict)
         }
-        dataString = dataString + "]"
-        return dataString
-    }
-    
-    func adddetail() -> Array<Any> {
-        let array:NSMutableArray = NSMutableArray()
-        array.add(addOrderDetails())
-        array.add(addOrderDetails())
-        return array as! Array<Any>
+        guard let data = try? JSONSerialization.data(withJSONObject: array, options: []) else {
+            return ""
+        }
+        if let jsonString = String(data: data, encoding: String.Encoding.utf8){
+            return jsonString
+        }
+        return ""
     }
     
     func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {

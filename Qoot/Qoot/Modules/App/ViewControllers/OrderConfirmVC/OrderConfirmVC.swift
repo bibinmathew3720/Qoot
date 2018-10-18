@@ -21,13 +21,14 @@ class OrderConfirmVC: BaseViewController {
     }
     
     func initialisation(){
-       
+        if let orderResponse = customerOrderResponse{
+            orderNumberLabel.text = "OrderNumber".localiz() + " " + "\(orderResponse.order_Id)"
+        }
     }
     
     func localization(){
         self.title = "Qoot".localiz()
         orderCompletedLabel.text = "OrderCompleted".localiz()
-        orderNumberLabel.text = "OrderNumber".localiz() + " " + "131231331"
         gotoMyOrdersButton.setTitle("GOTOMYORDERS".localiz(), for: UIControlState.normal)
     }
 

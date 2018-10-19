@@ -17,6 +17,8 @@
 "PLEASECHOOSEADELIVERYADDRESS" = "Please choose a delivery address.";
 "PLEASECHOOSEADELIVERYDATEANDTIME" = "Please choose a delivery date and time.";
 "SPECIFYPAYMENTMETHOD" = "Specify the payment method";
+"PASSWORDATLEASTSIXDIGITS" = "Password should be atleast 6 digits";
+"NEWPASSWORDDOESNTMATCHES" = "New Password does not matches";
 
 
 //Common
@@ -194,6 +196,7 @@
 "NewPassword" = "New Password";
 "ConfirmNewPassword" = "Confirm New Password";
 "UpdatePassword" = "UPDATE PASSWORD";
+"PasswordChanged" = "Password Changed";
 
 
 

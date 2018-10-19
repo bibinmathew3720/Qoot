@@ -586,42 +586,7 @@ class UserManager: CLBaseService {
         let productResponseModel = FetchProductTypeResponseModel.init(dict:dict)
         return productResponseModel
     }
-    
-    //MARK: ForgotPassword Api
-    
-    func callingForgotPaswordApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
-        CLNetworkManager().initateWebRequest(networkModelForForgotPassword(with: body), success: {
-            (resultData) in
-            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
-            
-            if error == nil {
-                if let jdict = jsonDict{
-                    print(jsonDict)
-                    success(self.getForgotPasswordResponseModel(dict: jdict) as Any)
-                }else{
-                    failure(ErrorType.dataError)
-                }
-            }else{
-                failure(ErrorType.dataError)
-            }
-            
-        }, failiure: {(error)-> () in failure(error)
-            
-        })
-        
-    }
-    
-    func networkModelForForgotPassword(with body:String)->CLNetworkModel{
-        let forgotPasswordRequestModel = CLNetworkModel.init(url: BASE_URL+FORGOT_PASS_URL, requestMethod_: "POST")
-        forgotPasswordRequestModel.requestBody = body
-        return forgotPasswordRequestModel
-    }
-    
-    func getForgotPasswordResponseModel(dict:[String : Any?]) -> Any? {
-        let forgotPasswordRequestModel = FetchForgotPasswordResponseModel.init(dict:dict)
-        return forgotPasswordRequestModel
-    }
-    
+
     //MARK: ChangePassword Api
     
     func callingChangePasswordApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
@@ -647,13 +612,13 @@ class UserManager: CLBaseService {
     }
     
     func networkModelForChangePassword(with body:String)->CLNetworkModel{
-        let changePasswordRequestModel = CLNetworkModel.init(url: BASE_URL+CHANGE_PASS_URL, requestMethod_: "POST")
+        let changePasswordRequestModel = CLNetworkModel.init(url: BASE_URL+CHANGE_PWD_URL, requestMethod_: "POST")
         changePasswordRequestModel.requestBody = body
         return changePasswordRequestModel
     }
     
     func getchangetPasswordResponseModel(dict:[String : Any?]) -> Any? {
-        let changePasswordRequestModel = FetchForgotPasswordResponseModel.init(dict:dict)
+        let changePasswordRequestModel = ChangePasswordResponseModel.init(dict:dict)
         return changePasswordRequestModel
     }
     
@@ -1036,6 +1001,21 @@ class CheckOTPResponseModel : NSObject{
     }
 }
 
+class ChangePasswordResponseModel : NSObject{
+    var statusMessage:String = ""
+    var statusCode:Int = 0
+    init(dict:[String:Any?]) {
+        if let value = dict["Message"] as? String{
+            statusMessage = value
+        }
+        
+        if let value = dict["Status"] as? Int{
+            statusCode = value
+        }
+    }
+}
+
+
 class QootCityNamesResponseModel : NSObject{
     var cityNames = [CityName]()
     init(arr:(NSArray)) {
@@ -1265,20 +1245,6 @@ class ViewCuisines : NSObject{
     }
 }
 
-class FetchForgotPasswordResponseModel : NSObject{
-    var statusMessage:String = ""
-    var errorMessage:String = ""
-    var statusCode:Int = 0
-    init(dict:[String:Any?]) {
-        if let value = dict["statusMessage"] as? String{
-            statusMessage = value
-        }
-        
-        if let value = dict["statusCode"] as? Int{
-            statusCode = value
-        }
-    }
-}
 
 class FetchGetNotificationsResponseModel : NSObject{
     var statusMessage:String = ""

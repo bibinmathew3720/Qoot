@@ -17,6 +17,8 @@
 "PLEASECHOOSEADELIVERYADDRESS" = "يرجى اختيار عنوان التوصيل.";
 "PLEASECHOOSEADELIVERYDATEANDTIME" = "يرجى اختيار تاريخ ووقت التوصيل.";
 "SPECIFYPAYMENTMETHOD" = "حدد طريقة الدفع";
+"PASSWORDATLEASTSIXDIGITS" = "يجب أن تحتوي كلمة المرور على الأقل 6 أحرف";
+"NEWPASSWORDDOESNTMATCHES" = "كلمة المرور الجديدة غير مطابقة";
 
 //Common
 
@@ -194,4 +196,5 @@
 "NewPassword" = "كلمة مرور جديدة";
 "ConfirmNewPassword" = "تأكيد كلمة المرور الجديدة";
 "UpdatePassword" = "حدّث كلمة المرور";
+"PasswordChanged" = "تم تغيير كلمة المرور";
 

@@ -17,6 +17,7 @@ let BASE_URL = LOCAL
 let REGISTER_URL = "Ios/Customer/CustomerSignup"
 let LOGIN_URL = "Ios/Customer/LoginAction"
 let SENDOTP_URL = "Ios/Customer/SendOtp"
+let CHANGE_PWD_URL = "Ios/Customer/ChangePassword"
 let CHECK_OTP_URL = "Ios/Customer/CheckOtp"
 let GETCITYNAMES_URL = "Ios/Customer/ViewCityNames"
 let VIEWMEALTYPE_URL = "Ios/Customer/ViewMealType"
@@ -38,8 +39,6 @@ let CancelCustomerOrder_URL = "Ios/Customer/CustomerCancelOrder"
 
 
 
-let FORGOT_PASS_URL = "user/forgotPassword"
-let CHANGE_PASS_URL = "user/changePassword"
 let EDIT_PROFILE_URL = "user/editProfile"
 let GET_LOCATIONS_URL = "location/allLocations"
 let GET_CATEGORIES_URL = "category/allCategories"

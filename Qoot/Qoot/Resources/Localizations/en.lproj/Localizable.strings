@@ -16,6 +16,7 @@
 "CITYNAMEANDHOMEADDRESSEMPTY" = "City Name and home address can not be empty";
 "PLEASECHOOSEADELIVERYADDRESS" = "Please choose a delivery address.";
 "PLEASECHOOSEADELIVERYDATEANDTIME" = "Please choose a delivery date and time.";
+"SPECIFYPAYMENTMETHOD" = "Specify the payment method";
 
 
 //Common

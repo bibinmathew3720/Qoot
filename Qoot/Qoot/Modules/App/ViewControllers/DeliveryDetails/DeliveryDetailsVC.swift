@@ -11,6 +11,13 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 
+enum PaymentType {
+    case cashOnDelivery
+    case payPal
+    case Visa
+    case wallet
+}
+
 class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapViewDelegate,UIGestureRecognizerDelegate {
     @IBOutlet weak var deliveryDetailsLabel: UILabel!
      @IBOutlet var addAddressButton: UIButton!
@@ -44,6 +51,7 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
     var selAddress:Address?
      var camera: GMSCameraPosition = GMSCameraPosition.camera(withLatitude: 10.0068361, longitude: 76.3655878, zoom: 17.5)
     var addAddressResponseModel:AddAddressResponseModel?
+    var selPaymentType:PaymentType?
     
     @IBOutlet weak var cityNameTF: UITextField!
     @IBOutlet weak var addressTF: UITextField!
@@ -120,7 +128,13 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
         var messageString = ""
         if let address = self.selAddress{
             if let seDate = self.selectedDate{
-                
+                if let payType = self.selPaymentType{
+                    
+                }
+                else{
+                    isValid = false
+                    messageString = "SPECIFYPAYMENTMETHOD".localiz()
+                }
             }
             else{
                 isValid = false
@@ -177,6 +191,18 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
     }
     func paymentButtonDelegateAction(with tag: Int) {
         selectedIndex = tag
+        if selectedIndex == 0{
+            self.selPaymentType = PaymentType.cashOnDelivery
+        }
+        else if selectedIndex == 1{
+            self.selPaymentType = PaymentType.payPal
+        }
+        else if selectedIndex == 2{
+            self.selPaymentType = PaymentType.Visa
+        }
+        else if selectedIndex == 3{
+            self.selPaymentType = PaymentType.wallet
+        }
         paymentTable.reloadData()
     }
     
@@ -340,7 +366,11 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
             }
             paramDict["menuid"] = "\(item.menuId)"
             paramDict["quantity"] = "\(item.productCount)"
-            paramDict["paymenttype"] = "Cash On Delivery"
+            if let payType = self.selPaymentType{
+                if payType == .cashOnDelivery{
+                   paramDict["paymenttype"] = "Cash On Delivery"
+                }
+            }
             if let address = self.selAddress{
                 paramDict["addressid"] = "\(address.addressId)"
             }

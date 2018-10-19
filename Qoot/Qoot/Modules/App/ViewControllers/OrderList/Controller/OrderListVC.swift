@@ -156,7 +156,9 @@ class OrderListVC: BaseViewController,PastOrderTableCellDelegate {
                 if let orderHistory = self.orderHistoryResponse{
                     let filArray = orderHistory.orderArray.filter({($0.orderId == orderID)})
                     let order = filArray.first
-                    order?.Status = 3
+                    if let odr = order{
+                        odr.Status = 3
+                    }
                     self.populateOrderList()
                 }
                 

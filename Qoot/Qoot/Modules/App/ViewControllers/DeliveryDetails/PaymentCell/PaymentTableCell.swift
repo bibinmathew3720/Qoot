@@ -21,12 +21,19 @@ class PaymentTableCell: UITableViewCell {
         // Initialization code
     }
     func setModel(index:Int,selectedIndex:Int) -> () {
+        if index == 0 {
+            paymentTypeLabel.textColor = UIColor.black
+            paymentSelectionButton.isUserInteractionEnabled = true
+        }
+        else{
+            paymentTypeLabel.textColor = UIColor.lightGray
+            paymentSelectionButton.isUserInteractionEnabled = false
+        }
         if index == selectedIndex{
             paymentSelectionButton.isSelected = true
-            paymentTypeLabel.textColor = UIColor.black
-        }else{
-             paymentSelectionButton.isSelected = false
-            paymentTypeLabel.textColor = UIColor.lightGray
+        }
+        else{
+            paymentSelectionButton.isSelected = false
         }
         
     }

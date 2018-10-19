@@ -16,6 +16,7 @@
 "CITYNAMEANDHOMEADDRESSEMPTY" = "لا يمكن أن يكون اسم المدينة وعنوان المنزل فارغين";
 "PLEASECHOOSEADELIVERYADDRESS" = "يرجى اختيار عنوان التوصيل.";
 "PLEASECHOOSEADELIVERYDATEANDTIME" = "يرجى اختيار تاريخ ووقت التوصيل.";
+"SPECIFYPAYMENTMETHOD" = "حدد طريقة الدفع";
 
 //Common
 

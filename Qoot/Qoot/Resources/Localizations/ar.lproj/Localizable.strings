@@ -181,4 +181,6 @@
 "OnTheWay" = "علي الطريق";
 "Delivered" = "تم التوصيل";
 "RejectedByTheKitchen" = "مرفوض من قبل المطبخ";
+"CancelOrder" = "إلغاء الطلب";
+"DOYOUWANTTOCANCELORDER" = "هل تريد إلغاء هذا الطلب";
 

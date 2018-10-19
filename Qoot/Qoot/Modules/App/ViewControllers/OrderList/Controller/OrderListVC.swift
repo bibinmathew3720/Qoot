@@ -68,11 +68,30 @@ class OrderListVC: BaseViewController,PastOrderTableCellDelegate {
         }
         orderListTable.reloadData()
     }
+    
+    //Order Cell Delegate
   
     func expandButtonActionDelegate(with tag: Int, tableheight: CGFloat) {
         selectedIndex = tag
         heightConstraint = tableheight
         orderListTable.reloadData()
+    }
+    
+    func cancelOrderButtonActionDelegate(tag: Int) {
+        let orderID = self.ongoingOrderArray[tag].orderGroup
+        let messageString = "DOYOUWANTTOCANCELORDER".localiz() + " \(orderID)"
+        let alertController = UIAlertController(title: "AREYOUSURE".localiz(), message: messageString, preferredStyle: .alert)
+        let noAction = UIAlertAction(title: "NO".localiz(), style: .default) { (action:UIAlertAction) in
+            
+        }
+        let yesAction = UIAlertAction(title: "YES".localiz(), style: .default) { (action:UIAlertAction) in
+            self.cancelOrderApi(orderIndex: tag)
+        }
+        
+        alertController.addAction(noAction)
+        alertController.addAction(yesAction)
+        self.present(alertController, animated: true) {
+        }
     }
     
     //Button Actions
@@ -93,9 +112,7 @@ class OrderListVC: BaseViewController,PastOrderTableCellDelegate {
             MBProgressHUD.hide(for: self.view, animated: true)
             if let model = model as? QootOrderHistoryResponseModel{
                self.orderHistoryResponse = model
-                self.ongoingOrderArray = model.orderArray.filter({($0.Status == 0 || $0.Status == 2 || $0.Status == 4)})
-                self.pastOrderArray = model.orderArray.filter({($0.Status == 1 || $0.Status == 3 || $0.Status == 5 || $0.Status == 6)})
-               self.orderListTable.reloadData()
+                self.populateOrderList()
             }
         }) { (ErrorType) in
             MBProgressHUD.hide(for: self.view, animated: true)
@@ -111,6 +128,53 @@ class OrderListVC: BaseViewController,PastOrderTableCellDelegate {
     }
     
     func getOrderListRequestBody()->String{
+        var dataString:String = ""
+        if let user = User.getUser() {
+            let customerId:String = "CustomerId=\(String(user.userId))"
+            dataString = dataString + customerId
+        }
+        return dataString
+    }
+    
+    func populateOrderList(){
+        if let orderHistory = self.orderHistoryResponse{
+            self.ongoingOrderArray = orderHistory.orderArray.filter({($0.Status == 0 || $0.Status == 2 || $0.Status == 4)})
+            self.pastOrderArray = orderHistory.orderArray.filter({($0.Status == 1 || $0.Status == 3 || $0.Status == 5 || $0.Status == 6)})
+            self.orderListTable.reloadData()
+        }
+    }
+    
+    //MARK: Cancel Order Api
+    
+    func cancelOrderApi(orderIndex:Int){
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        let orderID = self.ongoingOrderArray[orderIndex].orderId
+        CartManager().cancelOrderApi(with:getCancelOrderRequestBody(orderId: orderID), success: {
+            (model) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if let model = model as? QootOrderHistoryResponseModel{
+                if let orderHistory = self.orderHistoryResponse{
+                    let filArray = orderHistory.orderArray.filter({($0.orderId == orderID)})
+                    let order = filArray.first
+                    order?.Status = 3
+                    self.populateOrderList()
+                }
+                
+            }
+        }) { (ErrorType) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if(ErrorType == .noNetwork){
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+            }
+            else{
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+            }
+            
+            print(ErrorType)
+        }
+    }
+    
+    func getCancelOrderRequestBody(orderId:Int)->String{
         var dataString:String = ""
         if let user = User.getUser() {
             let customerId:String = "CustomerId=\(String(user.userId))"
@@ -154,9 +218,11 @@ extension OrderListVC : UITableViewDelegate,UITableViewDataSource {
 //        }
         if orderType == OrderType.ongoingOrder{
             cell.setOrderDetails(orderDetail:ongoingOrderArray[indexPath.section])
+            cell.cancelOrderButton.isHidden = false
         }
         else if orderType == OrderType.pastOrder{
            cell.setOrderDetails(orderDetail:pastOrderArray[indexPath.section])
+           cell.cancelOrderButton.isHidden = true
         }
         return cell
     }

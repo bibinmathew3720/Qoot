@@ -181,6 +181,8 @@
 "CancelledByTheUser" = "Cancelled by the User";
 "OnTheWay" = "On the way";
 "Delivered" = "Delivered";
+"CancelOrder" = "Cancel Order";
+"DOYOUWANTTOCANCELORDER" = "Do you want to cancel this order";
 
 
 

@@ -44,9 +44,9 @@ class SettingsVC: BaseViewController,UIImagePickerControllerDelegate,UINavigatio
     // MARK: - Camera Actions
     
     @IBAction func imageClickAction(_ sender: Any) {
-        CameraHandler().checkCameraPermissionFromViewController(viewController: self) { (isSucess, imagePicker) in
-            imagePicker.delegate = self;
-        }
+//        CameraHandler().checkCameraPermissionFromViewController(viewController: self) { (isSucess, imagePicker) in
+//            imagePicker.delegate = self;
+//        }
         
     }
     

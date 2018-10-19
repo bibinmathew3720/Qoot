@@ -28,14 +28,14 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lZb-Ed-Mz5">
-                        <rect key="frame" x="50" y="202.5" width="120" height="3"/>
+                        <rect key="frame" x="25" y="202.5" width="120" height="3"/>
                         <color key="backgroundColor" red="0.58039215690000001" green="0.75686274509999996" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="3" id="La4-OG-GAy"/>
                         </constraints>
                     </view>
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4bG-rL-7b4">
-                        <rect key="frame" x="35" y="189" width="30" height="30"/>
+                        <rect key="frame" x="10" y="189" width="30" height="30"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rUS-eB-228">
                                 <rect key="frame" x="5" y="5" width="20" height="20"/>
@@ -63,7 +63,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="joa-Mc-zth">
-                        <rect key="frame" x="75" y="189" width="30" height="30"/>
+                        <rect key="frame" x="50" y="189" width="30" height="30"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bDh-wx-4VZ">
                                 <rect key="frame" x="5" y="5" width="20" height="20"/>
@@ -91,7 +91,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3aT-Vt-yvW">
-                        <rect key="frame" x="155" y="189" width="30" height="30"/>
+                        <rect key="frame" x="130" y="189" width="30" height="30"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tqt-KM-026">
                                 <rect key="frame" x="5" y="5" width="20" height="20"/>
@@ -119,7 +119,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3HQ-7R-2Ze">
-                        <rect key="frame" x="115" y="189" width="30" height="30"/>
+                        <rect key="frame" x="90" y="189" width="30" height="30"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bQr-L0-eWe">
                                 <rect key="frame" x="5" y="5" width="20" height="20"/>
@@ -147,7 +147,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rejected by the kitchen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SQ3-Of-96E">
-                        <rect key="frame" x="25" y="157.5" width="169" height="21.5"/>
+                        <rect key="frame" x="10" y="157.5" width="169" height="21.5"/>
                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
                         <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -206,22 +206,40 @@
                             <outlet property="delegate" destination="-1" id="iRK-kQ-tRS"/>
                         </connections>
                     </tableView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YaW-Zb-bNz">
+                        <rect key="frame" x="423" y="177.5" width="119" height="43"/>
+                        <color key="backgroundColor" red="0.63529411759999999" green="0.1019607843" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                        <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                        <state key="normal" title="Cancel Order">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="3"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="cancelOrderButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="qSe-b2-NiK"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="vad-Dq-L2R" firstAttribute="leading" secondItem="9RS-hj-6Sq" secondAttribute="trailing" constant="10" id="0kz-ud-2Fm"/>
                     <constraint firstItem="3aT-Vt-yvW" firstAttribute="leading" secondItem="3HQ-7R-2Ze" secondAttribute="trailing" constant="10" id="2NM-V4-5KM"/>
                     <constraint firstItem="01P-aT-D2t" firstAttribute="top" secondItem="Z2V-vu-hzC" secondAttribute="bottom" id="2XL-Sa-e6l"/>
-                    <constraint firstItem="SQ3-Of-96E" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="AG3-HF-JJq"/>
                     <constraint firstItem="xFv-tg-JQd" firstAttribute="leading" secondItem="01P-aT-D2t" secondAttribute="leading" id="CGX-JB-UvL"/>
                     <constraint firstItem="D3p-98-egH" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vad-Dq-L2R" secondAttribute="trailing" constant="3" id="Dr8-VT-uk4"/>
                     <constraint firstItem="3aT-Vt-yvW" firstAttribute="centerY" secondItem="3HQ-7R-2Ze" secondAttribute="centerY" id="FHW-Fx-A2i"/>
                     <constraint firstItem="3aT-Vt-yvW" firstAttribute="centerY" secondItem="joa-Mc-zth" secondAttribute="centerY" id="HgK-Iq-bpZ"/>
                     <constraint firstItem="FXz-5O-kE5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="HpN-ZB-icT"/>
                     <constraint firstItem="FXz-5O-kE5" firstAttribute="top" secondItem="xFv-tg-JQd" secondAttribute="bottom" constant="10" id="Kgw-cA-SMw"/>
+                    <constraint firstItem="YaW-Zb-bNz" firstAttribute="centerY" secondItem="4bG-rL-7b4" secondAttribute="centerY" constant="-5" id="LPq-sT-Cj9"/>
                     <constraint firstItem="3HQ-7R-2Ze" firstAttribute="leading" secondItem="joa-Mc-zth" secondAttribute="trailing" constant="10" id="Poe-4I-Ybj"/>
-                    <constraint firstItem="4bG-rL-7b4" firstAttribute="leading" secondItem="SQ3-Of-96E" secondAttribute="leading" constant="10" id="Tdo-Pn-7be"/>
+                    <constraint firstItem="4bG-rL-7b4" firstAttribute="leading" secondItem="SQ3-Of-96E" secondAttribute="leading" id="Tdo-Pn-7be"/>
                     <constraint firstItem="4bG-rL-7b4" firstAttribute="top" secondItem="SQ3-Of-96E" secondAttribute="bottom" constant="10" id="Ted-p4-wJj"/>
                     <constraint firstItem="01P-aT-D2t" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="U41-Bp-ORT"/>
+                    <constraint firstItem="SQ3-Of-96E" firstAttribute="leading" secondItem="FXz-5O-kE5" secondAttribute="leading" id="Uis-Sc-69k"/>
                     <constraint firstItem="BjW-j9-7Ec" firstAttribute="centerY" secondItem="Z2V-vu-hzC" secondAttribute="centerY" id="Uqf-QA-i4b"/>
                     <constraint firstAttribute="trailing" secondItem="D3p-98-egH" secondAttribute="trailing" constant="10" id="Xyc-tL-1fb"/>
                     <constraint firstItem="Z2V-vu-hzC" firstAttribute="leading" secondItem="01P-aT-D2t" secondAttribute="leading" id="YcV-Cj-0z4"/>
@@ -231,6 +249,7 @@
                     <constraint firstItem="vad-Dq-L2R" firstAttribute="centerY" secondItem="9RS-hj-6Sq" secondAttribute="centerY" id="dF3-bW-8k6"/>
                     <constraint firstItem="lZb-Ed-Mz5" firstAttribute="centerY" secondItem="4bG-rL-7b4" secondAttribute="centerY" id="eYZ-Am-u5t"/>
                     <constraint firstItem="9RS-hj-6Sq" firstAttribute="leading" secondItem="Z2V-vu-hzC" secondAttribute="leading" id="gi3-3j-nDz"/>
+                    <constraint firstItem="YaW-Zb-bNz" firstAttribute="trailing" secondItem="D3p-98-egH" secondAttribute="trailing" id="hPK-Um-Jmx"/>
                     <constraint firstAttribute="trailing" secondItem="FXz-5O-kE5" secondAttribute="trailing" constant="10" id="jD4-kc-uD9"/>
                     <constraint firstItem="joa-Mc-zth" firstAttribute="leading" secondItem="4bG-rL-7b4" secondAttribute="trailing" constant="10" id="jig-Bf-Hcw"/>
                     <constraint firstItem="Z2V-vu-hzC" firstAttribute="top" secondItem="9RS-hj-6Sq" secondAttribute="bottom" constant="11.5" id="mDw-KG-uYp"/>
@@ -249,6 +268,7 @@
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
             <connections>
+                <outlet property="cancelOrderButton" destination="YaW-Zb-bNz" id="Nv8-cY-1R7"/>
                 <outlet property="firstInnerTrackView" destination="rUS-eB-228" id="7Q5-LV-kes"/>
                 <outlet property="firstTrackView" destination="4bG-rL-7b4" id="T9Z-wW-Tu2"/>
                 <outlet property="fourthInnerTrackView" destination="Tqt-KM-026" id="0Wh-GR-bfJ"/>

@@ -9,6 +9,7 @@
 import UIKit
 protocol PastOrderTableCellDelegate {
     func expandButtonActionDelegate(with tag:Int, tableheight: CGFloat) -> ()
+    func cancelOrderButtonActionDelegate(tag:Int)
 }
 class PastOrderTableCell: UITableViewCell {
     
@@ -31,6 +32,7 @@ class PastOrderTableCell: UITableViewCell {
     @IBOutlet var firstTrackView: UIView!
     var delegate:PastOrderTableCellDelegate?
     @IBOutlet weak var itemsListTVHeightCnstrant: NSLayoutConstraint!
+    @IBOutlet weak var cancelOrderButton: UIButton!
     
     var dishes:[Dishes]?
     override func awakeFromNib() {
@@ -58,9 +60,17 @@ class PastOrderTableCell: UITableViewCell {
     func localisation(){
        orderNoTitle.text = "OrderNo".localiz()
        orderOnTiitle.text = "OrderOn".localiz()
+        cancelOrderButton.setTitle("CancelOrder".localiz(), for: UIControlState.normal)
     }
     
     @IBAction func expandButtonAction(_ sender: Any) {
+    }
+    
+    @IBAction func cancelOrderButtonAction(_ sender: UIButton) {
+        guard let _delegate = delegate else {
+            return
+        }
+        _delegate.cancelOrderButtonActionDelegate(tag: self.tag)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -104,7 +114,8 @@ class PastOrderTableCell: UITableViewCell {
     }
     
     func settingOrderPlacedLayer(){
-        
+        firstTrackView.layer.borderColor = Constant.Colors.CommonGreenColor.cgColor
+        firstInnerTrackView.backgroundColor = Constant.Colors.CommonGreenColor
     }
     
     func settingRejectedByKitchenLayer(){

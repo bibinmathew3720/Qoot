@@ -282,6 +282,39 @@ class CartManager: CLBaseService {
         let addressesResponseModel = AddCustomerOrderResponseModel.init(dict:dict)
         return addressesResponseModel
     }
+    
+    
+    //MARK: Cancel Customer Order Api
+    
+    func cancelOrderApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForCancelOrder(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict as Any)
+                    success(self.cancelOrderResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+    }
+    
+    func networkModelForCancelOrder(with body:String)->CLNetworkModel{
+        let cancelOrderModel = CLNetworkModel.init(url: BASE_URL+CancelCustomerOrder_URL, requestMethod_: "POST")
+        cancelOrderModel.requestBody = body
+        return cancelOrderModel
+    }
+    
+    func cancelOrderResponseModel(dict:[String : Any?]) -> Any? {
+        let cancelOrderResponseModel = AddCustomerOrderResponseModel.init(dict:dict)
+        return cancelOrderResponseModel
+    }
 }
 
 class CheckOutResponseModel : NSObject{

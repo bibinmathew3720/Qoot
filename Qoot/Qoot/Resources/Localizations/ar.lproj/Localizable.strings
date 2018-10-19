@@ -185,3 +185,13 @@
 "CancelOrder" = "إلغاء الطلب";
 "DOYOUWANTTOCANCELORDER" = "هل تريد إلغاء هذا الطلب";
 
+//Settings
+
+"ChangeProfilePicture" = "تغيير صورة الملف الشخصي";
+"MyAddresses" = "عنواني";
+"ChangePassword" = "تغيير كلمة السر";
+"OldPassword" = "كلمة المرور القديمة";
+"NewPassword" = "كلمة مرور جديدة";
+"ConfirmNewPassword" = "تأكيد كلمة المرور الجديدة";
+"UpdatePassword" = "حدّث كلمة المرور";
+

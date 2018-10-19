@@ -185,6 +185,16 @@
 "CancelOrder" = "Cancel Order";
 "DOYOUWANTTOCANCELORDER" = "Do you want to cancel this order";
 
+//Settings
+
+"ChangeProfilePicture" = "Change Profile Picture";
+"MyAddresses" = "My Addresses";
+"ChangePassword" = "Change Password";
+"OldPassword" = "Old Password";
+"NewPassword" = "New Password";
+"ConfirmNewPassword" = "Confirm New Password";
+"UpdatePassword" = "UPDATE PASSWORD";
+
 
 
 

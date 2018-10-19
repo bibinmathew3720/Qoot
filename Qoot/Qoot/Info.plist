@@ -55,5 +55,7 @@
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>App needs to access your location</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>$(PRODUCT_NAME) uses photos to update your profile picture</string>
 </dict>
 </plist>

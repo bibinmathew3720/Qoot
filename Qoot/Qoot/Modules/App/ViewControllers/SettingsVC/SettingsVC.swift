@@ -10,12 +10,20 @@ import UIKit
 import CoreData
 
 
-class SettingsVC: BaseViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
-
-    @IBOutlet weak var profileImageButton: UIButton!
-    @IBOutlet weak var changePassword: UILabel!
-    @IBOutlet weak var addressesTitle: UILabel!
+class SettingsVC: BaseViewController {
+    
     @IBOutlet weak var changeProfileTitle: UILabel!
+    @IBOutlet weak var myAddressesTitle: UILabel!
+    @IBOutlet weak var changePassword: UILabel!
+    @IBOutlet weak var oldPwdtF: UITextField!
+    @IBOutlet weak var newPwdTF: UITextField!
+    @IBOutlet weak var confirmPwdTF: UITextField!
+    @IBOutlet weak var updatePwdButton: UIButton!
+    @IBOutlet weak var profileImageView: UIImageView!
+    
+    var selProfImage:UIImage?
+    
+    
     override func initView() {
         initialisation()
         localization()
@@ -27,6 +35,13 @@ class SettingsVC: BaseViewController,UIImagePickerControllerDelegate,UINavigatio
     
     func localization(){
         self.title = "Settings".localiz()
+        changeProfileTitle.text = "ChangeProfilePicture".localiz()
+        myAddressesTitle.text = "MyAddresses".localiz()
+        changePassword.text = "ChangePassword".localiz()
+        oldPwdtF.placeholder = "OldPassword".localiz()
+        newPwdTF.placeholder = "NewPassword".localiz()
+        confirmPwdTF.placeholder = "ConfirmNewPassword".localiz()
+        updatePwdButton.setTitle("UpdatePassword".localiz(), for: UIControlState.normal)
        
     }
 
@@ -41,32 +56,41 @@ class SettingsVC: BaseViewController,UIImagePickerControllerDelegate,UINavigatio
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func myAddressesButtonAction(_ sender: UIButton) {
+    }
+    
+    @IBAction func updatePasswordButtonAction(_ sender: UIButton) {
+    }
+    
     // MARK: - Camera Actions
     
     @IBAction func imageClickAction(_ sender: Any) {
-//        CameraHandler().checkCameraPermissionFromViewController(viewController: self) { (isSucess, imagePicker) in
-//            imagePicker.delegate = self;
-//        }
+        addingImagePickerController(sourceType: .photoLibrary)
         
     }
     
-    // MARK: - PickerDelegates
+    func addingImagePickerController(sourceType:UIImagePickerControllerSourceType){
+        let imagePicker = UIImagePickerController()
+        imagePicker.allowsEditing = false
+        imagePicker.delegate = self
+        imagePicker.sourceType = sourceType;
+        present(imagePicker, animated: true, completion: nil)
+    }
+}
+
+extension SettingsVC:UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        let selectedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-       
-//        self.imageData = UIImagePNGRepresentation(selectedImage)!;
-//        profileImage.image = selectedImage
-        self.profileImageButton.setImage(selectedImage, for: .normal)
-        
-        // Dismiss the picker.
-        
-        dismiss(animated: true, completion: nil)
-        
+        dismiss(animated: true) {
+            if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+                self.selProfImage = pickedImage
+                self.profileImageView.image = pickedImage
+            }
+        }
     }
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
-        
     }
-
 }
+

@@ -254,7 +254,7 @@ class HomeVC: BaseViewController {
                 self.offersResponseModel = model
                 self.offersCollectionView.reloadData()
                 self.callingCityNameApi()
-                //self.getReadyNowDishesApi()
+                self.getReadyNowDishesApi()
             }
             
             

@@ -312,7 +312,7 @@ class CartManager: CLBaseService {
     }
     
     func cancelOrderResponseModel(dict:[String : Any?]) -> Any? {
-        let cancelOrderResponseModel = AddCustomerOrderResponseModel.init(dict:dict)
+        let cancelOrderResponseModel = CancelOrderResponseModel.init(dict:dict)
         return cancelOrderResponseModel
     }
 }
@@ -368,6 +368,19 @@ class AddCustomerOrderResponseModel : NSObject{
         }
         if let value = dict["orderid"] as? Int{
             order_Id = value
+        }
+    }
+}
+
+class CancelOrderResponseModel : NSObject{
+    var statusMessage:String = ""
+    var statusCode:Int = 0
+    init(dict:[String:Any?]) {
+        if let value = dict["Message"] as? String{
+            statusMessage = value
+        }
+        if let value = dict["Status"] as? Int{
+            statusCode = value
         }
     }
 }

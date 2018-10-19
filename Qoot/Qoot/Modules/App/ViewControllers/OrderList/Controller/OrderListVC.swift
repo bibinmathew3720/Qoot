@@ -48,6 +48,7 @@ class OrderListVC: BaseViewController,PastOrderTableCellDelegate {
         orderSegmentControl.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.black,NSAttributedStringKey.font: UIFont(name: Constant.Font.Bold, size: 17)!], for: .normal)
         
         addingLeftBarButton()
+        addingHomeBarButton()
     }
     
     func localization(){
@@ -97,12 +98,11 @@ class OrderListVC: BaseViewController,PastOrderTableCellDelegate {
     //Button Actions
     
     override func leftNavButtonAction() {
-        if let isMenu = self.isFromMenu{
-            self.dismiss(animated: true, completion: nil)
-        }
-        else{
-            self.navigationController?.popViewController(animated: true)
-        }
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    override func  homeButtonAction() {
+       self.dismiss(animated: true, completion: nil)
     }
     
     func getOrderListApi(){
@@ -148,18 +148,24 @@ class OrderListVC: BaseViewController,PastOrderTableCellDelegate {
     
     func cancelOrderApi(orderIndex:Int){
         MBProgressHUD.showAdded(to: self.view, animated: true)
-        let orderID = self.ongoingOrderArray[orderIndex].orderId
-        CartManager().cancelOrderApi(with:getCancelOrderRequestBody(orderId: orderID), success: {
+        let orderGroupID = self.ongoingOrderArray[orderIndex].orderGroup
+        CartManager().cancelOrderApi(with:getCancelOrderRequestBody(orderGroupId: orderGroupID), success: {
             (model) in
             MBProgressHUD.hide(for: self.view, animated: true)
-            if let model = model as? QootOrderHistoryResponseModel{
-                if let orderHistory = self.orderHistoryResponse{
-                    let filArray = orderHistory.orderArray.filter({($0.orderId == orderID)})
-                    let order = filArray.first
-                    if let odr = order{
-                        odr.Status = 3
+            if let model = model as? CancelOrderResponseModel{
+                if model.statusCode == 1{
+                    if let orderHistory = self.orderHistoryResponse{
+                        let filArray = orderHistory.orderArray.filter({($0.orderGroup == orderGroupID)})
+                        let order = filArray.first
+                        if let odr = order{
+                            odr.Status = 3
+                        }
+                        self.populateOrderList()
                     }
-                    self.populateOrderList()
+                    CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: model.statusMessage, parentController: self)
+                }
+                else{
+                   CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: model.statusMessage, parentController: self)
                 }
                 
             }
@@ -176,12 +182,10 @@ class OrderListVC: BaseViewController,PastOrderTableCellDelegate {
         }
     }
     
-    func getCancelOrderRequestBody(orderId:Int)->String{
+    func getCancelOrderRequestBody(orderGroupId:Int)->String{
         var dataString:String = ""
-        if let user = User.getUser() {
-            let customerId:String = "CustomerId=\(String(user.userId))"
-            dataString = dataString + customerId
-        }
+        let orderId:String = "OrderGroupId=\(orderGroupId)"
+        dataString = dataString + orderId
         return dataString
     }
 

@@ -17,6 +17,8 @@ class OrderConfirmVC: BaseViewController {
     override func initView() {
         initialisation()
         localization()
+        addingLeftBarButton()
+        self.leftButton?.setImage(UIImage.init(named: ""), for: UIControlState.normal)
         addingHomeBarButton()
     }
     
@@ -38,10 +40,17 @@ class OrderConfirmVC: BaseViewController {
     }
     
     @IBAction func gotoMyOrdersButtonAction(_ sender: UIButton) {
+        let orderListVC:OrderListVC = OrderListVC(nibName: "OrderListVC", bundle: nil)
+        orderListVC.isFromMenu = false
+        self.navigationController?.pushViewController(orderListVC, animated: true)
     }
     
     override func homeButtonAction() {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    override func leftNavButtonAction() {
+        
     }
     
     /*

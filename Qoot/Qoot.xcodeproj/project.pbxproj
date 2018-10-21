@@ -91,6 +91,8 @@
 		D05D506D2118635800645956 /* SearchDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05D506B2118635800645956 /* SearchDetailVC.xib */; };
 		D05D50712118734E00645956 /* MenuTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05D506F2118734E00645956 /* MenuTVC.swift */; };
 		D05D50722118734E00645956 /* MenuTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05D50702118734E00645956 /* MenuTVC.xib */; };
+		D09EF654217B80B40069EE85 /* AddressListingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09EF652217B80B40069EE85 /* AddressListingVC.swift */; };
+		D09EF655217B80B40069EE85 /* AddressListingVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D09EF653217B80B40069EE85 /* AddressListingVC.xib */; };
 		D0C865622113477800383A48 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C865612113477800383A48 /* BaseViewController.swift */; };
 		D0C865642113608400383A48 /* DashboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C865632113608400383A48 /* DashboardVC.swift */; };
 		D0C865672113739500383A48 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C865662113739500383A48 /* RegisterVC.swift */; };
@@ -197,6 +199,8 @@
 		D05D506B2118635800645956 /* SearchDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchDetailVC.xib; sourceTree = "<group>"; };
 		D05D506F2118734E00645956 /* MenuTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTVC.swift; sourceTree = "<group>"; };
 		D05D50702118734E00645956 /* MenuTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuTVC.xib; sourceTree = "<group>"; };
+		D09EF652217B80B40069EE85 /* AddressListingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressListingVC.swift; sourceTree = "<group>"; };
+		D09EF653217B80B40069EE85 /* AddressListingVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressListingVC.xib; sourceTree = "<group>"; };
 		D0C865612113477800383A48 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		D0C865632113608400383A48 /* DashboardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardVC.swift; sourceTree = "<group>"; };
 		D0C86565211360C400383A48 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -586,6 +590,7 @@
 		D01888B1211539CA00B01946 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D09EF651217B80980069EE85 /* AddressListingVC */,
 				D0F830F1215BA91C0039485F /* SettingsVC */,
 				D01F78FC21445060004C375D /* OrderConfirmVC */,
 				D01AF59A21243F0000DCEDEC /* LanguageVC */,
@@ -755,6 +760,15 @@
 			path = MenuTVC;
 			sourceTree = "<group>";
 		};
+		D09EF651217B80980069EE85 /* AddressListingVC */ = {
+			isa = PBXGroup;
+			children = (
+				D09EF652217B80B40069EE85 /* AddressListingVC.swift */,
+				D09EF653217B80B40069EE85 /* AddressListingVC.xib */,
+			);
+			path = AddressListingVC;
+			sourceTree = "<group>";
+		};
 		D0C8655F2113470C00383A48 /* UserManagement */ = {
 			isa = PBXGroup;
 			children = (
@@ -912,6 +926,7 @@
 				D01AF59E21243F1600DCEDEC /* LanguageVC.xib in Resources */,
 				D05D50632118025300645956 /* SearchResultsTVC.xib in Resources */,
 				BCB66BCE211D4545002FB1FF /* ReviewsHeaderView.xib in Resources */,
+				D09EF655217B80B40069EE85 /* AddressListingVC.xib in Resources */,
 				BC388DF22119928C002CC86A /* AddressTableCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -966,6 +981,8 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Qoot/Pods-Qoot-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/GrowingTextView/GrowingTextView.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
@@ -974,6 +991,8 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GrowingTextView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
@@ -1037,6 +1056,7 @@
 				D00FAD172112EE5D00C8C176 /* CartManager.swift in Sources */,
 				BC835EF7212039FB00A08247 /* LoginViewController.swift in Sources */,
 				D00FACD22112DF1200C8C176 /* AppDelegate.swift in Sources */,
+				D09EF654217B80B40069EE85 /* AddressListingVC.swift in Sources */,
 				D05D50712118734E00645956 /* MenuTVC.swift in Sources */,
 				D0C865672113739500383A48 /* RegisterVC.swift in Sources */,
 				D05D506C2118635800645956 /* SearchDetailVC.swift in Sources */,

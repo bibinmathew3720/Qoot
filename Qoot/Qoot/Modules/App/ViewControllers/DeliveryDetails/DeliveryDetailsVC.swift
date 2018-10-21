@@ -523,6 +523,7 @@ extension DeliveryDetailsVC : UITableViewDelegate,UITableViewDataSource {
                 }
                 addressCell.setAddress(address:address)
             }
+            addressCell.editButton.isHidden = true
             addressCell.tag = indexPath.row
             addressCell.delegate = self
             cell = addressCell
@@ -576,6 +577,10 @@ extension DeliveryDetailsVC:CLLocationManagerDelegate{
 }
 
 extension DeliveryDetailsVC:AddressCellDelegate{
+    func editButtonDelegateAction(with tag: Int) {
+    
+    }
+    
     func closeButtonDelegateAction(with tag: Int) {
         callingRemoveAddressApi(tag: tag)
     }

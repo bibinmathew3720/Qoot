@@ -12,6 +12,8 @@ target 'Qoot' do
   pod 'GooglePlaces'
   pod 'GooglePlacePicker'
   pod 'GoogleMaps'
+  pod 'Alamofire', '~> 4.7'
+  pod 'AlamofireImage'
   # Pods for Qoot
 
 end

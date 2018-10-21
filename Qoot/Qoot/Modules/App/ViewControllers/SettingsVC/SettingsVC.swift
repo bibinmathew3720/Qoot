@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Alamofire
 
 
 class SettingsVC: BaseViewController {
@@ -57,6 +58,8 @@ class SettingsVC: BaseViewController {
     }
     
     @IBAction func myAddressesButtonAction(_ sender: UIButton) {
+        let addressListingVC = AddressListingVC.init(nibName: "AddressListingVC", bundle: nil)
+        self.navigationController?.pushViewController(addressListingVC, animated: true)
     }
     
     @IBAction func updatePasswordButtonAction(_ sender: UIButton) {
@@ -159,6 +162,7 @@ extension SettingsVC:UIImagePickerControllerDelegate,UINavigationControllerDeleg
             if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
                 self.selProfImage = pickedImage
                 self.profileImageView.image = pickedImage
+                self.callingUploadApi(image: pickedImage)
             }
         }
     }
@@ -166,5 +170,65 @@ extension SettingsVC:UIImagePickerControllerDelegate,UINavigationControllerDeleg
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
+    
+    
+    func callingUploadApi(image:UIImage){
+        
+        var dict:[String:String] = [String:String]()
+        dict.updateValue(Constant.ApiKey, forKey: "apikey")
+        dict.updateValue(CCUtility.getCurrentLanguage(), forKey: "lang")
+        if let user = User.getUser(){
+            dict.updateValue("\(user.userId)", forKey: "CustomerId")
+        }
+        let imageData: Data = UIImagePNGRepresentation(image)!
+        requestWith(endUrl: "https://qoot.online/ksa/test/Ios/Customer/UploadCustomerPhoto", imageData: imageData, parameters: dict, onCompletion: { (success) in
+            print("Success")
+        }) { (error) in
+            print("Failure")
+        }
+    }
+    
+    
+    func requestWith(endUrl: String, imageData: Data?, parameters: [String : Any], onCompletion: ((Bool) -> Void)? = nil, onError: ((Error?) -> Void)? = nil){
+        
+        let url = "http://google.com" /* your API url */
+        
+        let headers: HTTPHeaders = [
+            /* "Authorization": "your_access_token",  in case you need authorization header */
+            "Content-type": "multipart/form-data"
+        ]
+        
+        Alamofire.upload(multipartFormData: { (multipartFormData) in
+            for (key, value) in parameters {
+                multipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key as String)
+            }
+            
+            if let data = imageData{
+                multipartFormData.append(data, withName: "image.png", fileName: "file ", mimeType: "image/png")
+            }
+            
+        }, usingThreshold: UInt64.init(), to: url, method: .post, headers: headers) { (result) in
+            switch result{
+            case .success(let upload, _, _):
+                upload.responseJSON { response in
+                    
+                    print("Response:\(response)")
+//                    let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(response)
+                    
+                    print("Succesfully uploaded")
+                    if let err = response.error{
+                        print(err.localizedDescription)
+                        onError?(err)
+                        return
+                    }
+                    onCompletion?(true)
+                }
+            case .failure(let error):
+                print("Error in upload: \(error.localizedDescription)")
+                onError?(error)
+            }
+        }
+    }
+    
 }
 

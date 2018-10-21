@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class CLNetworkManager: NSObject {
     func initateWebRequest(_ netWorkModel : CLNetworkModel, success:@escaping (_ result: Data)->(), failiure:@escaping (_ error:ErrorType)->()){
@@ -131,4 +132,6 @@ class CLNetworkManager: NSObject {
             return .noNetwork
         }
     }
+    
+    
 }

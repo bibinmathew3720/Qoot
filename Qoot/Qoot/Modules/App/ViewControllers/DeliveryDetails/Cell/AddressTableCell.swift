@@ -10,9 +10,11 @@ import UIKit
 
 protocol AddressCellDelegate {
     func closeButtonDelegateAction(with tag:Int) -> ()
+    func editButtonDelegateAction(with tag:Int) -> ()
 }
 
 class AddressTableCell: UITableViewCell {
+    @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var radioButton: UIButton!
     @IBOutlet weak var addressNameLabel: UILabel!
     @IBOutlet weak var addressSubNameLabel: UILabel!
@@ -42,4 +44,10 @@ class AddressTableCell: UITableViewCell {
         _delegate.closeButtonDelegateAction(with: self.tag)
     }
     
+    @IBAction func editButtonAction(_ sender: UIButton) {
+        guard let _delegate = delegate else {
+            return
+        }
+        _delegate.editButtonDelegateAction(with: self.tag)
+    }
 }

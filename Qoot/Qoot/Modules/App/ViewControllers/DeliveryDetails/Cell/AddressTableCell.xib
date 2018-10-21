@@ -55,7 +55,19 @@
                         </constraints>
                         <state key="normal" image="cartCloseIcon"/>
                         <connections>
-                            <action selector="closeButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="h61-Gx-dB1"/>
+                            <action selector="editButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="qgJ-2b-LU8"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bCw-Et-Anc">
+                        <rect key="frame" x="380" y="10" width="30" height="30"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="raw-Oj-39q"/>
+                            <constraint firstAttribute="width" constant="30" id="uCc-ew-0oQ"/>
+                        </constraints>
+                        <state key="normal" image="cartCloseIcon"/>
+                        <connections>
+                            <action selector="closeButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="7HU-4L-1HM"/>
                         </connections>
                     </button>
                 </subviews>
@@ -64,16 +76,22 @@
                     <constraint firstAttribute="trailing" secondItem="nMd-Ta-vzK" secondAttribute="trailing" constant="10" id="47M-fU-J7p"/>
                     <constraint firstItem="xWG-AB-W3O" firstAttribute="leading" secondItem="eve-Nm-2e9" secondAttribute="leading" id="4I9-Dd-3zN"/>
                     <constraint firstItem="nMd-Ta-vzK" firstAttribute="centerY" secondItem="1WD-PY-UIs" secondAttribute="centerY" id="4mH-jn-0yS"/>
+                    <constraint firstItem="nMd-Ta-vzK" firstAttribute="leading" secondItem="bCw-Et-Anc" secondAttribute="trailing" constant="10" id="Prz-rO-x7A"/>
                     <constraint firstItem="xWG-AB-W3O" firstAttribute="top" secondItem="eve-Nm-2e9" secondAttribute="bottom" id="QSy-q7-sAt"/>
+                    <constraint firstItem="nMd-Ta-vzK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eve-Nm-2e9" secondAttribute="trailing" constant="5" id="Qve-Ut-454"/>
+                    <constraint firstItem="bCw-Et-Anc" firstAttribute="top" secondItem="nMd-Ta-vzK" secondAttribute="top" id="Tv4-Ps-DQS"/>
                     <constraint firstItem="eve-Nm-2e9" firstAttribute="top" secondItem="1WD-PY-UIs" secondAttribute="bottom" constant="12" id="YVz-CJ-fgA"/>
                     <constraint firstItem="1WD-PY-UIs" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="bRj-9L-rqy"/>
                     <constraint firstItem="eve-Nm-2e9" firstAttribute="leading" secondItem="1WD-PY-UIs" secondAttribute="trailing" constant="12" id="ptS-gi-NSG"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xWG-AB-W3O" secondAttribute="trailing" constant="5" id="qfd-JH-RQf"/>
+                    <constraint firstItem="bCw-Et-Anc" firstAttribute="bottom" secondItem="nMd-Ta-vzK" secondAttribute="bottom" id="ujy-jJ-YzK"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="addressNameLabel" destination="eve-Nm-2e9" id="ZdP-MV-UMG"/>
                 <outlet property="addressSubNameLabel" destination="xWG-AB-W3O" id="Z4f-s1-Lr9"/>
+                <outlet property="editButton" destination="nMd-Ta-vzK" id="SD1-W7-S4r"/>
                 <outlet property="radioButton" destination="1WD-PY-UIs" id="Pmz-pq-BKj"/>
             </connections>
             <point key="canvasLocation" x="28" y="2.5"/>

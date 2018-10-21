@@ -34,6 +34,7 @@ let GetAllAddresses_URL = "Ios/Customer/ViewCustomerdeliveryAddress"
 let AddCustomerOrder_URL = "Ios/Customer/AddCustomerOrder"
 let AddCustomerAddress_URL = "Ios/Customer/AddCustomerdeliveryAddress"
 let RemoveCustomerAddress_URL = "Ios/Customer/DeleteCustomerAddress"
+let EditCustomerAddress_URL = "Ios/Customer/UpdateCustomerdeliveryAddress"
 let CustomerOrderHistory_URL = "Ios/Customer/ViewCustomerOrderHistory"
 let CancelCustomerOrder_URL = "Ios/Customer/CancelOrder"
 

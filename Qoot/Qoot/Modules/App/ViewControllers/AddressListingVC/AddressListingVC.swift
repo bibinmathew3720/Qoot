@@ -41,6 +41,7 @@ class AddressListingVC: BaseViewController, GMSMapViewDelegate {
     var camera: GMSCameraPosition = GMSCameraPosition.camera(withLatitude: 10.0068361, longitude: 76.3655878, zoom: 17.5)
     var addAddressResponseModel:AddAddressResponseModel?
     var isEditingMode = false
+    var selIndex = -1
 
     override func initView(){
         initialisation()
@@ -73,7 +74,7 @@ class AddressListingVC: BaseViewController, GMSMapViewDelegate {
     @IBAction func addButtonAction(_ sender: UIButton) {
         if isValidAddressDetails(){
             if isEditing{
-                
+              callingEditAddressApi(tag: self.selIndex)
             }
             else{
                 callingAddAddressApi()
@@ -398,6 +399,7 @@ extension AddressListingVC:AddressCellDelegate{
         addAddressButtonHeightConstraint.constant = 0
         mapViewHeight.constant = 220
         mapBackView.isHidden = false
+        self.selIndex = tag
     }
     
     func closeButtonDelegateAction(with tag: Int) {
@@ -438,6 +440,49 @@ extension AddressListingVC:AddressCellDelegate{
         }
     }
     func getRemoveAddressRequestBody(index:Int)->String{
+        var dataString:String = ""
+        if let addressList = self.addressResponseModel{
+            let address = addressList.addresses[index]
+            let addressIdString:String = "AddressId=\(address.addressId)"
+            dataString = dataString + addressIdString
+        }
+        return dataString
+    }
+    
+    //MARK: Edit Address Api
+    
+    func  callingEditAddressApi(tag:Int){
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        CartManager().callingEditCustomerAddressApi(with: getEditAddressRequestBody(index: tag), success: {
+            (model) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if let model = model as? RemoveAddressResponseModel{
+                if model.statusCode == 1 {
+                    if let addressList = self.addressResponseModel{
+                        let address = addressList.addresses[tag]
+                        if let selAdd = self.selAddress{
+                            if selAdd.isEqual(address){
+                                self.selAddress = nil
+                            }
+                        }
+                        addressList.addresses.remove(at: tag)
+                        self.addressTable.reloadData()
+                    }
+                }
+            }
+        }) { (ErrorType) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if(ErrorType == .noNetwork){
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+            }
+            else{
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+            }
+            
+            print(ErrorType)
+        }
+    }
+    func getEditAddressRequestBody(index:Int)->String{
         var dataString:String = ""
         if let addressList = self.addressResponseModel{
             let address = addressList.addresses[index]

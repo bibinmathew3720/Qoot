@@ -315,6 +315,40 @@ class CartManager: CLBaseService {
         let cancelOrderResponseModel = CancelOrderResponseModel.init(dict:dict)
         return cancelOrderResponseModel
     }
+    
+    //MARK: Edit Customer Addresse Api
+    
+    func callingEditCustomerAddressApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForEditCustomerAddress(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict)
+                    success(self.editAddressResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForEditCustomerAddress(with body:String)->CLNetworkModel{
+        let editAddressRequestModel = CLNetworkModel.init(url: BASE_URL+EditCustomerAddress_URL, requestMethod_: "POST")
+        editAddressRequestModel.requestBody = body
+        return editAddressRequestModel
+    }
+    
+    func editAddressResponseModel(dict:[String : Any?]) -> Any? {
+        let editAddressesResponseModel = RemoveAddressResponseModel.init(dict:dict)
+        return editAddressesResponseModel
+    }
 }
 
 class CheckOutResponseModel : NSObject{

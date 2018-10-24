@@ -35,6 +35,7 @@ class SearchDetailVC: BaseViewController {
     
     var kitchenResponse:ViewKitchens?
      var viewKitchensInfo:ViewKitchensInfo?
+    var selectedSection: Int = -1
     
     override func initView() {
         super.initView()
@@ -60,6 +61,8 @@ class SearchDetailVC: BaseViewController {
         customView.addSubview(infoView)
         
         customView.isHidden = true
+        let headerNib = UINib.init(nibName: "MenuSectionHeaderView", bundle: Bundle.main)
+        menuTableView.register(headerNib, forHeaderFooterViewReuseIdentifier: "MenuSectionHeaderView")
         buttonBar.translatesAutoresizingMaskIntoConstraints = false
         buttonBar.backgroundColor = UIColor(red:0.64, green:0.10, blue:0.36, alpha:1.0)
         view.addSubview(buttonBar)
@@ -133,10 +136,12 @@ class SearchDetailVC: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    
     @IBAction func segmentControlAction(_ sender: Any) {
-        print(self.segmentControl.selectedSegmentIndex)
+        
         UIView.animate(withDuration: 0.3) {
-            print(((self.segmentControl.frame.width / CGFloat(self.segmentControl.numberOfSegments)) * CGFloat(self.segmentControl.selectedSegmentIndex)))
+
             self.buttonBar.frame.origin.x = ((self.segmentControl.frame.width / CGFloat(self.segmentControl.numberOfSegments)) * CGFloat(self.segmentControl.selectedSegmentIndex))
         }
         switch self.segmentControl.selectedSegmentIndex {
@@ -156,18 +161,31 @@ class SearchDetailVC: BaseViewController {
         default:
             print("default")
         }
+       print(self.segmentControl.selectedSegmentIndex)
     }
+    
 }
 
-extension SearchDetailVC : UITableViewDelegate,UITableViewDataSource {
+extension SearchDetailVC : UITableViewDelegate,UITableViewDataSource,MenuSectionHeaderViewDelegate{
+    func arrowButtonDelegateAction(with tag: Int) {
+        if selectedSection != tag {
+            selectedSection = tag
+            menuTableView.reloadData()
+        }
+    }
+    
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 10
+        return 5
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var rowCount :Int = 1
-        return rowCount
+        if section == selectedSection{
+            return 5
+        }
+        else{
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -177,8 +195,8 @@ extension SearchDetailVC : UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       
-        
+       self.selectedSection = indexPath.section
+        menuTableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -187,18 +205,17 @@ extension SearchDetailVC : UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = Bundle.main.loadNibNamed("MenuHeaderView", owner: self, options: nil)?.first as! MenuHeaderView
-        //headerView.setterMethod(orderDetails: historyDetailsModel[section])
-        //headerView.delegate = self
-//        if selectedIndex == section{
-//            headerView.viewButton.setTitle("close".localiz(), for: .normal)
-//        }
+        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "MenuSectionHeaderView") as! MenuSectionHeaderView
         headerView.tag = section
+        headerView.delegate = self
+
         return headerView
     }
     
+    
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 30
+        return 50
     }
     
     func getKitchenDetailsApi(){
@@ -209,9 +226,12 @@ extension SearchDetailVC : UITableViewDelegate,UITableViewDataSource {
             if let model = model as? ViewKitchens{
                 self.kitchenResponse = model
                 self.populateKitchenDetails()
+               
             }
+        
         }) { (ErrorType) in
             MBProgressHUD.hide(for: self.view, animated: true)
+            
             if(ErrorType == .noNetwork){
                 CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
             }
@@ -233,7 +253,7 @@ extension SearchDetailVC : UITableViewDelegate,UITableViewDataSource {
     }
    
     func getKitchenInfoApi(){
-        MBProgressHUD.showAdded(to: self.view, animated: true)
+        //MBProgressHUD.showAdded(to: self.view, animated: true)
         UserManager().callingGetKitchenInfoApi(with:getKitchenDetailsRequestBody(), success: {
             (model) in
             MBProgressHUD.hide(for: self.view, animated: true)
@@ -243,8 +263,10 @@ extension SearchDetailVC : UITableViewDelegate,UITableViewDataSource {
                     self.infoView.setKitchenInfo(kitchenInfo: kitchenInfo)
                 }
             }
+            
         }) { (ErrorType) in
             MBProgressHUD.hide(for: self.view, animated: true)
+            
             if(ErrorType == .noNetwork){
                 CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
             }
@@ -256,7 +278,7 @@ extension SearchDetailVC : UITableViewDelegate,UITableViewDataSource {
         }
     }
     func getKitchenAdminRatingApi(){
-        MBProgressHUD.showAdded(to: self.view, animated: true)
+        //MBProgressHUD.showAdded(to: self.view, animated: true)
         UserManager().callingGetKitchenAdminRatingApi(with:getKitchenDetailsRequestBody(), success: {
             (model) in
             MBProgressHUD.hide(for: self.view, animated: true)
@@ -264,8 +286,10 @@ extension SearchDetailVC : UITableViewDelegate,UITableViewDataSource {
                 self.reviewsView.setAdminRating(adminRating:model)
                 self.getKitchenCustomerRatingApi()
             }
+            
         }) { (ErrorType) in
             MBProgressHUD.hide(for: self.view, animated: true)
+            
             if(ErrorType == .noNetwork){
                 CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
             }
@@ -278,7 +302,7 @@ extension SearchDetailVC : UITableViewDelegate,UITableViewDataSource {
     }
     
     func getKitchenCustomerRatingApi(){
-        MBProgressHUD.showAdded(to: self.view, animated: true)
+        //MBProgressHUD.showAdded(to: self.view, animated: true)
         UserManager().callingGetKitchenCustomerRatingApi(with:getKitchenDetailsRequestBody(), success: {
             (model) in
             MBProgressHUD.hide(for: self.view, animated: true)

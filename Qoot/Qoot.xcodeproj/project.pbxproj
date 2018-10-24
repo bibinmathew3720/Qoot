@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6BBE3BB0AA2865610FEB4727 /* Pods_Qoot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0241056357D52B915276A9CD /* Pods_Qoot.framework */; };
+		BB7A7934217FA826000A46F1 /* MenuSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7A7933217FA826000A46F1 /* MenuSectionHeaderView.swift */; };
+		BBAA1C6D21801E7D00F2F9C6 /* MenuSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBAA1C6C21801E7D00F2F9C6 /* MenuSectionHeaderView.xib */; };
 		BC388DE621196775002CC86A /* ItemDetailTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC388DE421196775002CC86A /* ItemDetailTableCell.swift */; };
 		BC388DE721196775002CC86A /* ItemDetailTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC388DE521196775002CC86A /* ItemDetailTableCell.xib */; };
 		BC388DEC21198BA1002CC86A /* DeliveryDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC388DEA21198BA1002CC86A /* DeliveryDetailsVC.swift */; };
@@ -109,6 +111,8 @@
 		0241056357D52B915276A9CD /* Pods_Qoot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Qoot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D207D2219F2B6C42392CCB5 /* Pods-Qoot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qoot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Qoot/Pods-Qoot.debug.xcconfig"; sourceTree = "<group>"; };
 		8442CA29F0944557CAEC8358 /* Pods-Qoot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qoot.release.xcconfig"; path = "Pods/Target Support Files/Pods-Qoot/Pods-Qoot.release.xcconfig"; sourceTree = "<group>"; };
+		BB7A7933217FA826000A46F1 /* MenuSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSectionHeaderView.swift; sourceTree = "<group>"; };
+		BBAA1C6C21801E7D00F2F9C6 /* MenuSectionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuSectionHeaderView.xib; sourceTree = "<group>"; };
 		BC388DE421196775002CC86A /* ItemDetailTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailTableCell.swift; sourceTree = "<group>"; };
 		BC388DE521196775002CC86A /* ItemDetailTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemDetailTableCell.xib; sourceTree = "<group>"; };
 		BC388DEA21198BA1002CC86A /* DeliveryDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryDetailsVC.swift; sourceTree = "<group>"; };
@@ -233,6 +237,15 @@
 				8442CA29F0944557CAEC8358 /* Pods-Qoot.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		BB7A7932217FA7C4000A46F1 /* SectionHeader */ = {
+			isa = PBXGroup;
+			children = (
+				BBAA1C6C21801E7D00F2F9C6 /* MenuSectionHeaderView.xib */,
+				BB7A7933217FA826000A46F1 /* MenuSectionHeaderView.swift */,
+			);
+			path = SectionHeader;
 			sourceTree = "<group>";
 		};
 		BC388DE321196757002CC86A /* ItemDetailCell */ = {
@@ -740,6 +753,7 @@
 		D05D50692118635800645956 /* SearchDetailVC */ = {
 			isa = PBXGroup;
 			children = (
+				BB7A7932217FA7C4000A46F1 /* SectionHeader */,
 				BCB66BD3211D7C30002FB1FF /* ReviewsCell */,
 				BCB66BC0211D4545002FB1FF /* InfoHeaderView */,
 				BCB66BC6211D4545002FB1FF /* ReviewsHeaderView */,
@@ -925,6 +939,7 @@
 				BC388DE721196775002CC86A /* ItemDetailTableCell.xib in Resources */,
 				D01AF59E21243F1600DCEDEC /* LanguageVC.xib in Resources */,
 				D05D50632118025300645956 /* SearchResultsTVC.xib in Resources */,
+				BBAA1C6D21801E7D00F2F9C6 /* MenuSectionHeaderView.xib in Resources */,
 				BCB66BCE211D4545002FB1FF /* ReviewsHeaderView.xib in Resources */,
 				D09EF655217B80B40069EE85 /* AddressListingVC.xib in Resources */,
 				BC388DF22119928C002CC86A /* AddressTableCell.xib in Resources */,
@@ -1035,6 +1050,7 @@
 				BCB66BD6211D7D3F002FB1FF /* ReviewsTableCell.swift in Sources */,
 				BC9C16A2211948D500ED49A4 /* PastOrderTableCell.swift in Sources */,
 				D00FAD2A2112EE5D00C8C176 /* CCUtility.swift in Sources */,
+				BB7A7934217FA826000A46F1 /* MenuSectionHeaderView.swift in Sources */,
 				D00FAD1E2112EE5D00C8C176 /* CLNetworkModel.swift in Sources */,
 				D00FAD262112EE5D00C8C176 /* UIViewExtensions.swift in Sources */,
 				BCB66BCD211D4545002FB1FF /* ReviewsHeaderView.swift in Sources */,

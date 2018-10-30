@@ -31,6 +31,9 @@ class SettingsVC: BaseViewController {
     }
     
     func initialisation(){
+        if let photo = User.getUser()?.customerPhoto{
+            profileImageView.loadImageUsingCache(withUrl: photo)
+        }
         addingLeftBarButton()
     }
     

@@ -62,6 +62,9 @@
                             <constraint firstAttribute="width" constant="46" id="lpV-QW-5KW"/>
                         </constraints>
                         <state key="normal" title="+"/>
+                        <connections>
+                            <action selector="pluasButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="4dl-v3-P6d"/>
+                        </connections>
                     </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sDo-gI-F36">
                         <rect key="frame" x="0.0" y="88" width="372" height="0.5"/>
@@ -76,6 +79,7 @@
                     <constraint firstItem="sDo-gI-F36" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="MUN-3c-v8N"/>
                     <constraint firstItem="qAd-vs-n0C" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7wf-eG-6J3" secondAttribute="trailing" constant="5" id="NCW-xn-8jk"/>
                     <constraint firstItem="JqD-tJ-pwI" firstAttribute="leading" secondItem="7wf-eG-6J3" secondAttribute="leading" id="SIy-aP-1Ab"/>
+                    <constraint firstItem="qAd-vs-n0C" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="JqD-tJ-pwI" secondAttribute="trailing" constant="5" id="Tgl-pA-SDl"/>
                     <constraint firstItem="qAd-vs-n0C" firstAttribute="centerY" secondItem="7wf-eG-6J3" secondAttribute="centerY" id="WLQ-OE-8Fu"/>
                     <constraint firstItem="aYu-x0-sHH" firstAttribute="centerX" secondItem="qAd-vs-n0C" secondAttribute="centerX" id="Wtn-cG-Hqo"/>
                     <constraint firstItem="aYu-x0-sHH" firstAttribute="top" secondItem="qAd-vs-n0C" secondAttribute="bottom" constant="5" id="XfG-Dh-XlS"/>

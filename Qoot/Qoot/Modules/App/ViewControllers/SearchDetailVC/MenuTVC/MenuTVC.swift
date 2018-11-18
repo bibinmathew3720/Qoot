@@ -8,11 +8,17 @@
 
 import UIKit
 
+protocol MenuTVCDelegate {
+    func plusButtonActionDelegate(with tag:Int) -> ()
+}
+
 class MenuTVC: UITableViewCell {
     @IBOutlet weak var dishImageView: UIImageView!
     @IBOutlet weak var dishNameLabel: UILabel!
     @IBOutlet weak var dishDesLabel: UILabel!
     @IBOutlet weak var priceLbael: UILabel!
+    
+    var delegate:MenuTVCDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -31,4 +37,10 @@ class MenuTVC: UITableViewCell {
         dishImageView.sd_setImage(with: URL(string: dish.DishImage), placeholderImage: UIImage(named: Constant.ImageNames.placeholderImage))
     }
     
+    @IBAction func pluasButtonAction(_ sender: UIButton) {
+        guard let _delegate = delegate else {
+            return
+        }
+        _delegate.plusButtonActionDelegate(with: self.tag)
+    }
 }

@@ -282,6 +282,7 @@ extension SearchDetailVC : UITableViewDelegate,UITableViewDataSource,MenuSection
         let cell = tableView.dequeueReusableCell(withIdentifier: "menuTVC", for: indexPath) as!MenuTVC
         cell.setDishDetails(dish:self.selDishes[indexPath.row])
         cell.tag = indexPath.row
+        cell.delegate = self
         return cell
     }
     
@@ -416,4 +417,13 @@ extension SearchDetailVC : UITableViewDelegate,UITableViewDataSource,MenuSection
         }
     }
 
+}
+
+extension SearchDetailVC: MenuTVCDelegate {
+    func plusButtonActionDelegate(with tag: Int) {
+        let dish = self.selDishes[tag]
+        Cart.addProductToCart(dish: dish)
+        CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: "ItemSuccessfullyAdded".localiz(), parentController: self)
+        updateCartLabel()
+    }
 }

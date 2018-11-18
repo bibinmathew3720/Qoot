@@ -9,6 +9,7 @@
 import UIKit
 protocol MenuSectionHeaderViewDelegate {
     func arrowButtonDelegateAction(with tag:Int) -> ()
+    func headerButtonActionDelegate(with tag:Int) -> ()
 }
 class MenuSectionHeaderView: UITableViewHeaderFooterView {
     @IBOutlet weak var title: UILabel!
@@ -20,10 +21,20 @@ class MenuSectionHeaderView: UITableViewHeaderFooterView {
         
     }
 
+    @IBAction func hearButtonAction(_ sender: UIButton) {
+        guard let _delegate = delegate else {
+            return
+        }
+        _delegate.headerButtonActionDelegate(with: self.tag)
+    }
     @IBAction func arrowButtonAction(_ sender: Any) {
         guard let _delegate = delegate else {
             return
         }
         _delegate.arrowButtonDelegateAction(with: self.tag)
+    }
+    
+    func setCategory(category:KitchenCategories){
+        title.text = category.categoryName
     }
 }

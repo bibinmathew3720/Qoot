@@ -248,6 +248,74 @@ class UserManager: CLBaseService {
         return kitchensResponseModel
     }
     
+    //MARK : Kitchens Categories Api
+    
+    func callingKitchenCategoriesApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForKitchenCategories(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveArrayResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict)
+                    success(self.getKitchenCategoriesResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForKitchenCategories(with body:String)->CLNetworkModel{
+        let registerRequestModel = CLNetworkModel.init(url: BASE_URL+ViewKitchenFoodCategories, requestMethod_: "POST")
+        registerRequestModel.requestBody = body
+        return registerRequestModel
+    }
+    
+    func getKitchenCategoriesResponseModel(dict:NSArray) -> Any? {
+        let kitchenCategoriesResponseModel = KitchenCategoriesResponseModel.init(arr:dict)
+        return kitchenCategoriesResponseModel
+    }
+    
+    //MARK : Kitchens Menus Api
+    
+    func callingGetKitchenMenusApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForKitchenMenus(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveArrayResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict)
+                    success(self.getKitchenMenusResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForKitchenMenus(with body:String)->CLNetworkModel{
+        let registerRequestModel = CLNetworkModel.init(url: BASE_URL+GetKitchenMenus, requestMethod_: "POST")
+        registerRequestModel.requestBody = body
+        return registerRequestModel
+    }
+    
+    func getKitchenMenusResponseModel(dict:NSArray) -> Any? {
+        let kitchenMenusModel = KitchenMenusResponseModel.init(arr:dict)
+        return kitchenMenusModel
+    }
+    
   
     //MARK : Log In Api
     
@@ -1088,6 +1156,33 @@ class KitchensResponseModel : NSObject{
     }
 }
 
+class KitchenCategoriesResponseModel : NSObject{
+    var kitchenCatgories = [KitchenCategories]()
+    init(arr:(NSArray)) {
+        for item in arr{
+            if let it = item as? [String : Any?]{
+                kitchenCatgories.append(KitchenCategories.init(dict: it ))
+            }
+        }
+    }
+}
+
+class KitchenCategories : NSObject{
+    var categoryId:Int = 0
+    var categoryName:String = ""
+    init(dict:[String:Any?]) {
+        if let value = dict["category_id"] as? String{
+            if let catID = Int(value){
+                categoryId = catID
+            }
+        }
+        if let value = dict["category_name"] as? String{
+            categoryName = value
+        }
+    }
+}
+
+
 class ViewKitchens : NSObject{
     var KitchenId:Int = 0
     var KitchenName:String = ""
@@ -1597,3 +1692,14 @@ class Dishes : NSObject{
             }
         }
     }
+
+class KitchenMenusResponseModel : NSObject{
+    var dishes = [Dishes]()
+    init(arr:(NSArray)) {
+        for item in arr{
+            if let it = item as? [String : Any?]{
+                dishes.append(Dishes.init(dict: it ))
+            }
+        }
+    }
+}

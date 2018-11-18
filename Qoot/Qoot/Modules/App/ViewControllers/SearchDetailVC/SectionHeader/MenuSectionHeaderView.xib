@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -30,7 +30,7 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pvI-3Q-0KS">
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pvI-3Q-0KS">
                             <rect key="frame" x="309" y="27" width="46" height="46"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="46" id="CXd-T7-1u1"/>
@@ -41,13 +41,23 @@
                                 <action selector="arrowButtonAction:" destination="-1" eventType="touchUpInside" id="iZs-NU-ZPb"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p4d-Yw-caa">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                            <connections>
+                                <action selector="hearButtonAction:" destination="-1" eventType="touchUpInside" id="Hq3-gC-hgx"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="pvI-3Q-0KS" secondAttribute="trailing" constant="20" id="FHM-BG-h0Z"/>
+                        <constraint firstItem="p4d-Yw-caa" firstAttribute="leading" secondItem="Rdr-vr-4WS" secondAttribute="leading" id="S8n-bp-hOl"/>
                         <constraint firstItem="L3P-bV-61o" firstAttribute="centerY" secondItem="Rdr-vr-4WS" secondAttribute="centerY" id="gr3-iB-rpc"/>
                         <constraint firstItem="L3P-bV-61o" firstAttribute="leading" secondItem="Rdr-vr-4WS" secondAttribute="leading" constant="10" id="h7w-LT-eiK"/>
+                        <constraint firstAttribute="trailing" secondItem="p4d-Yw-caa" secondAttribute="trailing" id="qiY-pX-jFm"/>
+                        <constraint firstItem="p4d-Yw-caa" firstAttribute="top" secondItem="Rdr-vr-4WS" secondAttribute="top" id="vh0-wp-zF3"/>
                         <constraint firstItem="pvI-3Q-0KS" firstAttribute="centerY" secondItem="L3P-bV-61o" secondAttribute="centerY" id="z88-U5-eBb"/>
+                        <constraint firstAttribute="bottom" secondItem="p4d-Yw-caa" secondAttribute="bottom" id="zwR-ic-wQ1"/>
                     </constraints>
                 </view>
             </subviews>
@@ -64,7 +74,7 @@
                 <outlet property="containerView" destination="Rdr-vr-4WS" id="EUg-ZC-38i"/>
                 <outlet property="title" destination="L3P-bV-61o" id="V9r-Yp-8Bl"/>
             </connections>
-            <point key="canvasLocation" x="33.5" y="14"/>
+            <point key="canvasLocation" x="-35" y="-37"/>
         </view>
     </objects>
     <resources>

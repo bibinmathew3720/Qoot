@@ -36,7 +36,9 @@ class SearchDetailVC: BaseViewController {
     var kitchenResponse:ViewKitchens?
      var viewKitchensInfo:ViewKitchensInfo?
     var selectedSection: Int = -1
-    
+    var kitchenCategories:KitchenCategoriesResponseModel?
+    var kitchenMenus:KitchenMenusResponseModel?
+    var selDishes = [Dishes]()
     override func initView() {
         super.initView()
         initialisation()
@@ -164,9 +166,94 @@ class SearchDetailVC: BaseViewController {
        print(self.segmentControl.selectedSegmentIndex)
     }
     
+    //Get Kitchen Categories Api
+    
+    func getKitchenCategoriesApi(){
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        UserManager().callingKitchenCategoriesApi(with:getKitchenCategoriesRequestBody(), success: {
+            (model) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if let model = model as? KitchenCategoriesResponseModel{
+                self.kitchenCategories = model
+                self.menuTableView.reloadData()
+                self.getKitchenMenusApi()
+            }
+            
+        }) { (ErrorType) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            
+            if(ErrorType == .noNetwork){
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+            }
+            else{
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+            }
+            
+            print(ErrorType)
+        }
+    }
+    
+    func getKitchenCategoriesRequestBody()->String{
+        var dataString:String = ""
+        if let kitchen = self.kitchenResponse {
+            let kitchenId:String = "KitchenId=\(String(kitchen.KitchenId).urlEncode())"
+            dataString = dataString + kitchenId
+        }
+        return dataString
+    }
+    
+    //Get Kitchen Menus Api
+    
+    func getKitchenMenusApi(){
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        UserManager().callingGetKitchenMenusApi(with:getKitchenMenusRequestBody(), success: {
+            (model) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if let model = model as? KitchenMenusResponseModel{
+                self.kitchenMenus = model
+                self.menuTableView.reloadData()
+            }
+            
+        }) { (ErrorType) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            
+            if(ErrorType == .noNetwork){
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+            }
+            else{
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+            }
+            
+            print(ErrorType)
+        }
+    }
+    
+    func getKitchenMenusRequestBody()->String{
+        var dataString:String = ""
+        if let kitchen = self.kitchenResponse {
+            let kitchenId:String = "KitchenId=\(String(kitchen.KitchenId).urlEncode())"
+            dataString = dataString + kitchenId
+        }
+        return dataString
+    }
+    
 }
 
 extension SearchDetailVC : UITableViewDelegate,UITableViewDataSource,MenuSectionHeaderViewDelegate{
+    func headerButtonActionDelegate(with tag: Int) {
+        self.selectedSection = tag
+        var categoryId = 0
+        if let categoryResponse = self.kitchenCategories {
+            categoryId = categoryResponse.kitchenCatgories[tag].categoryId
+        }
+        if let kitchenMenusResponse = self.kitchenMenus {
+            let filteredArray = kitchenMenusResponse.dishes.filter({$0.DishMainCategory == categoryId })
+            self.selDishes = filteredArray
+            self.menuTableView.reloadData()
+        }
+    
+    }
+    
     func arrowButtonDelegateAction(with tag: Int) {
         if selectedSection != tag {
             selectedSection = tag
@@ -176,12 +263,15 @@ extension SearchDetailVC : UITableViewDelegate,UITableViewDataSource,MenuSection
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        if let categoriesResponse = self.kitchenCategories{
+            return categoriesResponse.kitchenCatgories.count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == selectedSection{
-            return 5
+            return self.selDishes.count
         }
         else{
             return 0
@@ -190,6 +280,7 @@ extension SearchDetailVC : UITableViewDelegate,UITableViewDataSource,MenuSection
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "menuTVC", for: indexPath) as!MenuTVC
+        cell.setDishDetails(dish:self.selDishes[indexPath.row])
         cell.tag = indexPath.row
         return cell
     }
@@ -208,7 +299,10 @@ extension SearchDetailVC : UITableViewDelegate,UITableViewDataSource,MenuSection
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "MenuSectionHeaderView") as! MenuSectionHeaderView
         headerView.tag = section
         headerView.delegate = self
-
+        if let categoriesResponse = self.kitchenCategories{
+            headerView.setCategory(category: categoriesResponse.kitchenCatgories[section])
+        }
+        headerView.delegate = self
         return headerView
     }
     
@@ -226,7 +320,7 @@ extension SearchDetailVC : UITableViewDelegate,UITableViewDataSource,MenuSection
             if let model = model as? ViewKitchens{
                 self.kitchenResponse = model
                 self.populateKitchenDetails()
-               
+               self.getKitchenCategoriesApi()
             }
         
         }) { (ErrorType) in

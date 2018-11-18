@@ -37,6 +37,9 @@ let RemoveCustomerAddress_URL = "Ios/Customer/DeleteCustomerAddress"
 let EditCustomerAddress_URL = "Ios/Customer/UpdateCustomerdeliveryAddress"
 let CustomerOrderHistory_URL = "Ios/Customer/ViewCustomerOrderHistory"
 let CancelCustomerOrder_URL = "Ios/Customer/CancelOrder"
+let ViewKitchenFoodCategories = "Ios/Customer/ViewKitchenFoodCategories"
+let GetKitchenMenus = "Ios/Customer/ViewKitchenMenu"
+
 
 
 

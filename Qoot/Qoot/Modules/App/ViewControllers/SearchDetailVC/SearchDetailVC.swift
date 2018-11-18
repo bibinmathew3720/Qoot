@@ -313,7 +313,7 @@ extension SearchDetailVC : UITableViewDelegate,UITableViewDataSource,MenuSection
     }
     
     func getKitchenDetailsApi(){
-        MBProgressHUD.showAdded(to: self.view, animated: true)
+        //MBProgressHUD.showAdded(to: self.view, animated: true)
     UserManager().callingGetKitchenDetailsApi(with:getKitchenDetailsRequestBody(), success: {
             (model) in
             MBProgressHUD.hide(for: self.view, animated: true)

@@ -14,6 +14,7 @@ class MenuVC: BaseViewController {
     @IBOutlet weak var profileViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var logInButtonView: UIView!
     @IBOutlet weak var loginButtonViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var profileImage: UIImageView!
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var logInButton: UIButton!
@@ -33,7 +34,7 @@ class MenuVC: BaseViewController {
         localisation()
         // Do any additional setup after loading the view.
     }
-    
+  
     func initialisation(){
          menuTableView.register(UINib.init(nibName: "ManuTVC", bundle: nil), forCellReuseIdentifier: "menuTVC")
         if LanguageManger.shared.currentLanguage == .en {
@@ -45,6 +46,13 @@ class MenuVC: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        if let user = User.getUser(){
+            nameLabel.text = user.name
+            if let photo = user.customerPhoto{
+                profileImage.loadImageUsingCache(withUrl: photo)
+            }
+            }
+            
         self.isLoggedIn =  UserDefaults.standard.bool(forKey: Constant.VariableNames.isLoogedIn)
         uiUpdations()
     }

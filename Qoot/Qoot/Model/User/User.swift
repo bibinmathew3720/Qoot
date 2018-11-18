@@ -24,16 +24,25 @@ class User: NSManagedObject {
     }
     
     class func updateUserDB(user:User,userData:QootLogInResponseModel) {
-//        user.userName = userData.userName
-          user.email = userData.userEmail
-//        user.userPhone = String(userData.userMobile)
-//        user.userAddress1 = userData.userAddress1
-//        user.userAddress2 = userData.userAddress2
-//        user.catId = Int64(userData.catId)
+        user.city = userData.customer_city
+        user.customerLanguage = userData.customer_language
+        user.customerPhoto = userData.customer_photo
+        user.dob = userData.customer_dob
+        user.email = userData.userEmail
+        user.gender = userData.customer_gender
+        user.joinDate = userData.customer_join_date
+        user.lastLogin = userData.customer_last_login
+        user.loginStatus = userData.login_status
+        user.membershipType = userData.membership_type
+        user.message = userData.statusMessage
+        user.mobileNumber = userData.mobile_number
+        user.name = userData.userName
+        user.password = userData.password
+        user.registerID = Int16(userData.registration_id)
+        user.registerType = userData.registration_type
+        user.urlStatus = userData.url_status
         user.userId = Int16(userData.userId)
-//        user.languageId = Int64(userData.languageId)
-//        user.locId = Int64(userData.locId)
-//        user.dob = userData.userDOB
+
         CoreDataHandler.sharedInstance.saveContext()
     }
     

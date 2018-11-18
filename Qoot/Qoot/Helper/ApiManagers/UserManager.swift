@@ -1017,7 +1017,20 @@ class QootLogInResponseModel : NSObject{
     var userName:String = ""
     var userEmail:String = ""
     var gender:String = ""
-    var userMobile:String = ""
+    var registration_id:Int = 0
+    var customer_photo:String = ""
+    var mobile_number:String = ""
+    var customer_language:String = ""
+    var customer_join_date:String = ""
+    var customer_city:String = ""
+    var customer_dob:String = ""
+    var membership_type:String = ""
+    var registration_type:String = ""
+    var password:String = ""
+    var login_status:String = ""
+    var customer_gender:String = ""
+    var url_status:String = ""
+    var customer_last_login:String = ""
     init(dict:[String:Any?]) {
         if let value = dict["message"] as? String{
             statusMessage = value
@@ -1025,6 +1038,11 @@ class QootLogInResponseModel : NSObject{
         if let value = dict["customer_id"] as? String{
             if let userID = Int(value){
                 userId = userID
+            }
+        }
+        if let value = dict["registration_id"] as? String{
+            if let regID = Int(value){
+                registration_id = regID
             }
         }
         if let value = dict["customer_name"] as? String{
@@ -1037,9 +1055,41 @@ class QootLogInResponseModel : NSObject{
             gender = value
         }
         if let value = dict["mobile_number"] as? String{
-            gender = value
+            mobile_number = value
         }
-        
+        if let value = dict["customer_photo"] as? String{
+            customer_photo = value
+        }
+        if let value = dict["customer_language"] as? String{
+            customer_language = value
+        }
+        if let value = dict["customer_join_date"] as? String{
+            customer_join_date = value
+        }
+        if let value = dict["customer_city"] as? String{
+            customer_city = value
+        }
+        if let value = dict["customer_dob"] as? String{
+            customer_dob = value
+        }
+        if let value = dict["membership_type"] as? String{
+            membership_type = value
+        }
+        if let value = dict["registration_type"] as? String{
+            registration_type = value
+        }
+        if let value = dict["password"] as? String{
+            password = value
+        }
+        if let value = dict["login_status"] as? String{
+            login_status = value
+        }
+        if let value = dict["url_status"] as? String{
+            url_status = value
+        }
+        if let value = dict["customer_last_login"] as? String{
+            customer_last_login = value
+        }
 }
 }
 

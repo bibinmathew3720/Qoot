@@ -13,6 +13,7 @@ protocol MenuSectionHeaderViewDelegate {
 }
 class MenuSectionHeaderView: UITableViewHeaderFooterView {
     @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var arrowButton: UIButton!
     
     @IBOutlet weak var containerView: UIView!
      var delegate:MenuSectionHeaderViewDelegate?

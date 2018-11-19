@@ -30,13 +30,14 @@
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pvI-3Q-0KS">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pvI-3Q-0KS">
                             <rect key="frame" x="309" y="27" width="46" height="46"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="46" id="CXd-T7-1u1"/>
                                 <constraint firstAttribute="width" constant="46" id="qaa-u6-euJ"/>
                             </constraints>
-                            <state key="normal" image="bgImage"/>
+                            <state key="normal" image="downArrow"/>
+                            <state key="selected" image="upArrow"/>
                             <connections>
                                 <action selector="arrowButtonAction:" destination="-1" eventType="touchUpInside" id="iZs-NU-ZPb"/>
                             </connections>
@@ -71,6 +72,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="arrowButton" destination="pvI-3Q-0KS" id="V5a-eU-u7J"/>
                 <outlet property="containerView" destination="Rdr-vr-4WS" id="EUg-ZC-38i"/>
                 <outlet property="title" destination="L3P-bV-61o" id="V9r-Yp-8Bl"/>
             </connections>
@@ -78,6 +80,7 @@
         </view>
     </objects>
     <resources>
-        <image name="bgImage" width="360" height="640"/>
+        <image name="downArrow" width="10" height="10"/>
+        <image name="upArrow" width="10" height="10"/>
     </resources>
 </document>

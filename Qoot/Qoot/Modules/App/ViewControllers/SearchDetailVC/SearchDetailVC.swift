@@ -300,6 +300,12 @@ extension SearchDetailVC : UITableViewDelegate,UITableViewDataSource,MenuSection
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "MenuSectionHeaderView") as! MenuSectionHeaderView
         headerView.tag = section
         headerView.delegate = self
+        if section == self.selectedSection {
+            headerView.arrowButton.isSelected = true
+        }
+        else{
+            headerView.arrowButton.isSelected = false
+        }
         if let categoriesResponse = self.kitchenCategories{
             headerView.setCategory(category: categoriesResponse.kitchenCatgories[section])
         }

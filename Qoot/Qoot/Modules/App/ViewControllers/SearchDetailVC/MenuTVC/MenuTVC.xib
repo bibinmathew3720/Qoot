@@ -51,17 +51,20 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SAR 63.0/-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qAd-vs-n0C">
                         <rect key="frame" x="289" y="16" width="77.5" height="21.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="77.5" id="Hdz-t3-edS"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aYu-x0-sHH">
-                        <rect key="frame" x="305" y="42.5" width="46" height="30"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aYu-x0-sHH">
+                        <rect key="frame" x="298" y="42.5" width="60" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="bja-Vj-8wk"/>
-                            <constraint firstAttribute="width" constant="46" id="lpV-QW-5KW"/>
+                            <constraint firstAttribute="width" constant="60" id="lpV-QW-5KW"/>
                         </constraints>
-                        <state key="normal" title="+"/>
+                        <state key="normal" image="plusIconSearchDetail"/>
                         <connections>
                             <action selector="pluasButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="4dl-v3-P6d"/>
                         </connections>
@@ -77,9 +80,9 @@
                 <constraints>
                     <constraint firstItem="FD2-jI-vlo" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="6Xe-so-6FF"/>
                     <constraint firstItem="sDo-gI-F36" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="MUN-3c-v8N"/>
-                    <constraint firstItem="qAd-vs-n0C" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7wf-eG-6J3" secondAttribute="trailing" constant="5" id="NCW-xn-8jk"/>
+                    <constraint firstItem="qAd-vs-n0C" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7wf-eG-6J3" secondAttribute="trailing" constant="3" id="NCW-xn-8jk"/>
                     <constraint firstItem="JqD-tJ-pwI" firstAttribute="leading" secondItem="7wf-eG-6J3" secondAttribute="leading" id="SIy-aP-1Ab"/>
-                    <constraint firstItem="qAd-vs-n0C" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="JqD-tJ-pwI" secondAttribute="trailing" constant="5" id="Tgl-pA-SDl"/>
+                    <constraint firstItem="qAd-vs-n0C" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="JqD-tJ-pwI" secondAttribute="trailing" constant="3" id="Tgl-pA-SDl"/>
                     <constraint firstItem="qAd-vs-n0C" firstAttribute="centerY" secondItem="7wf-eG-6J3" secondAttribute="centerY" id="WLQ-OE-8Fu"/>
                     <constraint firstItem="aYu-x0-sHH" firstAttribute="centerX" secondItem="qAd-vs-n0C" secondAttribute="centerX" id="Wtn-cG-Hqo"/>
                     <constraint firstItem="aYu-x0-sHH" firstAttribute="top" secondItem="qAd-vs-n0C" secondAttribute="bottom" constant="5" id="XfG-Dh-XlS"/>
@@ -102,4 +105,7 @@
             <point key="canvasLocation" x="105" y="143.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="plusIconSearchDetail" width="10" height="10"/>
+    </resources>
 </document>

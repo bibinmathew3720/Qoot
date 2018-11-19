@@ -12,7 +12,7 @@ import CoreData
 class Cart: NSManagedObject {
     static func addProductToCart(dish:Dishes){
         var cart:Cart?
-        let cartPredicate = NSPredicate(format: "productId==%d",dish.DishId)
+        let cartPredicate = NSPredicate(format: "productId==%d",dish.MenuId)
         let cartArray = CoreDataHandler.sharedInstance.getAllDatasWithPredicate(entity: "Cart", predicate:cartPredicate , sortDescriptor: nil)
         if (cartArray.count == 0){
             cart = CoreDataHandler.sharedInstance.newEntityForName(entityName: "Cart") as? Cart
@@ -23,7 +23,7 @@ class Cart: NSManagedObject {
             cart?.productCount = Int64(dish.SelectedQuantity)
             //cart?.productCount += Int64(dish.SelectedQuantity)
         }
-        cart?.productId = Int64(dish.DishId)
+        cart?.productId = Int64(dish.MenuId)
         cart?.menuId = Int64(dish.MenuId)
         cart?.productName = dish.DishName
         cart?.productPrice = Float(dish.DishAmount)

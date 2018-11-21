@@ -298,16 +298,25 @@ class HomeVC: BaseViewController {
             switch selectedTableRowIndex {
             case 0:
                 if let cityModel = self.cityNamesResponseModel{
-                    selCity = cityModel.cityNames[pickerView.selectedRow(inComponent: 0)]
+                    let selectedRow = pickerView.selectedRow(inComponent: 0)
+                    if (cityModel.cityNames.count-1)>=selectedRow {
+                        selCity = cityModel.cityNames[selectedRow]
+                    }
                 }
             case 1:
                 if let mealMd = self.mealModel {
-                    selMeal = mealMd.mealTypes[pickerView.selectedRow(inComponent: 0)]
+                    let selectedRow = pickerView.selectedRow(inComponent: 0)
+                    if (mealMd.mealTypes.count-1)>=selectedRow {
+                        selMeal = mealMd.mealTypes[selectedRow]
+                    }
                     callingViewCuisinesApi()
                 }
             case 2:
                 if let cuisineModel = self.cuisinesModel{
-                    selCuisine = cuisineModel.viewCuisines[pickerView.selectedRow(inComponent: 0)]
+                    let selectedRow = pickerView.selectedRow(inComponent: 0)
+                    if (cuisineModel.viewCuisines.count-1)>=selectedRow {
+                        selCuisine = cuisineModel.viewCuisines[selectedRow]
+                    }
                     callingKitchensApi { (status, kitchenResponseModel) in
                         if status {
                             self.kitchenModel = kitchenResponseModel
@@ -317,7 +326,10 @@ class HomeVC: BaseViewController {
                 }
             case 3:
                 if let kitchenModel = self.kitchenModel{
-                     selKitchen = kitchenModel.viewKitchens[pickerView.selectedRow(inComponent: 0)]
+                    let selectedRow = pickerView.selectedRow(inComponent: 0)
+                    if (kitchenModel.viewKitchens.count-1)>=selectedRow {
+                        selKitchen = kitchenModel.viewKitchens[selectedRow]
+                    }
                 }
             default:
                 print("default")
@@ -389,6 +401,7 @@ extension HomeVC : UITableViewDelegate,UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedTableRowIndex = indexPath.row
+        pickerView.reloadAllComponents()
         pickerTextField.becomeFirstResponder()
     }
 }

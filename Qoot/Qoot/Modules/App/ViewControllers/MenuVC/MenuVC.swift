@@ -162,6 +162,9 @@ extension MenuVC : UITableViewDelegate,UITableViewDataSource {
             if indexPath.row == 0{
                setOrderListVC()
             }
+            if indexPath.row == 1{
+                self.closeLeft()
+            }
             else if indexPath.row == 2 {
                 setOffersVC()
             }

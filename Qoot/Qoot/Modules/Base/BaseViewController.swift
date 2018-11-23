@@ -50,7 +50,8 @@ class BaseViewController: UIViewController {
         cartButtonView.contentMode = .scaleAspectFit
         
         cartLabel = UILabel(frame: CGRect.init(x: 15, y: -5, width: 20, height: 20))
-        cartLabel?.backgroundColor = UIColor(red:1.00, green:0.87, blue:0.09, alpha:1.0)
+        cartLabel?.backgroundColor = Constant.Colors.CommonGreenColor
+        cartLabel?.textColor = UIColor.white
         cartLabel?.textAlignment = .center
         cartLabel?.font = UIFont.init(name: Constant.Font.Regular, size: 12)
         cartLabel?.layer.cornerRadius = 10

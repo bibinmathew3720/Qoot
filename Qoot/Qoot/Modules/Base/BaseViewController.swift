@@ -33,7 +33,12 @@ class BaseViewController: UIViewController {
     func addingLeftBarButton(){
         self.leftButton = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
         self.leftButton?.addTarget(self, action: #selector(leftNavButtonAction), for: .touchUpInside)
-        self.leftButton?.setImage(UIImage.init(named: Constant.ImageNames.backArrow), for: UIControlState.normal)
+        if L102Language.currentAppleLanguage() == "ar" {
+            self.leftButton?.setImage(UIImage.init(named: Constant.ImageNames.backArrowArabic), for: UIControlState.normal)
+        }
+        else{
+             self.leftButton?.setImage(UIImage.init(named: Constant.ImageNames.backArrow), for: UIControlState.normal)
+        }
         var leftBarButton = UIBarButtonItem()
         leftBarButton = UIBarButtonItem.init(customView: self.leftButton!)
         self.navigationItem.leftBarButtonItem = leftBarButton

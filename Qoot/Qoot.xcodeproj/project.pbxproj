@@ -101,6 +101,8 @@
 		D0EB103C2150D993000CD2C9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EB103B2150D992000CD2C9 /* User.swift */; };
 		D0ECF2C821220CBB008E9A79 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0ECF2C621220CBB008E9A79 /* Roboto-Bold.ttf */; };
 		D0ECF2C921220CBB008E9A79 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0ECF2C721220CBB008E9A79 /* Roboto-Regular.ttf */; };
+		D0F24E6021A8B4730005F923 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F24E5E21A8B4710005F923 /* WebViewController.swift */; };
+		D0F24E6121A8B4730005F923 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F24E5F21A8B4710005F923 /* WebViewController.xib */; };
 		D0F830F4215BA9320039485F /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F830F2215BA9320039485F /* SettingsVC.swift */; };
 		D0F830F5215BA9320039485F /* SettingsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F830F3215BA9320039485F /* SettingsVC.xib */; };
 		D0F9E11921161B1F004F7833 /* ManuTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F9E11721161B1F004F7833 /* ManuTVC.swift */; };
@@ -212,6 +214,8 @@
 		D0EB103B2150D992000CD2C9 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D0ECF2C621220CBB008E9A79 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		D0ECF2C721220CBB008E9A79 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		D0F24E5E21A8B4710005F923 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		D0F24E5F21A8B4710005F923 /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
 		D0F830F2215BA9320039485F /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		D0F830F3215BA9320039485F /* SettingsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsVC.xib; sourceTree = "<group>"; };
 		D0F9E11721161B1F004F7833 /* ManuTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManuTVC.swift; sourceTree = "<group>"; };
@@ -603,6 +607,7 @@
 		D01888B1211539CA00B01946 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D0F24E5D21A8B4710005F923 /* WebView */,
 				D09EF651217B80980069EE85 /* AddressListingVC */,
 				D0F830F1215BA91C0039485F /* SettingsVC */,
 				D01F78FC21445060004C375D /* OrderConfirmVC */,
@@ -818,6 +823,15 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		D0F24E5D21A8B4710005F923 /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				D0F24E5E21A8B4710005F923 /* WebViewController.swift */,
+				D0F24E5F21A8B4710005F923 /* WebViewController.xib */,
+			);
+			path = WebView;
+			sourceTree = "<group>";
+		};
 		D0F830F1215BA91C0039485F /* SettingsVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -919,6 +933,7 @@
 				D01888BE21153A0E00B01946 /* ProductDetailVC.xib in Resources */,
 				BC9C16A3211948D500ED49A4 /* PastOrderTableCell.xib in Resources */,
 				D01AF59921243E8E00DCEDEC /* WalkThroughVC.xib in Resources */,
+				D0F24E6121A8B4730005F923 /* WebViewController.xib in Resources */,
 				D01888C921153A1800B01946 /* HomeCollectionCell.xib in Resources */,
 				D0ECF2C921220CBB008E9A79 /* Roboto-Regular.ttf in Resources */,
 				BC835EF8212039FB00A08247 /* LoginViewController.xib in Resources */,
@@ -1043,6 +1058,7 @@
 				D05D50622118025300645956 /* SearchResultsTVC.swift in Sources */,
 				D00FAD1F2112EE5D00C8C176 /* CLNetworkUtility.swift in Sources */,
 				BC388DF62119A2A6002CC86A /* PaymentTableCell.swift in Sources */,
+				D0F24E6021A8B4730005F923 /* WebViewController.swift in Sources */,
 				BC388DE621196775002CC86A /* ItemDetailTableCell.swift in Sources */,
 				D01888C821153A1800B01946 /* HomeCollectionCell.swift in Sources */,
 				D00FAD1A2112EE5D00C8C176 /* UserManager.swift in Sources */,

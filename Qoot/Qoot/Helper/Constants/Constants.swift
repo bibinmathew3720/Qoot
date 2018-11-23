@@ -48,6 +48,7 @@ struct Constant{
     struct ImageNames {
         static let placeholderImage = "placeholder"
         static let backArrow = "leftArrow"
+        static let backArrowArabic = "leftArrowArabic"
         static let cartIcon = "cartIcon"
         static let homeIcon = "homeIcon"
     }

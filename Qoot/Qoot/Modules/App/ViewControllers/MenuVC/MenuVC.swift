@@ -162,11 +162,14 @@ extension MenuVC : UITableViewDelegate,UITableViewDataSource {
             if indexPath.row == 0{
                setOrderListVC()
             }
-            if indexPath.row == 1{
+            else if indexPath.row == 1{ //Wallet
                 self.closeLeft()
             }
             else if indexPath.row == 2 {
                 setOffersVC()
+            }
+            else if indexPath.row == 3{ //Support
+                self.closeLeft()
             }
             else if (indexPath.row == 4){
                 setSettingsVC()
@@ -178,6 +181,9 @@ extension MenuVC : UITableViewDelegate,UITableViewDataSource {
         else{
             if indexPath.row == 0 {
                 setOffersVC()
+            }
+            else if indexPath.row == 1{ //Support
+                self.closeLeft()
             }
         }
     }

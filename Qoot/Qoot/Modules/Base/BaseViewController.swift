@@ -86,6 +86,12 @@ class BaseViewController: UIViewController {
         self.navigationItem.rightBarButtonItems  = [button1,button2]
     }
     
+    func addNotificationIconAndCartIcon(){
+        let button1 = addCartIconOnly()
+        let button2 = addingNotificationBarButton()
+        self.navigationItem.rightBarButtonItems  = [button1,button2]
+    }
+    
     func addingHomeBarButton()->UIBarButtonItem{
         let homeButton = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
         homeButton.addTarget(self, action: #selector(homeButtonAction), for: .touchUpInside)
@@ -96,8 +102,24 @@ class BaseViewController: UIViewController {
         return homeBarButton
     }
     
+    func addingNotificationBarButton()->UIBarButtonItem{
+        let notButton = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        notButton.addTarget(self, action: #selector(notifiationButtonAction), for: .touchUpInside)
+        notButton.setImage(UIImage.init(named: Constant.ImageNames.notIcon), for: UIControlState.normal)
+        var notBarButton = UIBarButtonItem()
+        notBarButton = UIBarButtonItem.init(customView: notButton)
+        self.navigationItem.rightBarButtonItems  = [notBarButton]
+        return notBarButton
+    }
+    
     @objc func homeButtonAction(){
         self.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    @objc func notifiationButtonAction(){
+        let notVC = NotificationsVC.init(nibName: "NotificationsVC", bundle: nil)
+        let notNavCntlr = UINavigationController.init(rootViewController: notVC)
+        self.present(notNavCntlr, animated: true, completion: nil)
     }
     
     @objc func cartButtonAction(){

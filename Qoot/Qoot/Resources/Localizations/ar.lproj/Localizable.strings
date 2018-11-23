@@ -199,3 +199,7 @@
 "UpdatePassword" = "حدّث كلمة المرور";
 "PasswordChanged" = "تم تغيير كلمة المرور";
 
+//Notifications
+
+"Notifications" = "Notifications";
+

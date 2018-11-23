@@ -51,6 +51,7 @@ struct Constant{
         static let backArrowArabic = "leftArrowArabic"
         static let cartIcon = "cartIcon"
         static let homeIcon = "homeIcon"
+        static let notIcon = "notIcon"
     }
     
     struct SegueIdentifiers {

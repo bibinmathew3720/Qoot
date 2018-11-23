@@ -103,6 +103,8 @@
 		D0ECF2C921220CBB008E9A79 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0ECF2C721220CBB008E9A79 /* Roboto-Regular.ttf */; };
 		D0F24E6021A8B4730005F923 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F24E5E21A8B4710005F923 /* WebViewController.swift */; };
 		D0F24E6121A8B4730005F923 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F24E5F21A8B4710005F923 /* WebViewController.xib */; };
+		D0F24E6521A8C6280005F923 /* NotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F24E6321A8C6270005F923 /* NotificationsVC.swift */; };
+		D0F24E6621A8C6280005F923 /* NotificationsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F24E6421A8C6270005F923 /* NotificationsVC.xib */; };
 		D0F830F4215BA9320039485F /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F830F2215BA9320039485F /* SettingsVC.swift */; };
 		D0F830F5215BA9320039485F /* SettingsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F830F3215BA9320039485F /* SettingsVC.xib */; };
 		D0F9E11921161B1F004F7833 /* ManuTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F9E11721161B1F004F7833 /* ManuTVC.swift */; };
@@ -216,6 +218,8 @@
 		D0ECF2C721220CBB008E9A79 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		D0F24E5E21A8B4710005F923 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		D0F24E5F21A8B4710005F923 /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
+		D0F24E6321A8C6270005F923 /* NotificationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsVC.swift; sourceTree = "<group>"; };
+		D0F24E6421A8C6270005F923 /* NotificationsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationsVC.xib; sourceTree = "<group>"; };
 		D0F830F2215BA9320039485F /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		D0F830F3215BA9320039485F /* SettingsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsVC.xib; sourceTree = "<group>"; };
 		D0F9E11721161B1F004F7833 /* ManuTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManuTVC.swift; sourceTree = "<group>"; };
@@ -607,6 +611,7 @@
 		D01888B1211539CA00B01946 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D0F24E6221A8C5F20005F923 /* NotificationsVC */,
 				D0F24E5D21A8B4710005F923 /* WebView */,
 				D09EF651217B80980069EE85 /* AddressListingVC */,
 				D0F830F1215BA91C0039485F /* SettingsVC */,
@@ -832,6 +837,15 @@
 			path = WebView;
 			sourceTree = "<group>";
 		};
+		D0F24E6221A8C5F20005F923 /* NotificationsVC */ = {
+			isa = PBXGroup;
+			children = (
+				D0F24E6321A8C6270005F923 /* NotificationsVC.swift */,
+				D0F24E6421A8C6270005F923 /* NotificationsVC.xib */,
+			);
+			path = NotificationsVC;
+			sourceTree = "<group>";
+		};
 		D0F830F1215BA91C0039485F /* SettingsVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -946,6 +960,7 @@
 				BCB66BD7211D7D3F002FB1FF /* ReviewsTableCell.xib in Resources */,
 				BC93070421181F7600D129B7 /* CartVC.xib in Resources */,
 				BC388DF72119A2A6002CC86A /* PaymentTableCell.xib in Resources */,
+				D0F24E6621A8C6280005F923 /* NotificationsVC.xib in Resources */,
 				D00FACD72112DF1300C8C176 /* Main.storyboard in Resources */,
 				D0ECF2C821220CBB008E9A79 /* Roboto-Bold.ttf in Resources */,
 				D01F790021445087004C375D /* OrderConfirmVC.xib in Resources */,
@@ -1054,6 +1069,7 @@
 				D0F9E11921161B1F004F7833 /* ManuTVC.swift in Sources */,
 				D00FAD252112EE5D00C8C176 /* UIImageViewExtensions.swift in Sources */,
 				D0C865622113477800383A48 /* BaseViewController.swift in Sources */,
+				D0F24E6521A8C6280005F923 /* NotificationsVC.swift in Sources */,
 				D00FAD192112EE5D00C8C176 /* ProductManager.swift in Sources */,
 				D05D50622118025300645956 /* SearchResultsTVC.swift in Sources */,
 				D00FAD1F2112EE5D00C8C176 /* CLNetworkUtility.swift in Sources */,

@@ -199,6 +199,10 @@
 "UpdatePassword" = "UPDATE PASSWORD";
 "PasswordChanged" = "Password Changed";
 
+//Notifications
+
+"Notifications" = "Notifications";
+
 
 
 

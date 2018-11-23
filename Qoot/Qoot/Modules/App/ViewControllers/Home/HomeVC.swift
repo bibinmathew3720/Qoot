@@ -45,7 +45,12 @@ class HomeVC: BaseViewController {
         initialisation()
         localisation()
         addingLeftBarButton()
-        addCartIconOnly()
+        if let user = User.getUser(){
+            addNotificationIconAndCartIcon()
+        }
+        else{
+            addCartIconOnly()
+        }
         getOfferDishesApi()
         self.leftButton?.setImage(UIImage(named: "hamburger"), for: UIControlState.normal)
     }

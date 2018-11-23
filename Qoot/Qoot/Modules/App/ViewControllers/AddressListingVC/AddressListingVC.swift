@@ -92,7 +92,7 @@ class AddressListingVC: BaseViewController, GMSMapViewDelegate {
     @IBAction func addAddressButtonAction(_ sender: UIButton) {
         closeButtonHeight.constant = 30
         addAddressButtonHeightConstraint.constant = 0
-        mapViewHeight.constant = 220
+        mapViewHeight.constant = 250
         mapBackView.isHidden = false
     }
     
@@ -146,6 +146,7 @@ class AddressListingVC: BaseViewController, GMSMapViewDelegate {
         locationMgr.delegate = self
         locationMgr.startUpdatingLocation()
     }
+    
     
     //MARK: Get Address Api
     
@@ -372,6 +373,9 @@ extension AddressListingVC : UITableViewDelegate,UITableViewDataSource {
     }
 }
 
+
+
+
 extension AddressListingVC:CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let currentLocation:CLLocation = locations.last!
@@ -397,7 +401,7 @@ extension AddressListingVC:AddressCellDelegate{
         self.isEditing = true
         closeButtonHeight.constant = 30
         addAddressButtonHeightConstraint.constant = 0
-        mapViewHeight.constant = 220
+        mapViewHeight.constant = 250
         mapBackView.isHidden = false
         self.selIndex = tag
     }

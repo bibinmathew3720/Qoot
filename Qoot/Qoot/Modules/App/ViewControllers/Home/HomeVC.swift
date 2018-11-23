@@ -246,10 +246,10 @@ class HomeVC: BaseViewController {
     }
     
     func getOfferDishesApi(){
-        MBProgressHUD.showAdded(to: self.view, animated: true)
+        MBProgressHUD.showAdded(to: self.offersCollectionView, animated: true)
         UserManager().callingOfferDishesApi(with:"", success: {
             (model) in
-            MBProgressHUD.hide(for: self.view, animated: true)
+            MBProgressHUD.hide(for: self.offersCollectionView, animated: true)
             if let model = model as? OfferDishesResponseModel{
                 self.offersResponseModel = model
                 self.offersCollectionView.reloadData()
@@ -259,7 +259,7 @@ class HomeVC: BaseViewController {
             
             
         }) { (ErrorType) in
-            MBProgressHUD.hide(for: self.view, animated: true)
+            MBProgressHUD.hide(for: self.offersCollectionView, animated: true)
             if(ErrorType == .noNetwork){
                 CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
             }
@@ -272,16 +272,16 @@ class HomeVC: BaseViewController {
     }
     
     func getReadyNowDishesApi(){
-        MBProgressHUD.showAdded(to: self.view, animated: true)
+        MBProgressHUD.showAdded(to: self.readyNowCollectionView, animated: true)
         UserManager().callingReadyNowDishesApi(with:"", success: {
             (model) in
-            MBProgressHUD.hide(for: self.view, animated: true)
+            MBProgressHUD.hide(for: self.readyNowCollectionView, animated: true)
             if let model = model as? ReadyNowDishesResponseModel{
                 self.reayNowDishesReaponseModel = model
                 self.readyNowCollectionView.reloadData()
             }
         }) { (ErrorType) in
-            MBProgressHUD.hide(for: self.view, animated: true)
+            MBProgressHUD.hide(for: self.readyNowCollectionView, animated: true)
             if(ErrorType == .noNetwork){
                 CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
             }

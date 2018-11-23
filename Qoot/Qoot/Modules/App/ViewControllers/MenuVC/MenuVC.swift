@@ -21,10 +21,10 @@ class MenuVC: BaseViewController {
     @IBOutlet weak var menuTableView: UITableView!
     @IBOutlet weak var languageSegment: UISegmentedControl!
     
-    var titleArray = ["Offers".localiz(),"Support".localiz()]
-    var imageArray = [#imageLiteral(resourceName: "offers"),#imageLiteral(resourceName: "support")]
-    var titleArrayAccount = ["MyOrders".localiz(),"MyWallet".localiz(),"Offers".localiz(),"Support".localiz(),"Settings".localiz(),"Logout".localiz()]
-    var imageArrayAccount =  [#imageLiteral(resourceName: "myOrders"),#imageLiteral(resourceName: "myWallet"),#imageLiteral(resourceName: "offers"),#imageLiteral(resourceName: "support"),#imageLiteral(resourceName: "settings"),#imageLiteral(resourceName: "logout")]
+    var titleArray = ["Offers".localiz(),"Support".localiz(),"Events".localiz()]
+    var imageArray = [#imageLiteral(resourceName: "offers"),#imageLiteral(resourceName: "support"),#imageLiteral(resourceName: "events")]
+    var titleArrayAccount = ["MyOrders".localiz(),"MyWallet".localiz(),"Offers".localiz(),"Support".localiz(),"Events".localiz(),"Settings".localiz(),"Logout".localiz()]
+    var imageArrayAccount =  [#imageLiteral(resourceName: "myOrders"),#imageLiteral(resourceName: "myWallet"),#imageLiteral(resourceName: "offers"),#imageLiteral(resourceName: "support"),#imageLiteral(resourceName: "events"),#imageLiteral(resourceName: "settings"),#imageLiteral(resourceName: "logout")]
     
     
     override func viewDidLoad() {
@@ -171,10 +171,13 @@ extension MenuVC : UITableViewDelegate,UITableViewDataSource {
             else if indexPath.row == 3{ //Support
                 self.closeLeft()
             }
-            else if (indexPath.row == 4){
-                setSettingsVC()
+            else if (indexPath.row == 4){ //Events
+                self.loadEventsPage()
             }
             else if (indexPath.row == 5){
+                setSettingsVC()
+            }
+            else if (indexPath.row == 6){
                 settingLogoutPopup()
             }
         }
@@ -184,6 +187,9 @@ extension MenuVC : UITableViewDelegate,UITableViewDataSource {
             }
             else if indexPath.row == 1{ //Support
                 self.closeLeft()
+            }
+            else if indexPath.row == 2{ //Events
+                self.loadEventsPage()
             }
         }
     }
@@ -206,6 +212,18 @@ extension MenuVC : UITableViewDelegate,UITableViewDataSource {
         orderListVC.isFromMenu = true
         let navController = UINavigationController.init(rootViewController: orderListVC)
         self.present(navController, animated: true, completion: nil)
+    }
+    
+    func loadEventsPage(){
+        if let url = URL(string: Constant.Urls.eventsUrl) {
+            if UIApplication.shared.canOpenURL(url) {
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(url, options: [:])
+                } else {
+                    // Fallback on earlier versions
+                }
+            }
+        }
     }
     
     func setSettingsVC(){

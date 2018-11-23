@@ -81,4 +81,8 @@ struct Constant{
     struct ApiKeys {
         static let googleMapKey = "AIzaSyDW3gXZCjFcNoBn3L2bA3nl6ZO6xw_EByw"
     }
+    
+    struct Urls {
+        static let eventsUrl = "http://www.apple.com"
+    }
 }

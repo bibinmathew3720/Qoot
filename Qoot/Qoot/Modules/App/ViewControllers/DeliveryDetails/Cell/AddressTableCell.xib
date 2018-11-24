@@ -46,11 +46,11 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nMd-Ta-vzK">
-                        <rect key="frame" x="420" y="10" width="30" height="30"/>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nMd-Ta-vzK">
+                        <rect key="frame" x="450" y="10" width="0.0" height="30"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="30" id="hr7-8h-oC7"/>
+                            <constraint firstAttribute="width" id="hr7-8h-oC7"/>
                             <constraint firstAttribute="height" constant="30" id="oAx-jD-TaL"/>
                         </constraints>
                         <state key="normal" image="cartCloseIcon"/>
@@ -59,7 +59,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bCw-Et-Anc">
-                        <rect key="frame" x="380" y="10" width="30" height="30"/>
+                        <rect key="frame" x="410" y="10" width="30" height="30"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="raw-Oj-39q"/>

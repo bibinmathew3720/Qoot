@@ -42,6 +42,8 @@ class AddressListingVC: BaseViewController, GMSMapViewDelegate {
     var addAddressResponseModel:AddAddressResponseModel?
     var isEditingMode = false
     var selIndex = -1
+    
+    let mapViewHeightConstant = 300.0
 
     override func initView(){
         initialisation()
@@ -92,7 +94,7 @@ class AddressListingVC: BaseViewController, GMSMapViewDelegate {
     @IBAction func addAddressButtonAction(_ sender: UIButton) {
         closeButtonHeight.constant = 30
         addAddressButtonHeightConstraint.constant = 0
-        mapViewHeight.constant = 250
+        mapViewHeight.constant = CGFloat(mapViewHeightConstant)
         mapBackView.isHidden = false
     }
     
@@ -401,7 +403,7 @@ extension AddressListingVC:AddressCellDelegate{
         self.isEditing = true
         closeButtonHeight.constant = 30
         addAddressButtonHeightConstraint.constant = 0
-        mapViewHeight.constant = 250
+        mapViewHeight.constant = CGFloat(mapViewHeightConstant)
         mapBackView.isHidden = false
         self.selIndex = tag
     }

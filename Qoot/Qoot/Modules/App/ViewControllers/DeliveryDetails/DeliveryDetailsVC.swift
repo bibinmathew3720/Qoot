@@ -52,6 +52,7 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
      var camera: GMSCameraPosition = GMSCameraPosition.camera(withLatitude: 10.0068361, longitude: 76.3655878, zoom: 17.5)
     var addAddressResponseModel:AddAddressResponseModel?
     var selPaymentType:PaymentType?
+    let mapViewHeightConstant = 300
     
     @IBOutlet weak var cityNameTF: UITextField!
     @IBOutlet weak var addressTF: UITextField!
@@ -113,7 +114,7 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
     @IBAction func addAddressButtonAction(_ sender: Any) {
         closeButtonHeight.constant = 30
         addAddressButtonHeightConstraint.constant = 0
-        mapViewHeight.constant = 220
+        mapViewHeight.constant = CGFloat(mapViewHeightConstant)
         mapBackView.isHidden = false
     }
     

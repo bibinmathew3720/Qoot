@@ -84,6 +84,6 @@ struct Constant{
     }
     
     struct Urls {
-        static let eventsUrl = "http://www.apple.com"
+        static let eventsUrl = "https://qoot.online/ksa/customerEvent"
     }
 }

@@ -42,16 +42,26 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lbp-wm-T9b">
+                        <rect key="frame" x="0.0" y="64.5" width="361" height="1"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.297119140625" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="598-ag-RrZ"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="Lbp-wm-T9b" secondAttribute="bottom" id="As7-jF-n1P"/>
                     <constraint firstItem="l9e-lz-XuL" firstAttribute="trailing" secondItem="OQ8-tf-qNr" secondAttribute="trailing" id="BlI-iV-Mb0"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="l9e-lz-XuL" secondAttribute="bottom" constant="5" id="KTE-Kw-2Zg"/>
                     <constraint firstItem="l9e-lz-XuL" firstAttribute="leading" secondItem="Hd5-ft-2MS" secondAttribute="leading" id="Lrw-OG-FcB"/>
                     <constraint firstItem="Hd5-ft-2MS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="PSK-Pz-Di1"/>
                     <constraint firstItem="Hd5-ft-2MS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="TT9-Tv-ODQ"/>
                     <constraint firstItem="OQ8-tf-qNr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="UGf-tm-6et"/>
+                    <constraint firstItem="Lbp-wm-T9b" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="VZo-OI-8Xg"/>
                     <constraint firstAttribute="trailing" secondItem="OQ8-tf-qNr" secondAttribute="trailing" constant="5" id="X3P-hZ-DG1"/>
                     <constraint firstItem="l9e-lz-XuL" firstAttribute="top" secondItem="Hd5-ft-2MS" secondAttribute="bottom" constant="5" id="spa-re-Gw8"/>
+                    <constraint firstAttribute="trailing" secondItem="Lbp-wm-T9b" secondAttribute="trailing" id="tMS-ff-dGR"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

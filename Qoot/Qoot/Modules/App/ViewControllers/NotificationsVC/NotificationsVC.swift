@@ -31,21 +31,23 @@ class NotificationsVC: BaseViewController {
     }
     
     func callingNotificationsApi(){
+        MBProgressHUD.showAdded(to: self.view, animated: true)
         UserManager().callingNotificationsApi(with: getNotificationsRequestBody(), success: { (model) in
+            MBProgressHUD.hide(for: self.view, animated: true)
             if let model = model as? NotificationsResponseModel{
                 self.notificationsResponseModel = model
                 self.notificationsTableView.reloadData()
             }
             
         }) { (error) in
-            
+             MBProgressHUD.hide(for: self.view, animated: true)
         }
     }
     
     func getNotificationsRequestBody()->String{
         var dataString:String = ""
         if let user = User.getUser(){
-            dataString = "CustomerId=\(user.userId)"
+            dataString = "UserId=\(user.userId)"
         }
         return dataString
     }
@@ -90,7 +92,7 @@ extension NotificationsVC : UITableViewDelegate,UITableViewDataSource {
         let notificationCell = tableView.dequeueReusableCell(withIdentifier: "notificationCell", for: indexPath) as! NotificationsCell
         if let notResponse = self.notificationsResponseModel{
             let notificn = notResponse.notifications[indexPath.row]
-            notificationCell.setNotification(not:notificn)
+            notificationCell.setNotification(notification:notificn)
         }
         notificationCell.tag = indexPath.row
         return notificationCell

@@ -24,8 +24,10 @@ class NotificationsCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setNotification(not:Notifications){
-        
+    func setNotification(notification:Notifications){
+        dateLabel.text = notification.notificationDate
+        descriptionLabel.text = notification.notMessage
+        refNoLabel.text = "refNo".localiz() + ": \(notification.referenceNo)"
     }
     
 }

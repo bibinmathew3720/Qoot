@@ -1514,24 +1514,33 @@ class NotificationsResponseModel : NSObject{
 }
 
 class Notifications : NSObject{
-    var DishAmount:Float = 0.0
-    var DishCategory:Int = 0
-    var DishDescription:String = ""
+    var notificationDate:String = ""
+    var notId:Int = 0
+    var notMessage:String = ""
+    var notTitle:String = ""
+    var referenceNo:CLongLong = 0
     
     init(dict:[String:Any?]) {
-        //        if let value = dict["KitchenId"] as? String{
-        //            if let kitchenID = Int(value){
-        //                catId = kitchenID
-        //            }
-        //        }
-        if let value = dict["DishAmount"] as? Float{
-            DishAmount = value
+        if let value = dict["notification_date"] as? String{
+            notificationDate = value
         }
-        if let value = dict["DishCategory"] as? String{
-            if let dishCategory = Int(value){
-                DishCategory = dishCategory
+        if let value = dict["notification_id"] as? String{
+            if let notificationId = Int(value){
+                notId = notificationId
             }
         }
+        if let value = dict["notification_message"] as? String{
+            notMessage = value
+        }
+        if let value = dict["notification_title"] as? String{
+            notTitle = value
+        }
+        if let value = dict["notification_sourse_id"] as? String{
+            if let notificationId = Int(value){
+                referenceNo = CLongLong(notificationId)
+            }
+        }
+
         
     }
 }

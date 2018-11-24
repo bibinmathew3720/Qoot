@@ -583,16 +583,16 @@ class UserManager: CLBaseService {
         return kitchenCustomerRatingReponseModel
     }
     
-    //MARK : Log Out Api
+    //MARK : Get Notifications Api
     
-    func callingLogOutApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
-        CLNetworkManager().initateWebRequest(networkModelForLogOut(with:body), success: {
+    func callingNotificationsApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForNotifications(with:body), success: {
             (resultData) in
-            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
+            let (jsonDict, error) = self.didReceiveArrayResponseSuccessFully(resultData)
             if error == nil {
                 if let jdict = jsonDict{
                     print(jsonDict)
-                    success(self.getLogOutResponseModel(dict: jdict) as Any)
+                    success(self.getNotificationsResponseModel(dict: jdict) as Any)
                 }else{
                     failure(ErrorType.dataError)
                 }
@@ -606,16 +606,18 @@ class UserManager: CLBaseService {
         
     }
     
-    func networkModelForLogOut(with body:String)->CLNetworkModel{
-        let logOutRequestModel = CLNetworkModel.init(url: BASE_URL+LOGOUT_URL, requestMethod_: "POST")
-        logOutRequestModel.requestBody = body
-        return logOutRequestModel
+    func networkModelForNotifications(with body:String)->CLNetworkModel{
+        let notificationsRequestModel = CLNetworkModel.init(url: BASE_URL+Notifications_Url, requestMethod_: "POST")
+        notificationsRequestModel.requestBody = body
+        return notificationsRequestModel
     }
     
-    func getLogOutResponseModel(dict:[String : Any?]) -> Any? {
-        let logOutReponseModel = QootLogInResponseModel.init(dict:dict)
-        return logOutReponseModel
+    func getNotificationsResponseModel(dict:NSArray) -> Any? {
+        let notificationResponseModel = NotificationsResponseModel.init(arr:dict)
+        return notificationResponseModel
     }
+    
+    
     //MARK : Edit Profile Api
     
     func callingEditProfileApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
@@ -688,147 +690,6 @@ class UserManager: CLBaseService {
     func getchangetPasswordResponseModel(dict:[String : Any?]) -> Any? {
         let changePasswordRequestModel = ChangePasswordResponseModel.init(dict:dict)
         return changePasswordRequestModel
-    }
-    
-    //MARK: Get Notifications Api
-    
-    func callingGetNotificationsApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
-        CLNetworkManager().initateWebRequest(networkModelForGetNotifications(with: body), success: {
-            (resultData) in
-            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
-            
-            if error == nil {
-                if let jdict = jsonDict{
-                    print(jsonDict)
-                    success(self.getNotificationsResponseModel(dict: jdict) as Any)
-                }else{
-                    failure(ErrorType.dataError)
-                }
-            }else{
-                failure(ErrorType.dataError)
-            }
-            
-        }, failiure: {(error)-> () in failure(error)
-            
-        })
-        
-    }
-    
-    func networkModelForGetNotifications(with body:String)->CLNetworkModel{
-        let getNotificationsRequestModel = CLNetworkModel.init(url: BASE_URL+GET_NOTIFICATIONS, requestMethod_: "POST")
-        getNotificationsRequestModel.requestBody = body
-        return getNotificationsRequestModel
-    }
-    
-    func getNotificationsResponseModel(dict:[String : Any?]) -> Any? {
-        let getNotificationsRequestModel = FetchGetNotificationsResponseModel.init(dict:dict)
-        return getNotificationsRequestModel
-    }
-    
-    
-    //MARK: Get Notifications History Api
-    
-    func callingGetNotificationHistoryApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
-        CLNetworkManager().initateWebRequest(networkModelForGetNotificationsHistory(with: body), success: {
-            (resultData) in
-            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
-            
-            if error == nil {
-                if let jdict = jsonDict{
-                    print(jsonDict)
-                    success(self.getNotificationsHistoryResponseModel(dict: jdict) as Any)
-                }else{
-                    failure(ErrorType.dataError)
-                }
-            }else{
-                failure(ErrorType.dataError)
-            }
-            
-        }, failiure: {(error)-> () in failure(error)
-            
-        })
-        
-    }
-    
-    func networkModelForGetNotificationsHistory(with body:String)->CLNetworkModel{
-        let getNotificationsRequestModel = CLNetworkModel.init(url: BASE_URL+GET_NOTIFICATIONS_HISTORY, requestMethod_: "POST")
-        getNotificationsRequestModel.requestBody = body
-        return getNotificationsRequestModel
-    }
-    
-    func getNotificationsHistoryResponseModel(dict:[String : Any?]) -> Any? {
-        let getNotificationsRequestModel = FetchNotificationsHistoryResponseModel.init(dict:dict)
-        return getNotificationsRequestModel
-    }
-    
-    //MARK: Get Notifications Remove Api
-    
-    func callingNotificationRemoveApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
-        CLNetworkManager().initateWebRequest(networkModelForGetNotificationsRemove(with: body), success: {
-            (resultData) in
-            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
-            
-            if error == nil {
-                if let jdict = jsonDict{
-                    print(jsonDict)
-                    success(self.getNotificationsRemoveResponseModel(dict: jdict) as Any)
-                }else{
-                    failure(ErrorType.dataError)
-                }
-            }else{
-                failure(ErrorType.dataError)
-            }
-            
-        }, failiure: {(error)-> () in failure(error)
-            
-        })
-        
-    }
-    
-    func networkModelForGetNotificationsRemove(with body:String)->CLNetworkModel{
-        let getNotificationsRequestModel = CLNetworkModel.init(url: BASE_URL+REMOVE_NOTIFICATIONS, requestMethod_: "POST")
-        getNotificationsRequestModel.requestBody = body
-        return getNotificationsRequestModel
-    }
-    
-    func getNotificationsRemoveResponseModel(dict:[String : Any?]) -> Any? {
-        let getNotificationsRequestModel = FetchNotificationsHistoryResponseModel.init(dict:dict)
-        return getNotificationsRequestModel
-    }
-    
-    //MARK: Change Notifications Api
-    
-    func callingChangeNotificationsApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
-        CLNetworkManager().initateWebRequest(networkModelForChangeNotifications(with: body), success: {
-            (resultData) in
-            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
-            
-            if error == nil {
-                if let jdict = jsonDict{
-                    print(jsonDict)
-                    success(self.changeNotificationsResponseModel(dict: jdict) as Any)
-                }else{
-                    failure(ErrorType.dataError)
-                }
-            }else{
-                failure(ErrorType.dataError)
-            }
-            
-        }, failiure: {(error)-> () in failure(error)
-            
-        })
-        
-    }
-    
-    func networkModelForChangeNotifications(with body:String)->CLNetworkModel{
-        let changeNotificationsRequestModel = CLNetworkModel.init(url: BASE_URL+CHANGE_NOTIFICATIONS, requestMethod_: "POST")
-        changeNotificationsRequestModel.requestBody = body
-        return changeNotificationsRequestModel
-    }
-    
-    func changeNotificationsResponseModel(dict:[String : Any?]) -> Any? {
-        let changeNotificationsRequestModel = FetchChangeNotificationsResponseModel.init(dict:dict)
-        return changeNotificationsRequestModel
     }
     
     //MARK: Feedback Api
@@ -1391,108 +1252,6 @@ class ViewCuisines : NSObject{
 }
 
 
-class FetchGetNotificationsResponseModel : NSObject{
-    var statusMessage:String = ""
-    var errorMessage:String = ""
-    var statusCode:Int = 0
-    var notificationStatus:String = ""
-    init(dict:[String:Any?]) {
-        if let value = dict["statusMessage"] as? String{
-            statusMessage = value
-        }
-        
-        if let value = dict["statusCode"] as? Int{
-            statusCode = value
-        }
-        if let value = dict["notification_status"] as? String{
-            notificationStatus = value
-        }
-    }
-}
-
-class FetchNotificationsHistoryResponseModel : NSObject{
-    var statusMessage:String = ""
-    var errorMessage:String = ""
-    var statusCode:Int = 0
-    var total:Int = 0
-    var data = [FetchNotificationData]()
-    init(dict:[String:Any?]) {
-        if let value = dict["statusMessage"] as? String{
-            statusMessage = value
-        }
-        
-        if let value = dict["statusCode"] as? Int{
-            statusCode = value
-        }
-        if let value = dict["total"] as? Int{
-            total = value
-        }
-        if let value = dict["data"] as? NSArray{
-            for item in value{
-                data.append(FetchNotificationData.init(dict: item as! [String : Any?]))
-            }
-        }
-    }
-}
-
-class FetchNotificationData : NSObject{
-    var id:Int = 0
-    var user_id:Int = 0
-    var type_id:Int =  0
-    var type:String = ""
-    var msg_content:String = ""
-    var status:String = ""
-    var created_date:String = ""
-    var updated_date:String = ""
-    var img_url:String = ""
-
-    init(dict:[String:Any?]) {
-        if let value = dict["id"] as? Int{
-            id = value
-        }
-
-        if let value = dict["user_id"] as? Int{
-            user_id = value
-        }
-        if let value = dict["type_id"] as? Int{
-            type_id = value
-        }
-        if let value = dict["type"] as? String{
-            type = value
-        }
-        if let value = dict["msg_content"] as? String{
-            msg_content = value
-        }
-        if let value = dict["status"] as? String{
-            status = value
-        }
-        if let value = dict["created_at"] as? String{
-            created_date = value
-        }
-        if let value = dict["updated_at"] as? String{
-            updated_date = value
-        }
-        if let value = dict["img_url"] as? String{
-            img_url = value
-        }
-    }
-}
-
-class FetchChangeNotificationsResponseModel : NSObject{
-    var statusMessage:String = ""
-    var errorMessage:String = ""
-    var statusCode:Int = 0
-    init(dict:[String:Any?]) {
-        if let value = dict["statusMessage"] as? String{
-            statusMessage = value
-        }
-        
-        if let value = dict["statusCode"] as? Int{
-            statusCode = value
-        }
-    }
-}
-
 class FetchContactUsResponseModel: NSObject {
     var statusMessage:String = ""
     var errorMessage:String = ""
@@ -1742,6 +1501,40 @@ class Dishes : NSObject{
             }
         }
     }
+
+class NotificationsResponseModel : NSObject{
+    var notifications = [Notifications]()
+    init(arr:(NSArray)) {
+        for item in arr{
+            if let it = item as? [String : Any?]{
+                notifications.append(Notifications.init(dict: it ))
+            }
+        }
+    }
+}
+
+class Notifications : NSObject{
+    var DishAmount:Float = 0.0
+    var DishCategory:Int = 0
+    var DishDescription:String = ""
+    
+    init(dict:[String:Any?]) {
+        //        if let value = dict["KitchenId"] as? String{
+        //            if let kitchenID = Int(value){
+        //                catId = kitchenID
+        //            }
+        //        }
+        if let value = dict["DishAmount"] as? Float{
+            DishAmount = value
+        }
+        if let value = dict["DishCategory"] as? String{
+            if let dishCategory = Int(value){
+                DishCategory = dishCategory
+            }
+        }
+        
+    }
+}
 
 class KitchenMenusResponseModel : NSObject{
     var dishes = [Dishes]()

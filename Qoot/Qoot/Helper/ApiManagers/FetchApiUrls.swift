@@ -39,6 +39,7 @@ let CustomerOrderHistory_URL = "Ios/Customer/ViewCustomerOrderHistory"
 let CancelCustomerOrder_URL = "Ios/Customer/CancelOrder"
 let ViewKitchenFoodCategories = "Ios/Customer/ViewKitchenFoodCategories"
 let GetKitchenMenus = "Ios/Customer/ViewKitchenMenu"
+let Notifications_Url = "Ios/Customer/ViewNotifications"
 
 
 

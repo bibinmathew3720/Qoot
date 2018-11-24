@@ -105,6 +105,8 @@
 		D0F24E6121A8B4730005F923 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F24E5F21A8B4710005F923 /* WebViewController.xib */; };
 		D0F24E6521A8C6280005F923 /* NotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F24E6321A8C6270005F923 /* NotificationsVC.swift */; };
 		D0F24E6621A8C6280005F923 /* NotificationsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F24E6421A8C6270005F923 /* NotificationsVC.xib */; };
+		D0F24E6A21A8D4790005F923 /* NotificationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F24E6821A8D4790005F923 /* NotificationsCell.swift */; };
+		D0F24E6B21A8D4790005F923 /* NotificationsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F24E6921A8D4790005F923 /* NotificationsCell.xib */; };
 		D0F830F4215BA9320039485F /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F830F2215BA9320039485F /* SettingsVC.swift */; };
 		D0F830F5215BA9320039485F /* SettingsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F830F3215BA9320039485F /* SettingsVC.xib */; };
 		D0F9E11921161B1F004F7833 /* ManuTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F9E11721161B1F004F7833 /* ManuTVC.swift */; };
@@ -220,6 +222,8 @@
 		D0F24E5F21A8B4710005F923 /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
 		D0F24E6321A8C6270005F923 /* NotificationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsVC.swift; sourceTree = "<group>"; };
 		D0F24E6421A8C6270005F923 /* NotificationsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationsVC.xib; sourceTree = "<group>"; };
+		D0F24E6821A8D4790005F923 /* NotificationsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsCell.swift; sourceTree = "<group>"; };
+		D0F24E6921A8D4790005F923 /* NotificationsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationsCell.xib; sourceTree = "<group>"; };
 		D0F830F2215BA9320039485F /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		D0F830F3215BA9320039485F /* SettingsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsVC.xib; sourceTree = "<group>"; };
 		D0F9E11721161B1F004F7833 /* ManuTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManuTVC.swift; sourceTree = "<group>"; };
@@ -840,10 +844,20 @@
 		D0F24E6221A8C5F20005F923 /* NotificationsVC */ = {
 			isa = PBXGroup;
 			children = (
+				D0F24E6721A8D44B0005F923 /* NotificationsCell */,
 				D0F24E6321A8C6270005F923 /* NotificationsVC.swift */,
 				D0F24E6421A8C6270005F923 /* NotificationsVC.xib */,
 			);
 			path = NotificationsVC;
+			sourceTree = "<group>";
+		};
+		D0F24E6721A8D44B0005F923 /* NotificationsCell */ = {
+			isa = PBXGroup;
+			children = (
+				D0F24E6821A8D4790005F923 /* NotificationsCell.swift */,
+				D0F24E6921A8D4790005F923 /* NotificationsCell.xib */,
+			);
+			path = NotificationsCell;
 			sourceTree = "<group>";
 		};
 		D0F830F1215BA91C0039485F /* SettingsVC */ = {
@@ -934,6 +948,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0F24E6B21A8D4790005F923 /* NotificationsCell.xib in Resources */,
 				D00FACDF2112DF2200C8C176 /* LaunchScreen.storyboard in Resources */,
 				D00FACED2112ED4100C8C176 /* Localizable.strings in Resources */,
 				D01888CB21153A1800B01946 /* HomeTableCell.xib in Resources */,
@@ -1081,6 +1096,7 @@
 				BC93070321181F7600D129B7 /* CartVC.swift in Sources */,
 				BCB66BD6211D7D3F002FB1FF /* ReviewsTableCell.swift in Sources */,
 				BC9C16A2211948D500ED49A4 /* PastOrderTableCell.swift in Sources */,
+				D0F24E6A21A8D4790005F923 /* NotificationsCell.swift in Sources */,
 				D00FAD2A2112EE5D00C8C176 /* CCUtility.swift in Sources */,
 				BB7A7934217FA826000A46F1 /* MenuSectionHeaderView.swift in Sources */,
 				D00FAD1E2112EE5D00C8C176 /* CLNetworkModel.swift in Sources */,

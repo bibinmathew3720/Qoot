@@ -33,7 +33,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dOq-be-ayA">
                                 <rect key="frame" x="1" y="1" width="39" height="38"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="negativeIcon"/>
+                                <state key="normal" image="cartMinus"/>
                                 <connections>
                                     <action selector="minusButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="7I7-yE-Wgi"/>
                                 </connections>
@@ -59,7 +59,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EO8-OE-kow">
                                 <rect key="frame" x="80.5" y="1" width="38.5" height="38"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="plusIconGreen">
+                                <state key="normal" image="cartPlus">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -132,7 +132,7 @@
     </objects>
     <resources>
         <image name="cartCloseIcon" width="15" height="15"/>
-        <image name="negativeIcon" width="10" height="10"/>
-        <image name="plusIconGreen" width="10" height="10"/>
+        <image name="cartMinus" width="15" height="15"/>
+        <image name="cartPlus" width="15" height="15"/>
     </resources>
 </document>

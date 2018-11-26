@@ -21,9 +21,10 @@ class SettingsVC: BaseViewController {
     @IBOutlet weak var confirmPwdTF: UITextField!
     @IBOutlet weak var updatePwdButton: UIButton!
     @IBOutlet weak var profileImageView: UIImageView!
-    
+    @IBOutlet weak var updateProfImageButton: UIButton!
+    @IBOutlet weak var updateProfileImageHeightConstraint: NSLayoutConstraint!
     var selProfImage:UIImage?
-    
+    var updateProfImageButtonHeight:CGFloat = 33.0
     
     override func initView() {
         initialisation()
@@ -46,7 +47,7 @@ class SettingsVC: BaseViewController {
         newPwdTF.placeholder = "NewPassword".localiz()
         confirmPwdTF.placeholder = "ConfirmNewPassword".localiz()
         updatePwdButton.setTitle("UpdatePassword".localiz(), for: UIControlState.normal)
-       
+        updateProfImageButton.setTitle("UpdateProfilePicture".localiz(), for: UIControlState.normal)
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,6 +59,12 @@ class SettingsVC: BaseViewController {
     
     override func leftNavButtonAction() {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func updateProfImageButtonAction(_ sender: UIButton) {
+        if let selImage = self.selProfImage{
+            self.callingUploadApi(image: selImage)
+        }
     }
     
     @IBAction func myAddressesButtonAction(_ sender: UIButton) {
@@ -165,7 +172,7 @@ extension SettingsVC:UIImagePickerControllerDelegate,UINavigationControllerDeleg
             if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
                 self.selProfImage = pickedImage
                 self.profileImageView.image = pickedImage
-                self.callingUploadApi(image: pickedImage)
+                self.updateProfileImageHeightConstraint.constant = CGFloat(self.updateProfImageButtonHeight)
             }
         }
     }
@@ -176,7 +183,7 @@ extension SettingsVC:UIImagePickerControllerDelegate,UINavigationControllerDeleg
     
     
     func callingUploadApi(image:UIImage){
-        
+        MBProgressHUD.showAdded(to: self.view, animated: true)
         var dict:[String:String] = [String:String]()
         dict.updateValue(Constant.ApiKey, forKey: "apikey")
         dict.updateValue(CCUtility.getCurrentLanguage(), forKey: "lang")
@@ -185,8 +192,11 @@ extension SettingsVC:UIImagePickerControllerDelegate,UINavigationControllerDeleg
         }
         let imageData: Data = UIImagePNGRepresentation(image)!
         requestWith(endUrl: "https://qoot.online/ksa/test/Ios/Customer/UploadCustomerPhoto", imageData: imageData, parameters: dict, onCompletion: { (success) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            self.updateProfileImageHeightConstraint.constant = 0
             print("Success")
         }) { (error) in
+            MBProgressHUD.hide(for: self.view, animated: true)
             print("Failure")
         }
     }
@@ -207,7 +217,7 @@ extension SettingsVC:UIImagePickerControllerDelegate,UINavigationControllerDeleg
             }
             
             if let data = imageData{
-                multipartFormData.append(data, withName: "image.png", fileName: "file ", mimeType: "image/png")
+                multipartFormData.append(data, withName: "image.png", fileName: "file", mimeType: "image/png")
             }
             
         }, usingThreshold: UInt64.init(), to: url, method: .post, headers: headers) { (result) in
@@ -231,6 +241,16 @@ extension SettingsVC:UIImagePickerControllerDelegate,UINavigationControllerDeleg
                 onError?(error)
             }
         }
+    }
+    
+    func updateProfileImageRequestBody()->String{
+        var dataString:String = ""
+        if let user = User.getUser(){
+            let userIdString:String = "CustomerId=\(user.userId)" + "&"
+            dataString = dataString + userIdString
+        }
+        dataString = dataString + "apikey=cW9vdC5vbmxpbmVhcGl0b2tlbmJ5amlqbw=="
+        return dataString
     }
     
 }

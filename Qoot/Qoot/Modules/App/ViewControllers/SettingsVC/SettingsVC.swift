@@ -226,7 +226,6 @@ extension SettingsVC:UIImagePickerControllerDelegate,UINavigationControllerDeleg
                 upload.responseJSON { response in
                     
                     print("Response:\(response)")
-//                    let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(response)
                     
                     print("Succesfully uploaded")
                     if let err = response.error{
@@ -235,7 +234,13 @@ extension SettingsVC:UIImagePickerControllerDelegate,UINavigationControllerDeleg
                         return
                     }
                     else{
-                        
+                        if let result = response.result.value{
+                            if let responseObject = result as? Dictionary<String, Any> {
+                                let profileImagemodel = UploadProfileImageResponse.init(dict: responseObject)
+                                User.updateProfileImage(updateProfileImageResponse: profileImagemodel)
+                            }
+                        }
+                       
                     }
                     onCompletion?(true)
                 }

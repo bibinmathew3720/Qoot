@@ -42,7 +42,6 @@ class User: NSManagedObject {
         user.registerType = userData.registration_type
         user.urlStatus = userData.url_status
         user.userId = Int16(userData.userId)
-
         CoreDataHandler.sharedInstance.saveContext()
     }
     
@@ -52,6 +51,14 @@ class User: NSManagedObject {
             return detailsArrayPost.object(at: 0) as? User
         }
         return nil
+    }
+    
+    class func updateProfileImage(updateProfileImageResponse:UploadProfileImageResponse) {
+        if let user = User.getUser() {
+            user.customerPhoto = updateProfileImageResponse.customer_photo
+            CoreDataHandler.sharedInstance.saveContext()
+        }
+        
     }
     
     class func deleteUser() {

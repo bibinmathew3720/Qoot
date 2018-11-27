@@ -36,6 +36,7 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
     @IBOutlet var addAddressButtonHeightConstraint: NSLayoutConstraint!
     @IBOutlet var mapViewHeight: NSLayoutConstraint!
     @IBOutlet weak var mapView: GMSMapView!
+    @IBOutlet weak var addressTableViewHeightConstraint: NSLayoutConstraint!
     var locationMarker:GMSMarker!
     
     var selectedDate:String?
@@ -52,7 +53,8 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
      var camera: GMSCameraPosition = GMSCameraPosition.camera(withLatitude: 10.0068361, longitude: 76.3655878, zoom: 17.5)
     var addAddressResponseModel:AddAddressResponseModel?
     var selPaymentType:PaymentType?
-    let mapViewHeightConstant = 300
+    let mapViewHeightConstant = 350
+    let addressTableViewHeightConstant = 180
     
     @IBOutlet weak var cityNameTF: UITextField!
     @IBOutlet weak var addressTF: UITextField!
@@ -239,9 +241,10 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
                self.addressResponseModel = model
                 if model.addresses.count>0{
                     self.selAddress = model.addresses.first
+                    self.addressTableViewHeightConstraint.constant = CGFloat(self.addressTableViewHeightConstant)
                 }
                 else{
-                    
+                    self.addressTableViewHeightConstraint.constant = 0.0
                 }
                self.addressTable.reloadData()
             }
@@ -564,7 +567,7 @@ extension DeliveryDetailsVC:CLLocationManagerDelegate{
         
         self.mapView?.animate(to: camera)
         locationMgr.stopUpdatingLocation()
-        getLocation()
+       // getLocation()
 //        let position = currentLocation.coordinate
 //        let marker = GMSMarker(position: position)
 //        marker.title = "wewl"

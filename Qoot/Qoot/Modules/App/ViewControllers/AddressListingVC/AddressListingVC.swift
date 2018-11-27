@@ -43,8 +43,10 @@ class AddressListingVC: BaseViewController, GMSMapViewDelegate {
     var isEditingMode = false
     var selIndex = -1
     
-    let mapViewHeightConstant = 300.0
-
+    let mapViewHeightConstant = 350.0
+    @IBOutlet weak var addressTableViewHeightConstraint: NSLayoutConstraint!
+    let addressTableViewHeightConstant = 180
+    
     override func initView(){
         initialisation()
        localisation()
@@ -88,6 +90,10 @@ class AddressListingVC: BaseViewController, GMSMapViewDelegate {
         mapBackView.isHidden = true
         mapViewHeight.constant = 0
         closeButtonHeight.constant = 0
+        addAddressButtonHeightConstraint.constant = 40
+    }
+    
+    func enableAddAddressButton(){
         addAddressButtonHeightConstraint.constant = 40
     }
     
@@ -161,9 +167,10 @@ class AddressListingVC: BaseViewController, GMSMapViewDelegate {
                 self.addressResponseModel = model
                 if model.addresses.count>0{
                     self.selAddress = model.addresses.first
+                    self.addressTableViewHeightConstraint.constant = CGFloat(self.addressTableViewHeightConstant)
                 }
                 else{
-                    
+                     self.addressTableViewHeightConstraint.constant = 0.0
                 }
                 self.addressTable.reloadData()
             }
@@ -200,6 +207,7 @@ class AddressListingVC: BaseViewController, GMSMapViewDelegate {
                 if model.statusCode == 1 {
                     self.callingGetAddressListApi()
                     self.clearAllAddressFields()
+                    self.enableAddAddressButton()
                 }
             }
             
@@ -281,7 +289,7 @@ class AddressListingVC: BaseViewController, GMSMapViewDelegate {
     }
     
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
-        //getLocationInformation(coordinate: coordinate)
+        getLocationInformation(coordinate: coordinate)
         print(coordinate)
     }
     
@@ -385,7 +393,7 @@ extension AddressListingVC:CLLocationManagerDelegate{
         
         self.mapView?.animate(to: camera)
         locationMgr.stopUpdatingLocation()
-        getLocation()
+        //getLocation()
         //        let position = currentLocation.coordinate
         //        let marker = GMSMarker(position: position)
         //        marker.title = "wewl"

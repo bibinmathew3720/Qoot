@@ -1540,8 +1540,6 @@ class Notifications : NSObject{
                 referenceNo = CLongLong(notificationId)
             }
         }
-
-        
     }
 }
 
@@ -1552,6 +1550,15 @@ class KitchenMenusResponseModel : NSObject{
             if let it = item as? [String : Any?]{
                 dishes.append(Dishes.init(dict: it ))
             }
+        }
+    }
+}
+
+class UploadProfileImageResponse : NSObject{
+    var customer_photo:String = ""
+    init(dict:[String:Any?]) {
+        if let value = dict["customer_photo"] as? String{
+            customer_photo = value
         }
     }
 }

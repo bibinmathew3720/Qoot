@@ -40,7 +40,7 @@ let CancelCustomerOrder_URL = "Ios/Customer/CancelOrder"
 let ViewKitchenFoodCategories = "Ios/Customer/ViewKitchenFoodCategories"
 let GetKitchenMenus = "Ios/Customer/ViewKitchenMenu"
 let Notifications_Url = "Ios/Customer/ViewNotifications"
-
+let UploadProfileImage_Url = "Ios/Customer/UploadCustomerPhoto"
 
 
 

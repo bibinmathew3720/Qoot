@@ -186,26 +186,26 @@ extension SettingsVC:UIImagePickerControllerDelegate,UINavigationControllerDeleg
         MBProgressHUD.showAdded(to: self.view, animated: true)
         var dict:[String:String] = [String:String]()
         dict.updateValue(Constant.ApiKey, forKey: "apikey")
-        dict.updateValue(CCUtility.getCurrentLanguage(), forKey: "lang")
         if let user = User.getUser(){
             dict.updateValue("\(user.userId)", forKey: "CustomerId")
         }
-        let imageData: Data = UIImagePNGRepresentation(image)!
-        requestWith(endUrl: "https://qoot.online/ksa/test/Ios/Customer/UploadCustomerPhoto", imageData: imageData, parameters: dict, onCompletion: { (success) in
-            MBProgressHUD.hide(for: self.view, animated: true)
-            self.updateProfileImageHeightConstraint.constant = 0
-            print("Success")
-        }) { (error) in
-            MBProgressHUD.hide(for: self.view, animated: true)
-            print("Failure")
+        let uploadProfImageUrl = BASE_URL+UploadProfileImage_Url
+        if  let imageData = UIImageJPEGRepresentation(image, 0.6) {
+            requestWith(endUrl: uploadProfImageUrl, imageData: imageData, parameters: dict, onCompletion: { (success) in
+                MBProgressHUD.hide(for: self.view, animated: true)
+                self.updateProfileImageHeightConstraint.constant = 0
+                print("Success")
+            }) { (error) in
+                MBProgressHUD.hide(for: self.view, animated: true)
+                print("Failure")
+            }
         }
+       
+       
     }
     
     
     func requestWith(endUrl: String, imageData: Data?, parameters: [String : Any], onCompletion: ((Bool) -> Void)? = nil, onError: ((Error?) -> Void)? = nil){
-        
-        let url = "http://google.com" /* your API url */
-        
         let headers: HTTPHeaders = [
             /* "Authorization": "your_access_token",  in case you need authorization header */
             "Content-type": "multipart/form-data"
@@ -217,10 +217,10 @@ extension SettingsVC:UIImagePickerControllerDelegate,UINavigationControllerDeleg
             }
             
             if let data = imageData{
-                multipartFormData.append(data, withName: "image.png", fileName: "file", mimeType: "image/png")
+                multipartFormData.append(data, withName: "file", fileName: "file.png", mimeType: "image/png")
             }
             
-        }, usingThreshold: UInt64.init(), to: url, method: .post, headers: headers) { (result) in
+        }, usingThreshold: UInt64.init(), to: endUrl, method: .post, headers: headers) { (result) in
             switch result{
             case .success(let upload, _, _):
                 upload.responseJSON { response in
@@ -234,6 +234,9 @@ extension SettingsVC:UIImagePickerControllerDelegate,UINavigationControllerDeleg
                         onError?(err)
                         return
                     }
+                    else{
+                        
+                    }
                     onCompletion?(true)
                 }
             case .failure(let error):
@@ -241,16 +244,6 @@ extension SettingsVC:UIImagePickerControllerDelegate,UINavigationControllerDeleg
                 onError?(error)
             }
         }
-    }
-    
-    func updateProfileImageRequestBody()->String{
-        var dataString:String = ""
-        if let user = User.getUser(){
-            let userIdString:String = "CustomerId=\(user.userId)" + "&"
-            dataString = dataString + userIdString
-        }
-        dataString = dataString + "apikey=cW9vdC5vbmxpbmVhcGl0b2tlbmJ5amlqbw=="
-        return dataString
     }
     
 }

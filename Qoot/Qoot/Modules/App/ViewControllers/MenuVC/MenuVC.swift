@@ -43,6 +43,7 @@ class MenuVC: BaseViewController {
         else{
            languageSegment.selectedSegmentIndex = 1
         }
+        self.profileImage.layer.cornerRadius = self.profileImage.frame.size.height/2
     }
     
     override func viewWillAppear(_ animated: Bool) {

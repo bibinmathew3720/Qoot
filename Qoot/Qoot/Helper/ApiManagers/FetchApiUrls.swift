@@ -16,6 +16,7 @@ let BASE_URL = PRODUCTION
 //Customer
 let REGISTER_URL = "Ios/Customer/CustomerSignup"
 let LOGIN_URL = "Ios/Customer/LoginAction"
+let CHECK_SOCIAL_LOGIN_URL = "Ios/Customer/CheckSocialLogin"
 let SENDOTP_URL = "Ios/Customer/SendOtp"
 let CHANGE_PWD_URL = "Ios/Customer/ChangePassword"
 let CHECK_OTP_URL = "Ios/Customer/CheckOtp"

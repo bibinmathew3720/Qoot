@@ -44,6 +44,40 @@ class UserManager: CLBaseService {
         return loginReponseModel
     }
     
+    //MARK : Social Check Api
+    
+    func callingCheckSocialLoginApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForCheckSocialLogin(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict)
+                    success(self.getSocialLoginResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForCheckSocialLogin(with body:String)->CLNetworkModel{
+        let registerRequestModel = CLNetworkModel.init(url: BASE_URL+CHECK_SOCIAL_LOGIN_URL, requestMethod_: "POST")
+        registerRequestModel.requestBody = body
+        return registerRequestModel
+    }
+    
+    func getSocialLoginResponseModel(dict:[String : Any?]) -> Any? {
+        let socialLoginReponseModel = CheckSocialLoginResponseModel.init(dict:dict)
+        return socialLoginReponseModel
+    }
+    
     //MARK : Send OTP Api
     
     func callingSendOTPApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
@@ -967,6 +1001,19 @@ class SendOTPResponseModel : NSObject{
     }
 }
 
+class CheckSocialLoginResponseModel : NSObject{
+    var statusMessage:String = ""
+    var status:Int = 0
+    init(dict:[String:Any?]) {
+        if let value = dict["Message"] as? String{
+            statusMessage = value
+        }
+        if let value = dict["Status"] as? Int{
+            status = value
+        }
+    }
+}
+
 class CheckOTPResponseModel : NSObject{
     var statusMessage:String = ""
     var status:Int = 0
@@ -1559,6 +1606,44 @@ class UploadProfileImageResponse : NSObject{
     init(dict:[String:Any?]) {
         if let value = dict["customer_photo"] as? String{
             customer_photo = value
+        }
+    }
+}
+
+class SocialMediaResponseModel : NSObject{
+    
+    var userEmail:String = ""
+    var socialId:String = ""
+    var userName:String = ""
+    var userProfileImageUrl:String = ""
+    
+    var catId:Int = 0
+    var languageId:String = ""
+    var notSettings:Bool = true
+    
+    var userMobile:String = ""
+    var userArea:String = ""
+    var userAreaId:String = ""
+    var countryCode:String = ""
+    var userAddress1:String = ""
+    var userAddress2:String = ""
+    
+    init(dict:[String:Any?]) {
+        if let value = dict["email"] as? String{
+            userEmail = value
+        }
+        if let value = dict["id"] as? String{
+            socialId = value
+        }
+        if let value = dict["name"] as? String{
+            userName = value
+        }
+        if let value = dict["picture"] as? AnyObject{
+            if let data = value["data"] as? AnyObject {
+                if let profileImageUrlString = data["url"] as? String {
+                    userProfileImageUrl = profileImageUrlString
+                }
+            }
         }
     }
 }

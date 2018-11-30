@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import FBSDKLoginKit
+import GoogleSignIn
+import FBSDKCoreKit
 
-class DashboardVC: BaseViewController {
+class DashboardVC: BaseViewController,GIDSignInUIDelegate,GIDSignInDelegate {
     @IBOutlet weak var loginViaFBButton: UIButton!
     @IBOutlet weak var loginViaGoogleButton: UIButton!
     @IBOutlet weak var loginViaQootButton: UIButton!
@@ -52,9 +55,20 @@ class DashboardVC: BaseViewController {
     //Button Actions
     
     @IBAction func facebookButtonAction(_ sender: UIButton) {
+        let login: FBSDKLoginManager = FBSDKLoginManager()
+        ApplicationController.applicationController.loginType = .faceBook
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        login.logIn(withReadPermissions: ["public_profile", "email"], from: self) { (result, error) in
+            print(result)
+            //self.flowerUserProfile()
+        }
     }
     
     @IBAction func googlePlusButtonAction(_ sender: UIButton) {
+        ApplicationController.applicationController.loginType = .googlePlus
+        GIDSignIn.sharedInstance().uiDelegate = self
+        GIDSignIn.sharedInstance().delegate = self
+        GIDSignIn.sharedInstance().signIn()
     }
     
     @IBAction func logInButtonAction(_ sender: UIButton) {
@@ -69,6 +83,35 @@ class DashboardVC: BaseViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
+              withError error: Error!) {
+        if let error = error {
+            print("\(error.localizedDescription)")
+        } else {
+            // Perform any operations on signed in user here.
+            let userId = user.userID                  // For client-side use only!
+            let idToken = user.authentication.idToken // Safe to send to the server
+            let fullName = user.profile.name
+            let givenName = user.profile.givenName
+            let familyName = user.profile.familyName
+            let email = user.profile.email
+            var googleDetails = [String:AnyObject]()
+            googleDetails["id"] = user.authentication.clientID as AnyObject
+            googleDetails["email"] = user.profile.email as AnyObject
+            googleDetails["name"] = user.profile.name as AnyObject
+            //self.socialMediaResponse = FlowerSocialMediaResponseModel.init(dict: googleDetails)
+            //self.callingSocialLoginApi()
+        }
+    }
+    func sign(_ signIn: GIDSignIn!, present viewController: UIViewController!) {
+        self.present(viewController, animated: true, completion: nil)
+    }
+    
+    // Dismiss the "Sign in with Google" view
+    func sign(_ signIn: GIDSignIn!, dismiss viewController: UIViewController!) {
+        self.dismiss(animated: true, completion: nil)
     }
     
 

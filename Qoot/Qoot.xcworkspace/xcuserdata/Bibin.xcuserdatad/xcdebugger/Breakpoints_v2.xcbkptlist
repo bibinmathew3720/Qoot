@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Qoot/Helper/ApiManagers/ProductManager.swift"
-            timestampString = "559738468.88638"
+            timestampString = "565013549.320092"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "281"
@@ -26,12 +26,12 @@
                   moduleName = "Qoot"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Bibin/Desktop/MyOwn/Qoot/Qoot/Qoot/Helper/ApiManagers/ProductManager.swift"
-                  timestampString = "561775393.906306"
+                  timestampString = "565252638.0415061"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "281"
                   endingLineNumber = "281"
-                  offsetFromSymbolStart = "132">
+                  offsetFromSymbolStart = "116">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -41,12 +41,12 @@
                   moduleName = "Qoot"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Bibin/Desktop/MyOwn/Qoot/Qoot/Qoot/Helper/ApiManagers/ProductManager.swift"
-                  timestampString = "561775393.910894"
+                  timestampString = "565252638.045092"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "281"
                   endingLineNumber = "281"
-                  offsetFromSymbolStart = "164">
+                  offsetFromSymbolStart = "156">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Qoot/Modules/UserManagement/OTPVC.swift"
-            timestampString = "559912227.432721"
+            timestampString = "564710077.9077899"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "125"
@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Qoot/Helper/ApiManagers/UserManager.swift"
-            timestampString = "561694853.6745"
+            timestampString = "565025038.2654099"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "89"
@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Qoot/Helper/ApiManagers/UserManager.swift"
-            timestampString = "561694853.674608"
+            timestampString = "565025038.265488"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "56"
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Qoot/Helper/ApiManagers/UserManager.swift"
-            timestampString = "561694853.674674"
+            timestampString = "565025038.265552"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "78"
@@ -121,13 +121,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Qoot/Helper/ApiManagers/UserManager.swift"
-            timestampString = "561694853.674735"
+            filePath = "Qoot/Modules/App/ViewControllers/SearchDetailVC/MenuTVC/MenuTVC.swift"
+            timestampString = "564257462.644246"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "995"
-            endingLineNumber = "995"
-            landmarkName = "init(dict:)"
+            startingLineNumber = "3"
+            endingLineNumber = "3"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Qoot/Modules/UserManagement/DashboardVC.swift"
+            timestampString = "565252637.641636"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "facebookButtonAction(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -137,13 +153,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Qoot/Modules/App/ViewControllers/SettingsVC/SettingsVC.swift"
-            timestampString = "561773503.459224"
+            filePath = "Qoot/Modules/UserManagement/DashboardVC.swift"
+            timestampString = "565252637.6417201"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "215"
-            endingLineNumber = "215"
-            landmarkName = "requestWith(endUrl:imageData:parameters:onCompletion:onError:)"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
+            landmarkName = "sign(_:didSignInFor:withError:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

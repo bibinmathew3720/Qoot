@@ -9,6 +9,11 @@
 import Foundation
 import UIKit
 
+enum LoginType: Int {
+    case manual = 0
+    case faceBook
+    case googlePlus
+}
 
 struct Constant{
     static let AppName = "Qoot".localiz()

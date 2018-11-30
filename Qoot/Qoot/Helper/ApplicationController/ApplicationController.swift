@@ -11,6 +11,7 @@ import UIKit
 
 class ApplicationController: NSObject {
     static let applicationController = ApplicationController()
+    var loginType:LoginType = .manual
     static var deviceToken:String?
     static var isGuestLoggedIn:Bool?
 }

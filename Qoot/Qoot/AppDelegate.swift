@@ -10,6 +10,8 @@ import UIKit
 import CoreData
 import GoogleMaps
 import GooglePlaces
+import GoogleSignIn
+import FBSDKLoginKit
 import IQKeyboardManagerSwift
 
 @UIApplicationMain
@@ -27,7 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.enableAutoToolbar = false
         GMSPlacesClient.provideAPIKey(Constant.ApiKeys.googleMapKey)
         GMSServices.provideAPIKey(Constant.ApiKeys.googleMapKey)
-        
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        GIDSignIn.sharedInstance().clientID = "598957928769-t37gl3jccj8t55e6gp6t7jvtl9a4df3l.apps.googleusercontent.com"
         return true
     }
     
@@ -74,6 +77,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NSAttributedStringKey.font: UIFont(name: Constant.Font.Bold, size: 20)!
         ]
         UINavigationBar.appearance().titleTextAttributes = attrs
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        var appUrl: Bool = false
+        switch ApplicationController.applicationController.loginType {
+            
+        case .faceBook:
+            appUrl = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, options: options)
+        case .googlePlus:
+            appUrl = GIDSignIn.sharedInstance().handle(url as URL?, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String, annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+        default: print("default")
+        }
+        return appUrl
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

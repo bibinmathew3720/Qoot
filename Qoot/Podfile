@@ -14,6 +14,8 @@ target 'Qoot' do
   pod 'GoogleMaps'
   pod 'Alamofire', '~> 4.7'
   pod 'AlamofireImage'
+  pod 'GoogleSignIn'
+  pod 'FBSDKLoginKit'
   # Pods for Qoot
 
 end

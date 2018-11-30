@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import GoogleSignIn
+import FBSDKLoginKit
 
 class MenuVC: BaseViewController {
     var isLoggedIn:Bool = false
@@ -239,6 +241,8 @@ extension MenuVC : UITableViewDelegate,UITableViewDataSource {
         let yesAction = UIAlertAction(title: "YES".localiz(), style: .default) { (action:UIAlertAction) in
             UserDefaults.standard.set(false, forKey: Constant.VariableNames.isLoogedIn)
             User.deleteUser()
+            GIDSignIn.sharedInstance().signOut()
+            FBSDKLoginManager().logOut()
             self.uiUpdations()
         }
         let noAction = UIAlertAction(title: "NO".localiz(), style: .default) { (action:UIAlertAction) in

@@ -20,6 +20,14 @@ class RegisterVC: BaseViewController,UITextFieldDelegate {
     @IBOutlet weak var femaleLabel: UILabel!
     @IBOutlet weak var submitButton: UIButton!
     
+    @IBOutlet weak var pwdVerticalSpaceCnsnt: NSLayoutConstraint!
+    @IBOutlet weak var confirmPwdVerticalheiCnstraint: NSLayoutConstraint!
+    @IBOutlet weak var pwdHeiConstraint: NSLayoutConstraint!
+    @IBOutlet weak var conformPwdHeightConstarint: NSLayoutConstraint!
+    var socialResponseModel:SocialMediaResponseModel?
+    @IBOutlet weak var confirmPwdView: UIView!
+    @IBOutlet weak var pwdView: UIView!
+    
     override func initView() {
         initialisation()
         localisation()
@@ -28,6 +36,17 @@ class RegisterVC: BaseViewController,UITextFieldDelegate {
     func initialisation(){
         self.title = "RegisterTitle".localiz()
         addingLeftBarButton()
+        if let socialResponse = self.socialResponseModel {
+            self.pwdVerticalSpaceCnsnt.constant = 0
+            self.confirmPwdVerticalheiCnstraint.constant = 0
+            pwdHeiConstraint.constant = 0
+            conformPwdHeightConstarint.constant = 0
+            pwdView.isHidden = true
+            confirmPwdView.isHidden = true
+            self.emailTF.text = socialResponse.userEmail
+            self.nameTF.text = socialResponse.userName
+            self.phoneNoTF.text = socialResponse.userMobile
+        }
     }
     
     func localisation(){
@@ -62,8 +81,15 @@ class RegisterVC: BaseViewController,UITextFieldDelegate {
     }
     
     @IBAction func submitButtonAction(_ sender: UIButton) {
-        if isValidInputs(){
-           callingSignUpApi()
+        if let socialResponse = self.socialResponseModel {
+            if isValidInputsForSocialLogin(){
+                callingSignUpApi()
+            }
+        }
+        else{
+            if isValidInputs(){
+                callingSignUpApi()
+            }
         }
     }
     
@@ -98,6 +124,31 @@ class RegisterVC: BaseViewController,UITextFieldDelegate {
         }
         else if ((pwdTF.text?.count)!<8){
             message = "INVALIDPASSWORDCHARACTERS".localiz()
+            valid = false
+        }
+        else if !(emailTF.text?.isValidEmail())!{
+            message = "INVALIDEMAIL".localiz()
+            valid = false
+        }
+        if (!valid){
+            CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: message, parentController: self)
+        }
+        return valid
+    }
+    
+    func isValidInputsForSocialLogin()->Bool{
+        var valid = true
+        var message = ""
+        if (nameTF.text?.isEmpty)!{
+            message = "FILLMANDATORYFIELDS".localiz()
+            valid = false
+        }
+        else if (emailTF.text?.isEmpty)!{
+            message = "FILLMANDATORYFIELDS".localiz()
+            valid = false
+        }
+        else if (phoneNoTF.text?.isEmpty)!{
+            message = "FILLMANDATORYFIELDS".localiz()
             valid = false
         }
         else if !(emailTF.text?.isValidEmail())!{
@@ -179,20 +230,40 @@ class RegisterVC: BaseViewController,UITextFieldDelegate {
             let phoneString:String = "Phone=\(phone.urlEncode())"
             dataString = dataString + phoneString + "&"
         }
-        
-        if let password = self.pwdTF.text {
-            let passwordString:String = "Password=\(password.urlEncode())"
-            dataString = dataString + passwordString + "&"
-        }
-        if maleButton.isSelected {
-            dataString = dataString + "RegType=1&"
+        if let socialResponse = self.socialResponseModel {
         }
         else{
-            dataString = dataString + "RegType=2&"
+            if let password = self.pwdTF.text {
+                let passwordString:String = "Password=\(password.urlEncode())"
+                dataString = dataString + passwordString + "&"
+            }
         }
-        dataString = dataString + "RegId=1"
+        if ApplicationController.applicationController.loginType == .faceBook {
+            dataString = dataString + "RegType=Facebook&"
+            if let socialResponse = self.socialResponseModel {
+                dataString = dataString + "RegId=\(socialResponse.socialId)"
+            }
+        }
+        else if ApplicationController.applicationController.loginType == .googlePlus {
+            dataString = dataString + "RegType=Google&"
+            if let socialResponse = self.socialResponseModel {
+                dataString = dataString + "RegId=\(socialResponse.socialId)"
+            }
+        }
+        else{
+            if maleButton.isSelected {
+                dataString = dataString + "RegType=1&"
+            }
+            else{
+                dataString = dataString + "RegType=2&"
+            }
+            dataString = dataString + "RegId=1"
+        }
+        
         return dataString
     }
+    
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Constant.SegueIdentifiers.registerToOTP{

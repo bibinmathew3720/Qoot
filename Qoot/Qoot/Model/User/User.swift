@@ -40,7 +40,7 @@ class User: NSManagedObject {
         user.password = userData.password
         user.registerID = Int16(userData.registration_id)
         user.registerType = userData.registration_type
-        user.urlStatus = userData.url_status
+        //user.urlStatus = userData.url_status
         user.userId = Int16(userData.userId)
         CoreDataHandler.sharedInstance.saveContext()
     }

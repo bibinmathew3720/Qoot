@@ -74,8 +74,8 @@ class UserManager: CLBaseService {
     }
     
     func getSocialLoginResponseModel(dict:[String : Any?]) -> Any? {
-        let socialLoginReponseModel = CheckSocialLoginResponseModel.init(dict:dict)
-        return socialLoginReponseModel
+        let loginReponseModel = QootLogInResponseModel.init(dict:dict)
+        return loginReponseModel
     }
     
     //MARK : Send OTP Api
@@ -924,7 +924,7 @@ class QootLogInResponseModel : NSObject{
     var password:String = ""
     var login_status:String = ""
     var customer_gender:String = ""
-    var url_status:String = ""
+    var url_status:Int = 0
     var customer_last_login:String = ""
     init(dict:[String:Any?]) {
         if let value = dict["message"] as? String{
@@ -979,7 +979,7 @@ class QootLogInResponseModel : NSObject{
         if let value = dict["login_status"] as? String{
             login_status = value
         }
-        if let value = dict["url_status"] as? String{
+        if let value = dict["url_status"] as? Int{
             url_status = value
         }
         if let value = dict["customer_last_login"] as? String{

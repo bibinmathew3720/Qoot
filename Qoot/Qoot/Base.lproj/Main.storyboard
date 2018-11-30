@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sw4-W4-L2W">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sw4-W4-L2W">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -286,6 +286,7 @@
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="3Td-7d-tZS" firstAttribute="leading" secondItem="GWU-rI-WQj" secondAttribute="leading" constant="5" id="ATk-tn-hR3"/>
+                                                    <constraint firstAttribute="height" constant="40" id="MFA-aA-zoJ"/>
                                                     <constraint firstItem="ZaI-5D-eu1" firstAttribute="leading" secondItem="GWU-rI-WQj" secondAttribute="leading" id="OZy-9Z-3po"/>
                                                     <constraint firstItem="BKj-t8-M6h" firstAttribute="top" secondItem="GWU-rI-WQj" secondAttribute="top" constant="2" id="UU2-bZ-oKC"/>
                                                     <constraint firstAttribute="trailing" secondItem="ZaI-5D-eu1" secondAttribute="trailing" id="dc9-sP-QA1"/>
@@ -324,6 +325,7 @@
                                                     <constraint firstItem="b5A-5s-YgW" firstAttribute="top" secondItem="fCL-cz-GbY" secondAttribute="top" constant="2" id="64G-UO-usz"/>
                                                     <constraint firstItem="b5A-5s-YgW" firstAttribute="leading" secondItem="22E-fd-983" secondAttribute="trailing" constant="5" id="Ag1-Za-JAN"/>
                                                     <constraint firstItem="c5H-vq-D8A" firstAttribute="top" secondItem="b5A-5s-YgW" secondAttribute="bottom" constant="2" id="BPi-l8-FVc"/>
+                                                    <constraint firstAttribute="height" constant="40" id="Mrk-xj-8m5"/>
                                                     <constraint firstItem="22E-fd-983" firstAttribute="centerY" secondItem="fCL-cz-GbY" secondAttribute="centerY" id="UXR-AC-vQE"/>
                                                     <constraint firstItem="22E-fd-983" firstAttribute="leading" secondItem="fCL-cz-GbY" secondAttribute="leading" constant="5" id="Uko-Vb-t2h"/>
                                                     <constraint firstAttribute="trailing" secondItem="c5H-vq-D8A" secondAttribute="trailing" id="kK7-WF-4xz"/>
@@ -340,7 +342,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RqL-zE-ZwL">
-                                                <rect key="frame" x="35" y="322" width="37" height="20"/>
+                                                <rect key="frame" x="35" y="321" width="37" height="20"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -354,7 +356,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OR2-U3-JhC">
-                                                <rect key="frame" x="97" y="322" width="37" height="20"/>
+                                                <rect key="frame" x="97" y="321" width="37" height="20"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -378,7 +380,6 @@
                                         <constraints>
                                             <constraint firstItem="zUw-XH-KWc" firstAttribute="trailing" secondItem="y2Q-hp-b3R" secondAttribute="trailing" id="1Hy-WM-jxk"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="OR2-U3-JhC" secondAttribute="trailing" constant="20" symbolic="YES" id="24N-us-q2N"/>
-                                            <constraint firstItem="fCL-cz-GbY" firstAttribute="height" secondItem="GWU-rI-WQj" secondAttribute="height" id="4Uq-BB-v2t"/>
                                             <constraint firstItem="GWU-rI-WQj" firstAttribute="trailing" secondItem="MZz-Wd-MWP" secondAttribute="trailing" id="4nd-Cj-PbD"/>
                                             <constraint firstItem="RqL-zE-ZwL" firstAttribute="centerY" secondItem="QQW-fW-J7f" secondAttribute="centerY" id="5bi-F9-jtc"/>
                                             <constraint firstItem="0EK-sJ-8ZW" firstAttribute="centerY" secondItem="RqL-zE-ZwL" secondAttribute="centerY" id="6Qc-Em-cf5"/>
@@ -407,7 +408,6 @@
                                             <constraint firstItem="QQW-fW-J7f" firstAttribute="leading" secondItem="fCL-cz-GbY" secondAttribute="leading" id="uct-SE-oQj"/>
                                             <constraint firstItem="fCL-cz-GbY" firstAttribute="leading" secondItem="GWU-rI-WQj" secondAttribute="leading" id="vDJ-De-smD"/>
                                             <constraint firstItem="QQW-fW-J7f" firstAttribute="top" secondItem="fCL-cz-GbY" secondAttribute="bottom" constant="20" id="vkT-Wf-heS"/>
-                                            <constraint firstItem="GWU-rI-WQj" firstAttribute="height" secondItem="MZz-Wd-MWP" secondAttribute="height" id="zle-pL-I4F"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -435,6 +435,9 @@
                     </view>
                     <connections>
                         <outlet property="confirmPwdTF" destination="b5A-5s-YgW" id="V6y-BU-g5x"/>
+                        <outlet property="confirmPwdVerticalheiCnstraint" destination="o9g-zC-zFL" id="CmD-O2-8NW"/>
+                        <outlet property="confirmPwdView" destination="fCL-cz-GbY" id="soB-Xb-L0Z"/>
+                        <outlet property="conformPwdHeightConstarint" destination="Mrk-xj-8m5" id="meH-mr-MlV"/>
                         <outlet property="emailTF" destination="NFQ-en-nbc" id="EaC-bo-GoJ"/>
                         <outlet property="femaleButton" destination="0EK-sJ-8ZW" id="OdP-HX-0Lr"/>
                         <outlet property="femaleLabel" destination="OR2-U3-JhC" id="kYH-Mc-4vP"/>
@@ -442,7 +445,10 @@
                         <outlet property="maleLabel" destination="RqL-zE-ZwL" id="Iwi-0s-AZg"/>
                         <outlet property="nameTF" destination="o1N-lW-h51" id="3TU-eb-4M3"/>
                         <outlet property="phoneNoTF" destination="ecB-Km-WmB" id="ojs-oJ-MLV"/>
+                        <outlet property="pwdHeiConstraint" destination="MFA-aA-zoJ" id="cRv-jG-P5y"/>
                         <outlet property="pwdTF" destination="BKj-t8-M6h" id="EHI-gz-ZcN"/>
+                        <outlet property="pwdVerticalSpaceCnsnt" destination="sj5-E8-f9P" id="8YR-WE-X2r"/>
+                        <outlet property="pwdView" destination="GWU-rI-WQj" id="Oid-hN-xew"/>
                         <outlet property="submitButton" destination="cRp-Ft-X1a" id="mar-ak-c61"/>
                         <segue destination="Dbi-HH-Hnp" kind="show" identifier="registerToOTP" id="Taq-BD-ePj"/>
                     </connections>

@@ -138,16 +138,15 @@ class DashboardVC: BaseViewController,GIDSignInUIDelegate,GIDSignInDelegate {
             (model) in
             MBProgressHUD.hide(for: self.view, animated: true)
             //self.performSegue(withIdentifier: Constant.SegueIdentifiers.registerToOTP, sender: self)
-            if let model = model as? CheckSocialLoginResponseModel{
-//                if model.statusCode == 1{
-//                    CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: model.errorMessage, parentController: self)
-//                }
-//                else{
-//                    CCUtility.showDefaultAlertwithCompletionHandler(_title: Constant.AppName, _message: model.statusMessage, parentController: self, completion: { (okSuccess) in
-//                        self.navigationController?.popViewController(animated: true)
-//                    })
-//                }
-                
+            if let model = model as? QootLogInResponseModel{
+                if model.url_status == 1{
+                    UserDefaults.standard.set(true, forKey: Constant.VariableNames.isLoogedIn)
+                    User.saveUserData(userData: model)
+                    self.dismiss(animated: true, completion: nil)
+                }
+                else{
+                    self.performSegue(withIdentifier: Constant.SegueIdentifiers.dashBoardToRegister, sender: nil)
+                }
             }
             
         }) { (ErrorType) in
@@ -178,6 +177,11 @@ class DashboardVC: BaseViewController,GIDSignInUIDelegate,GIDSignInDelegate {
             dataString = dataString + regIdString
         }
         return dataString
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let registerVC = segue.destination as? RegisterVC
+        registerVC?.socialResponseModel = self.socialMediaResponse
     }
     
 

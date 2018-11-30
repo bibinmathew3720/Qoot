@@ -44,6 +44,7 @@ class LoginViewController: BaseViewController,UITextFieldDelegate {
     }
     @IBAction func loginButtonAction(_ sender: Any) {
         if isValidInputs(){
+           ApplicationController.applicationController.loginType = .manual
            callingLoginApi()
         }
     }

@@ -35,13 +35,13 @@
                         <state key="selected" image="radioButtonRoseSel"/>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eve-Nm-2e9">
-                        <rect key="frame" x="52" y="52" width="34.5" height="18.5"/>
+                        <rect key="frame" x="52" y="45" width="34.5" height="18.5"/>
                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xWG-AB-W3O">
-                        <rect key="frame" x="52" y="70.5" width="34.5" height="18.5"/>
+                        <rect key="frame" x="52" y="63.5" width="34.5" height="18.5"/>
                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -74,13 +74,14 @@
                 <constraints>
                     <constraint firstItem="1WD-PY-UIs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="0wA-P1-CDe"/>
                     <constraint firstAttribute="trailing" secondItem="nMd-Ta-vzK" secondAttribute="trailing" constant="10" id="47M-fU-J7p"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="xWG-AB-W3O" secondAttribute="bottom" constant="5" id="4FU-Di-vT8"/>
                     <constraint firstItem="xWG-AB-W3O" firstAttribute="leading" secondItem="eve-Nm-2e9" secondAttribute="leading" id="4I9-Dd-3zN"/>
                     <constraint firstItem="nMd-Ta-vzK" firstAttribute="centerY" secondItem="1WD-PY-UIs" secondAttribute="centerY" id="4mH-jn-0yS"/>
                     <constraint firstItem="nMd-Ta-vzK" firstAttribute="leading" secondItem="bCw-Et-Anc" secondAttribute="trailing" constant="10" id="Prz-rO-x7A"/>
                     <constraint firstItem="xWG-AB-W3O" firstAttribute="top" secondItem="eve-Nm-2e9" secondAttribute="bottom" id="QSy-q7-sAt"/>
                     <constraint firstItem="nMd-Ta-vzK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eve-Nm-2e9" secondAttribute="trailing" constant="5" id="Qve-Ut-454"/>
                     <constraint firstItem="bCw-Et-Anc" firstAttribute="top" secondItem="nMd-Ta-vzK" secondAttribute="top" id="Tv4-Ps-DQS"/>
-                    <constraint firstItem="eve-Nm-2e9" firstAttribute="top" secondItem="1WD-PY-UIs" secondAttribute="bottom" constant="12" id="YVz-CJ-fgA"/>
+                    <constraint firstItem="eve-Nm-2e9" firstAttribute="top" secondItem="1WD-PY-UIs" secondAttribute="bottom" constant="5" id="YVz-CJ-fgA"/>
                     <constraint firstItem="1WD-PY-UIs" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="bRj-9L-rqy"/>
                     <constraint firstItem="eve-Nm-2e9" firstAttribute="leading" secondItem="1WD-PY-UIs" secondAttribute="trailing" constant="12" id="ptS-gi-NSG"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xWG-AB-W3O" secondAttribute="trailing" constant="5" id="qfd-JH-RQf"/>

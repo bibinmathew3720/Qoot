@@ -9,6 +9,7 @@
 import UIKit
 import GoogleMaps
 import GooglePlaces
+import GrowingTextView
 
 class AddressListingVC: BaseViewController, GMSMapViewDelegate {
     
@@ -23,8 +24,11 @@ class AddressListingVC: BaseViewController, GMSMapViewDelegate {
     @IBOutlet weak var mapView: GMSMapView!
     var locationMarker:GMSMarker!
     
+    @IBOutlet weak var addressView: UIView!
+    @IBOutlet weak var addressTV: GrowingTextView!
+    
+    
     @IBOutlet weak var cityNameTF: UITextField!
-    @IBOutlet weak var addressTF: UITextField!
     @IBOutlet weak var landmarkTF: UITextField!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var mapBackView: UIView!
@@ -58,14 +62,19 @@ class AddressListingVC: BaseViewController, GMSMapViewDelegate {
         addingLeftBarButton()
         addressTable.register(UINib(nibName: "AddressTableCell", bundle: nil), forCellReuseIdentifier: "Cell")
         localisation()
+        self.addressView.layer.borderColor = UIColor.black.cgColor
+        self.addressView.layer.borderWidth = 1.0
+        self.addressTV.placeholderColor = UIColor.gray
+        self.addressTable.estimatedRowHeight = 60
+        self.addressTable.rowHeight = UITableViewAutomaticDimension
     }
     
     func localisation(){
         self.title = "Qoot".localiz()
         self.deliveryDetailsLabel.text = "Delivery Details".localiz()
         addAddressButton.setTitle("ADDNEWADDRESS".localiz(), for: UIControlState.normal)
+        addressTV.placeholder = "Address".localiz()
         cityNameTF.placeholder = "City".localiz()
-        addressTF.placeholder = "Address".localiz()
         landmarkTF.placeholder = "Landmark".localiz()
         addButton.setTitle("Add".localiz(), for: UIControlState.normal)
     }
@@ -198,6 +207,7 @@ class AddressListingVC: BaseViewController, GMSMapViewDelegate {
     //MARK: Add Address Api
     
     func  callingAddAddressApi(){
+        self.view.endEditing(true)
         MBProgressHUD.showAdded(to: self.view, animated: true)
         CartManager().callingAddCustomerAddressApi(with: getAddAddressRequestBody(), success: {
             (model) in
@@ -232,7 +242,7 @@ class AddressListingVC: BaseViewController, GMSMapViewDelegate {
         if let user = User.getUser(){
             dataString = dataString + "CustomerId=\(user.userId)&"
         }
-        if let address = self.addressTF.text {
+        if let address = self.addressTV.text {
             let addressString:String = "Address=\(address.urlEncode())"
             dataString = dataString + addressString + "&"
         }
@@ -247,7 +257,7 @@ class AddressListingVC: BaseViewController, GMSMapViewDelegate {
     
     func clearAllAddressFields(){
         self.landmarkTF.text = ""
-        self.addressTF.text = ""
+        self.addressTV.text = "Address".localiz()
         self.cityNameTF.text = ""
         self.mapBackView.isHidden = true
         self.mapViewHeight.constant = 0
@@ -255,20 +265,74 @@ class AddressListingVC: BaseViewController, GMSMapViewDelegate {
     
     func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
         var destinationLocation = CLLocation()
-        
         destinationLocation = CLLocation(latitude: mapView.camera.target.latitude, longitude: mapView.camera.target.longitude)
         let destinationCoordinate:CLLocationCoordinate2D = destinationLocation.coordinate
         updateLocationoordinates(coordinates: destinationCoordinate)
-        
-        //            userLocLatitude = mapView.camera.target.latitude
-        //            userLocLongitude = mapView.camera.target.longitude
+        let geoCoder = GMSGeocoder()
+        geoCoder.reverseGeocodeCoordinate(destinationCoordinate) { (results, error) in
+            if let res = results {
+                var addressString = ""
+                if let addressDetails = res.firstResult() {
+                    if let throughFare = addressDetails.thoroughfare {
+                        addressString = addressString + throughFare
+                    }
+                    if let subLocality = addressDetails.subLocality {
+                        if addressString.count > 0{
+                            addressString = addressString + ", " + subLocality
+                        }
+                        else{
+                            addressString = addressString + subLocality
+                        }
+                    }
+                    if let locality = addressDetails.locality {
+                        self.cityNameTF.text = locality
+                        if addressString.count > 0{
+                            addressString = addressString + ", " + locality
+                        }
+                        else{
+                            addressString = addressString + locality
+                        }
+                    }
+                    if let adArea = addressDetails.administrativeArea {
+                        if addressString.count > 0{
+                            addressString = addressString + ", " + adArea
+                        }
+                        else{
+                            addressString = addressString + adArea
+                        }
+                    }
+                    if let postalCode = addressDetails.postalCode {
+                        if addressString.count > 0{
+                            addressString = addressString + ", " + postalCode
+                        }
+                        else{
+                            addressString = addressString + postalCode
+                        }
+                    }
+                    if let country = addressDetails.country {
+                        if addressString.count > 0{
+                            addressString = addressString + ", " + country
+                        }
+                        else{
+                            addressString = addressString + country
+                        }
+                    }
+                }
+                self.addressTV.text = addressString
+            }
+            print("Ad Area:\(results?.firstResult()?.administrativeArea)")
+            print("Locality:\(results?.firstResult()?.locality)")
+            print("Sub locality:\(results?.firstResult()?.subLocality)")
+            print("Country:\(results?.firstResult()?.country)")
+            print("Through Fare:\(results?.firstResult()?.thoroughfare)")
+            print("Postal Code:\(results?.firstResult()?.postalCode)")
+        }
         
     }
     
     func updateLocationoordinates(coordinates:CLLocationCoordinate2D) {
         userLocLatitude = mapView.camera.target.latitude
         userLocLongitude = mapView.camera.target.longitude
-        getLocationInformation(coordinate: coordinates)
         if locationMarker == nil
         {
             locationMarker = GMSMarker()
@@ -289,51 +353,7 @@ class AddressListingVC: BaseViewController, GMSMapViewDelegate {
     }
     
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
-        getLocationInformation(coordinate: coordinate)
         print(coordinate)
-    }
-    
-    func getLocationInformation(coordinate: CLLocationCoordinate2D){
-        // Add below code to get address for touch coordinates.
-        let geoCoder = CLGeocoder()
-        let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
-        geoCoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
-            
-            // Place details
-            var placeMark: CLPlacemark!
-            placeMark = placemarks?[0]
-            
-            // Location name
-            if let plceMark = placeMark {
-                if let locationName = plceMark.location {
-                    print("Location Name:\(locationName)")
-                }
-                // Street address
-                if let street = plceMark.thoroughfare {
-                    print(street)
-                }
-                // City
-                if let city = plceMark.subAdministrativeArea {
-                    self.cityNameTF.text = city
-                    print("City:\(city)")
-                }
-                // Zip code
-                if let zip = plceMark.isoCountryCode {
-                    print(zip)
-                }
-                // Country
-                if let country = plceMark.country {
-                    print(country)
-                }
-                
-                if let locality = plceMark.locality {
-                    self.landmarkTF.text = locality
-                }
-                if let subLocality = plceMark.subLocality {
-                    self.addressTF.text = subLocality
-                }
-            }
-        })
     }
 
 }
@@ -370,7 +390,7 @@ extension AddressListingVC : UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
        
-            return 90
+            return UITableViewAutomaticDimension
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == addressTable{
@@ -389,15 +409,10 @@ extension AddressListingVC : UITableViewDelegate,UITableViewDataSource {
 extension AddressListingVC:CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let currentLocation:CLLocation = locations.last!
-        let camera = GMSCameraPosition.camera(withLatitude: (currentLocation.coordinate.latitude), longitude: (currentLocation.coordinate.longitude), zoom: 17.5)
+        let camera = GMSCameraPosition.camera(withLatitude: (currentLocation.coordinate.latitude), longitude: (currentLocation.coordinate.longitude), zoom: 10)
         
         self.mapView?.animate(to: camera)
         locationMgr.stopUpdatingLocation()
-        //getLocation()
-        //        let position = currentLocation.coordinate
-        //        let marker = GMSMarker(position: position)
-        //        marker.title = "wewl"
-        //        marker.map = mapView
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

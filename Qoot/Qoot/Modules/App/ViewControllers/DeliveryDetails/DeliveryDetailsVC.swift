@@ -10,6 +10,7 @@ let PAYMENT_TYPE_IMAGES = [#imageLiteral(resourceName: "cod"),#imageLiteral(reso
 import UIKit
 import GoogleMaps
 import GooglePlaces
+import GrowingTextView
 
 enum PaymentType {
     case cashOnDelivery
@@ -55,11 +56,11 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
     var selPaymentType:PaymentType?
     let mapViewHeightConstant = 350
     let addressTableViewHeightConstant = 180
-    
+    @IBOutlet weak var addressTV: GrowingTextView!
     @IBOutlet weak var cityNameTF: UITextField!
-    @IBOutlet weak var addressTF: UITextField!
     @IBOutlet weak var landmarkTF: UITextField!
     @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var addressView: UIView!
     @IBOutlet weak var mapBackView: UIView!
     override func initView() {
         initialisation()
@@ -79,6 +80,11 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
         if let total = self.totalAmount{
             priceTotalLabel.text = "SAR".localiz() + " \(total)" + "/-"
         }
+        self.addressView.layer.borderColor = UIColor.black.cgColor
+        self.addressView.layer.borderWidth = 1.0
+        self.addressTV.placeholderColor = UIColor.gray
+        self.addressTable.estimatedRowHeight = 60
+        self.addressTable.rowHeight = UITableViewAutomaticDimension
     }
     
     func localization(){
@@ -90,7 +96,7 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
         totalLabel.text = "Total".localiz()
         confirmButton.setTitle("Confirm".localiz(), for: UIControlState.normal)
         cityNameTF.placeholder = "City".localiz()
-        addressTF.placeholder = "Address".localiz()
+        addressTV.placeholder = "Address".localiz()
         landmarkTF.placeholder = "Landmark".localiz()
         addButton.setTitle("Add".localiz(), for: UIControlState.normal)
     }
@@ -273,6 +279,7 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
     //MARK: Add Address Api
     
     func  callingAddAddressApi(){
+        self.view.endEditing(true)
         MBProgressHUD.showAdded(to: self.view, animated: true)
         CartManager().callingAddCustomerAddressApi(with: getAddAddressRequestBody(), success: {
             (model) in
@@ -306,7 +313,7 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
         if let user = User.getUser(){
             dataString = dataString + "CustomerId=\(user.userId)&"
         }
-        if let address = self.addressTF.text {
+        if let address = self.addressTV.text {
             let addressString:String = "Address=\(address.urlEncode())"
             dataString = dataString + addressString + "&"
         }
@@ -321,10 +328,11 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
     
     func clearAllAddressFields(){
         self.landmarkTF.text = ""
-        self.addressTF.text = ""
+        self.addressTV.text = ""
         self.cityNameTF.text = ""
         self.mapBackView.isHidden = true
         self.mapViewHeight.constant = 0
+        addressTV.placeholder = "Address".localiz()
     }
     
     //MARK: Add Customer Order Api
@@ -400,20 +408,73 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
     
     func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
         var destinationLocation = CLLocation()
-  
-            destinationLocation = CLLocation(latitude: mapView.camera.target.latitude, longitude: mapView.camera.target.longitude)
-            let destinationCoordinate:CLLocationCoordinate2D = destinationLocation.coordinate
-            updateLocationoordinates(coordinates: destinationCoordinate)
-            
-//            userLocLatitude = mapView.camera.target.latitude
-//            userLocLongitude = mapView.camera.target.longitude
-        
+        destinationLocation = CLLocation(latitude: mapView.camera.target.latitude, longitude: mapView.camera.target.longitude)
+        let destinationCoordinate:CLLocationCoordinate2D = destinationLocation.coordinate
+        updateLocationoordinates(coordinates: destinationCoordinate)
+        let geoCoder = GMSGeocoder()
+        geoCoder.reverseGeocodeCoordinate(destinationCoordinate) { (results, error) in
+            if let res = results {
+                var addressString = ""
+                if let addressDetails = res.firstResult() {
+                    if let throughFare = addressDetails.thoroughfare {
+                        addressString = addressString + throughFare
+                    }
+                    if let subLocality = addressDetails.subLocality {
+                        if addressString.count > 0{
+                            addressString = addressString + ", " + subLocality
+                        }
+                        else{
+                            addressString = addressString + subLocality
+                        }
+                    }
+                    if let locality = addressDetails.locality {
+                        self.cityNameTF.text = locality
+                        if addressString.count > 0{
+                            addressString = addressString + ", " + locality
+                        }
+                        else{
+                            addressString = addressString + locality
+                        }
+                    }
+                    if let adArea = addressDetails.administrativeArea {
+                        if addressString.count > 0{
+                            addressString = addressString + ", " + adArea
+                        }
+                        else{
+                            addressString = addressString + adArea
+                        }
+                    }
+                    if let postalCode = addressDetails.postalCode {
+                        if addressString.count > 0{
+                            addressString = addressString + ", " + postalCode
+                        }
+                        else{
+                            addressString = addressString + postalCode
+                        }
+                    }
+                    if let country = addressDetails.country {
+                        if addressString.count > 0{
+                            addressString = addressString + ", " + country
+                        }
+                        else{
+                            addressString = addressString + country
+                        }
+                    }
+                }
+                self.addressTV.text = addressString
+            }
+            print("Ad Area:\(results?.firstResult()?.administrativeArea)")
+            print("Locality:\(results?.firstResult()?.locality)")
+            print("Sub locality:\(results?.firstResult()?.subLocality)")
+            print("Country:\(results?.firstResult()?.country)")
+            print("Through Fare:\(results?.firstResult()?.thoroughfare)")
+            print("Postal Code:\(results?.firstResult()?.postalCode)")
+        }
     }
-    
+   
     func updateLocationoordinates(coordinates:CLLocationCoordinate2D) {
         userLocLatitude = mapView.camera.target.latitude
         userLocLongitude = mapView.camera.target.longitude
-        getLocationInformation(coordinate: coordinates)
         if locationMarker == nil
         {
             locationMarker = GMSMarker()
@@ -433,53 +494,13 @@ class DeliveryDetailsVC: BaseViewController,PaymentTableCellDelegate, GMSMapView
         }
     }
     
+    //MARK: GMS Map View Delegate
+    
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
-        //getLocationInformation(coordinate: coordinate)
         print(coordinate)
     }
     
-    func getLocationInformation(coordinate: CLLocationCoordinate2D){
-        // Add below code to get address for touch coordinates.
-        let geoCoder = CLGeocoder()
-        let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
-        geoCoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
-            
-            // Place details
-            var placeMark: CLPlacemark!
-            placeMark = placemarks?[0]
-            
-            // Location name
-            if let plceMark = placeMark {
-                if let locationName = plceMark.location {
-                    print("Location Name:\(locationName)")
-                }
-                // Street address
-                if let street = plceMark.thoroughfare {
-                    print(street)
-                }
-                // City
-                if let city = plceMark.subAdministrativeArea {
-                    self.cityNameTF.text = city
-                    print("City:\(city)")
-                }
-                // Zip code
-                if let zip = plceMark.isoCountryCode {
-                    print(zip)
-                }
-                // Country
-                if let country = plceMark.country {
-                    print(country)
-                }
-                
-                if let locality = plceMark.locality {
-                    self.landmarkTF.text = locality
-                }
-                if let subLocality = plceMark.subLocality {
-                    self.addressTF.text = subLocality
-                }
-            }
-        })
-    }
+    
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         if (touch.view?.isDescendant(of: addressTable ))! {
@@ -540,7 +561,7 @@ extension DeliveryDetailsVC : UITableViewDelegate,UITableViewDataSource {
             return 50
         }
         else{
-            return 90
+            return UITableViewAutomaticDimension
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -562,16 +583,10 @@ extension DeliveryDetailsVC : UITableViewDelegate,UITableViewDataSource {
 
 extension DeliveryDetailsVC:CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let currentLocation:CLLocation = locations.last!
-        let camera = GMSCameraPosition.camera(withLatitude: (currentLocation.coordinate.latitude), longitude: (currentLocation.coordinate.longitude), zoom: 17.5)
-        
+       let currentLocation:CLLocation = locations.last!
+        let camera = GMSCameraPosition.camera(withLatitude: (currentLocation.coordinate.latitude), longitude: (currentLocation.coordinate.longitude), zoom: 10)
         self.mapView?.animate(to: camera)
         locationMgr.stopUpdatingLocation()
-       // getLocation()
-//        let position = currentLocation.coordinate
-//        let marker = GMSMarker(position: position)
-//        marker.title = "wewl"
-//        marker.map = mapView
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

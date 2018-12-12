@@ -32,7 +32,7 @@ class AddressTableCell: UITableViewCell {
     
     func setAddress(address:Address){
         addressNameLabel.text = address.customerLocationName
-        addressSubNameLabel.text = address.deliveryLandMark
+        addressSubNameLabel.text = address.deliveryAddress + ",\n" + address.deliveryLandMark
     }
     
     //Button Action

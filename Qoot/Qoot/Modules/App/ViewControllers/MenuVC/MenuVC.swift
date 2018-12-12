@@ -25,8 +25,8 @@ class MenuVC: BaseViewController {
     
     var titleArray = ["Offers".localiz(),"Support".localiz(),"Events".localiz()]
     var imageArray = [#imageLiteral(resourceName: "offers"),#imageLiteral(resourceName: "support"),#imageLiteral(resourceName: "events")]
-    var titleArrayAccount = ["MyOrders".localiz(),"MyWallet".localiz(),"Offers".localiz(),"Support".localiz(),"Events".localiz(),"Settings".localiz(),"Logout".localiz()]
-    var imageArrayAccount =  [#imageLiteral(resourceName: "myOrders"),#imageLiteral(resourceName: "myWallet"),#imageLiteral(resourceName: "offers"),#imageLiteral(resourceName: "support"),#imageLiteral(resourceName: "events"),#imageLiteral(resourceName: "settings"),#imageLiteral(resourceName: "logout")]
+    var titleArrayAccount = ["MyOrders".localiz(),"MyWallet".localiz(),"MyAddresses".localiz(),"Offers".localiz(),"Support".localiz(),"Events".localiz(),"Settings".localiz(),"Logout".localiz()]
+    var imageArrayAccount =  [#imageLiteral(resourceName: "myOrders"),#imageLiteral(resourceName: "myWallet"),#imageLiteral(resourceName: "myOrders"),#imageLiteral(resourceName: "offers"),#imageLiteral(resourceName: "support"),#imageLiteral(resourceName: "events"),#imageLiteral(resourceName: "settings"),#imageLiteral(resourceName: "logout")]
     
     
     override func viewDidLoad() {
@@ -169,18 +169,21 @@ extension MenuVC : UITableViewDelegate,UITableViewDataSource {
                 self.closeLeft()
             }
             else if indexPath.row == 2 {
+                setMyAddressesVC()
+            }
+            else if indexPath.row == 3 {
                 setOffersVC()
             }
-            else if indexPath.row == 3{ //Support
+            else if indexPath.row == 4{ //Support
                 self.closeLeft()
             }
-            else if (indexPath.row == 4){ //Events
+            else if (indexPath.row == 5){ //Events
                 self.loadEventsPage()
             }
-            else if (indexPath.row == 5){
+            else if (indexPath.row == 6){
                 setSettingsVC()
             }
-            else if (indexPath.row == 6){
+            else if (indexPath.row == 7){
                 settingLogoutPopup()
             }
         }
@@ -207,6 +210,13 @@ extension MenuVC : UITableViewDelegate,UITableViewDataSource {
         viewMoreVC.pageType = ViewMoreType.Offers
         viewMoreVC.isFromMenu = true
         let navController = UINavigationController.init(rootViewController: viewMoreVC)
+        self.present(navController, animated: true, completion: nil)
+    }
+    
+    func setMyAddressesVC(){
+        let addressListingVC = AddressListingVC.init(nibName: "AddressListingVC", bundle: nil)
+        addressListingVC.isFromMenu = true
+        let navController = UINavigationController.init(rootViewController: addressListingVC)
         self.present(navController, animated: true, completion: nil)
     }
     

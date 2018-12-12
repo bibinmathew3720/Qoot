@@ -46,6 +46,7 @@ class AddressListingVC: BaseViewController, GMSMapViewDelegate {
     var addAddressResponseModel:AddAddressResponseModel?
     var isEditingMode = false
     var selIndex = -1
+    var isFromMenu:Bool?
     
     let mapViewHeightConstant = 350.0
     @IBOutlet weak var addressTableViewHeightConstraint: NSLayoutConstraint!
@@ -100,6 +101,15 @@ class AddressListingVC: BaseViewController, GMSMapViewDelegate {
         mapViewHeight.constant = 0
         closeButtonHeight.constant = 0
         addAddressButtonHeightConstraint.constant = 40
+    }
+    
+    override func leftNavButtonAction() {
+        if let isFromMenu = self.isFromMenu {
+            self.dismiss(animated: true, completion: nil)
+        }
+        else{
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     func enableAddAddressButton(){

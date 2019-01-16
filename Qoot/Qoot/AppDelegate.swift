@@ -48,7 +48,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             else{
                 slideMenuController = ExSlideMenuController(mainViewController: homeNavVC, leftMenuViewController:viewMoreVC , rightMenuViewController: menuVC)
             }
-            self.window?.rootViewController = slideMenuController
+            UIView.transition(with: window!, duration: 0.5, options: .transitionFlipFromRight, animations: {
+                self.window?.rootViewController = slideMenuController
+            }, completion: { completed in
+                // maybe do something here
+            })
+            //self.window?.rootViewController = slideMenuController
         }
         else{
             let languageVC = LanguageVC.init(nibName: "LanguageVC", bundle: nil)

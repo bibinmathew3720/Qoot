@@ -254,6 +254,8 @@ extension MenuVC : UITableViewDelegate,UITableViewDataSource {
             GIDSignIn.sharedInstance().signOut()
             FBSDKLoginManager().logOut()
             self.uiUpdations()
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.initWindow()
         }
         let noAction = UIAlertAction(title: "NO".localiz(), style: .default) { (action:UIAlertAction) in
             

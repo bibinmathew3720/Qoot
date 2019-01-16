@@ -46,6 +46,12 @@
 
 "LOGIN" = "تسجيل الدخول";
 
+//Forgot
+
+"ForgotPassword" = "نسيت كلمة المرور";
+"Next" = "Next";
+"RecoverAccount" = "Recover account";
+
 //OTP VC
 
 "CONFIRMCODEMGE" = "لقد أرسلنا رمز التأكيد عبر الرسائل القصيرة إلى";

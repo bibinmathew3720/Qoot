@@ -48,6 +48,12 @@
 
 "LOGIN" = "LOGIN";
 
+//Forgot
+
+"ForgotPassword" = "Forgot password";
+"Next" = "NEXT";
+"RecoverAccount" = "Recover account";
+
 //OTP VC
 
 "CONFIRMCODEMGE" = "We sent a confirmation code via SMS to";

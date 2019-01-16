@@ -12,10 +12,10 @@ class LoginViewController: BaseViewController,UITextFieldDelegate {
     @IBOutlet var mobileTextField: UITextField!
     @IBOutlet var loginButton: UIButton!
     @IBOutlet var toolBarBoneButton: UIBarButtonItem!
-    
     @IBOutlet var toolBarCancelButton: UIBarButtonItem!
     @IBOutlet var toolBar: UIToolbar!
     @IBOutlet var passwordTextField: UITextField!
+    @IBOutlet weak var forgotPasswordButton: UIButton!
     
     override func initView() {
        super.initView()
@@ -33,6 +33,7 @@ class LoginViewController: BaseViewController,UITextFieldDelegate {
         mobileTextField.placeholder = "MobNoPlaceholder".localiz()
         passwordTextField.placeholder = "PwdPlaceholder".localiz()
         loginButton.setTitle("LOGIN".localiz(), for: UIControlState.normal)
+        forgotPasswordButton.setTitle("ForgotPassword".localiz() + "?", for: UIControlState.normal)
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,6 +49,12 @@ class LoginViewController: BaseViewController,UITextFieldDelegate {
            callingLoginApi()
         }
     }
+    
+    @IBAction func forgotPasswordButtonAction(_ sender: UIButton) {
+        let forgotPasswordVC = ForgotPasswordVC.init(nibName: "ForgotPasswordVC", bundle: nil)
+        self.navigationController?.pushViewController(forgotPasswordVC, animated: true)
+    }
+    
     @IBAction func toolBarDoneButtonAction(_ sender: Any) {
         passwordTextField.becomeFirstResponder()
     }

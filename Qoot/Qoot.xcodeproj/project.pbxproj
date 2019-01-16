@@ -101,6 +101,8 @@
 		D0EB103C2150D993000CD2C9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EB103B2150D992000CD2C9 /* User.swift */; };
 		D0ECF2C821220CBB008E9A79 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0ECF2C621220CBB008E9A79 /* Roboto-Bold.ttf */; };
 		D0ECF2C921220CBB008E9A79 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0ECF2C721220CBB008E9A79 /* Roboto-Regular.ttf */; };
+		D0F057AF21EEFB6500036248 /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F057AD21EEFB6500036248 /* ForgotPasswordVC.swift */; };
+		D0F057B021EEFB6500036248 /* ForgotPasswordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F057AE21EEFB6500036248 /* ForgotPasswordVC.xib */; };
 		D0F24E6021A8B4730005F923 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F24E5E21A8B4710005F923 /* WebViewController.swift */; };
 		D0F24E6121A8B4730005F923 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F24E5F21A8B4710005F923 /* WebViewController.xib */; };
 		D0F24E6521A8C6280005F923 /* NotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F24E6321A8C6270005F923 /* NotificationsVC.swift */; };
@@ -218,6 +220,8 @@
 		D0EB103B2150D992000CD2C9 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D0ECF2C621220CBB008E9A79 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		D0ECF2C721220CBB008E9A79 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		D0F057AD21EEFB6500036248 /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
+		D0F057AE21EEFB6500036248 /* ForgotPasswordVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForgotPasswordVC.xib; sourceTree = "<group>"; };
 		D0F24E5E21A8B4710005F923 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		D0F24E5F21A8B4710005F923 /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
 		D0F24E6321A8C6270005F923 /* NotificationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsVC.swift; sourceTree = "<group>"; };
@@ -615,6 +619,7 @@
 		D01888B1211539CA00B01946 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D0F057AC21EEFA8100036248 /* ForgotPasswordVC */,
 				D0F24E6221A8C5F20005F923 /* NotificationsVC */,
 				D0F24E5D21A8B4710005F923 /* WebView */,
 				D09EF651217B80980069EE85 /* AddressListingVC */,
@@ -832,6 +837,15 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		D0F057AC21EEFA8100036248 /* ForgotPasswordVC */ = {
+			isa = PBXGroup;
+			children = (
+				D0F057AD21EEFB6500036248 /* ForgotPasswordVC.swift */,
+				D0F057AE21EEFB6500036248 /* ForgotPasswordVC.xib */,
+			);
+			path = ForgotPasswordVC;
+			sourceTree = "<group>";
+		};
 		D0F24E5D21A8B4710005F923 /* WebView */ = {
 			isa = PBXGroup;
 			children = (
@@ -950,6 +964,7 @@
 			files = (
 				D0F24E6B21A8D4790005F923 /* NotificationsCell.xib in Resources */,
 				D00FACDF2112DF2200C8C176 /* LaunchScreen.storyboard in Resources */,
+				D0F057B021EEFB6500036248 /* ForgotPasswordVC.xib in Resources */,
 				D00FACED2112ED4100C8C176 /* Localizable.strings in Resources */,
 				D01888CB21153A1800B01946 /* HomeTableCell.xib in Resources */,
 				BC93070A2118319A00D129B7 /* CartTableCell.xib in Resources */,
@@ -1099,6 +1114,7 @@
 				D00FAD252112EE5D00C8C176 /* UIImageViewExtensions.swift in Sources */,
 				D0C865622113477800383A48 /* BaseViewController.swift in Sources */,
 				D0F24E6521A8C6280005F923 /* NotificationsVC.swift in Sources */,
+				D0F057AF21EEFB6500036248 /* ForgotPasswordVC.swift in Sources */,
 				D00FAD192112EE5D00C8C176 /* ProductManager.swift in Sources */,
 				D05D50622118025300645956 /* SearchResultsTVC.swift in Sources */,
 				D00FAD1F2112EE5D00C8C176 /* CLNetworkUtility.swift in Sources */,

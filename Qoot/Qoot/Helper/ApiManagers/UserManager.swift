@@ -908,11 +908,11 @@ class FetchLogIn: NSObject {
 
 class QootLogInResponseModel : NSObject{
     var statusMessage:String = ""
-    var userId:Int = 0
+    var userId:CLongLong = 0
     var userName:String = ""
     var userEmail:String = ""
     var gender:String = ""
-    var registration_id:Int = 0
+    var registration_id:CLongLong = 0
     var customer_photo:String = ""
     var mobile_number:String = ""
     var customer_language:String = ""
@@ -931,12 +931,12 @@ class QootLogInResponseModel : NSObject{
             statusMessage = value
         }
         if let value = dict["customer_id"] as? String{
-            if let userID = Int(value){
+            if let userID = CLongLong(value){
                 userId = userID
             }
         }
         if let value = dict["registration_id"] as? String{
-            if let regID = Int(value){
+            if let regID = CLongLong(value){
                 registration_id = regID
             }
         }

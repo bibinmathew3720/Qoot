@@ -1323,8 +1323,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WVYK59KXPF;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 39VYSNCGF3;
 				INFOPLIST_FILE = Qoot/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1333,8 +1333,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qootcustomer.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "240e6eab-07ac-4f40-851e-697a431b6dfa";
+				PROVISIONING_PROFILE_SPECIFIER = dev_qootCustomer_new;
 				SWIFT_OBJC_BRIDGING_HEADER = "Qoot/Helper/BridgingHeader/Qoot-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1346,9 +1346,9 @@
 			baseConfigurationReference = 8442CA29F0944557CAEC8358 /* Pods-Qoot.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WVYK59KXPF;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 39VYSNCGF3;
 				INFOPLIST_FILE = Qoot/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1357,8 +1357,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qootcustomer.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "26badffa-50d7-4a85-a27e-55a9460632bb";
+				PROVISIONING_PROFILE_SPECIFIER = adhoc_qootCustomer_new;
 				SWIFT_OBJC_BRIDGING_HEADER = "Qoot/Helper/BridgingHeader/Qoot-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

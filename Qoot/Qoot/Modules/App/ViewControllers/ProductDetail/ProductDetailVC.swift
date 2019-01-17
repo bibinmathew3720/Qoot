@@ -26,6 +26,7 @@ class ProductDetailVC: BaseViewController {
     var count: Int = 1
     
     var dishDetail:Dishes?
+    var kitchenResponse:ViewKitchens?
     
     override func initView() {
         super.initView()
@@ -65,6 +66,7 @@ class ProductDetailVC: BaseViewController {
                 //self.dishDetail = model
                 //self.populateDishDetails()
             }
+            self.getKitchenDetailsApi()
         }) { (ErrorType) in
             MBProgressHUD.hide(for: self.view, animated: true)
             if(ErrorType == .noNetwork){
@@ -85,6 +87,39 @@ class ProductDetailVC: BaseViewController {
             dataString = dataString + kitchenId
             let menuId:String = "MenuId=\(String(dish.MenuId).urlEncode())"
             dataString = dataString + "&" + menuId
+        }
+        return dataString
+    }
+    
+    func getKitchenDetailsApi(){
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        UserManager().callingGetKitchenDetailsApi(with:getKitchenDetailsRequestBody(), success: {
+            (model) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if let model = model as? ViewKitchens{
+                self.kitchenResponse = model
+               
+            }
+            
+        }) { (ErrorType) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            
+            if(ErrorType == .noNetwork){
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+            }
+            else{
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+            }
+            
+            print(ErrorType)
+        }
+    }
+    
+    func getKitchenDetailsRequestBody()->String{
+        var dataString:String = ""
+        if let dish = self.dishDetail {
+            let kitchenId:String = "KitchenId=\(String(dish.KitchenId).urlEncode())"
+            dataString = dataString + kitchenId
         }
         return dataString
     }

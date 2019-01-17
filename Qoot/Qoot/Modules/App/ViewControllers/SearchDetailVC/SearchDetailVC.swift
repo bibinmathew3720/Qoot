@@ -35,10 +35,10 @@ class SearchDetailVC: BaseViewController {
     
     var kitchenResponse:ViewKitchens?
      var viewKitchensInfo:ViewKitchensInfo?
-    var selectedSection: Int = -1
     var kitchenCategories:KitchenCategoriesResponseModel?
     var kitchenMenus:KitchenMenusResponseModel?
-    var selDishes = [Dishes]()
+    var dishesArry = NSMutableArray()
+    var selIndexArray = [Int]()
     override func initView() {
         super.initView()
         initialisation()
@@ -65,16 +65,22 @@ class SearchDetailVC: BaseViewController {
         customView.isHidden = true
         let headerNib = UINib.init(nibName: "MenuSectionHeaderView", bundle: Bundle.main)
         menuTableView.register(headerNib, forHeaderFooterViewReuseIdentifier: "MenuSectionHeaderView")
-        buttonBar.translatesAutoresizingMaskIntoConstraints = false
+        //buttonBar.translatesAutoresizingMaskIntoConstraints = false
         buttonBar.backgroundColor = UIColor(red:0.64, green:0.10, blue:0.36, alpha:1.0)
+         buttonBar.frame = CGRect(x: 0, y: segmentControl.frame.origin.y + segmentControl.frame.size.height - 5, width: self.segmentControl.frame.width/3, height: 3)
         view.addSubview(buttonBar)
-        buttonBar.topAnchor.constraint(equalTo: segmentControl.bottomAnchor).isActive = true
-        buttonBar.heightAnchor.constraint(equalToConstant: 5).isActive = true
-        buttonBar.leftAnchor.constraint(equalTo: segmentControl.leftAnchor).isActive = true
-        buttonBar.widthAnchor.constraint(equalTo: segmentControl.widthAnchor, multiplier: 1 / CGFloat(segmentControl.numberOfSegments)).isActive = true
+        //buttonBar.topAnchor.constraint(equalTo: segmentControl.bottomAnchor).isActive = true
+       // buttonBar.heightAnchor.constraint(equalToConstant: 5).isActive = true
+        
+        //buttonBar.leftAnchor.constraint(equalTo: segmentControl.leftAnchor).isActive = true
+        //buttonBar.widthAnchor.constraint(equalTo: segmentControl.widthAnchor, multiplier: 1 / CGFloat(segmentControl.numberOfSegments)).isActive = true
         segmentControl.selectedSegmentIndex = 0
         segmentControl.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.black,NSAttributedStringKey.font: UIFont(name: Constant.Font.Bold, size: 17)!], for: .selected)
         segmentControl.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.black,NSAttributedStringKey.font: UIFont(name: Constant.Font.Bold, size: 17)!], for: .normal)
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
     }
     
     func localisation(){
@@ -211,6 +217,7 @@ class SearchDetailVC: BaseViewController {
             MBProgressHUD.hide(for: self.view, animated: true)
             if let model = model as? KitchenMenusResponseModel{
                 self.kitchenMenus = model
+                self.filterMenusBsedOnCatgries()
                 self.menuTableView.reloadData()
             }
             
@@ -228,6 +235,19 @@ class SearchDetailVC: BaseViewController {
         }
     }
     
+    func filterMenusBsedOnCatgries(){
+        if let categoryResponse = self.kitchenCategories {
+            for item in categoryResponse.kitchenCatgories{
+                if let kitchenMenusResponse = self.kitchenMenus {
+                    let catId = String(format: "%d", item.categoryId)
+                    let filteredArray = kitchenMenusResponse.dishes.filter({$0.DishMainCategory.contains(catId)})
+                    self.dishesArry.add(filteredArray)
+                }
+            }
+        }
+        
+    }
+    
     func getKitchenMenusRequestBody()->String{
         var dataString:String = ""
         if let kitchen = self.kitchenResponse {
@@ -241,24 +261,29 @@ class SearchDetailVC: BaseViewController {
 
 extension SearchDetailVC : UITableViewDelegate,UITableViewDataSource,MenuSectionHeaderViewDelegate{
     func headerButtonActionDelegate(with tag: Int) {
-        self.selectedSection = tag
-        var categoryId = 0
-        if let categoryResponse = self.kitchenCategories {
-            categoryId = categoryResponse.kitchenCatgories[tag].categoryId
+        if selIndexArray.contains(tag) {
+            let index = selIndexArray.index(of: tag)
+            if let ind = index {
+                selIndexArray.remove(at: ind)
+            }
         }
-        if let kitchenMenusResponse = self.kitchenMenus {
-            let filteredArray = kitchenMenusResponse.dishes.filter({$0.DishMainCategory == categoryId })
-            self.selDishes = filteredArray
-            self.menuTableView.reloadData()
+        else{
+            selIndexArray.append(tag)
         }
-    
+        self.menuTableView.reloadData()
     }
     
     func arrowButtonDelegateAction(with tag: Int) {
-        if selectedSection != tag {
-            selectedSection = tag
-            menuTableView.reloadData()
+        if selIndexArray.contains(tag) {
+            let index = selIndexArray.index(of: tag)
+            if let ind = index {
+                selIndexArray.remove(at: ind)
+            }
         }
+        else{
+            selIndexArray.append(tag)
+        }
+        self.menuTableView.reloadData()
     }
     
     
@@ -270,8 +295,14 @@ extension SearchDetailVC : UITableViewDelegate,UITableViewDataSource,MenuSection
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == selectedSection{
-            return self.selDishes.count
+        if self.selIndexArray .contains(section){
+            let dishArray = self.dishesArry[section] as? NSArray
+            if let disArray = dishArray {
+                return disArray.count
+            }
+            else{
+                return 0
+            }
         }
         else{
             return 0
@@ -280,15 +311,16 @@ extension SearchDetailVC : UITableViewDelegate,UITableViewDataSource,MenuSection
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "menuTVC", for: indexPath) as!MenuTVC
-        cell.setDishDetails(dish:self.selDishes[indexPath.row])
-        cell.tag = indexPath.row
+        let dishArray = self.dishesArry[indexPath.section] as? NSArray
+        if let disArray = dishArray {
+            if let dish = disArray[indexPath.row] as? Dishes{
+                cell.setDishDetails(dish:dish)
+            }
+        }
+        cell.tag = indexPath.section
+        cell.plusButton.tag = indexPath.row
         cell.delegate = self
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       self.selectedSection = indexPath.section
-        menuTableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -300,12 +332,7 @@ extension SearchDetailVC : UITableViewDelegate,UITableViewDataSource,MenuSection
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "MenuSectionHeaderView") as! MenuSectionHeaderView
         headerView.tag = section
         headerView.delegate = self
-        if section == self.selectedSection {
-            headerView.arrowButton.isSelected = true
-        }
-        else{
-            headerView.arrowButton.isSelected = false
-        }
+        headerView.arrowButton.isSelected = self.selIndexArray.contains(section)
         if let categoriesResponse = self.kitchenCategories{
             headerView.setCategory(category: categoriesResponse.kitchenCatgories[section])
         }
@@ -313,10 +340,23 @@ extension SearchDetailVC : UITableViewDelegate,UITableViewDataSource,MenuSection
         return headerView
     }
     
-    
-    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let dishArray = self.dishesArry[indexPath.section] as? NSArray
+        if let disArray = dishArray {
+            if let dish = disArray[indexPath.row] as? Dishes{
+                loadproductDetailWithDish(dish: dish)
+            }
+        }
+    }
+    
+    func loadproductDetailWithDish(dish:Dishes){
+        let productDetailVC:ProductDetailVC = ProductDetailVC(nibName: "ProductDetailVC", bundle: nil)
+        productDetailVC.dishDetail =  dish
+        self.navigationController?.pushViewController(productDetailVC, animated: true)
     }
     
     func getKitchenDetailsApi(){
@@ -426,10 +466,16 @@ extension SearchDetailVC : UITableViewDelegate,UITableViewDataSource,MenuSection
 }
 
 extension SearchDetailVC: MenuTVCDelegate {
-    func plusButtonActionDelegate(with tag: Int) {
-        let dish = self.selDishes[tag]
-        Cart.addProductToCart(dish: dish)
-        CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: "ItemSuccessfullyAdded".localiz(), parentController: self)
-        updateCartLabel()
+    func plusButtonActionDelegate(with tag: Int, row: Int) {
+        
+        let dishArray = self.dishesArry[tag] as? NSArray
+        if let disArray = dishArray {
+            if let dish = disArray[row] as? Dishes{
+                Cart.addProductToCart(dish: dish)
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: "ItemSuccessfullyAdded".localiz(), parentController: self)
+                updateCartLabel()
+            }
+        }
+        
     }
 }

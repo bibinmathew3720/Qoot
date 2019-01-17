@@ -1157,7 +1157,7 @@ class ViewKitchens : NSObject{
     var KitchenId:Int = 0
     var KitchenName:String = ""
     var KitchenLogo:String = ""
-    var KitchenDeliveryFee:Int = 0
+    var KitchenDeliveryFee:Double = 0
     var CutomerRating:CGFloat = 0
     var OpenStatus:Bool = false
     var AdminRating:Int = 0
@@ -1183,9 +1183,12 @@ class ViewKitchens : NSObject{
             KitchenLogo = value
         }
         if let value = dict["KitchenDeliveryFee"] as? String{
-            if let deliveryFee = Int(value){
-                KitchenDeliveryFee = deliveryFee
+            if let n = NumberFormatter().number(from: value) {
+                KitchenDeliveryFee = Double(truncating: n)
             }
+        }
+        if let value = dict["KitchenDeliveryFee"] as? Int{
+                KitchenDeliveryFee = Double(value)
         }
         if let value = dict["CutomerRating"] as? Int{
             CutomerRating = CGFloat(value)
@@ -1441,11 +1444,11 @@ class ReadyNowDishesResponseModel : NSObject{
 
 class Dishes : NSObject{
     var DishAmount:Float = 0.0
-    var DishCategory:Int = 0
+    var DishCategory:String = ""
     var DishDescription:String = ""
     var DishId:Int = 0
     var DishImage:String = ""
-    var DishMainCategory:Int = 0
+    var DishMainCategory:String = ""
     var DishName:String = ""
     var DishQuantity:String = "'"
     var DishServe:Int = 0
@@ -1468,9 +1471,10 @@ class Dishes : NSObject{
             DishAmount = value
         }
         if let value = dict["DishCategory"] as? String{
-            if let dishCategory = Int(value){
-                DishCategory = dishCategory
-            }
+            DishCategory = value
+//            if let dishCategory = Int(value){
+//                DishCategory = dishCategory
+//            }
         }
         if let value = dict["DishDescription"] as? String{
             DishDescription = value
@@ -1486,9 +1490,10 @@ class Dishes : NSObject{
             DishImage = value
         }
         if let value = dict["DishMainCategory"] as? String{
-            if let dishMainCategory = Int(value){
-                DishMainCategory = dishMainCategory
-            }
+             DishMainCategory = value
+//            if let dishMainCategory = Int(value){
+//                DishMainCategory = dishMainCategory
+//            }
         }
         if let value = dict["DishName"] as? String{
             DishName = value

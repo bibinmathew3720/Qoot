@@ -9,7 +9,7 @@
 import UIKit
 
 protocol MenuTVCDelegate {
-    func plusButtonActionDelegate(with tag:Int) -> ()
+    func plusButtonActionDelegate(with section:Int, row:Int) -> ()
 }
 
 class MenuTVC: UITableViewCell {
@@ -17,6 +17,7 @@ class MenuTVC: UITableViewCell {
     @IBOutlet weak var dishNameLabel: UILabel!
     @IBOutlet weak var dishDesLabel: UILabel!
     @IBOutlet weak var priceLbael: UILabel!
+    @IBOutlet weak var plusButton: UIButton!
     
     var delegate:MenuTVCDelegate?
     override func awakeFromNib() {
@@ -41,6 +42,6 @@ class MenuTVC: UITableViewCell {
         guard let _delegate = delegate else {
             return
         }
-        _delegate.plusButtonActionDelegate(with: self.tag)
+        _delegate.plusButtonActionDelegate(with: self.tag, row: plusButton.tag)
     }
 }

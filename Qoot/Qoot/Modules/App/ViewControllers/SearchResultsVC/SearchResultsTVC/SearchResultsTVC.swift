@@ -41,6 +41,7 @@ class SearchResultsTVC: UITableViewCell {
     func setKitchen(kitchen:ViewKitchens){
          kitchenImageView.sd_setImage(with: URL(string: kitchen.KitchenLogo), placeholderImage: UIImage(named: Constant.ImageNames.placeholderImage))
         kitchenNameLabel.text = kitchen.KitchenName
+        
         ratingLabel.text = String(format: "%.1f", kitchen.CutomerRating)
         setRating(rating: kitchen.AdminRating)
     }

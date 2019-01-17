@@ -99,14 +99,24 @@ class HomeVC: BaseViewController {
     }
    
     @IBAction func searchButtonAction(_ sender: Any) {
-        if let city = self.selCity {
-            MBProgressHUD.showAdded(to: self.view, animated: true)
-            callingKitchensApi { (status, kitchenResponseModel) in
-                if status {
-                    let searchResultsVC = SearchResultsVC.init(nibName: "SearchResultsVC", bundle: nil)
-                    searchResultsVC.kitchensResponseModel = kitchenResponseModel
-                self.navigationController?.pushViewController(searchResultsVC, animated: true)
+        if let city = self.selCity  {
+            if city.cityId != 0 {
+                MBProgressHUD.showAdded(to: self.view, animated: true)
+                callingKitchensApi { (status, kitchenResponseModel) in
+                    if status {
+                        let searchResultsVC = SearchResultsVC.init(nibName: "SearchResultsVC", bundle: nil)
+                        if let kitchenResponse = kitchenResponseModel {
+                            if kitchenResponse.viewKitchens.count > 0{
+                                kitchenResponse.viewKitchens.remove(at: 0)
+                            }
+                        }
+                        searchResultsVC.kitchensResponseModel = kitchenResponseModel
+                        self.navigationController?.pushViewController(searchResultsVC, animated: true)
+                    }
                 }
+            }
+            else{
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: "CHOOSECITYFIRST".localiz(), parentController: self)
             }
         }
         else{
@@ -193,8 +203,10 @@ class HomeVC: BaseViewController {
     func getCuisinesRequestBody()->String{
         var dataString:String = ""
         if let seMeal = self.selMeal {
-            let mealId:String = "CategoryId=\(String(seMeal.catId).urlEncode())"
-            dataString = dataString + mealId
+            if seMeal.catId != 0 {
+                let mealId:String = "CategoryId=\(String(seMeal.catId).urlEncode())"
+                dataString = dataString + mealId
+            }
         }
         return dataString
     }
@@ -228,24 +240,30 @@ class HomeVC: BaseViewController {
     func getKitchenRequestBody()->String{
         var dataString:String = ""
         if let seCity = self.selCity {
-            let cityId:String = "CityName=\(String(seCity.cityName).urlEncode())"
-            dataString = dataString + cityId
+            if seCity.cityId != 0 {
+                let cityId:String = "CityName=\(String(seCity.cityName).urlEncode())"
+                dataString = dataString + cityId
+            }
             
         }
         if let seMeal = self.selMeal {
-            if dataString.count>0{
-                dataString = dataString + "&"
+            if seMeal.catId != 0 {
+                if dataString.count>0{
+                    dataString = dataString + "&"
+                }
+                let mealId:String = "Category=\(String(seMeal.catId).urlEncode())"
+                dataString = dataString + mealId
             }
-            let mealId:String = "Category=\(String(seMeal.catId).urlEncode())"
-            dataString = dataString + mealId
         }
        
         if let seCuisine = self.selCuisine {
-            if dataString.count>0{
-                dataString = dataString + "&"
+            if seCuisine.subCatId != 0 {
+                if dataString.count>0{
+                    dataString = dataString + "&"
+                }
+                let cuisineId:String = "SubCategory=\(String(seCuisine.subCatId).urlEncode())"
+                dataString = dataString + cuisineId
             }
-            let cuisineId:String = "SubCategory=\(String(seCuisine.subCatId).urlEncode())"
-            dataString = dataString + cuisineId
         }
         return dataString
     }
@@ -314,7 +332,11 @@ class HomeVC: BaseViewController {
                     if (mealMd.mealTypes.count-1)>=selectedRow {
                         selMeal = mealMd.mealTypes[selectedRow]
                     }
-                    callingViewCuisinesApi()
+                    if let seMeal = selMeal{
+                        if seMeal.catId != 0 {
+                            callingViewCuisinesApi()
+                        }
+                    }
                 }
             case 2:
                 if let cuisineModel = self.cuisinesModel{
@@ -322,10 +344,14 @@ class HomeVC: BaseViewController {
                     if (cuisineModel.viewCuisines.count-1)>=selectedRow {
                         selCuisine = cuisineModel.viewCuisines[selectedRow]
                     }
-                    callingKitchensApi { (status, kitchenResponseModel) in
-                        if status {
-                            self.kitchenModel = kitchenResponseModel
-                            self.pickerView.reloadAllComponents()
+                    if let seCuisine = selCuisine {
+                        if seCuisine.catId != 0 && seCuisine.subCatId != 0 {
+                            callingKitchensApi { (status, kitchenResponseModel) in
+                                if status {
+                                    self.kitchenModel = kitchenResponseModel
+                                    self.pickerView.reloadAllComponents()
+                                }
+                            }
                         }
                     }
                 }

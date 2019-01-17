@@ -42,7 +42,7 @@
                     <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M2R-yt-7KL">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="549.5"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9zC-xs-sqY">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
@@ -143,7 +143,10 @@
                                     </constraints>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
-                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="phonePad" secureTextEntry="YES"/>
+                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="xIY-O2-MCW"/>
+                                    </connections>
                                 </textField>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RPC-mG-Yum">
                                     <rect key="frame" x="0.0" y="353.5" width="375" height="1"/>
@@ -159,7 +162,10 @@
                                     </constraints>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
-                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="phonePad" secureTextEntry="YES"/>
+                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="eZV-rX-H4E"/>
+                                    </connections>
                                 </textField>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZOP-LG-Rni">
                                     <rect key="frame" x="0.0" y="409.5" width="375" height="1"/>
@@ -175,7 +181,10 @@
                                     </constraints>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
-                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="phonePad" secureTextEntry="YES"/>
+                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="RNJ-wj-acw"/>
+                                    </connections>
                                 </textField>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YwN-v2-C6A">
                                     <rect key="frame" x="0.0" y="465.5" width="375" height="1"/>
@@ -185,13 +194,10 @@
                                     </constraints>
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ovk-bx-7cs">
-                                    <rect key="frame" x="95" y="486.5" width="185" height="45"/>
+                                    <rect key="frame" x="97.5" y="486.5" width="180" height="43"/>
                                     <color key="backgroundColor" red="0.58039215690000001" green="0.75686274509999996" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="185" id="LZg-dp-IWG"/>
-                                        <constraint firstAttribute="height" constant="45" id="r3c-dZ-qt8"/>
-                                    </constraints>
                                     <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="17"/>
+                                    <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                     <state key="normal" title="UPDATE PASSWORD">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
@@ -232,6 +238,7 @@
                                 <constraint firstItem="ZOP-LG-Rni" firstAttribute="top" secondItem="PLe-LP-jRg" secondAttribute="bottom" id="U0k-Oe-524"/>
                                 <constraint firstItem="PLe-LP-jRg" firstAttribute="trailing" secondItem="Psd-Fw-8nA" secondAttribute="trailing" id="Ut3-uc-gP2"/>
                                 <constraint firstItem="r5B-GL-Cl9" firstAttribute="top" secondItem="hvm-8B-Mfq" secondAttribute="bottom" constant="10" id="V7l-ya-d9k"/>
+                                <constraint firstAttribute="bottom" secondItem="ovk-bx-7cs" secondAttribute="bottom" constant="20" id="Xah-Yv-i1G"/>
                                 <constraint firstItem="Psd-Fw-8nA" firstAttribute="leading" secondItem="wbD-QF-Bcq" secondAttribute="leading" id="YjV-jl-49w"/>
                                 <constraint firstItem="mTs-zQ-qmc" firstAttribute="trailing" secondItem="lX6-ad-qUI" secondAttribute="trailing" id="aVy-xx-1ne"/>
                                 <constraint firstItem="YwN-v2-C6A" firstAttribute="leading" secondItem="ZOP-LG-Rni" secondAttribute="leading" id="e6b-ar-Btg"/>
@@ -248,14 +255,17 @@
                             </constraints>
                         </view>
                     </subviews>
+                    <gestureRecognizers/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="M2R-yt-7KL" secondAttribute="trailing" id="89r-5m-ItX"/>
                         <constraint firstAttribute="bottom" secondItem="M2R-yt-7KL" secondAttribute="bottom" id="KAK-HR-Pcv"/>
                         <constraint firstItem="M2R-yt-7KL" firstAttribute="top" secondItem="rMH-BK-0DV" secondAttribute="top" id="WyZ-2g-edz"/>
                         <constraint firstItem="M2R-yt-7KL" firstAttribute="leading" secondItem="rMH-BK-0DV" secondAttribute="leading" id="XNi-2e-4qD"/>
                         <constraint firstItem="M2R-yt-7KL" firstAttribute="centerX" secondItem="rMH-BK-0DV" secondAttribute="centerX" id="nUl-y3-1IR"/>
-                        <constraint firstItem="M2R-yt-7KL" firstAttribute="centerY" secondItem="rMH-BK-0DV" secondAttribute="centerY" id="udu-Pd-ndz"/>
                     </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="AHy-41-suR" appends="YES" id="EN5-aQ-2ic"/>
+                    </connections>
                 </scrollView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -268,5 +278,10 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="33.5" y="53.5"/>
         </view>
+        <tapGestureRecognizer id="AHy-41-suR">
+            <connections>
+                <action selector="tapGestureAction:" destination="-1" id="Q7u-r2-d3F"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
 </document>

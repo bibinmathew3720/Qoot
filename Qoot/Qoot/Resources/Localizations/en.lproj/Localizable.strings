@@ -98,7 +98,7 @@
 
 //Home
 
-"SelectCity" = "SELECT YOUR CITY";
+"SelectCity" = "Select City";
 "MealType" = "Meal type";
 "Cuisine" = "Cuisine";
 "KitchenName" = "Kitchen Name";

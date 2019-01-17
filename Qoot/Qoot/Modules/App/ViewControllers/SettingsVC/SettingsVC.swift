@@ -55,6 +55,12 @@ class SettingsVC: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    //MARK: Gesture Action
+    
+    @IBAction func tapGestureAction(_ sender: UITapGestureRecognizer) {
+        self.view.endEditing(true)
+    }
+    
     //MARK: Button Actions
     
     override func leftNavButtonAction() {
@@ -251,5 +257,20 @@ extension SettingsVC:UIImagePickerControllerDelegate,UINavigationControllerDeleg
         }
     }
     
+}
+
+extension SettingsVC: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == self.oldPwdtF {
+            newPwdTF.becomeFirstResponder()
+        }
+        else if textField == self.newPwdTF {
+            confirmPwdTF.becomeFirstResponder()
+        }
+        else{
+            textField.resignFirstResponder()
+        }
+        return true
+    }
 }
 

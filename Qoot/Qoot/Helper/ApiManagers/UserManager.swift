@@ -1050,6 +1050,10 @@ class QootCityNamesResponseModel : NSObject{
                 cityNames.append(CityName.init(dict: it ))
             }
         }
+        var selCityDict = [String:Any?]()
+        selCityDict["city_id"] = 0
+        selCityDict["city_name"] = "SelectCity".localiz()
+        cityNames.insert(CityName.init(dict: selCityDict), at: 0)
     }
 }
 
@@ -1077,6 +1081,10 @@ class QootMealTypeResponseModel : NSObject{
                 mealTypes.append(MealTypes.init(dict: it ))
             }
         }
+        var selMealDict = [String:Any?]()
+        selMealDict["category_id"] = 0
+        selMealDict["category_name"] = "MealType".localiz()
+        mealTypes.insert(MealTypes.init(dict: selMealDict), at: 0)
     }
 }
 
@@ -1111,6 +1119,10 @@ class KitchensResponseModel : NSObject{
                 viewKitchens.append(ViewKitchens.init(dict: it ))
             }
         }
+        var selKitDict = [String:Any?]()
+        selKitDict["KitchenId"] = 0
+        selKitDict["KitchenName"] = "KitchenName".localiz()
+        viewKitchens.insert(ViewKitchens.init(dict: selKitDict), at: 0)
     }
 }
 
@@ -1146,7 +1158,7 @@ class ViewKitchens : NSObject{
     var KitchenName:String = ""
     var KitchenLogo:String = ""
     var KitchenDeliveryFee:Int = 0
-    var CutomerRating:Int = 0
+    var CutomerRating:CGFloat = 0
     var OpenStatus:Bool = false
     var AdminRating:Int = 0
     
@@ -1176,13 +1188,15 @@ class ViewKitchens : NSObject{
             }
         }
         if let value = dict["CutomerRating"] as? Int{
-            CutomerRating = value
+            CutomerRating = CGFloat(value)
         }
         if let value = dict["OpenStatus"] as? Bool{
             OpenStatus = value
         }
         if let value = dict["AdminRating"] as? Int{
             AdminRating = value
+            
+            
         }
     }
 }
@@ -1272,6 +1286,11 @@ class ViewCuisinesResponseModel : NSObject{
                 viewCuisines.append(ViewCuisines.init(dict: it ))
             }
         }
+        var selCuisineDict = [String:Any?]()
+        selCuisineDict["category_id"] = 0
+        selCuisineDict["sub_category_id"] = 0
+        selCuisineDict["sub_category_name"] = "Cuisine".localiz()
+        viewCuisines.insert(ViewCuisines.init(dict: selCuisineDict), at: 0)
     }
 }
 

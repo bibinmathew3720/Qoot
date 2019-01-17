@@ -87,6 +87,22 @@ class CCUtility: NSObject {
         viewController.present(alertController, animated: true) {
         }
     }
+    
+    class func showAlertWithYesOrNo(_title : String, viewController:UIViewController, messageString:String, completion:@escaping (_ status:Bool) -> Void) {
+        
+        let alertController = UIAlertController(title: _title, message: messageString, preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "YES".localiz(), style: .default) { (action:UIAlertAction) in
+            completion (true)
+        }
+        let noAction = UIAlertAction(title: "NO".localiz(), style: .default) { (action:UIAlertAction) in
+            completion (false)
+        }
+        
+        alertController.addAction(yesAction)
+        alertController.addAction(noAction)
+        viewController.present(alertController, animated: true) {
+        }
+    }
     class func showAlertWithoutOkOrCancel(_title : String, viewController:UIViewController, messageString:String, completion:@escaping () -> Void) {
         let alertController = UIAlertController(title: _title, message: messageString, preferredStyle: .alert)
         viewController.present(alertController, animated: true) {

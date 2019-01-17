@@ -169,6 +169,7 @@
 
 "ItemSuccessfullyAdded" = "تمت إضافة الطبق بنجاح";
 "YourCartIsEmpty" = "سلتك التسوق فارغة";
+"AllItemsWillRemoveFromCart" = "أنت تحاول اختيار أطباق من مطبخ آخر. ستتم إزالة كل العناصر الموجودة الآن من سلة التسوق.";
 
 //Order Completed
 

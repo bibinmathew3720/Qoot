@@ -171,6 +171,7 @@
 
 "ItemSuccessfullyAdded" = "Item Successfully Added";
 "YourCartIsEmpty" = "Your Cart is empty";
+"AllItemsWillRemoveFromCart" = "You are trying to choose dishes from another kitchen. All the items in your cart will be removed!";
 
 //Order Completed
 

@@ -47,6 +47,8 @@ class Cart: NSManagedObject {
        return nil
     }
     
+    
+    
     static func calculateCartAmount()->Double{
         var totalAmount:Double = 0
         let cartArray = CoreDataHandler.sharedInstance.getAllDatas(entity: "Cart") as? [Cart]
@@ -58,25 +60,14 @@ class Cart: NSManagedObject {
         return totalAmount
     }
     
-    static func addAllPurchasedProductsToCart(orderItems:[OrderHistory]){
-        for orderItem in orderItems{
-            var cart:Cart?
-            let cartPredicate = NSPredicate(format: "productId==%d",orderItem.product_id)
-            let cartArray = CoreDataHandler.sharedInstance.getAllDatasWithPredicate(entity: "Cart", predicate:cartPredicate , sortDescriptor: nil)
-            if (cartArray.count == 0){
-                cart = CoreDataHandler.sharedInstance.newEntityForName(entityName: "Cart") as? Cart
-                cart?.productCount = Int64(orderItem.quantity)
-            }
-            else{
-                cart = cartArray.first as? Cart
-                //cart?.productCount += Int64(cartItem.count)
-                // cart?.productCount = Int64(cartItem.count)
-            }
-            cart?.productId = Int64(orderItem.product_id)
-            cart?.productName = orderItem.product_name
-            cart?.availability = Int64(orderItem.availability)
-            cart?.productPrice = Float(orderItem.unit_pricce)
-            CoreDataHandler.sharedInstance.saveContext()
+    static func isOtherKitchensDishesAdded(dish:Dishes)->Bool {
+        let cartPredicate = NSPredicate(format: "kitchenId != %d",dish.KitchenId)
+        let cartArray = CoreDataHandler.sharedInstance.getAllDatasWithPredicate(entity: "Cart", predicate:cartPredicate , sortDescriptor: nil)
+        if cartArray.count>0{
+            return true
+        }
+        else{
+            return false
         }
     }
     

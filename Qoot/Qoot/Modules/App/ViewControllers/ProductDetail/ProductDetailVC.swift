@@ -149,12 +149,28 @@ class ProductDetailVC: BaseViewController {
     @IBAction func addToCartButtonAction(_ sender: UIButton) {
         if let dish = dishDetail{
             if let kitchenRes = self.kitchenResponse {
-                Cart.addProductToCart(dish: dish, kitchen: kitchenRes)
-                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: "ItemSuccessfullyAdded".localiz(), parentController: self)
-                updateCartLabel()
+                if Cart.isOtherKitchensDishesAdded(dish: dish){
+                    CCUtility.showAlertWithYesOrNo(_title: Constant.AppName, viewController: self, messageString: "AllItemsWillRemoveFromCart".localiz()) { (isYes) in
+                        if (isYes){
+                            Cart.deletAllItemsFromCart()
+                            self.addDishToCart(dish: dish, kitchen: kitchenRes)
+                        }
+                    }
+                }
+                else{
+                    addDishToCart(dish: dish, kitchen: kitchenRes)
+                }
             }
         }
     }
+    
+    func addDishToCart(dish:Dishes, kitchen:ViewKitchens){
+        Cart.addProductToCart(dish: dish, kitchen: kitchen)
+        CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: "ItemSuccessfullyAdded".localiz(), parentController: self)
+        updateCartLabel()
+    }
+    
+    
     
     /*
     // MARK: - Navigation

@@ -21,6 +21,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddressListingVC" customModule="Qoot" customModuleProvider="target">
             <connections>
                 <outlet property="addAddressButton" destination="AMT-6j-8qf" id="ndm-e4-hgB"/>
+                <outlet property="addAddressButtonHeightConstraint" destination="kna-fW-fRh" id="jKf-Nu-O9P"/>
                 <outlet property="addButton" destination="WlZ-vY-qSa" id="blq-cv-3ap"/>
                 <outlet property="addressTV" destination="zkI-hv-OIP" id="wxB-tE-i1y"/>
                 <outlet property="addressTable" destination="vXC-e1-V4N" id="hxC-BJ-eok"/>
@@ -45,16 +46,16 @@
                     <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uvw-uu-Rv6">
-                            <rect key="frame" x="0.0" y="0.0" width="374" height="323.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="374" height="326.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mFH-GX-fH9">
-                                    <rect key="frame" x="10" y="10" width="49" height="23.5"/>
+                                    <rect key="frame" x="10" y="10" width="49" height="26.5"/>
                                     <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="20"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vXC-e1-V4N">
-                                    <rect key="frame" x="40" y="43.5" width="324" height="0.0"/>
+                                    <rect key="frame" x="40" y="46.5" width="324" height="0.0"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" id="rpT-KM-rS0"/>
@@ -65,8 +66,11 @@
                                     </connections>
                                 </tableView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AMT-6j-8qf">
-                                    <rect key="frame" x="151.5" y="63.5" width="71" height="43"/>
+                                    <rect key="frame" x="151" y="66.5" width="72" height="43"/>
                                     <color key="backgroundColor" red="0.58039215690000001" green="0.75686274509999996" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="43" id="kna-fW-fRh"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="17"/>
                                     <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                     <state key="normal" title="Button">
@@ -77,7 +81,7 @@
                                     </connections>
                                 </button>
                                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P75-wj-Tv9">
-                                    <rect key="frame" x="9" y="53.5" width="365" height="250"/>
+                                    <rect key="frame" x="9" y="56.5" width="365" height="250"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gls-0L-s72" customClass="GMSMapView">
                                             <rect key="frame" x="0.0" y="0.0" width="365" height="250"/>

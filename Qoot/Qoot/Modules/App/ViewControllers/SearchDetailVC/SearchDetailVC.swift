@@ -471,9 +471,11 @@ extension SearchDetailVC: MenuTVCDelegate {
         let dishArray = self.dishesArry[tag] as? NSArray
         if let disArray = dishArray {
             if let dish = disArray[row] as? Dishes{
-                Cart.addProductToCart(dish: dish)
-                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: "ItemSuccessfullyAdded".localiz(), parentController: self)
-                updateCartLabel()
+                if let kitchenRes = self.kitchenResponse{
+                    Cart.addProductToCart(dish: dish, kitchen: kitchenRes)
+                    CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: "ItemSuccessfullyAdded".localiz(), parentController: self)
+                    updateCartLabel()
+                }
             }
         }
         

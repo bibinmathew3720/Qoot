@@ -43,7 +43,9 @@ class CartVC: BaseViewController,CartTableCellDelegate,UIGestureRecognizerDelega
             noCartItemsLabel.isHidden = false
         }
         else{
-            deliveryFee = 20.0
+            if let cartItem = cartList?.first{
+                deliveryFee = cartItem.deliveryFee
+            }
             noCartItemsLabel.isHidden = true
         }
         self.deliveryFeePriceLabel.text = "SAR".localiz() + " \(deliveryFee)"  + "/-"

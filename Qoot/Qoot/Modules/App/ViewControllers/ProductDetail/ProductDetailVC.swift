@@ -148,9 +148,11 @@ class ProductDetailVC: BaseViewController {
     
     @IBAction func addToCartButtonAction(_ sender: UIButton) {
         if let dish = dishDetail{
-            Cart.addProductToCart(dish: dish)
-            CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: "ItemSuccessfullyAdded".localiz(), parentController: self)
-            updateCartLabel()
+            if let kitchenRes = self.kitchenResponse {
+                Cart.addProductToCart(dish: dish, kitchen: kitchenRes)
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: "ItemSuccessfullyAdded".localiz(), parentController: self)
+                updateCartLabel()
+            }
         }
     }
     

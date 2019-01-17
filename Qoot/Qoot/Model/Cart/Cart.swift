@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class Cart: NSManagedObject {
-    static func addProductToCart(dish:Dishes){
+    static func addProductToCart(dish:Dishes, kitchen:ViewKitchens){
         var cart:Cart?
         let cartPredicate = NSPredicate(format: "productId==%d",dish.MenuId)
         let cartArray = CoreDataHandler.sharedInstance.getAllDatasWithPredicate(entity: "Cart", predicate:cartPredicate , sortDescriptor: nil)
@@ -27,6 +27,8 @@ class Cart: NSManagedObject {
         cart?.menuId = Int64(dish.MenuId)
         cart?.productName = dish.DishName
         cart?.productPrice = Float(dish.DishAmount)
+        cart?.deliveryFee = kitchen.KitchenDeliveryFee
+        cart?.kitchenId = Int64(kitchen.KitchenId)
        // cart?.availability = Int64(dish.DishQuantity)!
         CoreDataHandler.sharedInstance.saveContext()
     }

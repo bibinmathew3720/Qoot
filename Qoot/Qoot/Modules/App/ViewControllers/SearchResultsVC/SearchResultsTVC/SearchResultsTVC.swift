@@ -19,11 +19,14 @@ class SearchResultsTVC: UITableViewCell {
     @IBOutlet weak var star4: UIButton!
     @IBOutlet weak var star5: UIButton!
     @IBOutlet weak var ratingLabel: UILabel!
+    @IBOutlet weak var closedLabel: UILabel!
+    @IBOutlet weak var closedStatusView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         settingBorderToImageview()
         customerRatingTitleLabel.text = "CustomerRating".localiz()
+        closedLabel.text = "Closed".localiz()
         // Initialization code
     }
     
@@ -44,6 +47,12 @@ class SearchResultsTVC: UITableViewCell {
         
         ratingLabel.text = String(format: "%.1f", kitchen.CutomerRating)
         setRating(rating: kitchen.AdminRating)
+        if !kitchen.OpenStatus{
+            self.closedStatusView.isHidden = false
+        }
+        else{
+           self.closedStatusView.isHidden = true
+        }
     }
     
     func setRating(rating:Int){

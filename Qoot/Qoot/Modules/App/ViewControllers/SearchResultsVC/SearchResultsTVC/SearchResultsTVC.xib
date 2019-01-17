@@ -40,6 +40,28 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </imageView>
+                    <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jvT-wX-OlD">
+                        <rect key="frame" x="10" y="12" width="60" height="60"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="npo-QM-YbI">
+                                <rect key="frame" x="0.0" y="21" width="60" height="18.5"/>
+                                <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.63529411764705879" green="0.10196078431372549" blue="0.36078431372549019" alpha="0.59898546006944442" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="npo-QM-YbI" firstAttribute="centerY" secondItem="jvT-wX-OlD" secondAttribute="centerY" id="Qjs-tH-3pk"/>
+                            <constraint firstAttribute="trailing" secondItem="npo-QM-YbI" secondAttribute="trailing" id="SJa-vv-8Ck"/>
+                            <constraint firstItem="npo-QM-YbI" firstAttribute="leading" secondItem="jvT-wX-OlD" secondAttribute="leading" id="wVs-Rk-Pxu"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="30"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dsv-XL-VMW">
                         <rect key="frame" x="80" y="12" width="37" height="20"/>
                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="15"/>
@@ -142,12 +164,16 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="Hrn-3n-8fE" firstAttribute="leading" secondItem="HMv-dP-xop" secondAttribute="leading" id="2L9-0P-eaU"/>
+                    <constraint firstItem="jvT-wX-OlD" firstAttribute="bottom" secondItem="Egm-Zm-50V" secondAttribute="bottom" id="8dP-hS-i8X"/>
+                    <constraint firstItem="jvT-wX-OlD" firstAttribute="trailing" secondItem="Egm-Zm-50V" secondAttribute="trailing" id="CF1-6d-lZL"/>
                     <constraint firstItem="Egm-Zm-50V" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="CaH-rw-6nZ"/>
+                    <constraint firstItem="jvT-wX-OlD" firstAttribute="leading" secondItem="Egm-Zm-50V" secondAttribute="leading" id="MIS-dz-aEr"/>
                     <constraint firstItem="dsv-XL-VMW" firstAttribute="leading" secondItem="Egm-Zm-50V" secondAttribute="trailing" constant="10" id="UeB-cx-W1k"/>
                     <constraint firstItem="HMv-dP-xop" firstAttribute="top" secondItem="dsv-XL-VMW" secondAttribute="bottom" constant="3" id="YGm-6b-N28"/>
                     <constraint firstItem="Egm-Zm-50V" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ZGb-5J-s5o"/>
                     <constraint firstItem="HMv-dP-xop" firstAttribute="leading" secondItem="dsv-XL-VMW" secondAttribute="leading" id="bna-uY-svh"/>
                     <constraint firstItem="dsv-XL-VMW" firstAttribute="top" secondItem="Egm-Zm-50V" secondAttribute="top" id="bx4-le-eYT"/>
+                    <constraint firstItem="jvT-wX-OlD" firstAttribute="top" secondItem="Egm-Zm-50V" secondAttribute="top" id="dLx-Zg-x7b"/>
                     <constraint firstAttribute="bottom" secondItem="otT-iK-9p7" secondAttribute="bottom" id="gc1-2M-Elv"/>
                     <constraint firstItem="otT-iK-9p7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="hZ3-Ye-p1p"/>
                     <constraint firstItem="0fg-9e-KmZ" firstAttribute="centerY" secondItem="Hrn-3n-8fE" secondAttribute="centerY" id="shF-0E-CYn"/>
@@ -158,6 +184,8 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="closedLabel" destination="npo-QM-YbI" id="a8b-xF-1ii"/>
+                <outlet property="closedStatusView" destination="jvT-wX-OlD" id="G78-ry-I6O"/>
                 <outlet property="customerRatingTitleLabel" destination="0fg-9e-KmZ" id="Cxc-R1-cgh"/>
                 <outlet property="kitchenImageView" destination="Egm-Zm-50V" id="gSY-5c-dej"/>
                 <outlet property="kitchenNameLabel" destination="dsv-XL-VMW" id="bOU-gU-r71"/>

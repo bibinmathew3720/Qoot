@@ -54,6 +54,10 @@
 "ForgotPassword" = "Forgot password";
 "Next" = "NEXT";
 "RecoverAccount" = "Recover account";
+"VerifyDevice" = "Verify Device";
+"WeHaveSentOtpTo" = "We have sent an OTP to your mobile. Enter the OTP to verify your number";
+"EnterOTPHere" = "Enter OTP here";
+"ResendingOTP" = "Resending SMS Code...";
 
 //OTP VC
 

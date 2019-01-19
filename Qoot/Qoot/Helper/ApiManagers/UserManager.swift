@@ -146,6 +146,35 @@ class UserManager: CLBaseService {
         return checkOTPReponseModel
     }
     
+    //MARK : Check OTP Api For Forgot
+    
+    func callingCheckOTPApiForForgot(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForCheckOTPForForgot(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict)
+                    success(self.checkOTPResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForCheckOTPForForgot(with body:String)->CLNetworkModel{
+        let checkOTPRequestModel = CLNetworkModel.init(url: BASE_URL+CHECK_OTP_URL_FORGOT, requestMethod_: "POST")
+        checkOTPRequestModel.requestBody = body
+        return checkOTPRequestModel
+    }
+    
     //MARK : City Name Api
     
     func callingCityNameApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
@@ -1020,12 +1049,21 @@ class CheckSocialLoginResponseModel : NSObject{
 class CheckOTPResponseModel : NSObject{
     var statusMessage:String = ""
     var status:Int = 0
+    var customerId:Int = 0
     init(dict:[String:Any?]) {
-        if let value = dict["message"] as? String{
+        if let value = dict["Message"] as? String{
             statusMessage = value
         }
         if let value = dict["Status"] as? Int{
             status = value
+        }
+        if let value = dict["Customer"] as? Int{
+            customerId = value
+        }
+        if let value = dict["Customer"] as? String{
+            if let custId = Int(value){
+                customerId = custId
+            }
         }
     }
 }

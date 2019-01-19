@@ -35,6 +35,7 @@ class ForgotPasswordVC: BaseViewController {
     
     @IBAction func nextButtonAction(_ sender: UIButton) {
         if isValidInputs(){
+            self.view.endEditing(true)
             callingSendOTPApi()
         }
     }
@@ -65,7 +66,7 @@ class ForgotPasswordVC: BaseViewController {
             MBProgressHUD.hide(for: self.view, animated: true)
             if let model = model as? SendOTPResponseModel{
                 if model.status ==  1 {
-                    self.showOTPVC()
+                    self.showForgotOTPVC()
                 }
                 else{
                     CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: model.statusMessage, parentController: self)
@@ -94,11 +95,10 @@ class ForgotPasswordVC: BaseViewController {
         return dataString
     }
     
-    func showOTPVC(){
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let otpVC = storyboard.instantiateViewController(withIdentifier: "OTPVC") as? OTPVC
-        otpVC?.mobNoString = self.phoneNoTF.text
-        self.navigationController?.pushViewController(otpVC!, animated: true)
+    func showForgotOTPVC(){
+        let forgotPasswordOTPVC = ForgotPasswordOTPVC.init(nibName: "ForgotPasswordOTPVC", bundle: nil)
+        forgotPasswordOTPVC.mobileNumberString = phoneNoTF.text
+        self.navigationController?.pushViewController(forgotPasswordOTPVC, animated: true)
     }
     
     /*

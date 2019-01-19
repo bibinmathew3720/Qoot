@@ -33,7 +33,74 @@ class ForgotPasswordVC: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    @IBAction func nextButtonAction(_ sender: UIButton) {
+        if isValidInputs(){
+            callingSendOTPApi()
+        }
+    }
+    
+    //MARK: Validation
+    
+    func isValidInputs()->Bool{
+        var valid = true
+        var message = ""
+         if let mobString = phoneNoTF.text{
+            if mobString.count < 6{
+                message = "ENTERVALIDMOBILENO".localiz()
+                valid = false
+            }
+        }
+        if (!valid){
+            CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: message, parentController: self)
+        }
+        return valid
+    }
+    
+    //MARK: Send OTP Api
+    
+    func  callingSendOTPApi(){
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        UserManager().callingSendOTPApi(with: getSendOTPRequestBody(), success: {
+            (model) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if let model = model as? SendOTPResponseModel{
+                if model.status ==  1 {
+                    self.showOTPVC()
+                }
+                else{
+                    CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: model.statusMessage, parentController: self)
+                }
+            }
+            
+        }) { (ErrorType) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if(ErrorType == .noNetwork){
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+            }
+            else{
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+            }
+            
+            print(ErrorType)
+        }
+    }
+    
+    func getSendOTPRequestBody()->String{
+        var dataString:String = ""
+        if let mobString = phoneNoTF.text{
+            let phString:String = "Phone=\(mobString.urlEncode())"
+            dataString = dataString + phString + "&"
+        }
+        return dataString
+    }
+    
+    func showOTPVC(){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let otpVC = storyboard.instantiateViewController(withIdentifier: "OTPVC") as? OTPVC
+        otpVC?.mobNoString = self.phoneNoTF.text
+        self.navigationController?.pushViewController(otpVC!, animated: true)
+    }
+    
     /*
     // MARK: - Navigation
 

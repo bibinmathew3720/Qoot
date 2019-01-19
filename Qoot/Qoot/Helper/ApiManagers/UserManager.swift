@@ -995,6 +995,9 @@ class SendOTPResponseModel : NSObject{
         if let value = dict["Message"] as? String{
             statusMessage = value
         }
+        if let value = dict["Message"] as? Int{
+            statusMessage = String(format: "%d", value)
+        }
         if let value = dict["Status"] as? Int{
             status = value
         }

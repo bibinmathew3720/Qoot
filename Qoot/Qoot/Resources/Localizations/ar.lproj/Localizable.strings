@@ -19,6 +19,7 @@
 "SPECIFYPAYMENTMETHOD" = "حدد طريقة الدفع";
 "PASSWORDATLEASTSIXDIGITS" = "يجب أن تحتوي كلمة المرور على الأقل 6 أحرف";
 "NEWPASSWORDDOESNTMATCHES" = "كلمة المرور الجديدة غير مطابقة";
+"ENTERVALIDMOBILENO" = "Enter a valid mobile no.";
 
 //Common
 

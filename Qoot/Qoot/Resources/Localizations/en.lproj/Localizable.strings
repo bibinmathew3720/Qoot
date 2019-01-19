@@ -19,6 +19,7 @@
 "SPECIFYPAYMENTMETHOD" = "Specify the payment method";
 "PASSWORDATLEASTSIXDIGITS" = "Password should be atleast 6 digits";
 "NEWPASSWORDDOESNTMATCHES" = "New Password does not matches";
+"ENTERVALIDMOBILENO" = "Enter a valid mobile no.";
 
 
 //Common

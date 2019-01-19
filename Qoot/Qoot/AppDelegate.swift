@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         initWindow()
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.enableAutoToolbar = false
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         GMSPlacesClient.provideAPIKey(Constant.ApiKeys.googleMapKey)
         GMSServices.provideAPIKey(Constant.ApiKeys.googleMapKey)
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)

@@ -450,10 +450,29 @@
                         <outlet property="pwdVerticalSpaceCnsnt" destination="sj5-E8-f9P" id="8YR-WE-X2r"/>
                         <outlet property="pwdView" destination="GWU-rI-WQj" id="Oid-hN-xew"/>
                         <outlet property="submitButton" destination="cRp-Ft-X1a" id="mar-ak-c61"/>
+                        <outlet property="toolBar" destination="KkM-YH-udJ" id="EXh-cR-zXH"/>
                         <segue destination="Dbi-HH-Hnp" kind="show" identifier="registerToOTP" id="Taq-BD-ePj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YgO-fj-lAJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="KkM-YH-udJ">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <items>
+                        <barButtonItem title="Cancel" id="cXQ-g5-aAL">
+                            <connections>
+                                <action selector="toolBarCancelAction:" destination="twp-8l-Niu" id="UEg-Mr-vaj"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Ger-Qi-bKB"/>
+                        <barButtonItem title="Done" id="wXC-qu-VcQ">
+                            <connections>
+                                <action selector="toolBarDoneButtonAction:" destination="twp-8l-Niu" id="j3X-xe-dwa"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
+                </toolbar>
                 <tapGestureRecognizer id="2AI-IP-WSL">
                     <connections>
                         <action selector="tapGestureAction:" destination="twp-8l-Niu" id="EbZ-OK-dgn"/>
@@ -571,6 +590,7 @@
                         <outlet property="otpTF" destination="IVh-13-k8J" id="GWe-G9-VSF"/>
                         <outlet property="resendOTPButton" destination="MQO-Jj-Hdt" id="pRR-sg-yHB"/>
                         <outlet property="smsTitleLabel" destination="XD4-zB-U73" id="JMO-l0-oIt"/>
+                        <outlet property="toolBar" destination="lqi-0F-p0e" id="cQi-Fg-inD"/>
                         <outlet property="verifyOTPButton" destination="6DS-RI-yXO" id="nAD-nV-rAL"/>
                     </connections>
                 </viewController>
@@ -580,6 +600,24 @@
                         <action selector="tapgestureAction:" destination="Dbi-HH-Hnp" id="toU-p5-Z71"/>
                     </connections>
                 </tapGestureRecognizer>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="lqi-0F-p0e">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <items>
+                        <barButtonItem title="Cancel" id="zIw-sL-fW3">
+                            <connections>
+                                <action selector="toolBarCencelButtonAction:" destination="Dbi-HH-Hnp" id="Rwm-LW-0Op"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Exm-Qt-gan"/>
+                        <barButtonItem title="Done" id="2vR-FQ-l7L">
+                            <connections>
+                                <action selector="toolBarDoneButtonAction:" destination="Dbi-HH-Hnp" id="GrT-WT-wkc"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
+                </toolbar>
             </objects>
             <point key="canvasLocation" x="1753" y="149"/>
         </scene>

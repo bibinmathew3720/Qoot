@@ -206,6 +206,7 @@
 "ChangeProfilePicture" = "تغيير صورة الملف الشخصي";
 "MyAddresses" = "عنواني";
 "ChangePassword" = "تغيير كلمة السر";
+"CHANGEPASSWORD" = "تغيير كلمة السر";
 "OldPassword" = "كلمة المرور القديمة";
 "NewPassword" = "كلمة مرور جديدة";
 "ConfirmNewPassword" = "تأكيد كلمة المرور الجديدة";

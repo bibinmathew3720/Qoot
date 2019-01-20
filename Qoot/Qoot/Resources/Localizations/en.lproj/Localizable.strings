@@ -206,6 +206,7 @@
 "ChangeProfilePicture" = "Change Profile Picture";
 "MyAddresses" = "My Addresses";
 "ChangePassword" = "Change Password";
+"CHANGEPASSWORD" = "CHANGE PASSWORD";
 "OldPassword" = "Old Password";
 "NewPassword" = "New Password";
 "ConfirmNewPassword" = "Confirm New Password";

@@ -755,6 +755,36 @@ class UserManager: CLBaseService {
         return changePasswordRequestModel
     }
     
+    //MARK: ChangePassword Api For Forgot
+    
+    func callingChangePasswordApiForForgot(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForChangePasswordForForgotPassword(with: body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
+            
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict)
+                    success(self.getchangetPasswordResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForChangePasswordForForgotPassword(with body:String)->CLNetworkModel{
+        let changePasswordRequestModel = CLNetworkModel.init(url: BASE_URL+CHANGE_PWD_URL_FORGOT, requestMethod_: "POST")
+        changePasswordRequestModel.requestBody = body
+        return changePasswordRequestModel
+    }
+    
     //MARK: Feedback Api
     
     func callingFeedbackApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){

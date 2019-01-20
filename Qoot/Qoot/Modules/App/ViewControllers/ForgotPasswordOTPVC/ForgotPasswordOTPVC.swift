@@ -13,6 +13,7 @@ class ForgotPasswordOTPVC: BaseViewController {
     @IBOutlet weak var otpTextField: UITextField!
     @IBOutlet weak var resendOtpButton: UIButton!
     @IBOutlet weak var verifyOtpButton: UIButton!
+    @IBOutlet var toolBar: UIToolbar!
     
     var mobileNumberString:String?
     var checkOTPResponseModel:CheckOTPResponseModel?
@@ -24,6 +25,7 @@ class ForgotPasswordOTPVC: BaseViewController {
     
     func initialisation(){
         addingLeftBarButton()
+        otpTextField.inputAccessoryView = toolBar
     }
     
     func localisation(){
@@ -37,7 +39,14 @@ class ForgotPasswordOTPVC: BaseViewController {
     }
     
     //MARK: Button Actions
-
+    @IBAction func toolBarDoneButtonAction(_ sender: UIBarButtonItem) {
+        self.view.endEditing(true)
+    }
+    
+    @IBAction func toolBarCancelButtonAction(_ sender: UIBarButtonItem) {
+        self.view.endEditing(true)
+    }
+    
     @IBAction func resendOTPButtonActin(_ sender: UIButton) {
         callingSendOTPApi()
     }

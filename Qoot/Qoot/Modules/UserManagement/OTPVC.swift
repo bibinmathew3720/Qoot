@@ -14,6 +14,8 @@ class OTPVC: BaseViewController,UITextFieldDelegate {
     @IBOutlet weak var smsTitleLabel: UILabel!
     @IBOutlet weak var resendOTPButton: UIButton!
     @IBOutlet weak var verifyOTPButton: UIButton!
+    @IBOutlet var toolBar: UIToolbar!
+    
     var mobNoString:String?
     override func initView() {
         super.initView()
@@ -25,6 +27,7 @@ class OTPVC: BaseViewController,UITextFieldDelegate {
         self.navigationController?.navigationItem.leftBarButtonItem = nil
         self.navigationItem.leftBarButtonItem = nil
         otpTF.becomeFirstResponder()
+        self.otpTF.inputAccessoryView = toolBar
         localisation()
     }
     
@@ -36,7 +39,15 @@ class OTPVC: BaseViewController,UITextFieldDelegate {
         resendOTPButton.setTitle("RESENDOTP".localiz(), for: UIControlState.normal)
         verifyOTPButton.setTitle("VERIFYOTP".localiz(), for: UIControlState.normal)
     }
-
+    
+    @IBAction func toolBarCencelButtonAction(_ sender: UIBarButtonItem) {
+        self.view.endEditing(true)
+    }
+    
+    @IBAction func toolBarDoneButtonAction(_ sender: UIBarButtonItem) {
+        self.view.endEditing(true)
+    }
+    
     @IBAction func resendOTPButtonAction(_ sender: UIButton) {
         callingSendOTPApi()
     }
@@ -124,12 +135,12 @@ class OTPVC: BaseViewController,UITextFieldDelegate {
             (model) in
             MBProgressHUD.hide(for: self.view, animated: true)
             if let model = model as? CheckOTPResponseModel{
-                //                if model.statusMessage.count > 0 {
-                //                    CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: model.statusMessage, parentController: self)
-                //                }
-                //                else{
-                //                    self.dismiss(animated: true, completion: nil)
-                //                }
+                if model.status == 1{
+                    self.navigationController?.popToRootViewController(animated: true)
+                }
+                else{
+                     CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: "INVALIDOTP".localiz(), parentController: self)
+                }
             }
             
         }) { (ErrorType) in

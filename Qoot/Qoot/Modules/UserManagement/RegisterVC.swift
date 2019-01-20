@@ -27,6 +27,7 @@ class RegisterVC: BaseViewController,UITextFieldDelegate {
     var socialResponseModel:SocialMediaResponseModel?
     @IBOutlet weak var confirmPwdView: UIView!
     @IBOutlet weak var pwdView: UIView!
+    @IBOutlet var toolBar: UIToolbar!
     
     override func initView() {
         initialisation()
@@ -47,6 +48,7 @@ class RegisterVC: BaseViewController,UITextFieldDelegate {
             self.nameTF.text = socialResponse.userName
             self.phoneNoTF.text = socialResponse.userMobile
         }
+        self.phoneNoTF.inputAccessoryView = toolBar
     }
     
     func localisation(){
@@ -67,9 +69,18 @@ class RegisterVC: BaseViewController,UITextFieldDelegate {
     
     //MARK: Button Actions
     
+    @IBAction func toolBarCancelAction(_ sender: UIBarButtonItem) {
+        self.view.endEditing(true)
+    }
+    
+    @IBAction func toolBarDoneButtonAction(_ sender: UIBarButtonItem) {
+        self.pwdTF.becomeFirstResponder()
+    }
+    
     @IBAction func tapGestureAction(_ sender: UITapGestureRecognizer) {
         self.view.endEditing(true)
     }
+    
     @IBAction func maleButtonAction(_ sender: UIButton) {
         sender.isSelected = true
         femaleButton.isSelected = false

@@ -11,6 +11,7 @@ import UIKit
 class ForgotPasswordVC: BaseViewController {
     @IBOutlet weak var phoneNoTF: UITextField!
     @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet var toolBar: UIToolbar!
     
     override func initView() {
         super.initView()
@@ -20,6 +21,7 @@ class ForgotPasswordVC: BaseViewController {
     
     func initialisation(){
         addingLeftBarButton()
+        phoneNoTF.inputAccessoryView = toolBar
     }
     
     func localisation(){
@@ -40,6 +42,13 @@ class ForgotPasswordVC: BaseViewController {
         }
     }
     
+    @IBAction func toolBarDoneButtonAction(_ sender: UIBarButtonItem) {
+        self.view.endEditing(true)
+    }
+    
+    @IBAction func taolBarCancelButtonAction(_ sender: UIBarButtonItem) {
+        self.view.endEditing(true)
+    }
     //MARK: Validation
     
     func isValidInputs()->Bool{
